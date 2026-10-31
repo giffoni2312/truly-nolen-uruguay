@@ -1,7 +1,8 @@
 # Truly Nolen Uruguay — borrador
 
 Versión Uruguay de la página de Venezuela (mismo diseño, contenido 100 % uruguayo).
-n**Ver en línea:** https://giffoni2312.github.io/truly-nolen-uruguay/oficinas/uruguay/ (se actualiza sola en cada push a `main`)
+
+**Ver en línea:** https://giffoni2312.github.io/truly-nolen-uruguay/oficinas/uruguay/ (se actualiza sola en cada push a `main`)
 
 ## Comandos
 - `node build.mjs`  → genera las 17 páginas en `site/oficinas/uruguay/`
