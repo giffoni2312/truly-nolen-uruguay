@@ -53,9 +53,6 @@ function chrome(s) {
   s = s.replace(/<div class="tia-atajos" data-atajos>[\s\S]*?<\/div>/, `<div class="tia-atajos" data-atajos>${CHAT_TEXTS.atajos.map((t) => `<button type="button" class="tia-atajo">${t}</button>`).join('')}</div>`);
   s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
   s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
-  // escenas.js fades to a shared "mundo" video that is not in this project yet: without it the hero would go dark,
-  // so the car video simply loops on its own (native loop) until that asset is added.
-  s = s.replace(/<script defer src="\/oficinas\/assets\/escenas\.js">\s*<\/script>/, '');
   return s.replaceAll('Venezuela', 'Uruguay').replaceAll('venezuela', 'uruguay');
 }
 
