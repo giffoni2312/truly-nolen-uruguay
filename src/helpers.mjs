@@ -87,8 +87,8 @@ export function fuentes(list) {
 
 export function servicesCards() {
   return `<section class="section services"><div class="section-heading"><p class="eyebrow">Servicios</p><h2>Revisemos tu caso<br/>en tu espacio.</h2></div><div class="service-grid">
-<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogar-casa-carrasco.jpg" alt="Casa blanca con techo de tejas y jardín en Carrasco, Montevideo" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
-<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercio-cafe-brasilero.jpg" alt="Fachada del Café Brasilero, fundado en 1877, en la Ciudad Vieja de Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
+<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogares.jpg" alt="Cocina moderna de un apartamento en Montevideo con vista a la Rambla" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
+<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercios.jpg" alt="Panadería y confitería moderna en Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
 </div></section>`;
 }
 
