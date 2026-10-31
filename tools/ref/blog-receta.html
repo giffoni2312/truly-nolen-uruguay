@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow"/><meta name="description" content="Cómo se escribe cada artículo del blog de una oficina de Truly Nolen: agentes, revisión de fuentes, SEO y goteo."/><title>La receta del blog · Truly Inbound</title><style>:root{--ink:#17212a;--paper:#f7f6f1;--muted:#52616a;--line:#d9d9cf;--yellow:#ffe000}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,sans-serif}main{max-width:860px;margin:0 auto;padding:56px 24px 80px}a{color:var(--ink)}h1{font-size:clamp(34px,5vw,52px);line-height:1.05;margin:8px 0 16px}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}.tarjetas{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:36px 0}.tarjetas a{display:block;background:#fff;border-radius:6px;padding:26px;text-decoration:none;border-top:4px solid var(--yellow)}.tarjetas strong{display:block;font-size:22px;margin-bottom:6px}.tarjetas span{color:var(--muted)}.nota{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}code{background:#ecebe4;padding:1px 5px;border-radius:3px;font-size:.88em}pre{background:#ecebe4;padding:14px;overflow-x:auto;border-radius:4px}pre code{background:none;padding:0}h2{margin-top:48px;border-top:1px solid var(--line);padding-top:24px}</style></head><body><main><p class="eyebrow"><a href="/">← Truly Inbound · borrador</a></p><h1>La receta del blog</h1><p>Cómo se escribe y se publica cada artículo del blog de una oficina. Sale de la receta del sitio (paso 11 y sección E) y se actualiza sola.</p><h3>11 · Blog</h3>
+<ul>
+<li><strong>Qué se hace:</strong> 2 artículos con el método <code>blog-verificado</code> (Anexo E).</li>
+<li><strong>Se comprueba con:</strong> <code>gate-oficinas</code> exige ≥ 2 publicados; la ruta, que estén verificados.</li>
+</ul>
+<h2>E. Blog en una oficina</h2>
+<ol>
+<li>Ficha de marca del país: copiar <code>~/.claude/skills/blog-verificado/marcas/truly-nicaragua.{json,md}</code> a
+   <code>truly-&lt;país&gt;.{json,md}</code> y cambiar TODO: en el <code>.json</code>, <code>repo</code> y <code>fotos_dir</code> apuntan al CLON del país; en el <code>.md</code>,
+   la voz del país (sale de <code>voz-card.md</code>).</li>
+<li>Carpeta de la tanda <code>~/proyectos/blogs/truly-&lt;país&gt;/tanda-1/</code> con <code>tanda-1.txt</code> (<code>NN|palabra clave|nota</code>) y
+   <code>blog-settings.json</code> y <code>posts-existentes.json</code> copiados de la tanda de Nicaragua (frases prohibidas del país).</li>
+<li>Escritor (<code>blog-escritor</code>) → revisor mecánico
+   <code>~/.local/bin/uv run --python 3.12 --no-project python ~/.claude/skills/truly-inbound/scripts/revisar_oficina.py &lt;carpeta-articulo&gt; "&lt;palabra clave&gt;" truly-&lt;país&gt;</code>
+   → juez de voz + auditor de verdad en paralelo → correcciones → revisión final + ortografía (<code>lt.py</code>) → 3 SEO
+   (<code>seo-content</code>, <code>seo-geo</code>, <code>seo-sxo</code>).</li>
+<li>Portada: foto real de Truly que muestre la plaga donde vive, WebP en <code>assets/&lt;pref&gt;-blog-&lt;slug&gt;.webp</code>.</li>
+<li>Montar como <code>app/src/inbound/oficinas/&lt;id&gt;/blog/&lt;slug&gt;.json</code> (lo del escritor + <code>fecha</code>, <code>tema</code>, <code>fuentes</code>,
+   <code>portadaOrigen</code>, <code>verificacion</code>). Goteo: solo sale lo que tiene <code>fecha</code> ≤ hoy en Caracas, máximo <code>blog.porDia</code> por fecha.</li>
+</ol></main></body></html>

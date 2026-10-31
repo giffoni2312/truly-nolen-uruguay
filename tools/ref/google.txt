@@ -1,0 +1,50 @@
+Google, Bing y las IA · Truly Inbound
+← Truly Inbound · borrador
+Google, Bing y las IA
+Lo que lleva cada sitio de oficina para que lo encuentren y cómo se sale en vivo (sección G de la receta). Se actualiza solo con la receta.
+G. Google, Bing y las IA
+Bloque 
+seo
+: 
+url
+ (con 
+/
+ final), 
+indexar
+ (false en borrador), 
+titulo
+, 
+descripcion
+ (≤ 160), 
+imagen
+ 1200×630,
+imagenAlt
+, 
+descripciones
+ (las páginas que no son propias), 
+indexnow
+ (
+openssl rand -hex 16
+),
+verificacion.google
+ y 
+.bing
+ (solo el 
+content
+), 
+ga4
+ (opcional).
+Lo hace solo el generador: descripción, canonical, robots, Open Graph, datos estructurados, 
+sitemap.xml
+, llave de
+IndexNow y, con dominio propio, 
+robots.txt
+ abierto a Google, Bing, ChatGPT, Claude y Perplexity.
+Salida en vivo (otro ok): alta en Search Console y Bing Webmaster con la cuenta de la oficina, 
+indexar: true
+,
+generar, publicar, enviar el sitemap, 
+node scripts/indexnow-oficina.mjs <id> --enviar
+ → 200/202, y seguir
+sitio-con-trafico
+.

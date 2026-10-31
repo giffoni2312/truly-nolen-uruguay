@@ -2,12 +2,12 @@
 // Usage: node fetch-commons.mjs  (edit PICKS below)
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
 const PICKS = [
-  ['Casa de Carrasco vista desde Rambla Tomás Berreta - panoramio.jpg', 'uy-casa-carrasco.jpg', 2560, 'Casa en Carrasco, Montevideo (zonas del hogar)'],
+  ["Uruguai - Maldonado - Punta Del Este - Punta Ballena - Piriápolis (Páez Vilaró) - panoramio (95).jpg", 'uy-hogar-casa-moderna.jpg', 2560, 'Casa moderna en Punta Ballena (hogares)'],
 ];
 mkdirSync('out', { recursive: true });
 const credits = existsSync('credits.json') ? JSON.parse(readFileSync('credits.json', 'utf8')) : {};
 for (const [title, file, width, label] of PICKS) {
-  if (existsSync(`out/${file}`) && credits[file]) { console.log('skip', file); continue; }
+  if (existsSync(`out/${file}`) && credits[file] && credits[file].title.includes(title.slice(0,20))) { console.log('skip', file); continue; }
   await new Promise((r) => setTimeout(r, 3000));
   // Exact title may be truncated in search results: resolve with a search when needed
   let t = title;

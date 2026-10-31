@@ -1,0 +1,73 @@
+La receta del blog · Truly Inbound
+← Truly Inbound · borrador
+La receta del blog
+Cómo se escribe y se publica cada artículo del blog de una oficina. Sale de la receta del sitio (paso 11 y sección E) y se actualiza sola.
+11 · Blog
+Qué se hace: 2 artículos con el método 
+blog-verificado
+ (Anexo E).
+Se comprueba con: 
+gate-oficinas
+ exige ≥ 2 publicados; la ruta, que estén verificados.
+E. Blog en una oficina
+Ficha de marca del país: copiar 
+~/.claude/skills/blog-verificado/marcas/truly-nicaragua.{json,md}
+ a
+truly-<país>.{json,md}
+ y cambiar TODO: en el 
+.json
+, 
+repo
+ y 
+fotos_dir
+ apuntan al CLON del país; en el 
+.md
+,
+   la voz del país (sale de 
+voz-card.md
+).
+Carpeta de la tanda 
+~/proyectos/blogs/truly-<país>/tanda-1/
+ con 
+tanda-1.txt
+ (
+NN|palabra clave|nota
+) y
+blog-settings.json
+ y 
+posts-existentes.json
+ copiados de la tanda de Nicaragua (frases prohibidas del país).
+Escritor (
+blog-escritor
+) → revisor mecánico
+~/.local/bin/uv run --python 3.12 --no-project python ~/.claude/skills/truly-inbound/scripts/revisar_oficina.py <carpeta-articulo> "<palabra clave>" truly-<país>
+   → juez de voz + auditor de verdad en paralelo → correcciones → revisión final + ortografía (
+lt.py
+) → 3 SEO
+   (
+seo-content
+, 
+seo-geo
+, 
+seo-sxo
+).
+Portada: foto real de Truly que muestre la plaga donde vive, WebP en 
+assets/<pref>-blog-<slug>.webp
+.
+Montar como 
+app/src/inbound/oficinas/<id>/blog/<slug>.json
+ (lo del escritor + 
+fecha
+, 
+tema
+, 
+fuentes
+,
+portadaOrigen
+, 
+verificacion
+). Goteo: solo sale lo que tiene 
+fecha
+ ≤ hoy en Caracas, máximo 
+blog.porDia
+ por fecha.

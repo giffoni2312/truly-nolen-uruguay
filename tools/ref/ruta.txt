@@ -1,0 +1,167 @@
+La ruta · Truly Inbound
+body{background:var(--paper);color:var(--ink);font-family:var(--font);margin:0}main{max-width:1180px;margin:0 auto;padding:56px var(--gutter) 96px}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;margin:0 0 8px}h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1;margin:0 0 14px}.intro{color:var(--muted);max-width:60ch;margin:0 0 48px}
+.pais{background:var(--surface);border:1px solid var(--line);border-radius:4px;margin:0 0 40px;overflow:hidden}.pais header{display:flex;justify-content:space-between;align-items:end;gap:24px;background:var(--ink);color:var(--paper);padding:28px}.pais header .eyebrow{color:var(--yellow)}.pais h2{margin:0;font-size:2rem}
+.avance{text-align:right}.avance strong{display:block;font-size:2.4rem;line-height:1;color:var(--yellow)}.avance span{font-size:.8rem}.barra{height:6px;background:var(--line)}.barra i{display:block;height:100%;background:var(--yellow)}
+.siguiente{margin:0;padding:16px 28px;font-weight:800;border-bottom:1px solid var(--line)}ol{list-style:none;margin:0;padding:0}
+li{display:grid;grid-template-columns:44px 1fr 120px;gap:18px;align-items:start;padding:18px 28px;border-top:1px solid var(--line)}li:first-child{border-top:0}
+.n{font-weight:800;font-size:1.05rem;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--ink)}li.ok .n{background:var(--yellow)}li.revisar .n{border-style:dashed}li.falta .n{background:var(--ink);color:var(--yellow)}
+li strong{display:block;font-size:1.02rem}li p{margin:4px 0 0;color:var(--muted);line-height:1.45;font-size:.95rem}li p.falta{color:var(--ink)}li p.sigue{color:var(--ink);font-weight:700}
+li img{width:120px;height:68px;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+.leyenda{display:flex;gap:22px;flex-wrap:wrap;margin:-28px 0 40px;color:var(--muted);font-size:.9rem}.leyenda b{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);vertical-align:-2px;margin-right:6px}
+@media(max-width:700px){li{grid-template-columns:40px 1fr}li img{grid-column:2;width:100%;height:auto;aspect-ratio:16/9}.pais header{padding:22px}li{padding:16px 20px}}
+Receta truly-inbound
+La ruta de cada país.
+Los 15 pasos para dejar el sitio de una oficina al 100 %. Cada paso se revisa solo contra los archivos del país, y dice qué falta y cómo seguir. Actualizado el 2026-10-31.
+ListoPor revisarFalta
+Truly Inbound
+Nicaragua
+15/15pasos
+Todo listo
+01
+Oficina y contacto
+Oficina con whatsapp, telefono, correo y sus 3 páginas legales
+02
+Investigación del país
+investigacion.md con 51 fuentes
+03
+Lugar de la portada
+Volcán Concepción, Ometepe · el dueño lo eligió el 2026-10-30
+04
+Imagen del carro
+Aprobada el 2026-10-30
+05
+Video del carro
+Sin retroceso: el asfalto va en el mismo sentido en los 18 tramos (217 cuadros)
+06
+Bigotes y video final
+Póster y video revisados, con su huella en la ficha
+07
+Pie en acuarela
+Pie del mismo lugar de la portada (WebP)
+08
+Fotos del país
+6 fotos propias del país, con texto alternativo
+09
+Ficha del país
+Voz, textos, SEO y llave de IndexNow
+10
+Servicios y plagas propios
+3 servicios y 6 plagas, todas con fuentes
+11
+Blog
+2 artículos con el método blog-verificado completo
+12
+Voz humana
+Tarjeta de voz y veredicto del juez: HUMANO
+13
+Generar y candados
+gate-oficinas en verde
+14
+Revisión 1280 y 390
+Rondas cerradas el 2026-10-30
+15
+Subir al borrador
+En línea: https://borrador-venezuela.truly-inbound-borrador.pages.dev/oficinas/nicaragua/
+Truly Inbound
+Panamá
+13/15pasos
+Sigue: paso 14 · Revisión 1280 y 390
+01
+Oficina y contacto
+Oficina con whatsapp, telefono, correo y sus 3 páginas legales
+02
+Investigación del país
+investigacion.md con 63 fuentes
+03
+Lugar de la portada
+El Tornillo, Ciudad de Panamá · el dueño lo eligió el 2026-10-31
+04
+Imagen del carro
+Aprobada el 2026-10-31
+05
+Video del carro
+Sin retroceso: el asfalto va en el mismo sentido en los 18 tramos (217 cuadros)
+06
+Bigotes y video final
+Póster y video revisados, con su huella en la ficha
+07
+Pie en acuarela
+Pie del mismo lugar de la portada (WebP)
+08
+Fotos del país
+6 fotos propias del país, con texto alternativo
+09
+Ficha del país
+Voz, textos, SEO y llave de IndexNow
+10
+Servicios y plagas propios
+3 servicios y 6 plagas, todas con fuentes
+11
+Blog
+2 artículos con el método blog-verificado completo
+12
+Voz humana
+Tarjeta de voz y veredicto del juez: HUMANO
+13
+Generar y candados
+gate-oficinas en verde
+14
+Revisión 1280 y 390
+Falta la revisión a ojo
+Falta: Mínimo 3 rondas en 1280 y 390 px al lado de trulynolen.com.gt; el dueño ve el sitio completo
+→ Receta, ruta 14, y anotar "ruta.aprobado.revision"
+15
+Subir al borrador
+Todavía no está en el borrador (esa dirección devuelve otra página)
+Falta: Subirlo cuando 12, 13 y 14 estén listos
+→ bash ~/proyectos/scripts/truly-venezuela-borrador.sh --subir
+Truly Inbound
+Venezuela
+15/15pasos
+Todo listo
+01
+Oficina y contacto
+Sin oficina: atiende Truly AI
+02
+Investigación del país
+Hecha antes de la regla: vive en las fuentes de cada página
+03
+Lugar de la portada
+Camino de la Felicidad, Falcón · el dueño lo eligió el 2026-10-29
+04
+Imagen del carro
+Aprobada el 2026-10-29
+05
+Video del carro
+Sin retroceso: el asfalto va en el mismo sentido en los 18 tramos (217 cuadros)
+06
+Bigotes y video final
+Póster y video revisados, con su huella en la ficha
+07
+Pie en acuarela
+Pie del mismo lugar de la portada (WebP)
+08
+Fotos del país
+6 fotos propias del país, con texto alternativo
+09
+Ficha del país
+Voz, textos, SEO y llave de IndexNow
+10
+Servicios y plagas propios
+3 servicios y 6 plagas, todas con fuentes
+11
+Blog
+2 artículos con el método blog-verificado completo
+12
+Voz humana
+Tarjeta de voz y veredicto del juez: HUMANO
+13
+Generar y candados
+gate-oficinas en verde
+14
+Revisión 1280 y 390
+Rondas cerradas el 2026-10-30
+15
+Subir al borrador
+En línea: https://borrador-venezuela.truly-inbound-borrador.pages.dev/oficinas/venezuela/

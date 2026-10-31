@@ -80,7 +80,7 @@ function jsonLd(page, url) {
 
 function head(pre, page) {
   const url = `${SITE}${U}/${page.out}`;
-  const ogImg = `${SITE}${A}/uruguay-desktop.jpg`;
+  const ogImg = `${SITE}${A}/uruguay-social.jpg`;
   const set = (key, val) => { pre = pre.replace(new RegExp(`(<meta (?:name|property)="${key}" content=")[^"]*(")`), `$1${esc(val)}$2`); };
   pre = pre.replace(/<title>[^<]*<\/title>/, `<title>${esc(page.title)}</title>`);
   pre = pre.replace(/<link rel="canonical" href="[^"]*"\/>/, `<link rel="canonical" href="${url}"/>`);

@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Resize</title>
+<script>
+// Crop + resize + re-encode an image and save it through the dev server.
+// job({src, out, w, h?, crop?: [x, y, cw, ch] in source pixels, q?})
+window.job = async function ({ src, out, w, h, crop, q = 0.82 }) {
+  const img = new Image(); img.src = src; await img.decode();
+  const [cx, cy, cw, ch] = crop || [0, 0, img.naturalWidth, img.naturalHeight];
+  const H = h || Math.round((w * ch) / cw);
+  const c = new OffscreenCanvas(w, H), g = c.getContext('2d');
+  g.imageSmoothingQuality = 'high';
+  g.drawImage(img, cx, cy, cw, ch, 0, 0, w, H);
+  const blob = await c.convertToBlob({ type: 'image/jpeg', quality: q });
+  const r = await fetch('/_save/' + out, { method: 'POST', body: blob });
+  return `${out} ${w}x${H} ${Math.round(blob.size / 1024)}KB ${r.status}`;
+};
+</script>

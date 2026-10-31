@@ -1,0 +1,1253 @@
+Receta Truly Inbound
+← Truly Inbound · borrador
+Truly Inbound · el sitio de una oficina, paso a paso
+Qué es. El sitio público de un país de Truly Nolen International: portada con el carrito de Truly en un lugar del
+país, servicios y plagas con fuentes del país, blog verificado, Truly AI en el chat y en WhatsApp. Lo vende Truly Global.
+Vive en el repo 
+Catalizadora-Labs/truly-inbound
+. Truly Global (ERP 
+truly-nolen-global
+) es otra cosa: no se toca aquí.
+Los dos ejemplos resueltos (se copia el que corresponda, nunca se inventa):
+- Nicaragua — país CON oficina (Managua), tú. 
+app/src/inbound/oficinas/nicaragua.json
+. Molde para oficinas con sede.
+- Venezuela — país SIN oficina (atiende Truly AI), tú venezolano. 
+app/src/inbound/oficinas/venezuela.json
+.
+Cómo se usa esta receta
+Se hace el Arranque completo antes del paso 1. Sirve igual en Mac y en Windows.
+Se sigue la ruta, del 1 al 15, en orden. Un paso no está hecho hasta que 
+ruta-oficina.py
+ lo da ✅ (las
+   aprobaciones, hasta que el dueño las dio viendo y quedaron anotadas en la ficha).
+Cada paso dice: qué se hace → cómo se ve bien hecho → qué se le muestra al dueño → con qué se comprueba.
+Los detalles técnicos están en los Anexos; cada paso dice cuál leer.
+En cada parada se le dice al dueño: «Vamos en X de 15. Sigue: 
+. Necesito de ti: ».
+Cada comando va completo. Las variables (
+X=…
+, 
+export
+) se pierden entre un comando y el siguiente de Claude
+   Code: nunca se usa una variable definida en un comando anterior.
+Reglas que no se negocian
+Local primero. Todo en un clon propio y en local. Nada se sube sin el ok explícito del dueño para ESE paso.
+Nada inventado. Teléfonos, direcciones, precios, certificaciones, cifras: solo lo que publica la oficina o una
+   fuente abierta hoy. Cada cifra con su fuente y su año.
+El catálogo de los 10 machotes no se toca. Después de cada generación sus 82 páginas salen idénticas a la huella.
+El dueño elige viendo, pero nunca el sitio montado antes de tiempo. Con fotos prestadas o sin el carro, el sitio
+   parece terminado y feo. Hasta el paso 14 se le muestran piezas sueltas, lado a lado (fotos del lugar, el carro, las
+   fotos de gente). El sitio completo se le muestra en el paso 14.
+Todo nuevo por país. Lugar, carro, fotos de gente y de espacios, servicios, plagas, textos. Solo se pueden repetir
+   las FOTOS de plagas y las portadas del blog (fotos reales de Truly). Ilustraciones de plagas, ya no (31-oct-2026).
+El que escribió no se juzga. Fuentes, voz y revisión las hace un agente distinto del que escribió.
+Ninguna verificación se calla un error. Un comando que falla en silencio y da «0» no prueba nada.
+Nunca en masa. El blog sale en goteo (2 por día al arrancar).
+Lo que necesitas además (una vez por computadora)
+Claude Code con la receta en 
+~/.claude/skills/truly-inbound/
+ (viene en el zip de la receta: trae
+herramientas/
+ (flujo, emblema, logo-puerta, bigotes), 
+voz-humana/
+ (medidor, lista de huellas de IA, plantilla de voz),
+scripts/revisar_oficina.py
+ y 
+plantillas/movil.html
+).
+Recetas compañeras, para el blog: 
+blog-verificado
+ (con sus agentes 
+blog-escritor
+, 
+blog-juez-voz
+,
+blog-auditor-verdad
+, 
+blog-revision-final
+ y su 
+lt.py
+). Las pide la persona al dueño.
+Programas: 
+gh
+ (con 
+gh auth login
+), Node.js 20 o mayor, 
+uv
+ (Mac: 
+curl -LsSf https://astral.sh/uv/install.sh | sh
+;
+  Windows: 
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+) y Python 3.12 por uv:
+~/.local/bin/uv python install 3.12
+. En Windows además Git para Windows (Claude Code usa su Git Bash para
+  estos comandos; doc oficial).
+Midjourney (la cuenta del dueño) o Gemini para el carro, el pie y las fotos (Anexo B, «Sin Midjourney»). El cuadro del carro sin bigotes:
+~/Desktop/Carrito Truly Guatemala/carro-sin-bigotes-cuadro1.jpg
+ (lo comparte el dueño).
+Subir al borrador solo lo hace el dueño desde su Mac (script 
+~/proyectos/scripts/truly-venezuela-borrador.sh
+).
+En todos los comandos, 
+uv
+ es 
+~/.local/bin/uv
+ (si se instaló con Homebrew, 
+uv
+ a secas). Python se corre siempre
+por 
+uv
+, nunca 
+python3
+ suelto (en Windows no existe o abre la tienda de Microsoft).
+Arranque (antes del paso 1)
+A1 · Configuración de Claude Code. En 
+~/.claude/settings.json
+, dentro de 
+"env"
+, hacen falta dos líneas:
+"CLAUDE_CODE_ENABLE_TODO_TOOLS": "1"
+ (la lista de tareas visible; en los modelos nuevos viene apagada, doc oficial)
+y 
+"PYTHONUTF8": "1"
+ (que Python lea las tildes y la ñ en Windows). Revisar también 
+settings.local.json
+. Si faltan,
+la ventana le dice a la persona qué agregar y que abra una ventana nueva (retoma con 
+claude --continue
+); la ventana NO
+edita la configuración por su cuenta. Si la persona pide seguir sin la lista, se sigue y el plan se muestra en el chat.
+Con la lista: una tarea por paso («1 · Oficina y contacto» … «15 · Subir al borrador»), «en curso» al empezar, «hecha»
+solo con ✅ de la ruta. Ctrl+T la muestra u oculta.
+A2 · Clon propio por país: 
+gh repo clone Catalizadora-Labs/truly-inbound ~/proyectos/truly-inbound-<id>
+, después
+cd ~/proyectos/truly-inbound-<id> && git switch -c roger/oficina-<id>
+. El 
+id
+: minúsculas, sin tildes ni ñ, con
+guiones (
+panama
+, 
+costa-rica
+). No se cambia después. Nunca se trabaja en la copia de otro país.
+A3 · La capa de oficinas. En el clon:
+test -f scripts/gate-oficinas.mjs && test -f scripts/ruta-oficina.py && test -f scripts/voz-humana.py && test -f scripts/huella-catalogo.py && grep -q TRULY_AI_WHATSAPP scripts/build-inbound-machotes.py && echo ok
+.
+Sin 
+ok
+, la capa no está en 
+main
+: se pide el paquete al dueño (Anexo A). Mientras llega se puede adelantar el paso 2.
+A4 · Herramientas: nada se instala aparte. ffmpeg sale de uv: en cada comando que lo use,
+"$(~/.local/bin/uv run -q --python 3.12 --no-project --with imageio-ffmpeg python -c "import imageio_ffmpeg,sys;sys.stdout.write(imageio_ffmpeg.get_ffmpeg_exe())")" -i …
+.
+Capturas a 1280 y 390: Chrome sin ventana (
+--headless=new --user-data-dir=<carpeta propia> --hide-scrollbars
+) siempre
+con tope de tiempo (
+perl -e 'alarm 40; exec @ARGV' …
+ en Mac) y 
+pkill -f <carpeta propia>
+ al final; el video de la
+película no deja terminar la carga: en la copia de 
+_preview/
+ se quitan 
+<video>
+, 
+escenas.js
+ y 
+chat.js
+.
+390 de verdad: la ventana sin pantalla no baja de ~485 px; la página va dentro de un 
+<iframe>
+ de 390 px de ancho.
+Medir desbordes: en la copia de 
+_preview/
+ se quita la 
+<meta http-equiv="Content-Security-Policy">
+ (bloquea scripts
+en línea) y un script compara 
+scrollWidth
+ con 
+clientWidth
+ y lista los elementos que se pasan del borde (si su
+contenedor los recorta, no es desborde).
+A5 · Servidor local en un puerto libre, en segundo plano (si no, bloquea la ventana). Puerto libre:
+~/.local/bin/uv run --python 3.12 --no-project python -c "import socket;s=socket.socket();s.bind(('127.0.0.1',0));print(s.getsockname()[1])"
+.
+Servidor: 
+cd app/public && ~/.local/bin/uv run --python 3.12 --no-project python -m http.server <puerto> --bind 127.0.0.1
+ (en
+segundo plano). Ese puerto se usa en todas las revisiones del país.
+A6 · Huella del catálogo, en un lugar que no se borra al abrir otra ventana:
+~/.local/bin/uv run --python 3.12 --no-project python scripts/build-inbound-machotes.py
+ (una vez, sin la ficha nueva),
+después 
+mkdir -p ~/.cache/truly-inbound/<id> && ~/.local/bin/uv run --python 3.12 --no-project python scripts/huella-catalogo.py guardar ~/.cache/truly-inbound/<id>/huella-catalogo.txt
+.
+Se compara con 
+… huella-catalogo.py comparar ~/.cache/truly-inbound/<id>/huella-catalogo.txt
+ (falla si el archivo no está).
+A7 · El plan, al dueño, antes de empezar. Los 15 pasos salen de esta receta (sin ficha, la ruta solo mide del 1 al
+2). Mostrarlos con su estado y las decisiones que se le van a pedir:
+- ahora: ¿el país llenó el formulario en trulyinbound.ai? Si lo llenó, el dueño lo exporta o lo pega en el chat
+  (la ventana nunca entra a la base de producción). Si no, se trabaja con lo que publica su sitio. ¿Un sitio para todo
+  el país o uno por sucursal? (por defecto uno: Anexo F);
+- paso 2: trato, plagas, lugares · 3: la foto del lugar · 4: la imagen del carro · 5: el video ·
+  8: las fotos · 14: el sitio completo · 15: subir.
+Las paradas con el dueño
+Paso
+Qué se le muestra
+Qué decide
+Se anota en la ficha
+Arranque
+El plan de 15 pasos
+Formulario, uno o varios sitios
+—
+2
+Menú corto: trato, plagas (5-7) y 2-4 lugares
+Trato, plagas, lugar
+—
+3
+2-4 fotos REALES del lugar, solas, lado a lado
+La foto
+ruta.aprobado.portada
+4
+El carro en el lugar (imagen fija, sola)
+La imagen
+ruta.aprobado.carro
+5
+El video del carro, solo
+El video
+pelicula.videoStatus: "reviewed"
+ (paso 6)
+8
+Las fotos de gente y espacios, sueltas
+Cada foto
+—
+14
+El sitio completo en 1280 y 390
+Cambios o ok
+ruta.aprobado.revision
+15
+La lista de lo que se sube
+Ok para subir
+—
+La ruta, del 1 al 15
+Se corre al arrancar y al cerrar cada paso:
+~/.local/bin/uv run --python 3.12 --with opencv-python-headless==4.10.0.84 --no-project python scripts/ruta-oficina.py <id>
+.
+La página de todos los países sale en el borrador, en 
+/ruta/
+.
+1 · Oficina y contacto
+Qué se hace: buscar el país en 
+app/src/datos/franquicias.ts
+ (que aparezca no prueba que opere: mirar 
+nivel
+ y
+dudosa
+) y en el sitio actual de la oficina. Bajar el texto de sus páginas a 
+docs/design/oficinas/<id>/sitio-actual/
+  (un 
+.txt
+ por página, con su dirección arriba). Copiar los canales que la oficina pone AL FRENTE (central, WhatsApp,
+  correo, dirección, horario) y sus 3 páginas legales.
+Bien hecho: los datos salen del sitio de la oficina; si no cuadran con el registro interno, gana el sitio y la
+  diferencia se anota. Sección 1 de 
+investigacion.md
+: «Contacto» y «Lo que el sitio nuevo tiene que hacer mejor»
+  (enlaces rotos, datos viejos del sitio actual).
+Mal hecho: inventar un canal; usar un correo del registro que el sitio no publica.
+2 · Investigación del país
+Qué se hace: un agente investiga; yo reviso contra la fuente las cifras y citas clave (todas las que van a salir
+  en el sitio) y lo dejo en la sección «Comprobación propia». Archivo 
+docs/design/oficinas/<id>/investigacion.md
+:
+  1 contacto y mejoras · 2 trato (cómo escribe LA OFICINA, con citas y su dirección) · 3 plagas con nombre local y
+  fuente · 4 normas (artículo exacto) · 5 negocios típicos y división territorial · 6 lugares para la portada (Anexo B)
+  · «Comprobación propia» · «Lo que no encontré».
+Bien hecho: Nicaragua, 51 fuentes, cada dato con su dirección y su cita. Fuentes del país primero.
+Mal hecho: atribuir a «la OPS» una nota de la OPS de otro país; un nombre de plaga traducido del inglés.
+Al dueño: menú corto (trato, 5-7 plagas, 2-4 lugares). Con su ok se sigue.
+Al cerrar este paso se crea la ficha, copiando el molde (Nicaragua con sede, Venezuela sin sede) y vaciando lo
+  que es del otro país: borrar 
+ruta
+, 
+paginas
+, 
+textos
+ (salvo lo que sirva igual), 
+fotoNosotros
+, 
+fotoCasa
+,
+fotoOperacion
+, 
+fotosServicios
+, 
+origenFotos
+, 
+altFotos
+; 
+pelicula
+ → 
+{"videoStatus": "pendiente"}
+;
+footer
+ → 
+{"estado": "pendiente"}
+; en 
+seo
+: 
+indexnow
+ nuevo (
+openssl rand -hex 16
+) y sin 
+verificacion
+ ni
+ga4
+. Llenar 
+id
+, 
+title
+ (solo el país: «Panamá»), 
+country
+, 
+base
+, 
+contacto
+ y 
+oficina
+ con lo ya sabido
+  (Anexo C). La ruta avisa si quedó algo del otro país.
+3 · Lugar de la portada
+Qué se hace: buscar 2-4 FOTOS REALES de los lugares aprobados, con licencia de uso comercial (Pexels, Unsplash,
+  Wikimedia Commons), que cumplan los tres criterios del Anexo B.
+Bien hecho: Venezuela, el Camino de la Felicidad (cocoteros, el mar al lado, asfalto en diagonal). Nicaragua, la
+  carretera de Ometepe con el volcán Concepción al fondo. El país se reconoce a la primera.
+Mal hecho (Panamá, 30-oct): un camino de tierra en Barú; una avenida con una valla publicitaria y un barrio
+  humilde; una calle que va derecho al centro hacia un monumento (el carro gira al animarlo).
+Al dueño: las fotos SOLAS, lado a lado, con una línea de por qué cumple cada una. Nunca montadas en el sitio.
+Se comprueba con: 
+landmark
+ y 
+ruta.aprobado.portada
+ (fecha) en la ficha.
+4 · Imagen del carro
+Qué se hace: el carrito de Truly en la foto elegida (Anexo B, «Carro», puntos 1-2): se parte del cuadro real del
+  carro y solo se cambia el fondo.
+Bien hecho: la calle del fondo en la misma dirección que el carro; sin texto ni marca de agua; el logo de la
+  puerta igual al real (Anexo B, «Logos»).
+Mal hecho: letras torcidas o inventadas en la puerta («TRULY NOLEI», «TAULY»), sin bigotes del ratón o con
+  «INTERNATIONAL» hecho garabato. Esa variante no sirve.
+Al dueño: la imagen fija, sola. Se comprueba con: 
+ruta.aprobado.carro
+.
+5 · Video del carro
+Qué se hace: video con Loop APAGADO, HD, Raw, Motion Low (Anexo B, «Carro», punto 3). Medir:
+~/.local/bin/uv run --python 3.12 --no-project --with opencv-python-headless==4.10.0.84 python ~/.claude/skills/truly-inbound/herramientas/flujo.py <video.mp4>
+  → el asfalto con el mismo signo en todos los tramos.
+Mal hecho: Loop prendido (bumerán: el carro se devuelve); calle hacia el centro (el carro gira); el logo de la
+  puerta se deforma a mitad del clip (se revisa en el primero, el del medio y el último cuadro, Anexo B, «Logos»).
+Al dueño: el video, solo. Se comprueba con: la ruta mide el video sola (tolera un tramo casi quieto al frenar).
+6 · Bigotes y video final
+Qué se hace: bigotes con 
+herramientas/bigotes.py
+, recodificar al color del catálogo, póster = cuadro 0, sha de
+  los dos en la ficha, 
+pelicula.videoStatus: "reviewed"
+ (Anexo B, puntos 5-7).
+Se comprueba con: la ruta compara los sha; 
+gate-oficinas
+ revisa el color y el peso del póster (≤ 500 KB).
+7 · Pie en acuarela
+Qué se hace: acuarela del MISMO lugar; fondo igualado al papel; WebP; en la ficha 
+footer
+ con 
+estado: "listo"
+,
+file
+ y 
+sha256
+ (Anexo B, «Pie»).
+Bien hecho: orejas de ratón y nariz roja redonda del escarabajo; sin cuadro claro alrededor.
+8 · Fotos del país
+Qué se hace: técnico del país con IA (Nosotros 3:4, Operación 16:9) con el emblema REAL; casa, comercio e
+  industria nuevas; las 3 tarjetas de servicios. Cada una con 
+origenFotos
+ y 
+altFotos
+ (Anexo D).
+Bien hecho: caras del país, cada foto con otra pose; espacios de nivel, limpios, sin huellas de IA; todo logo
+  visible (pecho, gorra, carnet, mochila, vehículo) es el real o no existe (Anexo B, «Logos»).
+Mal hecho: renombrar la foto del machote (
+uniforme-tecnico-20261021.webp
+): la ruta lo atrapa por la huella.
+Al dueño: las fotos sueltas, lado a lado.
+9 · Ficha completa
+Qué se hace: completar la ficha (Anexo C): voz, 
+textos
+, 
+tratoVetado
+, 
+chatIdioma
+, 
+seo
+ (Anexo G), 
+blog
+.
+Se comprueba con: la ruta (campos) y el generador (valida todo antes de escribir).
+10 · Servicios y plagas del país
+Qué se hace: 3 servicios (Hogares, Comercios, Industria) y 5-7 plagas con 3 agentes en paralelo (servicios /
+  plagas / plagas), con la forma de la ficha de Nicaragua y fuentes del país. Después 3 auditores independientes (uno
+  por grupo) que abren cada fuente; se aplican sus correcciones.
+Bien hecho: normas con su numeral; cifras con año y población; las listas de puntos en 
+tabla
+ (Anexo C).
+Mal hecho (Nicaragua, lo cazaron los auditores): una cifra atribuida al MINSA que era de la UNAN-León; una norma
+  recortada; un «protocolo» de la marca que no está en su sitio.
+Se comprueba con: 
+gate-oficinas
+ exige 3 servicios y ≥ 5 plagas propias.
+11 · Blog
+Qué se hace: 2 artículos con el método 
+blog-verificado
+ (Anexo E).
+Se comprueba con: 
+gate-oficinas
+ exige ≥ 2 publicados; la ruta, que estén verificados.
+12 · Voz humana
+Qué se hace: generar (
+--borrador
+ si falta el video), tarjeta de voz, medidor y juez separado (Anexo H).
+Se comprueba con: la ruta y 
+gate-oficinas
+ exigen 
+VEREDICTO: HUMANO
+.
+13 · Generar y candados
+~/.local/bin/uv run --python 3.12 --no-project python scripts/build-inbound-machotes.py
+ (SIN 
+--borrador
+).
+~/.local/bin/uv run --python 3.12 --no-project python scripts/huella-catalogo.py comparar ~/.cache/truly-inbound/<id>/huella-catalogo.txt
+ → «0 página(s) distintas».
+node scripts/gate-oficinas.mjs
+ en verde.
+14 · Revisión completa a ojo
+Qué se hace: 3 rondas como mínimo, en 1280 y 390: (1) técnica de TODAS las páginas (desbordes, imágenes rotas, un
+  solo h1, secciones vacías); (2) a ojo en computadora, de arriba a abajo, al lado de globaltni.com/es (el menú de la
+  portada, al lado de trulynolen.com.gt); (3) a ojo en
+  celular: copiar 
+~/.claude/skills/truly-inbound/plantillas/movil.html
+ a
+app/public/oficinas/_preview/movil-<id>.html
+ y cambiar sus dos 
+src
+ a 
+/oficinas/<id>/?m=1
+ y 
+/machotes/<base>/?m=1
+.
+  Se corrige todo antes de la siguiente. La vara es globaltni.com/es (el «plato» de Pablo), no trulynolen.com.gt.
+  Anchos (31-oct-2026, Panamá): además de 1280 y 390, la portada a 1024 y 1100 (laptop con la ventana sin
+  maximizar: ahí el catálogo cambia el menú a «Menú»). Siempre al 100 % de zoom y con la referencia (Guatemala o
+  globaltni) en el mismo ancho, lado a lado: Chrome guarda el zoom por sitio y un borrador alejado se ve distinto al local.
+  Si el dueño manda una captura, su ancho real es el de la imagen ÷ 2 en Retina (2048 → 1024): se reproduce ESE ancho
+  antes de responder, nunca se le pide que agrande la ventana.
+Ojo de diseño (obligatorio, después de las 3 rondas): se lanza el agente 
+ojo-de-diseno
+ (viene en
+agentes/ojo-de-diseno.md
+ de esta receta; copiarlo una vez a 
+~/.claude/agents/
+). Revisa en solo lectura, sección por
+  sección contra globaltni, en 1440, 1024 y 390, con capturas sin abrir ventanas. Se corrige lo que marque y se le pide una
+  SEGUNDA pasada sobre el estado final. Solo con 
+VEREDICTO: PASA
+ se le muestra al dueño. Su reporte no es un hecho:
+  cada hallazgo se mira en la captura antes de corregir.
+Lo que el molde ya resuelve (no se corrige a mano): la portada sale con el mismo orden con cualquier 
+base
+  (película · cifras · programa · 3 zonas · comercio · cómo trabajamos · plagas · blog y preguntas · cierre); cada página
+  de la oficina tiene UN solo cierre (
+#contacto
+: datos y canales + línea de cobertura + tarjeta de Truly AI, con las
+  anclas 
+#consulta
+ y 
+#cobertura
+ dentro); las internas no repiten «cómo trabajamos». Si una página sale distinta, se
+  arregla en 
+scripts/diseno_oficina.py
+, nunca en el HTML.
+Menú de la portada como trulynolen.com.gt: en computadora va directo sobre el video, sin caja ni franja: una
+  línea (logo + país, enlaces, My Truly / Inside Truly chicos, botón amarillo) y un fundido claro arriba
+  (
+#f7f6f1ed 0 → #f7f6f1c9 70px → transparente 170px
+). En celular y en las páginas internas queda la barra normal.
+  Nada de barra flotante con caja y sombra. «Computadora» = desde 961 px: entre 961 y 1100 el catálogo
+  (
+countries.css
+, no se toca) pasa a «Menú», así que 
+diseno_oficina.css
+ tiene un bloque propio para ese rango (una
+  línea, sin My Truly / Inside Truly ni «Contacto», como trulynolen.com.gt a 1024). Se prueba a 1100, 1024, 961 y 960.
+Tablas grandes que se lean: texto de 17 px, títulos de 27 px. Las plagas van en 3 columnas anchas (2 en tableta, 1
+  en celular), con la foto grande y «Ver la guía» alineado abajo, nunca 6 columnas angostas. Antes de dar un tamaño
+  por bueno, se compara con la misma sección de globaltni a 1440 px, recortada a tamaño real.
+Las internas con el diseño de la portada: 
+internas()
+ en 
+diseno_oficina.py
+ pasa cada bloque de la ficha
+  (servicios y plagas) a una TABLA de verdad (encabezado oscuro con letras amarillas; columnas número · tema · qué
+  significa · qué revisamos si hay lista; texto de 17 px; en celular cada fila se apila como ficha), el dato 
+cifras
+ a una franja oscura con el número grande y su
+  fuente, y 
+relacionadas
+ a las tarjetas de plagas con foto. Ninguna página interna queda con bloques del catálogo; se
+  revisa Hogares, Comercios, Industria y una plaga en 1440 y 390, una al lado de otra.
+Al dueño: el sitio completo, con capturas o video al chat (no abrir pestañas en su navegador si lo pide así).
+  Se comprueba con: 
+ruta.aprobado.revision
+.
+15 · Subir al borrador
+Primero, la oficina vuelve a la copia principal del dueño (
+~/proyectos/truly-inbound-venezuela
+), que es la que
+  publica el borrador con todos los países. Vuelven SOLO las carpetas del país, nunca la rama entera (traería
+  Venezuela y Nicaragua regeneradas en el clon y las pisaría):
+En el clon: 
+git add app/src/inbound/oficinas/<id>.json app/src/inbound/oficinas/<id> app/public/oficinas/<id> docs/design/oficinas/<id> && git commit -m "Oficina <id>"
+.
+En la copia principal, con 
+git status --short
+ vacío: 
+git fetch ~/proyectos/truly-inbound-<id> roger/oficina-<id>:oficina-<id>
+     y 
+git checkout oficina-<id> -- app/src/inbound/oficinas/<id>.json app/src/inbound/oficinas/<id> app/public/oficinas/<id> docs/design/oficinas/<id>
+.
+Ahí mismo: generar, huella, candado y ruta del país; commit local.
+  En Windows (otra computadora): el paso 1 y después 
+git bundle create oficina-<id>.bundle HEAD~1..HEAD
+; se le manda al
+  dueño, que hace el paso 2 con el bundle en vez del clon.
+  El script del borrador sube por defecto la copia principal. 
+REPO=<otra copia>
+ solo para probar un clon aparte: sube
+  únicamente lo que hay en ese clon.
+Subir: con el ok del dueño, él corre 
+bash ~/proyectos/scripts/truly-venezuela-borrador.sh --subir
+ en su Mac (el
+  token sale de su portapapeles). La ruta da ✅ solo si la dirección del país devuelve SU página (mira el título).
+La salida en vivo a Google, Bing y las IA es otro paso, con otro ok (Anexo G).
+Anexos
+A. La capa de oficinas y su paquete
+La capa (generador con oficinas, 
+gate-oficinas.mjs
+, 
+ruta-oficina.py
+, 
+voz-humana.py
+, 
+huella-catalogo.py
+,
+indexnow-oficina.mjs
+, las fichas y sus páginas) vive en la copia del dueño: 
+~/proyectos/truly-inbound-venezuela
+,
+rama 
+roger/machote-venezuela
+. El dueño no tiene permiso de escritura en el repo: no hay PR todavía.
+Paquete: en esa copia, 
+git checkout -- app/public/machotes
+ (el generador les cambia el 
+chat.js?v=
+; eso va en
+otro PR) y commit local nuevo (no se sube) con el generador, los 5 scripts, 
+.gitignore
+, 
+app/src/inbound/oficinas/
+,
+app/public/oficinas/
+ (sin 
+_preview/
+) y 
+docs/design/oficinas/
+ (Venezuela y Nicaragua van: son los ejemplos y la
+ruta los usa para detectar fotos copiadas). 
+git status --short
+ no debe dejar nada de esa lista afuera. Después
+git bundle create <archivo>.bundle origin/main..HEAD
+. Quien lo recibe:
+git bundle verify <archivo>.bundle && git fetch <archivo>.bundle HEAD:capa-oficinas && git merge capa-oficinas
+, y el
+ok
+ de A3. Se prueba en un clon limpio antes de mandarlo.
+B. Portada, carro, video y pie
+Criterios del lugar (los tres, o no se muestra):
+1. Ícono que se vea en la foto y que el del país reconozca (Panamá: el skyline desde la Cinta Costera, el Puente de
+   las Américas, el Canal, el Casco Viejo). No «un lugar bonito».
+2. Carretera de asfalto despejada: sin tierra, sin vallas, sin tráfico, sin barrios humildes.
+3. La calle en diagonal, de abajo a la izquierda hacia arriba a la derecha, como va el carro. El monumento a un lado
+   del fondo, nunca al final de la calle.
+Carro (nunca lo dibuja la IA):
+1. Cuadro del carro sin bigotes (ver «Lo que necesitas además»).
+2. Midjourney → subir el cuadro → «Attach to prompt»: 
+Foreground: yellow modern Volkswagen Beetle, exactly two black
+   round roof ears, red nose, same camera angle, position, and size, realistic panels and tires, same asphalt road
+   under the car in the same direction. Background changed to: <el lugar>. No lamp posts, no sidewalks, no buildings,
+   no other cars. Upper sky open; generous quiet asphalt lower left for website text. No words, signs, logos, or text
+   on road or image. Car stays warm bright yellow, clearly readable. All windows fully blacked-out dark tint, no driver
+   or passengers visible inside. Realistic travel photography, natural colors
+   --ar 16:9 --raw --hd
+. Elegir la variante sin texto ni marca de agua, y con los vidrios negros (si se ve gente
+   adentro, se pide de nuevo: la vista se va a la persona y no al carro).
+MÉTODO PROBADO (31-oct-2026, Venezuela; aprobado por el dueño): el carro igual al de globaltni. Reemplaza los
+puntos 1-3 de arriba y de abajo cuando hay Midjourney.
+A la primera (lo que costó 6 tandas aprender el 31-oct). Resultado aprobado: Venezuela, 4K 3840×2406, 9 s.
+1. La base es SIEMPRE 
+base-carro/carro-pablo-cuadro0.png
+. Con el carro de Guatemala o uno propio, el carro sale
+   grande, gira y se acerca: no hay arreglo después (se probó estabilizar y recortar: queda de lado y con zoom).
+2. El texto del video DEBE llevar desde el primer intento «The road is completely empty from start to end: no other
+   cars, no vehicles of any kind, no people, in any lane, ahead, behind or in the distance. No road signs, no poles.»
+   Sin esa frase Midjourney mete un carro blanco a los 5 s, y BORRARLO DESPUÉS NO FUNCIONA (deja manchas grises).
+3. HD se marca DENTRO del panel de animar, justo antes de enviar, y se comprueba con un acercamiento (vuelve solo a
+   SD). Lo mismo en el «Extend».
+4. De cada tanda de 4 suele servir 1: elegirla con 
+quieto.py
+ (≤ 20 %) + 12 cuadros a ojo. El ganador de Venezuela:
+   tamaño 11 % en el clip base y 14 % tras el Extend (globaltni: 19 %).
+5. Orden fijo: imagen → video HD → medir → Extend HD → medir → bigote 0.7 → vidrios 0.22 → 4K en Colab
+   (
+herramientas/colab-4k.py
+, GPU T4 gratis, minutos; una sola descarga por celda y el video primero: un segundo
+files.download
+ seguido no llega) → lado a lado con globaltni → recién ahí la ficha.
+6. Gemini/Flow gratis no da 4K (solo con Google AI Ultra); Midjourney máximo HD. El 4K sale de Real-ESRGAN.
+a. Base = el carro de Pablo, no el de Guatemala: 
+base-carro/carro-pablo-cuadro0.png
+ de esta receta (cuadro 0 del
+   video de globaltni). Así el carro sale del mismo tamaño, lugar (derecha) y ángulo de tres cuartos.
+b. Imagen: «Attach to prompt» con ese cuadro y: 
+Keep the yellow modern Volkswagen Beetle exactly as it is: same size,
+   same position on the right of the frame, same three-quarter front angle, same camera height and lens, two black round
+   roof ears, red nose, Truly Nolen logo on the door, wheels and body unchanged. Remove the thin black whisker lines on
+   the hood. All windows fully blacked-out dark tint, no driver or passengers visible inside. Background changed to:
+   <la carretera del país>. Same road perspective as the original, generous open asphalt on the left for website text,
+   sky open at the top. Photorealistic travel photography, natural colors, no text, no signs, no other cars, no people
+   --ar 16:10 --raw
+. Elegir la variante SIN bigote pintado, sin letras sueltas y con el lugar reconocible.
+c. Video: «Animate manually», Motion Low, sin End Frame. Antes de enviar, abrir los ajustes DENTRO del panel de animar
+   y marcar Video resolution = HD (se vuelve a SD solo; un «Rerun» repite la resolución del original). HD = 1200×752,
+   la misma de globaltni. Prompt: 
+Locked tracking shot from a camera car driving alongside at exactly the same constant
+   speed. The yellow mouse-ear Beetle cruises straight ahead in its lane the whole time, never turning, never
+   approaching, never moving away: it keeps exactly the same size, position and three-quarter front angle in the frame
+   from the first to the last frame. Tires roll naturally, the asphalt and lane lines stream backward under the car
+   with natural motion blur, <el fondo> glide past steadily. No road signs, no poles. The road is completely empty: no
+   other cars. Smooth, constant, extremely realistic, like real cinema footage. Dark tinted windows, no one visible
+   inside. No zoom, no orbit, no pan, no rotation, no cuts. Single continuous take, no loop, no reverse --raw
+.
+d. Medir las 4 con 
+quieto.py
+ (herramientas): el tamaño de la nariz no puede cambiar más de ~30 % (globaltni: 19 %);
+   descartar las que se acercan o giran. 
+flujo.py
+ sin tramos en reversa. Revisar 12 cuadros por si aparecen OTROS
+   CARROS (Midjourney los mete aunque se le pida que no): si aparecen, esa versión no sirve. Si salen señales, postes
+   o letreros, la tanda siguiente lleva «no traffic signs, no street lamps, no billboards, no lettering or logos on
+   ». Antes de animar o extender, confirmar en la dirección del panel que sigue siendo la variante
+   elegida (
+index=
+): la rueda del ratón la cambia sin avisar. Las casillas (Loop, HD) se leen marcadas en pantalla.
+e. «Extend» del elegido (Auto, Low motion) → ~9 s en HD, y repetir d.
+f. 
+BIGOTE=0.7 HUECOS=1 MIN_PUNTOS=10 bigotes.py
+ (30 % menos, lo que pidió el dueño) y 
+vidrios.py
+ con 3-4 claves
+   (OSCURO=0.22 es el punto aprobado: polarizado con reflejo; 0.08 quedó «muy oscuro»).
+g. Sin bucle visible como globaltni: la portada pasa carro (todo el clip, una vez) → fundido 0,8 s → mundo 10 s →
+   fundido → carro desde el inicio. El reinicio queda escondido detrás del mundo; nunca se repite el carro solo.
+h. Mostrar lado a lado con el de Pablo (
+_preview/carro/escenas.html
+) y mandarle al dueño el video comparativo.
+i. Nitidez 4K gratis (Real-ESRGAN, aprobado por el dueño el 31-oct-2026: «la diferencia es grande»). Midjourney da
+   máximo HD; el 4K de Pablo sale de un plan pago (Google AI Ultra / Veo). Sin pagar: 
+realesrgan-ncnn-vulkan
+   (GitHub oficial xinntao/Real-ESRGAN, release v0.2.5.0, zip macos/windows). Se agrandan los cuadros del video YA
+   limpio (sin otros carros), antes de bigote y vidrios o después, y se vuelve a armar el mp4:
+realesrgan-ncnn-vulkan -i cuadros/ -o salida/ -n realesr-animevideov3 -s 2 -f png -m bin/models
+.
+   En un equipo sin tarjeta de video dedicada: modelo rápido 
+realesr-animevideov3
+ ~15 s/cuadro en 2x y 25 s en 4x (217
+   cuadros ≈ 1-1,5 h); el modelo 
+realesrgan-x4plus
+ da casi lo mismo y tarda 433 s/cuadro (~26 h): no vale la pena.
+   El original grande se guarda; a la web va una versión 1920 de ancho.
+Logos (carro, camisas, gorras, carnet, cualquier foto con gente o vehículo). La IA redibuja el logo y lo deforma.
+Se revisa siempre, antes de mostrar nada:
+1. Recorte del logo al tamaño original (nunca en la miniatura) puesto al lado de 
+app/public/tn-emblema.png
+. Tiene que
+   coincidir pieza por pieza: dos orejas negras, bigotes, «TRULY» arriba y «NOLEN» abajo en rojo con esas letras
+   exactas, «INTERNATIONAL» legible y la cola negra a la derecha.
+2. En el carro: imagen fija (paso 4) y video en el primer cuadro, el del medio y el último (paso 5), y otra vez en el
+   póster y en los cuadros 0, medio y último del mp4 final de la web (paso 6): animar, bigotes, vidrios y
+   Real-ESRGAN también lo rompen, aunque la imagen base estuviera bien.
+3. En las personas: el pecho lleva el emblema real puesto con 
+emblema.py
+ (Anexo D), nunca el que pinta la IA. Gorra
+   negra lisa (sin logo inventado); si la IA pinta algo en la gorra, el carnet o la mochila, se borra o se descarta la
+   foto.
+4. Logo deforme = la variante no sirve: se elige otra o se pide de nuevo. Nunca se entrega «porque de lejos no se nota».
+5. Si el video ya está aprobado y solo falla el logo de la puerta, se cambia por el real sin rehacerlo:
+F -i <id>-desktop.mp4 cuadros/%03d.png
+, después
+~/.local/bin/uv run --python 3.12 --no-project --with numpy --with opencv-python-headless==4.10.0.84 python ~/.claude/skills/truly-inbound/herramientas/logo-puerta.py cuadros/ app/public/tn-emblema.png nuevo/ <x0,y0,x1,y1>
+   (caja del logo viejo en el cuadro 0: de la punta de las orejas al final de la cola; se mide con las piezas de tinta
+   negra y roja, 
+connectedComponentsWithStats
+). Sigue la puerta, borra el logo viejo y pega la tinta del emblema con
+   la luz y el brillo del carro. Si la moldura de cromo queda pegada al logo, agregar 
+CROMO=x0,y0,x1,y1
+ = borde
+   de arriba de la moldura en el cuadro 0 (primer píxel con saturación < 70 bajando por columna, en los dos extremos):
+   debajo de esa línea no se borra nada. Revisar 5 cuadros (1, 55, 109, 163, 217): el logo al 2x y la franja del cromo y
+   la cola al 3x, aparte (al 2x una mancha en el cromo pasa por reflejo); sin restos del logo viejo y el cromo intacto.
+   Armar el mp4 con el punto 6 (CRF 22, 
+-tune film
+), póster, imagen social y sha nuevos, y correr la ruta con OpenCV
+   (
+--with opencv-python-headless==4.10.0.84
+) para que mida el video nuevo.
+La vara del video es globaltni.com/es (el carro de la portada de Truly Nolen International). Antes de mostrarlo,
+se compara al lado y tiene que cumplir las cinco:
+- Fluido y constante: la cámara va a la misma velocidad que el carro; el carro queda fijo en el cuadro y lo que
+  corre es el fondo, parejo, sin acelerones, frenazos, saltos ni temblor.
+- Extremadamente real: foto real (no de render ni de dibujo), desenfoque natural del asfalto, luz real.
+- Vidrios negros: no se ve a nadie adentro.
+- Sin bucle visible: el corte se disimula con fundido cruzado (paso 5b), nunca volviendo a la foto quieta.
+- Bigote más fino que el del modelo: 
+BIGOTE=0.8
+ (20 % menos; el dueño dice cuánto) en el paso 5.
+- Calidad: se exporta en la resolución más alta que dé la herramienta (4K si la da) y se baja a la del sitio al final.
+3. Video: «Animate manually» con los controles (el texto 
+--loop
+ se ignora): Loop apagado, HD, Raw, Motion Low.
+   Prompt: 
+Locked vehicle-mounted tracking camera, steady cruising speed. The yellow mouse-ear Beetle drives smoothly
+   forward along the road the whole time. Tire spokes rotate naturally and clean asphalt flows backward beneath the
+   tires. <árboles del lugar> glide past in the background. Maintain the EXACT framing, distance, angle, size and
+   position of the car throughout, the entire car stays in the center with wide margins. Absolutely stable car body,
+   ears and glass. No camera approach, zoom, orbit, pan or rotation. Continuous smooth forward travel, never
+   reversing.
+ Luego Extend una vez a ~10 s. Bajar con 
+fetch
+ desde la pestaña (la CDN bloquea curl):
+https://cdn.midjourney.com/video/<id>/<n>.mp4
+.
+Sin Midjourney (Gemini, gratis con cuenta de Google): sirve igual; lo que manda es el método y la medición, no la
+herramienta (así se hizo Costa Rica y su video pasó 
+flujo.py
+).
+- Imagen: en Gemini, subir el cuadro del carro y pedir con el MISMO texto del punto 2 que solo cambie el fondo. Revisar
+  que el carro no cambie (orejas, nariz, ruedas) y que no salga texto.
+- Video: en Gemini (Veo), subir la imagen aprobada y usar el texto del punto 3, agregando al final
+Single continuous take, no loop, no reverse, 8 seconds.
+ NUNCA pedir «loop» ni «bucle»: el bucle lo hace el sitio;
+  si se lo pides a la IA, hace un bumerán y el carro se devuelve.
+- Fotos de gente y espacios (Anexo D): el mismo texto en inglés funciona en Gemini.
+- Siempre: medir con 
+flujo.py
+ antes de mostrarlo; sin audio (
+-an
+ al recodificar).
+Medir con 
+flujo.py
+ (paso 5).
+Bigotes:
+~/.local/bin/uv run --python 3.12 --no-project --with numpy --with opencv-python-headless==4.10.0.84 --with imageio-ffmpeg python ~/.claude/skills/truly-inbound/herramientas/bigotes.py <video.mp4> <carpeta-de-salida>
+   → 
+hero-desktop-whiskers-v1.mp4
+, 
+desktop-first.png
+ y la hoja de cuadros 
+desktop-audit-*.jpg
+ (revisarla a ojo).
+   Si falla por «inliers» (pocos puntos para seguir el carro), recortar el clip a los primeros segundos.
+   Bigote más chico: anteponer 
+BIGOTE=0.8
+ al comando (20 % menos; 
+0.7
+ = 30 %, lo que pide el dueño de la marca). En Windows (Git Bash) igual.
+   Si falla por pocos puntos cerca del final: recortar el clip hasta antes de ese cuadro, o 
+MIN_PUNTOS=10
+ y revisar la hoja.
+5a. Vidrios negros si en el video se ve gente adentro: 
+herramientas/vidrios.py <video con bigotes> <salida> "0=<parabrisas>;<ventana>" "40=…" "79=…"
+.
+   Polígonos en píxeles, marcados sobre el cuadro con rejilla, en 3 cuadros clave (inicio, medio, final) y con el mismo
+   número de puntos en cada clave; entre claves se interpolan amarrados a la nariz. Revisar 5 cuadros de cerca: el
+   oscuro tiene que calzar con el marco del vidrio, sin pintar el pasto ni la carrocería.
+5c. Fluidez: 
+herramientas/velocidad.py <video> <salida> "0=<contorno del carro>" "40=…" "79=…"
+ corre el asfalto y el
+   fondo como una cámara real y deja el carro nítido. Medir con 
+herramientas/fluidez.py
+: la nitidez del asfalto tiene
+   que quedar cerca de la de globaltni (≈300). Sin esto el asfalto nítido salta de cuadro en cuadro y se lee como
+   tirones. Al agrandar a 1920 NO usar 
+unsharp
+: devuelve la textura al asfalto.
+   La herramienta 
+hd-loop.py
+ (nitidez de una imagen 2× donde la escena está quieta) NO sirve para el carro: con la
+   cámara viajando, todo el cuadro se mueve. El detalle real sale de generar el video en más resolución; para celular,
+   un video vertical aparte (recortar el horizontal corta el carro).
+5b. Bucle sin que se note: elegir el tramo más parejo (ej. 5 s) y unir su final con su principio con un fundido
+   cruzado de 0,5 s (el video queda 0,5 s más corto y el último cuadro empalma con el primero):
+F -y -i tramo.mp4 -filter_complex "[0:v]split[a][b];[a]trim=0.5:5,setpts=PTS-STARTPTS,fps=24[A];[b]trim=0:0.5,setpts=PTS-STARTPTS,fps=24[B];[A][B]xfade=transition=fade:duration=0.5:offset=4[v]" -map "[v]" -an -c:v libx264 -crf 18 -pix_fmt yuv420p bucle.mp4
+   (con otro largo L: 
+trim=0.5:L
+ y 
+offset=L-1
+). En el sitio el video se repite solo (
+loop
+), sin fundir a la
+   foto. Comprobado: el salto del último al primer cuadro queda igual o menor que el salto normal entre dos cuadros.
+Recodificar al color del catálogo (si no, parpadea al arrancar). Con 
+F
+ = el ffmpeg de A4 escrito completo en cada línea:
+F -y -i hero-desktop-whiskers-v1.mp4 -vf "scale=out_range=tv:out_color_matrix=bt601,format=yuv420p" -c:v libx264 -preset veryslow -crf 24 -an a.mp4
+,
+F -y -i a.mp4 -c copy -bsf:v h264_metadata=colour_primaries=1:transfer_characteristics=13:matrix_coefficients=6:video_full_range_flag=0 b.mp4
+,
+F -y -i b.mp4 -c copy -color_primaries bt709 -color_trc iec61966-2-1 -colorspace smpte170m -color_range tv -movflags +faststart+write_colr app/public/oficinas/<id>/assets/<id>-desktop.mp4
+.
+   Póster = cuadro 0 en WebP (≤ 500 KB) 
+<id>-desktop.webp
+. Imagen social 1200×630 del mismo cuadro, recorte centrado
+   sin estirar, sirve para cualquier tamaño de video: 
+-frames:v 1 -vf "scale=1200:-2,crop=1200:630" -q:v 3 <id>-social.jpg
+.
+Ficha: 
+pelicula
+ con 
+videoStatus: "reviewed"
+, 
+landmark
+, 
+poster
+ y 
+video
+ (
+file
+ dentro de
+app/public/oficinas/<id>/assets/
+, 
+sha256
+, 
+origen
+). Copiar la forma de 
+nicaragua.json
+.
+Pie: acuarela con 
+--sref <footer de Colombia> --sw 250
+, el mismo lugar. Fondo al papel: multiplicar cada canal por
+papel/fondo
+ (papel 247,246,241; fondo = mediana de los bordes). WebP calidad 86 como 
+footer-<id>.webp
+. En la ficha:
+"footer": {"estado": "listo", "file": "app/public/oficinas/<id>/assets/footer-<id>.webp", "sha256": "…", "origen": "…"}
+.
+C. La ficha del país (
+app/src/inbound/oficinas/<id>.json
+)
+Copiar Nicaragua (con sede) o Venezuela (sin sede), vaciando lo del otro país (paso 2), y llenar:
+- Identidad: 
+id
+, 
+base
+, 
+country
+, 
+language
+, 
+title
+ (SOLO el país: el generador antepone «Truly Nolen»),
+landmark
+, 
+localArea
+. 
+base
+ = el machote del mismo país si existe (
+mexico, colombia, chile, brasil, argentina,
+  peru, ecuador, costa-rica
+); si no, Centroamérica y el Caribe → 
+costa-rica
+; Sudamérica → 
+colombia
+.
+- Voz: 
+contacto
+, 
+chatIdioma
+ (en inglés, ej. «Panamanian Spanish, warm and professional, always usted, never
+  tú or voseo»), 
+tratoVetado
+, 
+textos
+, 
+headline
+, 
+intro
+, 
+chapter
+, 
+focus
+.
+  - 
+textos
+: cada frase del catálogo (en usted) con su versión del país. Un país de usted casi no necesita: solo
+    las que cambian por el país (división territorial, léxico) y los textos de marca: «Lo que más nos preguntan.»,
+    «Una plaga se ve por los detalles.», «Todo empieza con contarnos qué vio.», «Cuéntele a Truly AI qué está viendo».
+    Más las 8 del diseño de oficinas (
+scripts/diseno_oficina.py
+, vienen en tú): «Un programa para tu espacio.», «De tu
+    casa a tu negocio o tu planta. Elige el servicio que necesitas conocer.», «Control de plagas para tu actividad.», «La
+    prevención es parte de tu operación.», «Conoce el servicio para comercios →», «Conoce el servicio para hogares»,
+    «Prevención y respuestas\npara ti.» y «Reconoce la plaga.\nEntiende sus hábitos.». Las cuatro últimas el candado NO
+    las ve (Conoce, Reconoce, Entiende y «para ti» no se vetan): se revisan a mano en la portada.
+  - 
+tratoVetado
+: palabras enteras, SIN espacios al final, y distingue mayúsculas (poner las dos: «tu» y «Tu»).
+    En un país de usted: «tú», «Tú», «tu», «Tu», «tus», «Tus», «te», «Te», «puedes», «necesitas», «quieres» y el voseo
+    («querés», «podés», «contanos»). NO vetar «Indica», «Conoce», «Consulta»: también son usted («él indica»). En un
+    país de tú: «usted», «Usted», «Cuéntenos», «Escríbale», «Indique» y el voseo.
+- Con sede: 
+oficina
+ (
+whatsapp
+ solo dígitos con código de país, 
+telefono
+, 
+correo
+, 
+direccion
+, 
+horario
+) y
+legales
+ (
+privacidad
+, 
+terminos
+, 
+accesibilidad
+: un párrafo cada una).
+- Imágenes: 
+pelicula
+, 
+footer
+, 
+fotoNosotros
+, 
+fotoCasa
+, 
+fotoOperacion
+, 
+fotosServicios
+ (3), 
+origenFotos
+,
+altFotos
+. Archivos en 
+app/public/oficinas/<id>/assets/
+, nunca en 
+app/public/machotes/
+.
+- Páginas: 
+paginas.servicios
+ (3) y 
+paginas.plagas
+ (5-7): 
+titulo
+, 
+resumen
+ (servicios), 
+intro
+, 
+bloques
+,
+preguntas
+, 
+fuentes
+ [[texto, url]], 
+imagen
+ + 
+imagenOrigen
+. Bloques: 
+tarjetas
+, 
+consulta
+, 
+cifras
+,
+relacionadas
+, 
+tabla
+. Toda lista de puntos va en 
+tabla
+ (primera celda [título, subtítulo], segunda la lista),
+  igual que normas y comparaciones.
+- Fotos de plagas (31-oct-2026): fotos reales, nunca ilustración ni IA.
+  Orden de fuentes: (1) Truly Nolen International (las mismas de globaltni: repo 
+Catalizadora-Labs/tn-intl-design
+,
+site/a/en/pests/media/
+ y 
+site/assets/a-*
+: cucaracha americana y alemana, rata noruega, rata negra, ratón, hormiga de
+  fuego…); (2) trulynolen.com (zancudo, alacrán, comején: páginas /pest-control/ y /termite-control/); (3) solo si
+  Truly no la tiene, Wikimedia Commons con licencia libre y el crédito en 
+imagenOrigen
+ (hormiga cortadora Atta,
+  Tityus). La especie de la foto = la que nombra la página (alacrán de Nicaragua = Centruroides, de Venezuela =
+  Tityus). Las chicas (≤ 400 px) se agrandan con Real-ESRGAN 
+realesr-animevideov3 -s 4 -t 64
+ de a una (el modelo
+  x4plus y varias a la vez saturan la tarjeta de video). Se guardan como 
+<pp>-plaga-<plaga>-foto.webp
+ (1200 px, calidad 84).
+- Casa de las 3 zonas (
+casaZonas
+, obligatoria; el candado frena sin ella): imagen propia del país, nunca la de
+  globaltni. Midjourney, render de día de una casa BONITA (moderna o colonial elegante, no «típica»), corte con el interior
+  en rojo, el perímetro en amarillo y el jardín en verde, con un rasgo del país al fondo (montaña, volcán).
+{"file": "app/public/oficinas/<id>/assets/<id>-casa-zonas.webp", "alt": "…", "origen": "…"}
+.
+- Video de la portada: 
+pelicula.video.width/height/duration
+ tienen que ser los del mp4 (el candado los lee del archivo).
+- Blog: 
+"blog": {"porDia": 2}
+. Ruta: 
+"ruta": {"aprobado": {"portada": "AAAA-MM-DD", "carro": "…", "revision": "…"}}
+.
+D. Imágenes con IA (gente y espacios)
+Prompt en inglés y técnico: qué llena el cuadro, posición, lente, luz, 
+--no
+ con lo que sobra; 
+--stylize 50
+,
+  ángulo de tres cuartos, luz neutra. Nivel elegante, nunca humilde.
+Lo que delata la IA: simetría perfecta, brillo dorado, frutas en pirámide, grifería rara. Revisar cada variante de cerca.
+Técnico: camisa amarilla, gorra negra, carnet; el emblema real puesto derecho en el pecho:
+BLUR=0.9 LUZ=0.88 ~/.local/bin/uv run --python 3.12 --no-project --with pillow==10.4.0 --with opencv-python-headless==4.10.0.84 python ~/.claude/skills/truly-inbound/herramientas/emblema.py <foto> app/public/tn-emblema.png <salida> <x> <y> <alto> 0 <caja x0,y0,x1,y1>
+.
+  Nunca producto químico cerca de comida expuesta. Rutas sin tildes (OpenCV no abre archivos con tildes en Windows).
+E. Blog en una oficina
+Ficha de marca del país: copiar 
+~/.claude/skills/blog-verificado/marcas/truly-nicaragua.{json,md}
+ a
+truly-<país>.{json,md}
+ y cambiar TODO: en el 
+.json
+, 
+repo
+ y 
+fotos_dir
+ apuntan al CLON del país; en el 
+.md
+,
+   la voz del país (sale de 
+voz-card.md
+).
+Carpeta de la tanda 
+~/proyectos/blogs/truly-<país>/tanda-1/
+ con 
+tanda-1.txt
+ (
+NN|palabra clave|nota
+) y
+blog-settings.json
+ y 
+posts-existentes.json
+ copiados de la tanda de Nicaragua (frases prohibidas del país).
+Escritor (
+blog-escritor
+) → revisor mecánico
+~/.local/bin/uv run --python 3.12 --no-project python ~/.claude/skills/truly-inbound/scripts/revisar_oficina.py <carpeta-articulo> "<palabra clave>" truly-<país>
+   → juez de voz + auditor de verdad en paralelo → correcciones → revisión final + ortografía (
+lt.py
+) → 3 SEO
+   (
+seo-content
+, 
+seo-geo
+, 
+seo-sxo
+).
+Portada: foto real de Truly que muestre la plaga donde vive, WebP en 
+assets/<pref>-blog-<slug>.webp
+.
+Montar como 
+app/src/inbound/oficinas/<id>/blog/<slug>.json
+ (lo del escritor + 
+fecha
+, 
+tema
+, 
+fuentes
+,
+portadaOrigen
+, 
+verificacion
+). Goteo: solo sale lo que tiene 
+fecha
+ ≤ hoy en Caracas, máximo 
+blog.porDia
+ por fecha.
+F. Tipos de país
+Con oficina (Nicaragua): dos WhatsApp, el de la oficina (contacto y pie) y el de Truly AI en el chat. «Visita»,
+  «técnico», «inspección» están bien: el servicio es presencial.
+Sin oficina (Venezuela): atiende Truly AI (
++1 520 214 5675
+); sin dirección, teléfono local, horario, precios ni
+  garantías. «Visita» y «técnico» también están bien (el servicio es presencial).
+Varias sucursales (Panamá tiene 10-11): por defecto UN sitio del país con la central y el WhatsApp que la oficina
+  pone al frente; las sucursales se nombran en el texto de cobertura. Una ficha por sucursal solo si el dueño lo pide.
+G. Google, Bing y las IA
+Bloque 
+seo
+: 
+url
+ (con 
+/
+ final), 
+indexar
+ (false en borrador), 
+titulo
+, 
+descripcion
+ (≤ 160), 
+imagen
+ 1200×630,
+imagenAlt
+, 
+descripciones
+ (las páginas que no son propias), 
+indexnow
+ (
+openssl rand -hex 16
+),
+verificacion.google
+ y 
+.bing
+ (solo el 
+content
+), 
+ga4
+ (opcional).
+Lo hace solo el generador: descripción, canonical, robots, Open Graph, datos estructurados, 
+sitemap.xml
+, llave de
+IndexNow y, con dominio propio, 
+robots.txt
+ abierto a Google, Bing, ChatGPT, Claude y Perplexity.
+Salida en vivo (otro ok): alta en Search Console y Bing Webmaster con la cuenta de la oficina, 
+indexar: true
+,
+generar, publicar, enviar el sitemap, 
+node scripts/indexnow-oficina.mjs <id> --enviar
+ → 200/202, y seguir
+sitio-con-trafico
+.
+H. Voz humana
+Tarjeta 
+docs/design/oficinas/<id>/voz-humana/voz-card.md
+ (molde: 
+~/.claude/skills/truly-inbound/voz-humana/voz-card.md
+):
+   quién habla y a quién, el trato, léxico que sí y que nunca, 3-5 frases TEXTUALES de la oficina con su dirección.
+   Respetar las decisiones del dueño (ej.: el servicio es presencial).
+Medidor: 
+~/.local/bin/uv run --python 3.12 --no-project python scripts/voz-humana.py <id>
+ (junta todo el texto en
+voz-humana/corpus.md
+ y lo mide con la lista de huellas de IA). Las triadas son aviso suave: las enumeraciones con
+   datos se quedan.
+Juez: un agente que no escribió el sitio lee tarjeta + corpus y responde 
+VEREDICTO: HUMANO
+ o 
+SUENA-A-IA
+ con la
+   tabla de pasajes. Se guarda en 
+voz-humana/veredicto.md
+ (primera línea = el veredicto). Los eslóganes del molde son
+   decisión del dueño: se le muestran aparte.
+Correcciones en la ficha; regenerar; medir; si hubo cambios de fondo, un juez NUEVO.
+I. Lo que el generador hace solo
+Valida TODAS las fichas antes de escribir. Si una oficina falla (al armarse o en la parte de Google), todas sus páginas
+vuelven a como estaban (respaldo). Aplica el modelo visual de Guatemala (bandas azul tinta, sombra de portada solo a la
+izquierda, secciones a la medida, pie a todo el ancho, recuadro del asistente). Pone el carrito en el chat. Numera las
+secciones en el orden en que salen. Lee y escribe en UTF-8 (Mac y Windows igual). En 
+--borrador
+: sin video muestra la
+foto, sin imagen social usa la portada, sin descripciones usa la general y avisa; sin 
+--borrador
+, todo es obligatorio
+y el candado da rojo a una oficina sin película revisada. Borra la carpeta de una oficina sin ficha (assets incluidos).
+J. Límites conocidos
+La capa no está en 
+main
+ (el dueño sin permiso de escritura). Ver Anexo A.
+El puente formulario → ficha no existe: la ficha se llena a mano.
+El chat en español viene en tú: un país de usted queda mezclado en el chat hasta que la ficha pueda traer esos textos.
+Idiomas distintos de español y portugués: traducción completa en 
+textos
+; derecha a izquierda no soportado.
+No se comitean artículos con fecha futura hasta que exista el robot diario del goteo.
+PR de catálogo y de oficinas, siempre separados.
+K. Fuentes de verdad en el repo
+Fichas y blog: 
+app/src/inbound/oficinas/
+ · generador: 
+scripts/build-inbound-machotes.py
+ · candado:
+scripts/gate-oficinas.mjs
+ · ruta: 
+scripts/ruta-oficina.py
+ · voz: 
+scripts/voz-humana.py
+ · huella:
+scripts/huella-catalogo.py
+ · catálogo: 
+app/src/inbound/machotes.json
+ · formulario: 
+app/src/inbound/guideFields.ts
+,
+DatosCliente.tsx
+ · red de oficinas: 
+app/src/datos/franquicias.ts
+ · el bot: 
+docs/bot/EL-ESTADO-DEL-BOT.md
+.
+L. Casos
+Venezuela (sin oficina, terminado 30-oct-2026, ruta 15/15): base 
+colombia
+, tú venezolano, Camino de la Felicidad.
+Nicaragua (con oficina, terminado 30-oct-2026, ruta 15/15): base 
+costa-rica
+, tú (como escribe la oficina), Ometepe.
+Panamá (prueba de la receta, 30-oct-2026): 25 hallazgos y una revisión independiente de 34 puntos, llevados a esta versión.

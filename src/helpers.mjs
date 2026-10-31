@@ -38,7 +38,7 @@ export const PESTS = {
   },
   'arana-de-los-rincones': {
     name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-foto.jpg`,
-    alt: 'Araña de los rincones (Loxosceles laeta) adulta',
+    alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
     card: 'Es la araña de mayor importancia sanitaria en Uruguay, según el MSP. Si sospechás una picadura, llamá al CIAT: 1722.',
   },
 };
@@ -87,8 +87,8 @@ export function fuentes(list) {
 
 export function servicesCards() {
   return `<section class="section services"><div class="section-heading"><p class="eyebrow">Servicios</p><h2>Revisemos tu caso<br/>en tu espacio.</h2></div><div class="service-grid">
-<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogar-casa-estandar-palermo.jpg" alt="Casa estándar con rejas de hierro en el barrio Palermo, Montevideo" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
-<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercio-mercado-agricola.jpg" alt="Puestos de frutas y verduras en el Mercado Agrícola de Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
+<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogar-casa-carrasco.jpg" alt="Casa blanca con techo de tejas y jardín en Carrasco, Montevideo" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
+<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercio-cafe-brasilero.jpg" alt="Fachada del Café Brasilero, fundado en 1877, en la Ciudad Vieja de Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
 </div></section>`;
 }
 

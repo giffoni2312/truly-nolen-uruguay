@@ -56,12 +56,12 @@
   "page": "https://commons.wikimedia.org/wiki/File:Eastern_Subterranean_Termite_-_Reticulitermes_flavipes,_Meadowood_SRMA,_Mason_Neck,_Virginia,_April_7,_2023_(53310004483).jpg"
  },
  "uy-plaga-arana-de-los-rincones-foto.jpg": {
-  "label": "Araña de los rincones adulta",
-  "title": "File:Loxosceles Laeta adult.jpg",
-  "artist": "Sergiosan00709",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "page": "https://commons.wikimedia.org/wiki/File:Loxosceles_Laeta_adult.jpg"
+  "label": "Araña de los rincones",
+  "title": "File:Loxosceles laeta.jpg",
+  "artist": "User:Mampato",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg"
  },
  "uy-blog-termitas-madera.jpg": {
   "label": "Termitas sobre madera (blog)",
@@ -78,5 +78,29 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
   "page": "https://commons.wikimedia.org/wiki/File:Casa_de_Carrasco_vista_desde_Rambla_Tom%C3%A1s_Berreta_-_panoramio.jpg"
+ },
+ "uy-hogar-casa-carrasco.jpg": {
+  "label": "Casa en Carrasco (hogares)",
+  "title": "File:Casa de Carrasco vista desde Calle Costa Rica - panoramio.jpg",
+  "artist": "Andrés Franchi Ugart…",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Casa_de_Carrasco_vista_desde_Calle_Costa_Rica_-_panoramio.jpg"
+ },
+ "uy-comercio-cafe-brasilero.jpg": {
+  "label": "Café Brasilero, Montevideo (comercios)",
+  "title": "File:Cafe Brasiliero.JPG",
+  "artist": "Ypsilon from Finland",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Cafe_Brasiliero.JPG"
+ },
+ "uy-hogar-casa-moderna.jpg": {
+  "label": "Casa moderna en Punta Ballena (hogares)",
+  "title": "File:Uruguai - Maldonado - Punta Del Este - Punta Ballena - Piriápolis (Páez Vilaró) - panoramio (95).jpg",
+  "artist": "Ricardo Freitas",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Uruguai_-_Maldonado_-_Punta_Del_Este_-_Punta_Ballena_-_Piri%C3%A1polis_(P%C3%A1ez_Vilar%C3%B3)_-_panoramio_(95).jpg"
  }
 }

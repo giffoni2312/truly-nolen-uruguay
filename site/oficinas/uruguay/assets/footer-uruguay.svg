@@ -1,79 +1,72 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 768">
-  <!-- Watercolor-style illustration (like the Nicaragua footer): a road toward Palacio Salvo,
-       the Rambla and the Río de la Plata, plane trees, a mate stand and the classic Truly beetle. -->
+  <!-- Watercolor-style footer of the SAME place as the hero (recipe step 7): the Rambla of Punta del Este,
+       its towers, the sea, La Mano (Los Dedos) on Playa Brava, maritime pines and the classic Truly beetle. -->
   <defs>
     <filter id="wc" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="7" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feGaussianBlur in="d" stdDeviation=".6"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="8" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
-    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .42  0 0 0 .07 0"/></filter>
-    <radialGradient id="fade" cx=".5" cy=".55" r=".62"><stop offset=".72" stop-color="#fbf8f0" stop-opacity="0"/><stop offset="1" stop-color="#fbf8f0"/></radialGradient>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf8f0"/><stop offset=".55" stop-color="#f7ead6"/><stop offset="1" stop-color="#f3dcc0"/></linearGradient>
-    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc6ab"/><stop offset="1" stop-color="#b9b08e"/></linearGradient>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="5"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .42  0 0 0 .07 0"/></filter>
+    <radialGradient id="fade" cx=".5" cy=".55" r=".62"><stop offset=".72" stop-color="#f7f6f1" stop-opacity="0"/><stop offset="1" stop-color="#f7f6f1"/></radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f6f1"/><stop offset=".6" stop-color="#f6ead6"/><stop offset="1" stop-color="#f1dcc2"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c3c9"/><stop offset="1" stop-color="#8fb0b8"/></linearGradient>
   </defs>
-  <rect width="1536" height="768" fill="#fbf8f0"/>
+  <rect width="1536" height="768" fill="#f7f6f1"/>
   <g filter="url(#wc)">
-    <rect x="70" y="150" width="1396" height="400" fill="url(#sky)"/>
-    <!-- Palacio Salvo in the distance -->
-    <g fill="#e9dcc6" stroke="#b8a68a" stroke-width="2">
-      <rect x="650" y="300" width="236" height="150"/>
-      <rect x="690" y="262" width="156" height="40"/>
-      <rect x="722" y="200" width="92" height="64"/>
-      <rect x="738" y="160" width="60" height="42"/>
-      <rect x="752" y="128" width="32" height="34"/>
-      <path d="M752 128q16-34 32 0z"/>
+    <rect x="70" y="150" width="1396" height="430" fill="url(#sky)"/>
+
+    <!-- Punta del Este towers along the Rambla (left and center background) -->
+    <g fill="#ece4d6" stroke="#c9bba3" stroke-width="2">
+      <rect x="180" y="250" width="70" height="210"/><rect x="262" y="210" width="80" height="250"/>
+      <rect x="360" y="270" width="62" height="190"/><rect x="438" y="190" width="88" height="270"/>
+      <rect x="540" y="300" width="60" height="160"/><rect x="618" y="240" width="74" height="220"/>
     </g>
-    <path d="M768 94v-30" stroke="#b8a68a" stroke-width="3"/>
-    <g stroke="#cdbb9c" stroke-width="2" opacity=".8">
-      <path d="M664 330h208M664 356h208M664 382h208M664 408h208M700 280h136M732 222h72M732 242h72"/>
+    <g stroke="#d6cab4" stroke-width="2" opacity=".9">
+      <path d="M190 280h50M190 310h50M190 340h50M190 370h50M190 400h50M272 240h60M272 270h60M272 300h60M272 330h60M272 360h60M272 390h60M448 220h68M448 250h68M448 280h68M448 310h68M448 340h68M448 370h68M448 400h68M628 270h54M628 300h54M628 330h54M628 360h54M628 390h54"/>
     </g>
-    <!-- city blocks either side -->
-    <g fill="#eadfcc" opacity=".9">
-      <rect x="470" y="360" width="90" height="90"/><rect x="565" y="340" width="70" height="110"/>
-      <rect x="900" y="350" width="80" height="100"/><rect x="985" y="372" width="100" height="78"/>
+
+    <!-- the sea (right) and the beach -->
+    <path d="M760 430c240-8 470-6 706 4v80c-230-6-470-8-706-4z" fill="url(#sea)" opacity=".9"/>
+    <path d="M800 456h180M1040 470h210M1290 452h140M900 490h160" stroke="#e7eef0" stroke-width="3" opacity=".9"/>
+    <path d="M720 500c250-8 500-4 746 10v60H760z" fill="#ead9b4"/>
+
+    <!-- La Mano (Los Dedos) on Playa Brava -->
+    <g fill="#e8e1d6" stroke="#b9ad99" stroke-width="2.5">
+      <path d="M1180 520c-4-40-2-80 4-104 6-10 16-8 18 2 4 28 4 66 2 102z"/>
+      <path d="M1226 522c-2-52 2-104 10-132 6-10 18-8 18 4 2 36 0 88-6 128z"/>
+      <path d="M1278 524c0-50 6-96 14-122 6-10 18-6 18 6 0 34-4 80-10 116z"/>
+      <path d="M1326 526c4-34 10-64 20-82 6-8 16-4 15 6-4 24-8 50-12 76z"/>
+      <path d="M1130 524c-10-26-24-46-36-58-8-6-4-18 6-16 18 6 38 34 50 72z"/>
     </g>
-    <!-- Río de la Plata and the Rambla on the right -->
-    <path d="M980 446c140-6 300-4 486 4v70c-170-8-330-10-486-8z" fill="url(#river)" opacity=".85"/>
-    <path d="M1010 470h150M1210 488h170M1060 500h120" stroke="#e8e1cc" stroke-width="3" opacity=".9"/>
-    <path d="M960 452c160 2 330 8 506 18" stroke="#d9cdb3" stroke-width="10"/>
-    <!-- fields and verge on the left -->
-    <path d="M70 452c180-12 380-12 590-4v120H70z" fill="#bccb8d" opacity=".75"/>
-    <path d="M70 500c150-6 300-6 430 0" stroke="#a9ba7a" stroke-width="5" opacity=".6"/>
-    <!-- ground on both sides of the road -->
-    <path d="M70 520c200-20 420-40 680-68l-330 300H70z" fill="#c8d29c" opacity=".8"/>
-    <path d="M790 452c230 22 450 50 676 80v220H1040z" fill="#d6cfae" opacity=".85"/>
-    <path d="M120 640c90-10 180-14 250-12M1120 650c90-6 200-4 300 4" stroke="#b3c07f" stroke-width="5" opacity=".6"/>
-    <!-- road -->
-    <path d="M745 452h46l250 300H420z" fill="#d8d0c2"/>
-    <path d="M766 456 760 752" stroke="#e7c75a" stroke-width="5" stroke-dasharray="26 22"/>
-    <path d="M745 452 420 752M791 452l250 300" stroke="#c4baa8" stroke-width="3"/>
-    <!-- plane trees (plátanos) -->
+    <ellipse cx="1240" cy="530" rx="150" ry="10" fill="#d9c49a" opacity=".7"/>
+
+    <!-- maritime pines -->
     <g>
-      <path d="M300 560c-4-60 2-120 10-150M1210 580c4-70-2-130-10-160" stroke="#8a6f52" stroke-width="12" fill="none"/>
-      <g fill="#9fb56d" opacity=".9"><ellipse cx="300" cy="380" rx="150" ry="110"/><ellipse cx="1200" cy="390" rx="140" ry="105"/></g>
-      <g fill="#86a35a" opacity=".85"><ellipse cx="250" cy="420" rx="90" ry="60"/><ellipse cx="1250" cy="420" rx="85" ry="58"/></g>
-      <g fill="#b9cb86" opacity=".8"><ellipse cx="340" cy="345" rx="80" ry="50"/><ellipse cx="1170" cy="355" rx="75" ry="48"/></g>
-      <path d="M560 470c-2-24 0-46 4-56" stroke="#8a6f52" stroke-width="6" fill="none"/><ellipse cx="562" cy="400" rx="48" ry="36" fill="#a7bb76"/>
+      <path d="M140 600c2-60 6-120 4-170M1430 600c-2-60-2-110 0-150" stroke="#7d6550" stroke-width="10" fill="none"/>
+      <g fill="#7f9a62" opacity=".9"><ellipse cx="150" cy="420" rx="120" ry="44"/><ellipse cx="120" cy="380" rx="80" ry="30"/><ellipse cx="1425" cy="440" rx="95" ry="38"/></g>
+      <g fill="#97ae73" opacity=".85"><ellipse cx="190" cy="402" rx="70" ry="24"/><ellipse cx="1400" cy="420" rx="60" ry="22"/></g>
     </g>
-    <!-- mate stand: thermos and gourd on a little table -->
-    <g transform="translate(150 560)">
-      <rect x="0" y="40" width="120" height="10" fill="#9c7a58"/>
-      <path d="M10 50v60M110 50v60" stroke="#9c7a58" stroke-width="6"/>
-      <rect x="24" y="-20" width="26" height="60" rx="6" fill="#c9cfd2" stroke="#8d969a" stroke-width="2"/>
-      <path d="M70 40c-10-30 30-30 22 0z" fill="#8b5e3c"/><path d="M84 14l10-26" stroke="#c0c4c4" stroke-width="3"/>
-    </g>
-    <!-- classic yellow beetle with Truly ears and red nose -->
-    <g transform="translate(930 560)">
+
+    <!-- ground: grass verge (left) and sand (right) -->
+    <path d="M70 470c180-6 380-8 620-6L420 752H70z" fill="#c4cf98" opacity=".8"/>
+    <path d="M760 560c240 10 470 20 706 40v152H1010z" fill="#e3d2aa" opacity=".9"/>
+
+    <!-- road in diagonal, from lower left to upper right, like the hero -->
+    <path d="M300 752 1040 470h120L760 752z" fill="#d6cec0"/>
+    <path d="M530 752 1100 470" stroke="#f0eee6" stroke-width="5" stroke-dasharray="30 26"/>
+    <path d="M300 752 1040 470M760 752 1160 470" stroke="#c2b8a6" stroke-width="3"/>
+
+    <!-- classic yellow beetle with Truly ears and red round nose -->
+    <g transform="translate(640 548)">
       <ellipse cx="120" cy="150" rx="140" ry="14" fill="#c9bfae" opacity=".7"/>
       <circle cx="78" cy="10" r="20" fill="#2c2c2c"/><circle cx="132" cy="10" r="20" fill="#2c2c2c"/>
       <path d="M8 120c0-40 20-62 52-74 26-30 70-34 102-10 28 10 48 34 54 70l6 18c2 10-4 16-14 16H22c-10 0-16-8-14-20z" fill="#f2cf3a" stroke="#c9a524" stroke-width="3"/>
-      <path d="M72 56c18-18 52-20 74-4l10 24H64z" fill="#9fb6bd" stroke="#c9a524" stroke-width="2"/>
+      <path d="M72 56c18-18 52-20 74-4l10 24H64z" fill="#3e4a4f" stroke="#c9a524" stroke-width="2"/>
       <path d="M108 54v22" stroke="#c9a524" stroke-width="3"/>
       <circle cx="58" cy="132" r="22" fill="#3a3a3a"/><circle cx="58" cy="132" r="9" fill="#d8d8d0"/>
       <circle cx="186" cy="132" r="22" fill="#3a3a3a"/><circle cx="186" cy="132" r="9" fill="#d8d8d0"/>
       <ellipse cx="212" cy="98" rx="10" ry="12" fill="#fff8d8" stroke="#c9a524" stroke-width="2"/>
-      <circle cx="226" cy="112" r="9" fill="#d9282e"/>
+      <circle cx="228" cy="110" r="10" fill="#d9282e"/>
       <path d="M14 112h220" stroke="#e0e0d8" stroke-width="4"/>
     </g>
   </g>
