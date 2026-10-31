@@ -1,0 +1,17 @@
+# Truly Nolen Uruguay — borrador
+
+Versión Uruguay de la página de Venezuela (mismo diseño, contenido 100 % uruguayo).
+
+## Comandos
+- `node build.mjs`  → genera las 17 páginas en `site/oficinas/uruguay/`
+- `node check.mjs`  → revisa restos de Venezuela, tuteo, enlaces rotos, h1, ids y JSON-LD
+- `node serve.mjs`  → vista previa en http://localhost:8080/oficinas/uruguay/
+
+## Dónde se edita
+- `src/pages.mjs`   → textos de cada página
+- `src/helpers.mjs` → bloques reutilizables, plagas, fuentes y el número de WhatsApp (constante `WA`)
+- `build.mjs`       → menú, footer y textos del chat
+
+## Pendiente (cuando deje de ser borrador)
+- Fotos de técnicos uruguayos con uniforme (prompts en `investigacion-uruguay.md`, sección 3)
+- WhatsApp +598, razón social y RUT

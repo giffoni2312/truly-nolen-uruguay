@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1774 887">
+  <!-- Illustration: Palacio Salvo over Plaza Independencia, with the Rambla and the Río de la Plata -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f3340"/>
+      <stop offset="1" stop-color="#3e5866"/>
+    </linearGradient>
+  </defs>
+  <rect width="1774" height="887" fill="url(#sky)"/>
+  <g fill="#f6c200" opacity=".9"><circle cx="1480" cy="170" r="46"/></g>
+
+  <!-- river -->
+  <rect y="690" width="1774" height="197" fill="#2b4250"/>
+  <g stroke="#6f8792" stroke-width="3" opacity=".6">
+    <path d="M80 740h260M480 770h340M1000 745h300M1400 790h260M220 820h200"/>
+  </g>
+  <!-- rambla -->
+  <rect y="676" width="1774" height="16" fill="#d9cfb8"/>
+
+  <!-- city skyline (Ciudad Vieja / Centro) -->
+  <g fill="#2a4351">
+    <rect x="40" y="520" width="120" height="156"/><rect x="170" y="560" width="90" height="116"/>
+    <rect x="270" y="500" width="110" height="176"/><rect x="390" y="580" width="140" height="96"/>
+    <rect x="1180" y="540" width="120" height="136"/><rect x="1310" y="500" width="90" height="176"/>
+    <rect x="1410" y="570" width="150" height="106"/><rect x="1570" y="520" width="100" height="156"/>
+    <rect x="1680" y="590" width="94" height="86"/>
+  </g>
+
+  <!-- PALACIO SALVO -->
+  <g fill="#f3ead7" stroke="#152128" stroke-width="3">
+    <!-- base block -->
+    <rect x="640" y="430" width="500" height="246"/>
+    <!-- side wings stepped -->
+    <rect x="700" y="370" width="380" height="62"/>
+    <!-- tower stages -->
+    <rect x="800" y="250" width="180" height="122"/>
+    <rect x="830" y="170" width="120" height="82"/>
+    <rect x="855" y="110" width="70" height="62"/>
+    <!-- cupola -->
+    <path d="M855 110 Q890 50 925 110 Z"/>
+  </g>
+  <!-- lantern / antenna -->
+  <path d="M890 62 L890 6" stroke="#f3ead7" stroke-width="5"/>
+  <circle cx="890" cy="62" r="6" fill="#f6c200"/>
+  <!-- windows -->
+  <g fill="#b9a982">
+    <rect x="665" y="455" width="450" height="6"/><rect x="665" y="490" width="450" height="6"/>
+    <rect x="665" y="525" width="450" height="6"/><rect x="665" y="560" width="450" height="6"/>
+    <rect x="665" y="595" width="450" height="6"/><rect x="665" y="630" width="450" height="6"/>
+    <rect x="720" y="390" width="340" height="6"/><rect x="720" y="410" width="340" height="6"/>
+    <rect x="820" y="275" width="140" height="6"/><rect x="820" y="305" width="140" height="6"/><rect x="820" y="335" width="140" height="6"/>
+    <rect x="848" y="195" width="84" height="6"/><rect x="848" y="225" width="84" height="6"/>
+  </g>
+  <g fill="none" stroke="#152128" stroke-width="2" opacity=".5">
+    <path d="M760 430v246M840 430v246M940 430v246M1040 430v246"/>
+  </g>
+
+  <!-- palms in Plaza Independencia (they really are there) -->
+  <g fill="#3c5a3a">
+    <rect x="560" y="560" width="8" height="116"/><rect x="1200" y="570" width="8" height="106"/>
+    <ellipse cx="564" cy="556" rx="40" ry="16"/><ellipse cx="1204" cy="566" rx="40" ry="16"/>
+  </g>
+</svg>
