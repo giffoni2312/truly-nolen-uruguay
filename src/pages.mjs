@@ -54,14 +54,14 @@ const mosquitos = pestPage('mosquitos', {
   d: { ey: 'En Uruguay', h2: 'Lo que registró<br/>el MSP.', items: [
     ['1997', 'año en que se volvió a detectar el Aedes aegypti en Uruguay. Se había declarado erradicado en 1958.', 'MSP, Boletín epidemiológico (2016)'],
     ['2016', 'primer brote de dengue autóctono en 100 años: 19 casos, 18 en Montevideo, con epicentro en Pocitos.', 'MSP, Boletín epidemiológico (2016)'],
-    ['661', 'casos de dengue autóctono en el brote de 2024.', 'Subrayado, con datos del MSP (2024)'],
+    ['2024', 'volvió a circular el dengue: el primer caso autóctono del año se confirmó el 1 de marzo.', 'Montevideo Portal, con datos del MSP (2024)'],
   ] },
   t2: { ey: 'Rutina de cada semana', h2: 'Tapá, vaciá<br/>y limpiá.', rows: [
     ['Recipientes con agua', 'Lo que guardás o se llena solo.', ['Baldes y tanques bien tapados.', 'Bebederos de mascotas con agua cambiada seguido.']],
     ['Fondo, patio y azotea', 'Todo lo que junta lluvia.', ['Platos de macetas y floreros.', 'Cubiertas, botellas y latas.', 'Canaletas y desagües destapados.']],
     ['Cada semana', 'La recomendación de la OMS.', ['Cubrir, vaciar y limpiar los recipientes donde se guarda agua.']],
   ], nota: 'El MSP impulsa la campaña «Activate contra el mosquito» con esta misma rutina.' },
-  src: [SRC.oms, SRC.msp2016, SRC.mspCriaderos, SRC.mspActivate, SRC.subrayado2024],
+  src: [SRC.oms, SRC.msp2016, SRC.mspCriaderos, SRC.mspActivate, SRC.dengue2024],
   prompts: [
     ['Tengo muchos mosquitos', 'Tengo muchos mosquitos en casa y quiero saber de dónde vienen.'],
     ['Junto agua en el fondo', 'Tengo baldes, macetas o cubiertas en el fondo. ¿Cómo evito que se críe el mosquito?'],
@@ -80,7 +80,7 @@ const ratas = pestPage('ratas-y-ratones', {
   d: { ey: 'En Uruguay', h2: 'Lo que contaron<br/>las intendencias.', items: [
     ['2025', 'la Intendencia de Maldonado describió como «complicado» el control de ratas en el Centro de Maldonado y en Punta del Este.', 'Montevideo Portal (15/10/2025)'],
     ['3', 'veces tuvo que intervenir la Intendencia de Montevideo en un cantero del Parque Rodó por roedores.', 'Montevideo Portal'],
-    ['4', 'plagas atiende la cuadrilla de la Intendencia de Maldonado: ratas, pulgas, mosquitos y garrapatas.', 'Montevideo Portal (15/10/2025)'],
+    ['4', 'personas forman la cuadrilla de la Intendencia de Maldonado que combate ratas, pulgas, mosquitos y garrapatas, entre otras plagas.', 'Montevideo Portal (15/10/2025)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Sin comida,<br/>sin refugio.', rows: [
     ['Comida', 'Lo que las atrae.', ['Alimentos y ración de mascotas en envases cerrados.', 'Bolsas de residuos cerradas hasta llevarlas al contenedor.']],
@@ -130,7 +130,7 @@ const hormigas = pestPage('hormigas', {
     ['El hormiguero', 'El nido de las cortadoras está bajo tierra: el daño se ve en las plantas, a veces lejos del nido.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que dicen<br/>los investigadores.', items: [
-    ['14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay, además de 2 del género Atta.', 'La Mañana · INIA, cartilla 36'],
+    ['14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay, según la Facultad de Agronomía.', 'La Mañana'],
     ['Jardín', 'Acromyrmex es el género que más problemas causa en los jardines, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana'],
     ['Nativa', 'La hormiga argentina es nativa de la cuenca del Paraná, que incluye a Uruguay.', 'AntWiki'],
   ] },
@@ -139,7 +139,7 @@ const hormigas = pestPage('hormigas', {
     ['Jardín y huerta', 'Las señales de la cortadora.', ['Caminos de hojas cortadas en el pasto.', 'Montículos de tierra suelta.']],
     ['Entradas', 'Por donde pasan.', ['Grietas en zócalos y marcos.', 'Plantas que tocan la pared.']],
   ] },
-  src: [SRC.inia, SRC.laManana, SRC.antwiki],
+  src: [SRC.laManana, SRC.antwiki],
   prompts: [
     ['Tengo hormigas en la cocina', 'Tengo hormigas en la cocina. ¿Cómo las controlo?'],
     ['Me cortan las plantas', 'Las hormigas me están cortando las plantas del jardín. ¿Qué hago?'],
@@ -149,14 +149,13 @@ const hormigas = pestPage('hormigas', {
 
 const termitas = pestPage('termitas', {
   description: 'La termita subterránea Reticulitermes en Uruguay: señales, qué se sabe en el país y cómo prevenir daños en la madera de tu casa.',
-  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'En Uruguay, la termita que causa problemas es la subterránea del género Reticulitermes. Llegó desde afuera y ya no se puede erradicar del país: lo importante es detectarla a tiempo en tu casa.' },
+  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'En Uruguay, la termita que causa problemas es la subterránea del género Reticulitermes. Llegó desde afuera: lo importante es detectarla a tiempo en tu casa.' },
   t1: { ey: 'Las señales', h2: 'Lo que hay<br/>que mirar.', rows: [
     ['Tubos de tierra', 'Caminos de barro entre el suelo y la madera: así llega la termita subterránea (UC IPM).'],
     ['Madera hueca', 'Marcos, zócalos o pisos que suenan huecos o se hunden al apretarlos.'],
     ['Insectos con alas', 'Enjambres cerca de ventanas y luces. Según UC IPM, verlos «no siempre significa» que la casa esté infestada.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que se sabe<br/>en el país.', items: [
-    ['1993', 'Aber y Fontes registran Reticulitermes en Uruguay, el primer registro del género en Sudamérica, y concluyen que erradicarla ya era imposible.', 'Citado en Revista de Agricultura'],
     ['1', 'Reticulitermes es la única termita plaga seria del país.', 'Constantino (2002), Journal of Applied Entomology'],
     ['2023', 'Un estudio sobre Reticulitermes flavipes, una de las termitas plaga más importantes del mundo, la menciona como establecida en Uruguay.', 'Carrijo y col. (2023), Journal of Economic Entomology'],
   ] },
@@ -165,7 +164,7 @@ const termitas = pestPage('termitas', {
     ['Humedad', 'Lo que la atrae.', ['Reparar pérdidas de agua y filtraciones.', 'Ventilar sótanos y espacios bajos.']],
     ['Antes de tratar', 'Lo que conviene hacer.', ['No usar productos a ciegas: los caseros «generalmente no son efectivos» (UC IPM).', 'Fotografiar las señales y anotar dónde están.']],
   ] },
-  src: [SRC.ucipm, SRC.constantino, SRC.aber, SRC.carrijo],
+  src: [SRC.ucipm, SRC.constantino, SRC.carrijo],
   prompts: [
     ['Encontré tubos de barro', 'Encontré tubos de barro en una pared o en la madera. ¿Pueden ser termitas?'],
     ['La madera suena hueca', 'Un marco o un zócalo suena hueco. ¿Cómo confirmo si hay termitas?'],
@@ -224,7 +223,7 @@ const hogares = {
       ['Lo que ves', 'Describí las señales y desde cuándo las notás. Contanos si hay niños o mascotas.'],
     ] }),
     faqSection(hogaresFaq),
-    fuentes([SRC.msp2016, SRC.subrayado2024, SRC.maldonado2025, SRC.imAlimentos, SRC.inia, SRC.constantino, SRC.arana]),
+    fuentes([SRC.msp2016, SRC.dengue2024, SRC.maldonado2025, SRC.imAlimentos, SRC.laManana, SRC.constantino, SRC.arana]),
     contacto([
       ['Hay mosquitos en casa', 'Tengo muchos mosquitos en mi casa y quiero saber de dónde vienen.'],
       ['Hay ratas o ratones', 'Tengo ratas o ratones en mi casa. ¿Cómo los saco?'],
@@ -355,8 +354,8 @@ ${contacto(prompts)}`,
 
 const postTermitas = article(POSTS[0], {
   body: `<p>¿Cómo saber si tenés termitas en casa? En Uruguay, la que causa problemas es la termita subterránea del género <em>Reticulitermes</em>. Vive bajo tierra y sube a la madera por dentro, así que cuando se ven los daños la colonia ya lleva tiempo trabajando. La buena noticia: hay señales concretas para detectarla.</p>
-<h2>La termita de Uruguay vino de afuera y llegó para quedarse</h2>
-<p>Según una revisión publicada en el <em>Journal of Applied Entomology</em> (Constantino, 2002), <em>Reticulitermes</em> fue introducida en Uruguay y es la única termita plaga seria del país. Aber y Fontes la registraron en 1993, el primer registro del género en Sudamérica, y ya entonces concluyeron que erradicarla del país era imposible.</p>
+<h2>La termita de Uruguay vino de afuera</h2>
+<p>Según una revisión publicada en el <em>Journal of Applied Entomology</em> (Constantino, 2002), <em>Reticulitermes</em> fue introducida en Uruguay y es la única termita plaga seria del país.</p>
 <p>Un estudio de 2023 sobre <em>Reticulitermes flavipes</em>, una de las termitas plaga más importantes del mundo, la menciona como establecida en Uruguay. Por eso el objetivo en tu casa no es «que no existan», sino detectarlas a tiempo y no darles la madera y la humedad que buscan.</p>
 <h2>Las señales: tubos de barro, madera hueca y alados</h2>
 <ul>
@@ -383,7 +382,7 @@ const postTermitas = article(POSTS[0], {
     ['¿Ver termitas con alas significa que mi casa está infestada?', 'No siempre. Según UC IPM, ver enjambres no siempre significa que la casa esté infestada. Fotografialos, anotá por dónde salieron y consultá.'],
     ['¿Qué termita hay en Uruguay?', 'La termita subterránea del género Reticulitermes, introducida en el país. Según Constantino (2002), es la única termita plaga seria de Uruguay.'],
   ],
-  src: [SRC.constantino, SRC.aber, SRC.carrijo, SRC.ucipm],
+  src: [SRC.constantino, SRC.carrijo, SRC.ucipm],
   prompts: [
     ['Encontré tubos de barro', 'Encontré tubos de barro en una pared o en la madera. ¿Pueden ser termitas?'],
     ['La madera suena hueca', 'Un marco o un zócalo suena hueco. ¿Cómo confirmo si hay termitas?'],
@@ -395,7 +394,7 @@ const postTermitas = article(POSTS[0], {
 const postMosquito = article(POSTS[1], {
   body: `<p>Para prevenir el mosquito del dengue en casa hay que sacarle el agua donde se cría. El <em>Aedes aegypti</em> pone sus huevos en recipientes con agua quieta, y según el Ministerio de Salud Pública, dos de cada tres criaderos están en los domicilios. La rutina es simple: tapar, vaciar y limpiar, todas las semanas.</p>
 <h2>El dengue ya no es un problema lejano en Uruguay</h2>
-<p>El <em>Aedes aegypti</em> se había declarado erradicado de Uruguay en 1958 y se volvió a detectar en 1997. En 2016 llegó el primer brote de dengue autóctono en 100 años: 19 casos, 18 de ellos en Montevideo, con epicentro en Pocitos (MSP). En 2024 el brote fue mucho mayor: 661 casos autóctonos, según datos del MSP publicados por Subrayado.</p>
+<p>El <em>Aedes aegypti</em> se había declarado erradicado de Uruguay en 1958 y se volvió a detectar en 1997. En 2016 llegó el primer brote de dengue autóctono en 100 años: 19 casos, 18 de ellos en Montevideo, con epicentro en Pocitos (MSP). En 2024 hubo un nuevo brote: el MSP confirmó el primer caso autóctono del año el 1 de marzo.</p>
 <h2>Dónde se cría el mosquito en una casa uruguaya</h2>
 <ul>
 <li><strong>Baldes y tanques</strong> sin tapa en el fondo o en la azotea.</li>
@@ -416,10 +415,10 @@ const postMosquito = article(POSTS[1], {
   faq: [
     ['¿Cada cuánto tengo que revisar el fondo?', 'Una vez por semana. Es la recomendación de la OMS: cubrir, vaciar y limpiar los recipientes donde se guarda agua.'],
     ['¿Por qué hay que cepillar los recipientes?', 'Porque los huevos del Aedes aegypti quedan pegados a las paredes del recipiente: vaciarlo no siempre alcanza.'],
-    ['¿Hubo dengue autóctono en Uruguay?', 'Sí. En 2016 hubo 19 casos, el primer brote en 100 años (MSP), y en 2024 hubo 661 casos autóctonos, según datos del MSP publicados por Subrayado.'],
+    ['¿Hubo dengue autóctono en Uruguay?', 'Sí. En 2016 hubo 19 casos, el primer brote en 100 años (MSP), y en 2024 hubo un nuevo brote, con el primer caso autóctono confirmado el 1 de marzo.'],
     ['¿Qué hago si tengo síntomas de dengue?', 'Consultá a tu prestador de salud. Esta guía es sobre prevención en casa y no reemplaza la consulta médica.'],
   ],
-  src: [SRC.oms, SRC.msp2016, SRC.mspCriaderos, SRC.mspActivate, SRC.subrayado2024],
+  src: [SRC.oms, SRC.msp2016, SRC.mspCriaderos, SRC.mspActivate, SRC.dengue2024],
   prompts: [
     ['Tengo muchos mosquitos', 'Tengo muchos mosquitos en casa y quiero saber de dónde vienen.'],
     ['Junto agua en el fondo', 'Tengo baldes, macetas o cubiertas en el fondo. ¿Cómo evito que se críe el mosquito?'],
@@ -447,13 +446,12 @@ const accesibilidad = legal('accesibilidad/', 'Accesibilidad', 'Accesibilidad',
   '<p>Queremos que este sitio se pueda usar con teclado, con lector de pantalla y en cualquier tamaño de pantalla. Las imágenes que transmiten información tienen su descripción.</p><p>Si encontrás una barrera, contanos dónde por el chat o por WhatsApp y la revisamos.</p>');
 
 const CREDITS = [
-  ['Rambla de Punta del Este (fondo del fotomontaje de la portada)', 'Babels', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:Rambla_Lorenzo_Batlle_Pacheco_(Punta_del_Este).jpg'],
   ['Rata noruega, Rattus norvegicus', 'Zeynel Cebeci', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:Rattus_norvegicus_-_Brown_rat_03.jpg'],
   ['Termita subterránea, Reticulitermes flavipes', 'Judy Gallagher', 'CC BY 2.0', 'https://creativecommons.org/licenses/by/2.0', 'https://commons.wikimedia.org/wiki/File:Eastern_Subterranean_Termite_-_Reticulitermes_flavipes,_Meadowood_SRMA,_Mason_Neck,_Virginia,_April_7,_2023_(53310004483).jpg'],
   ['Termitas sobre madera (blog)', 'Editor abcdef', 'CC0', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Termites_on_wood.JPG'],
   ['Araña de los rincones, Loxosceles laeta', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
-  `<p>Las fotos reales de este sitio vienen de Wikimedia Commons y se usan según su licencia.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>La portada es un fotomontaje del carro de Truly Nolen sobre la foto de la Rambla. La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto del técnico y la acuarela del pie son imágenes generadas con IA para este borrador.</p>`);
+  `<p>Las fotos reales de este sitio vienen de Wikimedia Commons y se usan según su licencia.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito, la cucaracha y la hormiga cortadora son las mismas que usan los otros sitios de oficina de Truly Nolen; su origen exacto no está verificado en este borrador.</p><p>La portada y su video, la casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
 
 export const PAGES = [home, mosquitos, ratas, cucarachas, hormigas, termitas, arana, hogares, comercios, industria, blog, postTermitas, postMosquito, privacidad, terminos, accesibilidad, creditos];
