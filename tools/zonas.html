@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Zonas</title>
+<style>body{margin:0;background:#111}canvas{width:1560px;display:block}</style>
+<canvas id="c"></canvas>
+<script>
+// Draws the three inspection zones (interior red, perimeter yellow, garden green) as soft glows
+// over a real photo of a Uruguayan house, like the Venezuela/Nicaragua "casa-zonas" images.
+const P = new URLSearchParams(location.search);
+const img = new Image();
+img.src = '/_tools/out/uy-casa-carrasco.jpg';
+// Polygons in original pixels (2560x1702); edited after tracing on a 1560px-wide preview (x 1.641)
+window.Z = { house: [], garden: [], fence: [] };
+window.draw = function () {
+  const c = document.getElementById('c'), g = c.getContext('2d');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  g.drawImage(img, 0, 0);
+  if (P.has('raw')) { // grid to trace coordinates
+    g.strokeStyle = 'rgba(255,0,255,.7)'; g.fillStyle = '#f0f'; g.font = 'bold 34px sans-serif'; g.lineWidth = 2;
+    for (let x = 0; x < c.width; x += 160) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, c.height); g.stroke(); g.fillText(x, x + 4, 34); }
+    for (let y = 0; y < c.height; y += 160) { g.beginPath(); g.moveTo(0, y); g.lineTo(c.width, y); g.stroke(); g.fillText(y, 4, y - 4); }
+    return;
+  }
+  // slightly warm, golden-hour grade like the reference renders
+  g.globalCompositeOperation = 'soft-light'; g.fillStyle = 'rgba(255,190,110,.28)'; g.fillRect(0, 0, c.width, c.height);
+  g.globalCompositeOperation = 'source-over';
+  const path = (pts) => { g.beginPath(); pts.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.closePath(); };
+  const glow = (pts, color, alpha, blur) => { g.save(); g.globalCompositeOperation = 'screen'; g.filter = `blur(${blur}px)`; g.fillStyle = color; g.globalAlpha = alpha; path(pts); g.fill(); g.restore(); };
+  const tint = (pts, color, alpha) => { g.save(); g.globalCompositeOperation = 'overlay'; g.fillStyle = color; g.globalAlpha = alpha; path(pts); g.fill(); g.restore(); };
+  // green: garden
+  tint(Z.garden, '#3fdc5a', 0.55); glow(Z.garden, '#4cff6a', 0.22, 30);
+  // red: interior (house)
+  tint(Z.house, '#ff2a2a', 0.6); glow(Z.house, '#ff3b30', 0.28, 26);
+  // yellow: perimeter line
+  g.save(); g.lineJoin = 'round'; g.lineCap = 'round';
+  for (const [w, a, b] of [[60, 0.25, 30], [26, 0.55, 10], [9, 1, 0]]) { g.filter = b ? `blur(${b}px)` : 'none'; g.strokeStyle = `rgba(255,214,0,${a})`; g.lineWidth = w; g.beginPath(); Z.fence.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke(); }
+  g.restore();
+};
+window.save = async function (name, q = 0.9) {
+  const blob = await new Promise((r) => document.getElementById('c').toBlob(r, 'image/jpeg', q));
+  return (await fetch('/_save/' + name, { method: 'POST', body: blob })).status + ' ' + blob.size;
+};
+img.onload = () => { draw(); document.title = 'ready'; };
+</script>

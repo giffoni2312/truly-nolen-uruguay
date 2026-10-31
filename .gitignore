@@ -3,3 +3,5 @@ capturas/
 .DS_Store
 Thumbs.db
 dist/
+tools/out/
+tools/preview/

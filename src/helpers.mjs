@@ -17,7 +17,7 @@ export const PESTS = {
     card: 'El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. En 2024, Uruguay tuvo 661 casos de dengue autóctono.',
   },
   'ratas-y-ratones': {
-    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-foto.webp`,
+    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-foto.jpg`,
     alt: 'Rata noruega',
     card: 'En Punta del Este se refugian en las palmeras, cerca de los restaurantes. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
   },
@@ -32,13 +32,13 @@ export const PESTS = {
     card: 'En Uruguay hay 14 especies de hormigas cortadoras del género Acromyrmex: la «hormiga negra» que deja sin hojas el jardín y la huerta.',
   },
   termitas: {
-    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.webp`,
-    alt: 'Soldado de termita subterránea',
+    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.jpg`,
+    alt: 'Obreras de termita subterránea (Reticulitermes) sobre madera',
     card: 'La termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.',
   },
   'arana-de-los-rincones': {
     name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-foto.jpg`,
-    alt: 'Araña de los rincones (Loxosceles laeta) sobre una pared',
+    alt: 'Araña de los rincones (Loxosceles laeta) adulta',
     card: 'Es la araña de mayor importancia sanitaria en Uruguay, según el MSP. Si sospechás una picadura, llamá al CIAT: 1722.',
   },
 };
