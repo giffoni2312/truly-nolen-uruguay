@@ -17,7 +17,7 @@ export const PESTS = {
     card: 'El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. En 2016 volvió el dengue autóctono a Uruguay después de 100 años (MSP).',
   },
   'ratas-y-ratones': {
-    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-foto.jpg`,
+    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-foto.webp`,
     alt: 'Rata noruega',
     card: 'En Punta del Este se refugian en las palmeras, cerca de los restaurantes. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
   },
@@ -32,12 +32,12 @@ export const PESTS = {
     card: 'En Uruguay hay 14 especies de hormigas cortadoras del género Acromyrmex: la «hormiga negra» que deja sin hojas el jardín y la huerta.',
   },
   termitas: {
-    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.jpg`,
+    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.webp`,
     alt: 'Obreras de termita subterránea (Reticulitermes) sobre madera',
     card: 'La termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.',
   },
   'arana-de-los-rincones': {
-    name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-foto.jpg`,
+    name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-foto.webp`,
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
     card: 'Es la araña de mayor importancia sanitaria en Uruguay, según el MSP. Si sospechás una picadura, llamá al CIAT: 1722.',
   },
@@ -85,10 +85,10 @@ export function fuentes(list) {
   return `<section class="section detail-sources"><div><p class="eyebrow">Fuentes</p><h2>De dónde sale esta información.</h2><p class="nota">Cada dato de esta página viene de una fuente pública que podés revisar.</p></div><ol>${list.map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a></li>`).join('')}</ol></section>`;
 }
 
-export function servicesCards() {
-  return `<section class="section services"><div class="section-heading"><p class="eyebrow">Servicios</p><h2>Revisemos tu caso<br/>en tu espacio.</h2></div><div class="service-grid">
-<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogares.jpg" alt="Cocina moderna de un apartamento en Montevideo con vista a la Rambla" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
-<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercios.jpg" alt="Panadería y confitería moderna en Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
+export function servicesCards(h2 = 'Revisemos tu caso<br/>en tu espacio.') {
+  return `<section class="section services"><div class="section-heading"><p class="eyebrow">Servicios</p><h2>${h2}</h2></div><div class="service-grid">
+<a class="service" href="${U}/servicios/hogares/"><img src="${A}/uy-hogares.webp" alt="Cocina moderna de un apartamento en Montevideo con vista a la Rambla" loading="lazy"/><div><span>01</span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="service-action">Ver servicio</span></div></a>
+<a class="service" href="${U}/servicios/comercios/"><img src="${A}/uy-comercios.webp" alt="Panadería y confitería moderna en Montevideo" loading="lazy"/><div><span>02</span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="service-action">Ver servicio</span></div></a>
 </div></section>`;
 }
 
@@ -114,6 +114,10 @@ export const GENERAL_FAQ = [
 
 // Sources used across several pages
 export const SRC = {
+  resistencia: ['Revisión científica (2025). Estado y mecanismos de la resistencia a insecticidas de la cucaracha alemana en el mundo', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12677976/'],
+  leptoSeguimiento: ['Revista do Instituto de Medicina Tropical de São Paulo (2012). Diez años de seguimiento de la leptospirosis humana en Uruguay: un problema de salud no resuelto', 'https://revistas.usp.br/rimtsp/article/view/31452'],
+  leptoLluvia: ['Montevideo Portal. Murió una persona de leptospirosis en Montevideo: por qué la lluvia importa en el contagio', 'https://www.montevideo.com.uy/Modo-saludable/Murio-una-persona-de-leptospirosis-en-Montevideo-por-que-la-lluvia-importa-en-el-contagio-uc940202'],
+  guiaPlan: ['gub.uy. Guía para elaborar el Plan de Control de Plagas de las empresas alimentarias', 'https://www.gub.uy/tramites/sites/catalogo-tramites/files/2025-11/Gu%C3%ADaContPlag%20-%201%20%28Plan%20de%20Control%20de%20Plagas%29_2.pdf'],
   oms: ['Organización Mundial de la Salud. Dengue y dengue grave', 'https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue'],
   msp2016: ['Ministerio de Salud Pública (2016). Boletín epidemiológico: informe del brote de dengue en Uruguay', 'https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/publicaciones/Extracto%20bolet%C3%ADn%20epid%20nov%202016%20Informe%20brote%20de%20Dengue%20en%20Uruguay_0.pdf'],
   mspCriaderos: ['Ministerio de Salud Pública. Lista de verificación y prevención para el control de criaderos de Aedes aegypti', 'https://www.gub.uy/sistema-nacional-emergencias/sites/sistema-nacional-emergencias/files/documentos/publicaciones/LISTA%20DE%20VERIFICACI%C3%93N%20Y%20PREVENCI%C3%93N%20PARA%20EL%20CONTROL%20DE%20CRIADEROS%20DE%20Aedes%20aegypti%20del%20MSP.pdf'],

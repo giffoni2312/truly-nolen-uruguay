@@ -40,7 +40,7 @@ function chrome(s) {
   s = s.replaceAll('/oficinas/venezuela/', '/oficinas/uruguay/');
   for (const [k, v] of Object.entries(PEST_SLUGS)) s = s.replaceAll(`/oficinas/uruguay/plagas/${k}/`, `/oficinas/uruguay/plagas/${v}/`);
   for (const [k, v] of Object.entries(PEST_LABELS)) s = s.replaceAll(k, v);
-  s = s.replaceAll('/oficinas/uruguay/assets/footer-venezuela.webp', `${A}/footer-uruguay.jpg`)
+  s = s.replaceAll('/oficinas/uruguay/assets/footer-venezuela.webp', `${A}/footer-uruguay.webp`)
     .replaceAll('Camino de la Felicidad, Falcón, Venezuela. Ilustración', 'La Mano y la Rambla de Punta del Este, Uruguay. Ilustración en acuarela')
     .replaceAll('Venezuela · Camino de la Felicidad, Falcón', 'Uruguay · La Mano, Punta del Este')
     .replaceAll('Conversemos', 'Hablemos')
@@ -53,6 +53,7 @@ function chrome(s) {
   s = s.replace(/<div class="tia-atajos" data-atajos>[\s\S]*?<\/div>/, `<div class="tia-atajos" data-atajos>${CHAT_TEXTS.atajos.map((t) => `<button type="button" class="tia-atajo">${t}</button>`).join('')}</div>`);
   s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
   s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
+  s = s.replaceAll('width="1774" height="887"', 'width="1774" height="877"');
   return s.replaceAll('Venezuela', 'Uruguay').replaceAll('venezuela', 'uruguay');
 }
 
@@ -73,7 +74,7 @@ function jsonLd(page, url) {
     blocks.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(([q, a]) => ({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) });
   }
   if (page.article) {
-    blocks.push({ '@context': 'https://schema.org', '@type': 'Article', headline: page.article.title, description: page.article.lead, image: `${SITE}${page.article.img}`, datePublished: '2026-10-31', inLanguage: 'es-UY', author: { '@type': 'Organization', name: 'Truly Nolen Uruguay' }, publisher: { '@type': 'Organization', name: 'Truly Nolen Uruguay', logo: { '@type': 'ImageObject', url: `${SITE}/tn-emblema.png` } } });
+    blocks.push({ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: page.article.title, description: page.article.lead, image: `${SITE}${page.article.img}`, datePublished: '2026-10-31', inLanguage: 'es-UY', author: { '@type': 'Organization', name: 'Truly Nolen Uruguay' }, publisher: { '@type': 'Organization', name: 'Truly Nolen Uruguay', logo: { '@type': 'ImageObject', url: `${SITE}/tn-emblema.png` } } });
   }
   return blocks.map((b) => `<script type="application/ld+json">${JSON.stringify(b).replace(/</g, '\\u003c')}</script>`).join('\n');
 }
@@ -95,7 +96,7 @@ function head(pre, page) {
   set('twitter:title', page.title);
   set('twitter:description', page.description);
   set('twitter:image', ogImg);
-  pre = pre.replace(/<meta property="og:image:(width|height)" content="[^"]*"\/>/g, '');
+  pre = pre.replace(/(<meta property="og:image:width" content=")[^"]*/, '$11200').replace(/(<meta property="og:image:height" content=")[^"]*/, '$1630');
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;
@@ -114,3 +115,8 @@ for (const page of PAGES) {
   writeFileSync(file, html);
   console.log(`✓ ${U}/${page.out}`);
 }
+
+// sitemap.xml with every Uruguay page (like the official draft)
+const urls = PAGES.map((p) => `  <url><loc>${SITE}${U}/${p.out}</loc></url>`).join('\n');
+writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+console.log(`✓ ${U}/sitemap.xml (${PAGES.length} direcciones)`);

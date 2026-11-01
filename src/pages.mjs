@@ -2,6 +2,7 @@ import {
   U, A, PESTS, PEST_ORDER, pestGrid, detailHero, tabla, dato, cols, faqSection, fuentes,
   servicesCards, contacto, DEFAULT_PROMPTS, GENERAL_FAQ, SRC,
 } from './helpers.mjs';
+import { POSTS_UY, CUERPOS, SRC_BLOG } from './blog-uy.mjs';
 
 const arrow = '<span aria-hidden="true">→</span>';
 
@@ -12,14 +13,14 @@ const home = {
   description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escribile a Truly AI y te orientamos en el siguiente paso.',
   faq: homeFaq,
   main: `<section class="cinema" id="inicio"><div class="film"><picture><source media="(max-width:760px)" srcset="${A}/uruguay-desktop.webp"/><img src="${A}/uruguay-desktop.webp" alt="Carro amarillo de Truly Nolen en la Rambla de Punta del Este, con La Mano y las torres de Playa Brava al fondo"/></picture><video muted loop playsinline preload="none" aria-hidden="true" data-src="${A}/uruguay-desktop.mp4"></video></div><div class="hero-text"><p class="eyebrow">Truly Nolen · <span data-preview-office>Uruguay</span></p><h1>Disfrutá tu espacio. Nosotros lo cuidamos.</h1><p>Prevención y atención para que vivas tranquilo en tu casa.</p><a class="button" href="#contacto">Hablemos</a></div><a class="discover" href="#servicios">Conocé el cuidado Truly Nolen ↓</a></section>
-<section class="g-cifras" aria-label="Truly Nolen en el mundo"><div class="g-cifras-in"><div><b>65</b> <span>países</span><small>presencia internacional</small></div><div><b>300+</b> <span>oficinas</span><small>en el mundo</small></div><div><b>80+</b> <span>años</span><small>de experiencia</small></div><div class="g-cifra-carro"><img src="/oficinas/assets/truly-carrito-asistente.svg" alt="Carro amarillo de Truly Nolen"/><span>una marca reconocible<small>nuestro carro emblemático</small></span></div></div></section>
+<section class="g-cifras" aria-label="Truly Nolen en el mundo"><div class="g-cifras-in"><div><b>65</b> <span>países</span><small>presencia internacional</small></div><div><b>300+</b> <span>oficinas</span><small>en el mundo</small></div><div><b>80+</b> <span>años</span><small>de experiencia</small></div><div class="g-cifra-carro"><img src="/oficinas/assets/truly-carrito-asistente.svg" alt=""/><span>una marca reconocible<small>nuestro carro emblemático</small></span></div></div></section>
 <section id="servicios" class="section g g-programa"><header class="g-cab"><p class="g-ey">Truly Nolen · Uruguay</p><h2>Un programa para tu espacio.</h2><p class="g-intro">De tu casa a tu negocio o tu planta. Elegí el servicio que querés conocer.</p></header><div class="g-prog-fila">
 <a class="g-prog g-prog-1" href="${U}/servicios/hogares/"><span class="g-prog-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5M6.5 10v9h11v-9M10 19v-5h4v5"/></svg></span><h3>Hogares</h3><p>Para tu casa, tu apartamento o tu casa de balneario.</p><span class="g-flecha" aria-hidden="true">↓</span></a>
 <a class="g-prog" href="${U}/servicios/comercios/"><span class="g-prog-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16l-1.5-4h-13zM5 9v10h14V9M9 19v-5h6v5M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/></svg></span><h3>Comercios</h3><p>Para tu local, tu equipo y tus clientes.</p><span class="g-flecha" aria-hidden="true">↓</span></a>
 <a class="g-prog" href="${U}/servicios/industria/"><span class="g-prog-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V10l5 3V10l5 3V10l5 3V5h3v15zM7 17h2M12 17h2M17 17h2"/></svg></span><h3>Industria</h3><p>Un programa que parte de conocer tu operación.</p><span class="g-flecha" aria-hidden="true">↓</span></a>
 </div></section>
-<section class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.jpg" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Tres zonas para revisar</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">Tu casa tiene tres áreas que se complementan. La inspección define qué hace falta en cada una.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Donde vivís y guardás la comida.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>Por donde entran.</p></li><li class="g-z-verde"><h3>Fondo, patio y azotea</h3><p>Lo que rodea tu casa.</p></li></ul><a class="g-link" href="${U}/servicios/hogares/">Conocé el servicio para hogares${arrow}</a></div></div></section>
-<section class="section g g-comercial"><header class="g-cab"><p class="g-ey">Comercio e industria</p><h2>Control de plagas para tu actividad.</h2><p class="g-intro">Almacenes, panaderías, parrilladas, plantas y depósitos: cada actividad tiene sus puntos críticos.</p></header><div class="g-com-grid"><a class="g-com-foto" href="${U}/servicios/comercios/"><img src="${A}/uy-operacion.jpg" alt="Técnica de Truly Nolen fumigando los zócalos de un depósito en Montevideo" loading="lazy"/><span><b>La prevención es parte de tu operación.</b><em>Conocé el servicio para comercios →</em></span></a><div class="g-sectores">
+<section class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.webp" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Tres zonas para revisar</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">Tu casa tiene tres áreas que se complementan. La inspección define qué hace falta en cada una.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Donde vivís y guardás la comida.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>Por donde entran.</p></li><li class="g-z-verde"><h3>Fondo, patio y azotea</h3><p>Lo que rodea tu casa.</p></li></ul><a class="g-link" href="${U}/servicios/hogares/">Conocé el servicio para hogares${arrow}</a></div></div></section>
+<section class="section g g-comercial"><header class="g-cab"><p class="g-ey">Comercio e industria</p><h2>Control de plagas para tu actividad.</h2><p class="g-intro">Almacenes, panaderías, parrilladas, plantas y depósitos: cada actividad tiene sus puntos críticos.</p></header><div class="g-com-grid"><a class="g-com-foto" href="${U}/servicios/comercios/"><img src="${A}/uy-operacion.webp" alt="Técnica de Truly Nolen fumigando los zócalos de un depósito en Montevideo" loading="lazy"/><span><b>La prevención es parte de tu operación.</b><em>Conocé el servicio para comercios →</em></span></a><div class="g-sectores">
 <a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Para quién?</h3><p>Almacenes, autoservicios, panaderías y confiterías, rotiserías, parrilladas, restaurantes, farmacias, policlínicas y oficinas.</p></span>${arrow}</a>
 <a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Qué incluye?</h3><p>Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.</p></span>${arrow}</a>
 <a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Cómo sigue?</h3><p>Registro de hallazgos y recomendaciones. Si tenés varias sucursales, se acuerda el alcance de cada una.</p></span>${arrow}</a>
@@ -27,18 +28,26 @@ const home = {
 </div></div></section>
 <section id="metodo" class="section g g-metodo"><span id="nosotros"></span><header class="g-cab"><p class="g-ey">Cómo trabajamos</p><h2>Un siguiente paso claro,<br/>en cada momento.</h2></header><div class="g-cols g-cols-4"><article><span class="g-n">01</span><h3>Escuchamos</h3><p>Contanos qué ves y qué querés proteger.</p></article><article><span class="g-n">02</span><h3>Evaluamos</h3><p>Revisamos el espacio y lo que favorece a las plagas.</p></article><article><span class="g-n">03</span><h3>Proponemos</h3><p>Te explicamos el plan y las indicaciones antes de empezar.</p></article><article><span class="g-n">04</span><h3>Acompañamos</h3><p>Después volvemos a revisar lo que haga falta.</p></article></div></section>
 ${pestGrid({ ey: 'Guía de plagas', h2: 'Reconocé la plaga.<br/>Entendé sus hábitos.', intro: 'Las que más vemos en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.' })}
-<section class="section g g-ayuda"><header class="g-cab"><p class="g-ey">Blog y preguntas</p><h2>Prevención y respuestas<br/>para vos.</h2><p class="g-intro">Consejos para prevenir plagas y cómo trabajamos.</p></header><div class="g-ayuda-grid"><article class="g-blog"><div class="g-blog-top"><img src="${A}/uy-blog-termitas-madera.jpg" alt="Termitas sobre madera dañada" loading="lazy"/><p class="g-ey">Del blog</p></div><h3><a href="${U}/blog/como-detectar-termitas-en-casa/">Termitas en tu casa: cómo detectarlas y qué hacer</a></h3><p>En Uruguay, la termita que da problemas es la subterránea. Avanza por dentro de la madera y se ve tarde: te contamos qué señales buscar y qué no hacer.</p><a class="g-link" href="${U}/blog/como-detectar-termitas-en-casa/">Leer el artículo${arrow}</a><a class="g-link g-link-2" href="${U}/blog/">Ver todo el blog${arrow}</a></article><div class="g-faq" id="preguntas"><h3>Lo que más nos preguntan</h3>${homeFaq.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${q}<span aria-hidden="true">+</span></summary><p>${a}</p></details>`).join('')}</div></div></section>
+<section class="section g g-ayuda"><header class="g-cab"><p class="g-ey">Blog y preguntas</p><h2>Prevención y respuestas<br/>para vos.</h2><p class="g-intro">Consejos para prevenir plagas y cómo trabajamos.</p></header><div class="g-ayuda-grid"><article class="g-blog"><div class="g-blog-top"><img src="${POSTS_UY[0].img}" alt="" loading="lazy"/><p class="g-ey">Del blog</p></div><h3><a href="${U}/blog/${POSTS_UY[0].slug}/">${POSTS_UY[0].title}</a></h3><p>${POSTS_UY[0].lead}</p><a class="g-link" href="${U}/blog/${POSTS_UY[0].slug}/">Leer el artículo${arrow}</a><a class="g-link g-link-2" href="${U}/blog/">Ver todo el blog${arrow}</a></article><div class="g-faq" id="preguntas"><h3>Lo que más nos preguntan.</h3>${homeFaq.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${q}<span aria-hidden="true">+</span></summary><p>${a}</p></details>`).join('')}</div></div></section>
 ${contacto(DEFAULT_PROMPTS, { zona: true })}`,
 };
 
 // ---------------------------------------------------------------- PESTS
-function pestPage(slug, { title, description, hero, t1, d, t2, faq = GENERAL_FAQ.slice(0, 4), src, prompts }) {
+const SVC = {
+  mosquitos: 'Revisemos dónde<br/>se está criando.',
+  'ratas-y-ratones': 'Cerremos el paso<br/>por donde entran.',
+  cucarachas: 'Encontremos dónde<br/>se esconden.',
+  hormigas: 'Sigamos la fila<br/>hasta el nido.',
+  termitas: 'Revisemos la madera<br/>de tu casa.',
+  'arana-de-los-rincones': 'Revisemos los rincones<br/>de tu casa.',
+};
+function pestPage(slug, { title, description, hero, t1, d, t2, faq = GENERAL_FAQ, src, prompts }) {
   const p = PESTS[slug];
   return {
     out: `plagas/${slug}/`, template: 'plagas/zancudos/', title: `${p.name} en Uruguay · Truly Nolen`, description, crumb: p.name, faq,
     main: [
       detailHero({ eyebrow: `${p.sub} · Uruguay`, h1: hero.h1, p: hero.p, img: p.img, alt: p.alt }),
-      tabla(t1), dato(d), tabla(t2), servicesCards(), faqSection(faq), fuentes(src), contacto(prompts),
+      tabla(t1), dato(d), tabla(t2), servicesCards(SVC[slug]), faqSection(faq), fuentes(src), contacto(prompts),
     ].join('\n'),
   };
 }
@@ -105,7 +114,7 @@ const cucarachas = pestPage('cucarachas', {
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que pide<br/>la norma.', items: [
     ['IM', 'Las empresas alimentarias de Montevideo deben tener un programa de control preventivo de plagas, que se tramita ante el Servicio de Salubridad Pública.', 'Intendencia de Montevideo, trámites'],
-    ['5 años', 'dura la habilitación bromatológica que otorga el Servicio de Regulación Alimentaria de la Intendencia.', 'Intendencia de Montevideo, trámites'],
+    ['60', 'ingredientes activos de insecticidas tienen reportes de resistencia en la cucaracha alemana, según una revisión de 102 estudios en 23 países.', 'Revisión científica (2025)'],
     ['¿Cucarachas?', 'Una «invasión de cucarachas» en la Costa de Oro y Montevideo resultó ser de chinches acuáticas. Identificar bien es el primer paso.', 'Montevideo Portal'],
   ] },
   t2: { ey: 'Prevención', h2: 'Sin agua, sin migas,<br/>sin escondites.', rows: [
@@ -113,7 +122,7 @@ const cucarachas = pestPage('cucarachas', {
     ['Agua', 'Lo que más buscan.', ['Canillas que gotean y piletas húmedas.', 'Rejillas de desagüe con tapa.']],
     ['Escondites', 'Donde pasan el día.', ['Grietas en zócalos y azulejos.', 'Cajas de cartón acumuladas.']],
   ] },
-  src: [SRC.imAlimentos, SRC.cucarachasMP],
+  src: [SRC.imAlimentos, SRC.cucarachasMP, SRC.resistencia],
   prompts: [
     ['Vi cucarachas en la cocina', 'Vi cucarachas en la cocina. ¿Cómo las controlo?'],
     ['Salen del desagüe', 'Salen cucarachas grandes del desagüe. ¿Qué hago?'],
@@ -199,31 +208,31 @@ const arana = pestPage('arana-de-los-rincones', {
 
 // ---------------------------------------------------------------- SERVICES
 const hogaresFaq = [
-  ['¿Qué pasa si hay niños o mascotas en casa?', 'Avisanos antes de la visita: te vamos a indicar las medidas que aplican al servicio y las precauciones para personas y mascotas.'],
-  ['¿Tengo que salir de casa?', 'Depende del tratamiento. Te lo indicamos antes de la visita, junto con las precauciones que hay que tomar.'],
-  ['¿Con una visita alcanza?', 'El equipo define el alcance y el seguimiento después de evaluar tu situación. Las visitas y condiciones se explican en la propuesta.'],
-  ['¿Cómo sé si llegan a mi barrio?', 'Escribile a Truly AI tu departamento, tu barrio o localidad y el tipo de espacio. Te confirmamos si podemos atenderte y cómo coordinar.'],
+  ['¿Y si en casa hay niños o una mascota?', 'Avisanos cuando coordinemos la visita. Según el tratamiento, te decimos qué hacer con ellos y por cuánto tiempo, antes de empezar.'],
+  ['¿Me tengo que ir de casa durante el servicio?', 'No siempre. Depende de lo que haya que aplicar y dónde. Si hace falta, te avisamos con tiempo y te explicamos cuándo podés volver.'],
+  ['¿Alcanza con una sola visita?', 'Depende de la plaga y de cuánto tiempo lleva. Después de revisar tu casa te proponemos cuántas visitas hacen falta y cada cuánto.'],
+  ['¿Cómo sé si llegan a mi barrio?', 'Escribile a Truly AI tu departamento, tu barrio o localidad y si es casa o apartamento. Te confirmamos si podemos ir y cómo coordinar.'],
 ];
 const hogares = {
   out: 'servicios/hogares/', template: 'servicios/hogares/', title: 'Control de plagas para hogares en Uruguay · Truly Nolen', crumb: 'Hogares',
   description: 'Revisamos tu casa, apartamento o casa de balneario por dentro y por fuera: interior, perímetro, fondo y azotea. Control de plagas en Uruguay.',
   faq: hogaresFaq,
   main: [
-    detailHero({ eyebrow: 'Servicio residencial · Uruguay', h1: 'Revisamos tu casa<br/>por dentro y por fuera.', p: 'De la cocina al fondo y la azotea. Revisamos tu casa o apartamento para encontrar dónde está la actividad de plagas y qué la favorece, cuidando a tu familia y a tus mascotas.', img: `${A}/uy-hogares.jpg`, alt: 'Cocina moderna de un apartamento en Montevideo con vista a la Rambla' }),
-    cols({ ey: 'Qué podés esperar', h2: 'Protección para tu casa.', items: [
-      ['¿Para quién?', 'Casas, apartamentos, casas de balneario y chacras con plagas o que quieren prevenirlas.'],
-      ['¿Qué incluye?', 'Revisión del interior, el perímetro y el fondo. Control según lo que se encuentre e indicaciones para preparar a tu familia y a tus mascotas.'],
-      ['¿Cómo sigue?', 'Recomendaciones para que no vuelvan a entrar y visitas de seguimiento según el programa acordado.'],
-    ], nota: 'Antes de empezar recibís una propuesta con el alcance y las condiciones para tu casa.' }),
-    `<section class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.jpg" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Tres zonas para revisar</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">Tu casa tiene tres áreas que se complementan. La inspección define qué hace falta en cada una.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Donde vivís y guardás la comida.</p><p class="g-z-det">Bajo la pileta y detrás de la heladera · Baños, rejillas y humedades · Dónde y a qué hora viste actividad.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>Por donde entran.</p><p class="g-z-det">Puertas, ventanas y rejas · Grietas y pasos de caños · Lo que está guardado contra las paredes.</p></li><li class="g-z-verde"><h3>Fondo, patio y azotea</h3><p>Lo que rodea tu casa.</p><p class="g-z-det">Plantas, canteros y huerta · Baldes, macetas y todo lo que junte agua · Leña, escombros y hojas acumuladas.</p></li></ul></div></div></section>`,
-    pestGrid({ ey: 'Lo que hay que saber en Uruguay', h2: 'Las plagas que más<br/>vemos en casa.', nota: '<strong>Dónde empieza la revisión.</strong> Cocina, baños, desagües, techos, el fondo y la azotea: ahí se buscan las señales y lo que favorece a cada plaga.' }),
-    tabla({ ey: 'Antes de hablar', h2: 'Qué conviene contarnos.', rows: [
-      ['Tu espacio', 'Contanos si es casa, apartamento o casa de balneario, y qué ambientes necesitan atención.'],
-      ['Tu rutina', 'Decinos qué horarios te quedan cómodos para una visita.'],
-      ['Lo que ves', 'Describí las señales y desde cuándo las notás. Contanos si hay niños o mascotas.'],
+    detailHero({ eyebrow: 'Hogares · Uruguay', h1: 'Tu casa, sin visitas<br/>que no invitaste.', p: 'Vamos de la cocina a la azotea buscando por dónde entran las plagas y qué las hace quedarse. Te explicamos todo antes de tocar nada, pensando en tu familia y en tus mascotas.', img: `${A}/uy-hogares.webp`, alt: 'Cocina moderna de un apartamento en Montevideo con vista a la Rambla' }),
+    cols({ ey: 'Cómo es el servicio', h2: 'Pensado para cómo<br/>se vive acá.', items: [
+      ['Dónde trabajamos', 'Casas con fondo, apartamentos en edificio, casas de balneario y chacras, tengan plaga o quieran adelantarse.'],
+      ['Qué hacemos', 'Recorremos adentro, el contorno de la casa y el fondo. Tratamos solo lo que hace falta y te dejamos por escrito cómo preparar el lugar.'],
+      ['Después', 'Te damos consejos para cerrar los accesos y volvemos a revisar según lo que hayamos acordado.'],
+    ], nota: 'Antes de arrancar te mandamos una propuesta: qué vamos a hacer en tu casa, cuántas visitas y en qué condiciones.' }),
+    `<section class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.webp" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Tres zonas para revisar</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">Adentro, el contorno y el fondo: una plaga casi nunca está en un solo lugar, por eso miramos las tres zonas juntas.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Lo que se usa todos los días.</p><p class="g-z-det">El mueble de la pileta y el hueco de la heladera · Baños, rejillas y manchas de humedad · Lo que viste, en qué lugar y a qué hora.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>La puerta de entrada de las plagas.</p><p class="g-z-det">Rendijas bajo puertas y ventanas · Agujeros donde pasan caños y cables · Cajas y trastos apoyados en la pared.</p></li><li class="g-z-verde"><h3>Fondo, patio y azotea</h3><p>Donde muchas veces empieza todo.</p><p class="g-z-det">Canteros, huerta y enredaderas · Baldes, macetas y cualquier cosa que junte agua · Pilas de leña, escombros y hojas.</p></li></ul></div></div></section>`,
+    pestGrid({ ey: 'Las de todos los días', h2: 'Lo que más aparece<br/>en las casas de acá.', nota: '<strong>Por dónde arrancamos.</strong> Cocina, baños, desagües, el entretecho, el fondo y la azotea: ahí aparecen primero las señales de cada plaga.' }),
+    tabla({ ey: 'Para la primera charla', h2: 'Lo que nos ayuda saber.', rows: [
+      ['Cómo es tu casa', 'Si es casa, apartamento o de balneario, cuántos ambientes tiene y cuáles te preocupan.'],
+      ['Cuándo te queda bien', 'Los días y horarios en que alguien puede abrirnos.'],
+      ['Qué viste', 'Qué apareció, en qué lugar y desde cuándo. Y si viven chicos o mascotas en la casa.'],
     ] }),
     faqSection(hogaresFaq),
-    fuentes([SRC.msp2016, SRC.dengue2024, SRC.maldonado2025, SRC.imAlimentos, SRC.laManana, SRC.constantino, SRC.arana]),
+    fuentes([SRC.msp2016, SRC.maldonado2025, SRC.imAlimentos, SRC.laManana, SRC.constantino, SRC.arana]),
     contacto([
       ['Hay mosquitos en casa', 'Tengo muchos mosquitos en mi casa y quiero saber de dónde vienen.'],
       ['Hay ratas o ratones', 'Tengo ratas o ratones en mi casa. ¿Cómo los saco?'],
@@ -245,7 +254,7 @@ const comercios = {
   description: 'Control de plagas para almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas en Uruguay. Qué pide la norma en Montevideo.',
   faq: comerciosFaq,
   main: [
-    detailHero({ eyebrow: 'Servicio comercial · Uruguay', h1: 'Tu negocio,<br/>protegido.', p: 'Un programa que tiene en cuenta tu local, a tus clientes y el ritmo de tu operación: almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas.', img: `${A}/uy-comercios.jpg`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas' }),
+    detailHero({ eyebrow: 'Servicio comercial · Uruguay', h1: 'Tu negocio,<br/>protegido.', p: 'Un programa que tiene en cuenta tu local, a tus clientes y el ritmo de tu operación: almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas.', img: `${A}/uy-comercios.webp`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas' }),
     tabla({ ey: 'Qué podés esperar', h2: 'Control para tu negocio.', rows: [
       ['¿Para quién?', 'Almacenes, autoservicios, panaderías y confiterías, rotiserías, parrilladas, restaurantes, farmacias, policlínicas y oficinas.'],
       ['¿Qué incluye?', 'Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.'],
@@ -257,9 +266,18 @@ const comercios = {
       ['Almacenes y autoservicios', 'Mercadería que entra y sale todos los días.', ['Depósito y góndolas.', 'Zona de residuos y contenedores.']],
       ['Farmacias, policlínicas y oficinas', 'Espacios con público y protocolos de higiene.', ['Depósitos y archivos.', 'Cocinas y áreas de descanso del personal.']],
     ] }),
+    dato({ ey: 'Un dato que pesa', h2: 'Lo que encontró<br/>la ciencia.', items: [
+      ['60', 'ingredientes activos de insecticidas tienen reportes de resistencia en la cucaracha alemana, según una revisión de 102 estudios en 23 países.', 'Revisión científica (2025)'],
+    ] }),
+    tabla({ ey: 'Por qué importa', h2: 'En un negocio de alimentos,<br/>una plaga es un riesgo de salud.', rows: [
+      ['Roedores y leptospirosis', 'Un seguimiento de diez años describió la leptospirosis humana en Uruguay como un problema de salud no resuelto.'],
+      ['Las lluvias', 'En Montevideo, el MSP informó una muerte por leptospirosis y la vinculó con las lluvias.'],
+      ['Insecticidas que no alcanzan', 'Con tantos reportes de resistencia, aplicar siempre el mismo producto no basta: hay que encontrar dónde se esconde la plaga.'],
+    ] }),
     tabla({ ey: 'Lo que dice la norma', h2: 'Si vendés alimentos,<br/>la norma lo pide.', rows: [
       ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
-      ['Habilitación bromatológica', 'La otorga el Servicio de Regulación Alimentaria de la Intendencia de Montevideo y dura 5 años.'],
+      ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
+      ['Guía oficial', 'gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
       ['Empresa habilitada', 'Las empresas de control de plagas deben estar habilitadas por el MSP y registradas en la Intendencia, con un técnico responsable.'],
     ], nota: 'Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.' }),
     pestGrid({ ey: 'Guía de plagas', h2: 'Las plagas que más<br/>afectan a un negocio.', slugs: ['cucarachas', 'ratas-y-ratones', 'mosquitos'] }),
@@ -269,7 +287,7 @@ const comercios = {
       ['Lo que ves', 'Describí las señales, dónde aparecen y desde cuándo.'],
     ] }),
     faqSection(comerciosFaq),
-    fuentes([SRC.imAlimentos, SRC.imRegistro, SRC.mspEmpresas]),
+    fuentes([SRC.imAlimentos, SRC.imRegistro, SRC.mspEmpresas, SRC.guiaPlan, SRC.resistencia, SRC.leptoSeguimiento, SRC.leptoLluvia]),
     contacto([
       ['Tengo una panadería o restaurante', 'Tengo una panadería o un restaurante y quiero un programa de control de plagas.'],
       ['Necesito el programa preventivo', 'Necesito un programa de control preventivo de plagas para mi comercio de alimentos.'],
@@ -289,12 +307,12 @@ const industria = {
   description: 'Manejo integrado de plagas para frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística en Uruguay.',
   faq: industriaFaq,
   main: [
-    detailHero({ eyebrow: 'Servicio industrial · Uruguay', h1: 'Control de plagas<br/>para tu industria.', p: 'Frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística. Un programa que parte de conocer tu operación, de la recepción al despacho.', img: `${A}/uy-industria.jpg`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales' }),
-    cols({ ey: 'Qué podés esperar', h2: 'Manejo integrado<br/>de plagas.', items: [
-      ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.'],
-      ['Programa', 'Monitoreo, control y registros según tu actividad y las auditorías que tenés que cumplir.'],
-      ['Seguimiento', 'Informes de hallazgos, tendencias y recomendaciones, con visitas según el programa acordado.'],
-    ] }),
+    detailHero({ eyebrow: 'Servicio industrial · Uruguay', h1: 'Control de plagas<br/>para tu industria.', p: 'Frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística. Un programa que parte de conocer tu operación, de la recepción al despacho.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales' }),
+    tabla({ ey: 'Qué podés esperar', h2: 'Manejo integrado<br/>de plagas.', rows: [
+      ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.', ['Accesos, desagües y zonas húmedas.', 'Depósitos, silos y residuos.']],
+      ['Programa', 'Monitoreo, control y registros según tu actividad y las auditorías que tenés que cumplir.', ['Estaciones de monitoreo numeradas.', 'Registro de cada visita.']],
+      ['Seguimiento', 'Informes de hallazgos, tendencias y recomendaciones, con visitas según el programa acordado.', ['Tendencias por zona.', 'Medidas correctivas y su control.']],
+    ], nota: 'Antes de empezar recibís una propuesta con el alcance, la frecuencia y los registros para tu planta.' }),
     dato({ ey: 'Por qué importa en Uruguay', h2: 'Lo que exporta<br/>el país.', items: [
       ['2.680', 'millones de dólares exportó la carne bovina en 2025: el primer rubro del país.', 'El Observador · Uruguay XXI (2025)'],
       ['2.307', 'millones de dólares exportó la celulosa en 2025.', 'El Observador · Uruguay XXI (2025)'],
@@ -306,6 +324,11 @@ const industria = {
       ['Depósito y silos', 'Donde se guarda.', ['Granos, bolsas y pallets.', 'Grietas y acumulación de polvo.']],
       ['Despacho y perímetro', 'Lo que rodea la planta.', ['Residuos y contenedores.', 'Pastizales, desagües pluviales y cercos.']],
     ] }),
+    tabla({ ey: 'Lo que se sabe', h2: 'Por qué fumigar<br/>no basta.', rows: [
+      ['Resistencia', 'Una revisión de 102 estudios en 23 países reporta cucarachas alemanas resistentes a 60 ingredientes activos, sobre todo piretroides y organofosforados.'],
+      ['Registros', 'En Montevideo, el programa preventivo de una empresa alimentaria tiene que dejar anotado el control, quién lo hizo y las medidas correctivas.'],
+      ['Roedores y lluvias', 'En Montevideo, el MSP vinculó con las lluvias una muerte por leptospirosis, una enfermedad que transmiten los roedores.'],
+    ] }),
     pestGrid({ ey: 'Guía de plagas', h2: 'Plagas que vigilamos<br/>en la industria.', slugs: ['ratas-y-ratones', 'cucarachas', 'hormigas'] }),
     tabla({ ey: 'Antes de hablar', h2: 'Qué conviene contarnos.', rows: [
       ['Tu planta', 'Rubro, superficie y cantidad de edificios.'],
@@ -313,7 +336,7 @@ const industria = {
       ['Lo que ves', 'Dónde aparecen las señales y desde cuándo.'],
     ] }),
     faqSection(industriaFaq),
-    fuentes([SRC.exportaciones, SRC.uruguayXXI, SRC.palomas]),
+    fuentes([SRC.exportaciones, SRC.uruguayXXI, SRC.palomas, SRC.resistencia, SRC.imAlimentos, SRC.leptoLluvia]),
     contacto([
       ['Tengo una planta de alimentos', 'Tengo una planta de alimentos y quiero un programa de manejo integrado de plagas.'],
       ['Tengo un depósito o silos', 'Tengo un depósito o silos de granos y quiero una evaluación.'],
@@ -323,19 +346,12 @@ const industria = {
 };
 
 // ---------------------------------------------------------------- BLOG
-const POSTS = [
-  { slug: 'como-detectar-termitas-en-casa', tag: 'Termitas', img: `${A}/uy-blog-termitas-madera.jpg`, alt: 'Termitas sobre madera dañada',
-    title: 'Termitas en tu casa: cómo detectarlas y qué hacer',
-    lead: 'En Uruguay, la termita que da problemas es la subterránea. Avanza por dentro de la madera y se ve tarde: te contamos qué señales buscar y qué no hacer.' },
-  { slug: 'como-prevenir-el-mosquito-del-dengue', tag: 'Mosquitos', img: `${A}/uy-plaga-mosquito-foto.webp`, alt: 'Mosquito Aedes aegypti',
-    title: 'Cómo prevenir el mosquito del dengue en casa: rutina semanal',
-    lead: 'Dos de cada tres criaderos del Aedes aegypti están en las casas. Te contamos qué tapar, vaciar y limpiar cada semana, según el MSP y la OMS.' },
-];
+const POSTS = POSTS_UY;
 const card = (p, featured = false) => `<article class="blog-card${featured ? ' blog-featured' : ''}"><a href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><img src="${p.img}" alt="" loading="lazy"/></a><div><p class="eyebrow">${p.tag}</p><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer guía →</a></div></article>`;
 
 const blog = {
   out: 'blog/', template: 'blog/', title: 'Blog de control de plagas en Uruguay · Truly Nolen', crumb: 'Blog',
-  description: 'Guías sobre las plagas de Uruguay: termitas, mosquitos, ratas, cucarachas, hormigas y la araña de los rincones, con cada dato respaldado por su fuente.',
+  description: 'Guías sobre plagas de Uruguay: la araña de los rincones, la hormiga cortadora y más, con cada dato respaldado por su fuente abierta.',
   main: `<section class="section blog-head"><a class="text-link" href="${U}/">← Volver al inicio</a><p class="eyebrow">Blog · Uruguay</p><h1>Blog de control de plagas</h1><p>Guías sobre las plagas de acá, con cada dato respaldado por su fuente.</p></section><section class="section blog-lista"><div class="blog-grid">${card(POSTS[0], true)}${card(POSTS[1])}</div></section>
 ${contacto(DEFAULT_PROMPTS)}`,
 };
@@ -352,80 +368,10 @@ ${contacto(prompts)}`,
   };
 }
 
-const postTermitas = article(POSTS[0], {
-  body: `<p>¿Cómo saber si tenés termitas en casa? En Uruguay, la que causa problemas es la termita subterránea del género <em>Reticulitermes</em>. Vive bajo tierra y sube a la madera por dentro, así que cuando se ven los daños la colonia ya lleva tiempo trabajando. La buena noticia: hay señales concretas para detectarla.</p>
-<h2>La termita de Uruguay vino de afuera</h2>
-<p>Según una revisión publicada en el <em>Journal of Applied Entomology</em> (Constantino, 2002), <em>Reticulitermes</em> fue introducida en Uruguay y es la única termita plaga seria del país.</p>
-<p>Un estudio de 2023 sobre <em>Reticulitermes flavipes</em>, una de las termitas plaga más importantes del mundo, la menciona como establecida en Uruguay. Por eso el objetivo en tu casa no es «que no existan», sino detectarlas a tiempo y no darles la madera y la humedad que buscan.</p>
-<h2>Las señales: tubos de barro, madera hueca y alados</h2>
-<ul>
-<li><strong>Tubos de tierra</strong> entre el suelo y la madera o sobre las paredes: así llega la termita subterránea a su alimento (UC IPM).</li>
-<li><strong>Madera hueca</strong>: marcos, zócalos o pisos que suenan huecos o se hunden al apretarlos.</li>
-<li><strong>Insectos con alas</strong> cerca de ventanas y luces. Ojo: según UC IPM, ver enjambres «no siempre significa» que la casa esté infestada.</li>
-</ul>
-<h2>Qué no hacer: productos a ciegas</h2>
-<p>La guía de termitas de la Universidad de California (UC IPM) advierte que los pesticidas caseros contra las termitas «generalmente no son efectivos». Además, si rompés los tubos o movés la madera antes de que alguien la vea, se pierden las pistas para ubicar por dónde entran.</p>
-<h2>Cómo prevenir: madera seca y lejos del suelo</h2>
-<p>UC IPM recomienda mantener la madera lejos de la tierra y seca:</p>
-<ul>
-<li>Que la madera de la casa no toque el suelo.</li>
-<li>Retirar leña, restos de madera y postes viejos pegados a la casa.</li>
-<li>Reparar pérdidas de agua y filtraciones, y ventilar sótanos y espacios bajos.</li>
-</ul>
-<p>UC IPM es una referencia general de California, no uruguaya, pero describe el mismo género de termita que tenemos acá.</p>
-<h2>Truly AI te ayuda a dar el primer paso hoy</h2>
-<p>Antes de cualquier cosa, sacá fotos de las señales y anotá dónde están: marcos, zócalos, placares o muebles. Con eso ya podés escribirle a Truly AI, el asistente de Truly Nolen, por el chat del sitio o por WhatsApp. Te responde al instante y te orienta en el siguiente paso.</p>
-<p>Si querés repasar las señales, entrá a la <a href="${U}/plagas/termitas/">guía de termitas</a>.</p>`,
-  faq: [
-    ['¿Las termitas se pueden eliminar con productos caseros?', 'La guía de termitas de la Universidad de California (UC IPM) dice que los pesticidas caseros contra las termitas «generalmente no son efectivos». Antes de gastar en ellos, escribile a Truly AI y te orienta.'],
-    ['¿Qué son los tubos de barro en la pared?', 'Son los caminos que construye la termita subterránea para llegar del suelo a la madera sin exponerse (UC IPM). Si los ves, no los rompas: sacales una foto.'],
-    ['¿Ver termitas con alas significa que mi casa está infestada?', 'No siempre. Según UC IPM, ver enjambres no siempre significa que la casa esté infestada. Fotografialos, anotá por dónde salieron y consultá.'],
-    ['¿Qué termita hay en Uruguay?', 'La termita subterránea del género Reticulitermes, introducida en el país. Según Constantino (2002), es la única termita plaga seria de Uruguay.'],
-  ],
-  src: [SRC.constantino, SRC.carrijo, SRC.ucipm],
-  prompts: [
-    ['Encontré tubos de barro', 'Encontré tubos de barro en una pared o en la madera. ¿Pueden ser termitas?'],
-    ['La madera suena hueca', 'Un marco o un zócalo suena hueco. ¿Cómo confirmo si hay termitas?'],
-    ['Vi insectos con alas', 'Vi muchos insectos con alas cerca de una ventana. ¿Son termitas?'],
-  ],
-  related: POSTS[1],
-});
-
-const postMosquito = article(POSTS[1], {
-  body: `<p>Para prevenir el mosquito del dengue en casa hay que sacarle el agua donde se cría. El <em>Aedes aegypti</em> pone sus huevos en recipientes con agua quieta, y según el Ministerio de Salud Pública, dos de cada tres criaderos están en los domicilios. La rutina es simple: tapar, vaciar y limpiar, todas las semanas.</p>
-<h2>El dengue ya no es un problema lejano en Uruguay</h2>
-<p>El <em>Aedes aegypti</em> se había declarado erradicado de Uruguay en 1958 y se volvió a detectar en 1997. En 2016 llegó el primer brote de dengue autóctono en 100 años: 19 casos, 18 de ellos en Montevideo, con epicentro en Pocitos (MSP). En 2024 hubo un nuevo brote: el MSP confirmó el primer caso autóctono del año el 1 de marzo.</p>
-<h2>Dónde se cría el mosquito en una casa uruguaya</h2>
-<ul>
-<li><strong>Baldes y tanques</strong> sin tapa en el fondo o en la azotea.</li>
-<li><strong>Platos de macetas y floreros</strong> con agua estancada.</li>
-<li><strong>Bebederos de mascotas</strong> que no se cambian seguido.</li>
-<li><strong>Cubiertas viejas, botellas y latas</strong> que juntan agua de lluvia.</li>
-<li><strong>Canaletas y desagües</strong> tapados con hojas.</li>
-</ul>
-<h2>La rutina de cada semana: tapá, vaciá y limpiá</h2>
-<p>La Organización Mundial de la Salud recomienda cubrir, vaciar y limpiar cada semana los recipientes donde se guarda agua. El MSP impulsa la misma idea con su campaña «Activate contra el mosquito». Elegí un día fijo, por ejemplo el domingo, y recorré el fondo, el patio y la azotea.</p>
-<ol>
-<li>Tapá los recipientes que necesitás tener con agua.</li>
-<li>Vaciá y dá vuelta lo que no usás: baldes, macetas vacías, juguetes.</li>
-<li>Limpiá con cepillo los bordes de bebederos y floreros: los huevos quedan pegados a las paredes del recipiente.</li>
-</ol>
-<h2>Truly AI te ayuda a revisar tu casa o tu negocio</h2>
-<p>Si los mosquitos siguen apareciendo, escribile a Truly AI por el chat del sitio o por WhatsApp. Contale dónde los ves y qué recipientes tenés en el fondo, y te orienta en el siguiente paso. Para repasar las señales, entrá a la <a href="${U}/plagas/mosquitos/">guía de mosquitos</a>.</p>`,
-  faq: [
-    ['¿Cada cuánto tengo que revisar el fondo?', 'Una vez por semana. Es la recomendación de la OMS: cubrir, vaciar y limpiar los recipientes donde se guarda agua.'],
-    ['¿Por qué hay que cepillar los recipientes?', 'Porque los huevos del Aedes aegypti quedan pegados a las paredes del recipiente: vaciarlo no siempre alcanza.'],
-    ['¿Hubo dengue autóctono en Uruguay?', 'Sí. En 2016 hubo 19 casos, el primer brote en 100 años (MSP), y en 2024 hubo un nuevo brote, con el primer caso autóctono confirmado el 1 de marzo.'],
-    ['¿Qué hago si tengo síntomas de dengue?', 'Consultá a tu prestador de salud. Esta guía es sobre prevención en casa y no reemplaza la consulta médica.'],
-  ],
-  src: [SRC.oms, SRC.msp2016, SRC.mspCriaderos, SRC.mspActivate, SRC.dengue2024],
-  prompts: [
-    ['Tengo muchos mosquitos', 'Tengo muchos mosquitos en casa y quiero saber de dónde vienen.'],
-    ['Junto agua en el fondo', 'Tengo baldes, macetas o cubiertas en el fondo. ¿Cómo evito que se críe el mosquito?'],
-    ['Es en mi negocio', 'Hay mosquitos en mi negocio y quiero una evaluación.'],
-  ],
-  related: POSTS[0],
-});
+const postDe = (i) => { const p = POSTS[i], k = CUERPOS[p.slug];
+  return article(p, { body: k.body, faq: k.faq, src: k.src.map((x) => SRC_BLOG[x]), prompts: k.prompts, related: POSTS[1 - i] }); };
+const postTermitas = postDe(0);
+const postMosquito = postDe(1);
 
 // ---------------------------------------------------------------- LEGAL
 function legal(out, crumb, h1, html) {
