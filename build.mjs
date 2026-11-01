@@ -54,6 +54,8 @@ function chrome(s) {
   s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
   s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
   s = s.replaceAll('width="1774" height="887"', 'width="1774" height="877"');
+  // owner request: the hero always moves (loads before preview.js / escenas.js)
+  s = s.replace('<script defer src="/machotes/assets/preview.js', '<script src="/oficinas/uruguay/assets/forzar-movimiento.js"></script><script defer src="/machotes/assets/preview.js');
   return s.replaceAll('Venezuela', 'Uruguay').replaceAll('venezuela', 'uruguay');
 }
 
