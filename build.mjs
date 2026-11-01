@@ -87,6 +87,8 @@ function head(pre, page) {
   const set = (key, val) => { pre = pre.replace(new RegExp(`(<meta (?:name|property)="${key}" content=")[^"]*(")`), `$1${esc(val)}$2`); };
   pre = pre.replace(/<title>[^<]*<\/title>/, `<title>${esc(page.title)}</title>`);
   pre = pre.replace(/<link rel="canonical" href="[^"]*"\/>/, `<link rel="canonical" href="${url}"/>`);
+  // Tab icon: the Venezuela template has none, so browsers asked for /favicon.ico and got a 404
+  if (!/<link rel="icon"/.test(pre)) pre = pre.replace(`<link rel="canonical" href="${url}"/>`, `$&<link rel="icon" href="/tn-emblema.png" type="image/png"/>`);
   set('description', page.description);
   set('og:site_name', 'Truly Nolen Uruguay');
   set('og:locale', 'es_UY');
