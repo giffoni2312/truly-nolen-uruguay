@@ -1,0 +1,188 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Carro real</title>
+<style>body{margin:0;background:#111;color:#eee;font:13px sans-serif}canvas{max-width:100%;display:block}</style>
+<canvas id="c"></canvas><pre id="o"></pre>
+<script>
+// Lays the REAL Truly car from the Venezuela hero video (logo, whiskers, rotating wheels) over the
+// Uruguay background, aligned on the red nose of the AI car so it covers it exactly.
+//   ?modo=foto   -> still test on the chosen Uruguay image (tools/out/ia-portada.jpg)
+//   ?modo=video  -> composite every frame of the Uruguay video and record it
+const P = new URLSearchParams(location.search);
+const num = (k, d) => (P.has(k) ? +P.get(k) : d);
+const SRC_W = 1920, SRC_H = 1204; // Venezuela video size; silhouette traced in these pixels
+const CAR = [[898, 780], [919, 714], [977, 639], [1012, 600], [1044, 572], [1080, 552], [1118, 539], [1270, 534], [1417, 534], [1452, 570], [1484, 614], [1530, 636], [1550, 656], [1633, 705], [1686, 772], [1703, 863], [1699, 929], [1650, 971], [1152, 1012], [919, 929], [894, 863]];
+const EARS = [[1182, 478, 63], [1354, 485, 61]];
+const log = (o) => { document.getElementById('o').textContent += JSON.stringify(o) + '\n'; };
+
+// Feathered alpha mask of the car, built once at source size
+const mask = new OffscreenCanvas(SRC_W, SRC_H);
+{ const m = mask.getContext('2d'); m.filter = `blur(${num('pluma', 2.5)}px)`; m.fillStyle = '#fff';
+  m.beginPath(); CAR.forEach(([x, y], i) => (i ? m.lineTo(x, y) : m.moveTo(x, y))); m.closePath(); m.fill();
+  EARS.forEach(([x, y, r]) => { m.beginPath(); m.arc(x, y, r, 0, 7); m.fill(); }); }
+
+// Red-nose centroid and radius inside a region (fractions of the frame)
+function nariz(g, w, h, x0 = 0.45) {
+  const d = g.getImageData(0, 0, w, h).data; let sx = 0, sy = 0, n = 0;
+  for (let y = Math.floor(h * 0.3); y < h * 0.95; y++) for (let x = Math.floor(w * x0); x < w; x++) {
+    const i = (y * w + x) * 4, r = d[i], gg = d[i + 1], b = d[i + 2];
+    if (r > 160 && gg < 80 && b < 80 && r > gg * 2.2) { sx += x; sy += y; n++; }
+  }
+  return n > 20 ? { x: sx / n, y: sy / n, r: Math.sqrt(n / Math.PI) } : null;
+}
+
+// Car cut-out of one source frame (car pixels only)
+const recorte = new OffscreenCanvas(SRC_W, SRC_H);
+function recortar(fuente) {
+  const r = recorte.getContext('2d');
+  r.globalCompositeOperation = 'source-over'; r.clearRect(0, 0, SRC_W, SRC_H); r.drawImage(fuente, 0, 0, SRC_W, SRC_H);
+  r.globalCompositeOperation = 'destination-in'; r.drawImage(mask, 0, 0);
+  r.globalCompositeOperation = 'source-over';
+  return recorte;
+}
+
+// Place the cut-out so its nose lands on the target nose, scaled by nose size (or ?escala=)
+function pegar(g, carro, nS, nT) {
+  const s = num('escala', 0) || (nT.r / nS.r) * num('ajuste', 1);
+  g.drawImage(carro, nT.x - nS.x * s + num('dx', 0), nT.y - nS.y * s + num('dy', 0), SRC_W * s, SRC_H * s);
+  return s;
+}
+
+const cargarVideo = (src) => new Promise((ok) => { const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = src; v.oncanplaythrough = () => ok(v); v.load(); });
+const ir = (v, t) => new Promise((ok) => { v.onseeked = () => ok(); v.currentTime = t; });
+
+window.foto = async function () {
+  const ve = await cargarVideo('/oficinas/venezuela/assets/venezuela-desktop.mp4'); await ir(ve, 0.05);
+  const fondo = new Image(); fondo.src = '/_tools/out/ia-portada.jpg'; await fondo.decode();
+  const W = fondo.naturalWidth, H = fondo.naturalHeight;
+  const c = document.getElementById('c'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true });
+  // source nose measured on the full source frame
+  const tmp = new OffscreenCanvas(SRC_W, SRC_H).getContext('2d', { willReadFrequently: true }); tmp.drawImage(ve, 0, 0, SRC_W, SRC_H);
+  const nS = nariz(tmp, SRC_W, SRC_H);
+  g.drawImage(fondo, 0, 0); const nT = nariz(g, W, H);
+  const s = pegar(g, recortar(ve), nS, nT);
+  log({ modo: 'foto', nS, nT, escala: +s.toFixed(3) }); document.title = 'foto lista';
+};
+
+window.guardar = async function (nombre, q = 0.9) {
+  const blob = await new Promise((r) => document.getElementById('c').toBlob(r, 'image/jpeg', q));
+  return (await fetch('/_save/' + nombre, { method: 'POST', body: blob })).status + ' ' + blob.size;
+};
+
+window.video = async function (nombre) {
+  const ve = await cargarVideo('/oficinas/venezuela/assets/venezuela-desktop.mp4');
+  const uy = await cargarVideo('/oficinas/uruguay/assets/uruguay-desktop.mp4');
+  const W = uy.videoWidth, H = uy.videoHeight;
+  const c = document.getElementById('c'); c.width = W; c.height = H; const g = c.getContext('2d', { willReadFrequently: true });
+  const tmp = new OffscreenCanvas(SRC_W, SRC_H).getContext('2d', { willReadFrequently: true });
+  const tipo = ['video/mp4;codecs=avc1.640028', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'].find((t) => MediaRecorder.isTypeSupported(t));
+  const rec = new MediaRecorder(c.captureStream(30), { mimeType: tipo, videoBitsPerSecond: num('bps', 12e6) });
+  const partes = []; rec.ondataavailable = (e) => e.data.size && partes.push(e.data);
+  // nose of the AI car, smoothed over time so the real car does not jitter
+  let suave = null; const A = num('suavizar', 0.35); const escalas = [];
+  await ir(uy, 0); await ir(ve, 0);
+  rec.start(); uy.play(); ve.loop = true; ve.play();
+  await new Promise((fin) => {
+    const paso = () => {
+      if (uy.ended || uy.currentTime >= uy.duration - 0.02) return fin();
+      tmp.drawImage(ve, 0, 0, SRC_W, SRC_H); const nS = nariz(tmp, SRC_W, SRC_H);
+      g.drawImage(uy, 0, 0, W, H); const nT = nariz(g, W, H);
+      if (nT) suave = suave ? { x: suave.x + (nT.x - suave.x) * A, y: suave.y + (nT.y - suave.y) * A, r: suave.r + (nT.r - suave.r) * A } : nT;
+      if (nS && suave) escalas.push(pegar(g, recortar(ve), nS, suave));
+      uy.requestVideoFrameCallback(paso);
+    };
+    uy.requestVideoFrameCallback(paso);
+  });
+  rec.stop(); await new Promise((r) => (rec.onstop = r)); ve.pause();
+  const blob = new Blob(partes, { type: tipo.split(';')[0] });
+  const ext = tipo.includes('mp4') ? 'mp4' : 'webm';
+  const res = await fetch('/_save/' + nombre + '.' + ext, { method: 'POST', body: blob });
+  const r = { tipo, archivo: nombre + '.' + ext, bytes: blob.size, cuadros: escalas.length, escalaMin: Math.min(...escalas).toFixed(3), escalaMax: Math.max(...escalas).toFixed(3), guardado: res.status };
+  log(r); document.title = 'video listo'; return r;
+};
+
+// --- Empty Uruguay road + real car (no AI car underneath) ---------------------------------------
+// The car stays fixed (like a tracking shot) while the background slowly pushes in toward the road's
+// vanishing point, so it reads as driving forward. The car is placed where the AI car was in the
+// image the owner chose (nose measured there: 1638,1060 r 25.3 on a 2602x1632 frame).
+const OUT_W = 1920, OUT_H = 1204;
+const NARIZ_ELEGIDA = { x: 1638 / 2602, y: 1060 / 1632, r: 25.34 / 2602 };
+const FUGA = { x: num('fx', 0.165), y: num('fy', 0.40) }; // road vanishing point (fraction of the image)
+
+function dibujarCuadro(g, fondo, carroFuente, nS, t, dur) {
+  const W0 = fondo.naturalWidth, H0 = fondo.naturalHeight;
+  const base = Math.max(OUT_W / W0, OUT_H / H0);
+  const z = 1 + num('zoom', 0.07) * (t / dur);            // slow push-in, 0 → +7 %
+  const s = base * z;
+  const ax = FUGA.x * W0, ay = FUGA.y * H0;                 // zoom anchored on the vanishing point
+  const cx = FUGA.x * OUT_W, cy = FUGA.y * OUT_H;
+  g.drawImage(fondo, cx - ax * s, cy - ay * s, W0 * s, H0 * s);
+  // car position in the output frame (fixed, measured at zoom 1)
+  const nT = { x: NARIZ_ELEGIDA.x * W0 * base + (OUT_W - W0 * base) / 2, y: NARIZ_ELEGIDA.y * H0 * base + (OUT_H - H0 * base) / 2, r: NARIZ_ELEGIDA.r * W0 * base };
+  const esc = (nT.r / nS.r) * num('ajuste', 1);
+  // soft contact shadow under the car
+  g.save(); g.filter = 'blur(18px)'; g.fillStyle = 'rgba(0,0,0,.45)';
+  g.beginPath(); g.ellipse(nT.x + num('sx', -150) * esc, nT.y + num('sy', 215) * esc, 430 * esc, 46 * esc, -0.12, 0, 7); g.fill(); g.restore();
+  g.drawImage(recortar(carroFuente), nT.x - nS.x * esc, nT.y - nS.y * esc, SRC_W * esc, SRC_H * esc);
+}
+
+window.fotoVacia = async function () {
+  const ve = await cargarVideo('/oficinas/venezuela/assets/venezuela-desktop.mp4'); await ir(ve, 0.05);
+  const fondo = new Image(); fondo.src = '/_tools/out/ia-ruta-vacia.jpg'; await fondo.decode();
+  const c = document.getElementById('c'); c.width = OUT_W; c.height = OUT_H; const g = c.getContext('2d', { willReadFrequently: true });
+  const tmp = new OffscreenCanvas(SRC_W, SRC_H).getContext('2d', { willReadFrequently: true }); tmp.drawImage(ve, 0, 0, SRC_W, SRC_H);
+  const nS = nariz(tmp, SRC_W, SRC_H);
+  dibujarCuadro(g, fondo, ve, nS, 0, 1);
+  log({ modo: 'foto-vacia', fondo: fondo.naturalWidth + 'x' + fondo.naturalHeight, nS }); document.title = 'foto lista';
+};
+
+window.videoVacia = async function (nombre) {
+  const ve = await cargarVideo('/oficinas/venezuela/assets/venezuela-desktop.mp4');
+  const fondo = new Image(); fondo.src = '/_tools/out/ia-ruta-vacia.jpg'; await fondo.decode();
+  const c = document.getElementById('c'); c.width = OUT_W; c.height = OUT_H; const g = c.getContext('2d', { willReadFrequently: true });
+  const tmp = new OffscreenCanvas(SRC_W, SRC_H).getContext('2d', { willReadFrequently: true });
+  const tipo = ['video/mp4;codecs=avc1.640028', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'].find((t) => MediaRecorder.isTypeSupported(t));
+  const rec = new MediaRecorder(c.captureStream(30), { mimeType: tipo, videoBitsPerSecond: num('bps', 10e6) });
+  const partes = []; rec.ondataavailable = (e) => e.data.size && partes.push(e.data);
+  await ir(ve, 0); let nS = null, cuadros = 0;
+  rec.start(); ve.play();
+  await new Promise((fin) => {
+    const paso = () => {
+      if (ve.ended || ve.currentTime >= ve.duration - 0.03) return fin();
+      if (!nS) { tmp.drawImage(ve, 0, 0, SRC_W, SRC_H); nS = nariz(tmp, SRC_W, SRC_H); } // measured once: per-frame pixel scans drop frames
+      if (nS) { dibujarCuadro(g, fondo, ve, nS, ve.currentTime, ve.duration); cuadros++; }
+      ve.requestVideoFrameCallback(paso);
+    };
+    ve.requestVideoFrameCallback(paso);
+  });
+  rec.stop(); await new Promise((r) => (rec.onstop = r));
+  const blob = new Blob(partes, { type: tipo.split(';')[0] });
+  const ext = tipo.includes('mp4') ? 'mp4' : 'webm';
+  const res = await fetch('/_save/' + nombre + '.' + ext, { method: 'POST', body: blob });
+  const r = { tipo, archivo: nombre + '.' + ext, bytes: blob.size, cuadros, guardado: res.status };
+  log(r); document.title = 'video listo'; return r;
+};
+
+// Offline render: seek the Venezuela video frame by frame and save every composited frame as JPEG
+// (tools/out/cuadro-0001.jpg …). No real-time pressure, so no frame is dropped. ffmpeg joins them later.
+window.cuadros = async function (fps = 24) {
+  const ve = await cargarVideo('/oficinas/venezuela/assets/venezuela-desktop.mp4');
+  const fondo = new Image(); fondo.src = '/_tools/out/ia-ruta-vacia.jpg'; await fondo.decode();
+  const c = document.getElementById('c'); c.width = OUT_W; c.height = OUT_H; const g = c.getContext('2d', { willReadFrequently: true });
+  const tmp = new OffscreenCanvas(SRC_W, SRC_H).getContext('2d', { willReadFrequently: true });
+  await ir(ve, 0.02); tmp.drawImage(ve, 0, 0, SRC_W, SRC_H); const nS = nariz(tmp, SRC_W, SRC_H);
+  const total = Math.floor((ve.duration - 0.05) * fps); let ok = 0;
+  for (let i = 0; i < total; i++) {
+    const t = i / fps; await ir(ve, t);
+    dibujarCuadro(g, fondo, ve, nS, t, ve.duration);
+    const blob = await new Promise((r) => c.toBlob(r, 'image/jpeg', 0.92));
+    const res = await fetch('/_save/cuadro-' + String(i + 1).padStart(4, '0') + '.jpg', { method: 'POST', body: blob });
+    if (res.status === 200) ok++;
+    document.title = `cuadro ${i + 1}/${total}`;
+  }
+  document.title = 'cuadros listos'; return { total, guardados: ok, fps };
+};
+
+if (P.get('modo') === 'foto') foto();
+if (P.get('modo') === 'vacia') fotoVacia();
+</script>

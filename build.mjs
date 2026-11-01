@@ -59,7 +59,7 @@ function chrome(s) {
 function jsonLd(page, url) {
   const blocks = [{
     '@context': 'https://schema.org', '@type': 'Organization', name: 'Truly Nolen Uruguay', url: `${SITE}${U}/`,
-    logo: `${SITE}/tn-emblema.png`, image: `${SITE}${A}/uruguay-desktop.jpg`, areaServed: { '@type': 'Country', name: 'Uruguay' },
+    logo: `${SITE}/tn-emblema.png`, image: `${SITE}${A}/uruguay-desktop.webp`, areaServed: { '@type': 'Country', name: 'Uruguay' },
   }];
   if (!page.out) {
     blocks.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Truly Nolen Uruguay', url, inLanguage: 'es-UY' });

@@ -12,7 +12,7 @@ const TOOLS = new URL('./tools/', import.meta.url).pathname.replace(/^\/([A-Za-z
 createServer(async (req, res) => {
   let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
   // Dev-only: image tools in /_tools/ can save their output (PNG/JPEG data) into tools/out/
-  const save = path.match(/^\/_save\/([a-z0-9-]+\.(?:jpg|png))$/);
+  const save = path.match(/^\/_save\/([a-z0-9-]+\.(?:jpg|png|mp4|webm))$/);
   if (req.method === 'POST' && save) {
     const chunks = []; for await (const c of req) chunks.push(c);
     const { writeFile } = await import('node:fs/promises');

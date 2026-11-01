@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Comparar carros</title>
+<style>body{margin:0;background:#111;color:#fff;font:14px sans-serif}canvas{width:49%;margin:2px}</style>
+<canvas id="a"></canvas><canvas id="b"></canvas><pre id="o"></pre>
+<script>
+// Read-only check: first frame of the Venezuela car video vs first frame of the Uruguay video,
+// and where the red nose sits in each (to know if the real car can be laid over the new background).
+const load = (src) => new Promise((ok) => { const v = document.createElement('video'); v.muted = true; v.src = src; v.onloadeddata = () => { v.currentTime = 0.05; v.onseeked = () => ok(v); }; });
+function nariz(g, w, h) { const d = g.getImageData(0, 0, w, h).data; let sx = 0, sy = 0, n = 0;
+  for (let y = 0; y < h; y++) for (let x = Math.floor(w * 0.45); x < w; x++) { const i = (y * w + x) * 4, r = d[i], gg = d[i + 1], b = d[i + 2]; if (r > 170 && gg < 70 && b < 70) { sx += x; sy += y; n++; } }
+  return n ? { x: +(sx / n / w).toFixed(3), y: +(sy / n / h).toFixed(3), area: +(n / (w * h) * 1000).toFixed(2) } : null; }
+(async () => {
+  const out = {};
+  for (const [id, src] of [['a', '/oficinas/venezuela/assets/venezuela-desktop.mp4'], ['b', '/oficinas/uruguay/assets/uruguay-desktop.mp4']]) {
+    const v = await load(src); const c = document.getElementById(id); c.width = v.videoWidth; c.height = v.videoHeight;
+    const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(v, 0, 0);
+    out[id === 'a' ? 'venezuela' : 'uruguay'] = { tamaño: v.videoWidth + 'x' + v.videoHeight, duracion: +v.duration.toFixed(2), nariz: nariz(g, c.width, c.height) };
+  }
+  document.getElementById('o').textContent = JSON.stringify(out, null, 1); document.title = 'listo';
+})();
+</script>
