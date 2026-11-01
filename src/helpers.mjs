@@ -29,7 +29,7 @@ export const PESTS = {
   hormigas: {
     name: 'Hormigas', sub: 'Guía de hormigas', img: `${A}/uy-plaga-hormiga-cortadora-foto.webp`,
     alt: 'Hormiga cortadora llevando un trozo de hoja',
-    card: 'En Uruguay hay 14 especies de hormigas cortadoras del género Acromyrmex: la «hormiga negra» que deja sin hojas el jardín y la huerta.',
+    card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, según la fuente: la «hormiga negra» que deja sin hojas el jardín y la huerta.',
   },
   termitas: {
     name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.webp`,
@@ -116,7 +116,7 @@ export const GENERAL_FAQ = [
 export const SRC = {
   resistencia: ['Revisión científica (2025). Estado y mecanismos de la resistencia a insecticidas de la cucaracha alemana en el mundo', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12677976/'],
   leptoSeguimiento: ['Revista do Instituto de Medicina Tropical de São Paulo (2012). Diez años de seguimiento de la leptospirosis humana en Uruguay: un problema de salud no resuelto', 'https://revistas.usp.br/rimtsp/article/view/31452'],
-  leptoLluvia: ['Montevideo Portal. Murió una persona de leptospirosis en Montevideo: por qué la lluvia importa en el contagio', 'https://www.montevideo.com.uy/Modo-saludable/Murio-una-persona-de-leptospirosis-en-Montevideo-por-que-la-lluvia-importa-en-el-contagio-uc940202'],
+  leptoLluvia: ['Montevideo Portal (2025). Murió una persona de leptospirosis en Montevideo: por qué la lluvia importa en el contagio (con datos de la OPS)', 'https://www.montevideo.com.uy/Modo-saludable/Murio-una-persona-de-leptospirosis-en-Montevideo-por-que-la-lluvia-importa-en-el-contagio-uc940202'],
   guiaPlan: ['gub.uy. Guía para elaborar el Plan de Control de Plagas de las empresas alimentarias', 'https://www.gub.uy/tramites/sites/catalogo-tramites/files/2025-11/Gu%C3%ADaContPlag%20-%201%20%28Plan%20de%20Control%20de%20Plagas%29_2.pdf'],
   oms: ['Organización Mundial de la Salud. Dengue y dengue grave', 'https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue'],
   msp2016: ['Ministerio de Salud Pública (2016). Boletín epidemiológico: informe del brote de dengue en Uruguay', 'https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/publicaciones/Extracto%20bolet%C3%ADn%20epid%20nov%202016%20Informe%20brote%20de%20Dengue%20en%20Uruguay_0.pdf'],
@@ -129,7 +129,7 @@ export const SRC = {
   imRegistro: ['Intendencia de Montevideo. Trámites: registro de empresas de control de insectos y roedores', 'https://tramites.montevideo.gub.uy/print/pdf/node/24613'],
   mspEmpresas: ['gub.uy. Habilitación y registro de empresas de control de plagas domisanitarios (MSP)', 'https://www.gub.uy/tramites/habilitacion-registro-empresas-control-plagas-domisanitarios'],
   cucarachasMP: ['Montevideo Portal. «Invasión de cucarachas» en Montevideo y Canelones: por qué se da y qué especie son', 'https://www.montevideo.com.uy/Noticias/Invasion-de-cucarachas-en-Montevideo-y-Canelones--por-que-se-da-y-que-especie-son--uc882108'],
-  inia: ['INIA (2014). Cartilla 36: hormigas cortadoras del género Acromyrmex', 'https://www.inia.uy/sites/default/files/publications/2024-10/inia-cartilla36-Acromyrmex.pdf'],
+  inia: ['INIA. Cartilla N.º 36: hormigas cortadoras del género Acromyrmex', 'https://www.inia.uy/sites/default/files/publications/2024-10/inia-cartilla36-Acromyrmex.pdf'],
   laManana: ['La Mañana. Hormigas cortadoras en Uruguay, con Martín Bollazzi (Facultad de Agronomía, UdelaR)', 'https://www.xn--lamaana-7za.uy/?p=48346'],
   antwiki: ['AntWiki. Linepithema humile (hormiga argentina)', 'https://antwiki.org/wiki/Linepithema_humile'],
   ucipm: ['Universidad de California, UC IPM (2025). Termitas (guía en español, referencia general)', 'https://ipm.ucanr.edu/home-and-landscape/spanish/termitas/'],

@@ -3,7 +3,7 @@ import { U, A } from './helpers.mjs';
 
 export const SRC_BLOG = {
   mspArana: ['Montevideo Portal (21/10/2022). La mayoría de los casos con araña de los rincones en Uruguay son leves (cita el boletín del MSP de 2013 y el CIAT)', 'https://www.montevideo.com.uy/Archivo/Mayoria-de-casos-con-arana-en-Uruguay-que-dejo-victimas-en-Argentina-son-leves--uc836048'],
-  mendoza: ['Ministerio de Salud de Mendoza, Argentina (2017). Recomendaciones ante envenenamiento por arácnidos (referencia regional)', 'https://www.mendoza.gov.ar/salud/wp-content/uploads/sites/16/2014/05/Recomendaciones-Envenenamiento-por-Aracnidos-de-Cuyo-20171.pdf'],
+  mendoza: ['Ministerio de Salud de Mendoza, Argentina (2017). Recomendaciones ante envenenamiento por arácnidos (referencia regional; copia archivada)', 'https://web.archive.org/web/20240305000000*/https://www.mendoza.gov.ar/salud/wp-content/uploads/sites/16/2014/05/Recomendaciones-Envenenamiento-por-Aracnidos-de-Cuyo-20171.pdf'],
   revistaInia: ['Revista INIA N.º 74 (setiembre de 2023). Hormigas cortadoras en Uruguay', 'https://inia.uy/sites/default/files/publications/2024-10/Revista-INIA-74-set-2023-13.pdf'],
   cartillaInia: ['INIA. Cartilla N.º 36: hormigas cortadoras del género Acromyrmex', 'https://www.inia.uy/sites/default/files/publications/2024-10/inia-cartilla36-Acromyrmex.pdf'],
   laManana: ['La Mañana. Hormigas cortadoras en Uruguay, con Martín Bollazzi (Facultad de Agronomía, UdelaR)', 'https://www.xn--lamaana-7za.uy/?p=48346'],
@@ -26,10 +26,9 @@ export const CUERPOS = {
     body: `<p>La araña de los rincones (<em>Loxosceles laeta</em>) no busca a las personas: busca un lugar oscuro y quieto. El problema aparece cuando ese lugar es una campera colgada, una caja del placard o el hueco detrás de la cama. Un boletín del Ministerio de Salud Pública de 2013, citado por Montevideo Portal, la considera la araña de mayor importancia para la salud pública en Uruguay.</p>
 <h2>Cómo reconocerla</h2>
 <p>Es marrón, de patas largas y finas, y tiene una mancha oscura con forma de violín sobre la parte delantera del cuerpo. Por eso en la región también le dicen «araña violinista». No teje grandes telas en el medio de la habitación: deja una tela irregular y floja en los rincones, detrás de los muebles o dentro de cajas.</p>
-<p>Si encontrás una y podés atraparla sin tocarla, por ejemplo con un frasco, guardala: las recomendaciones sanitarias de la región indican que identificar al animal ayuda al médico a decidir el tratamiento.</p>
+<p>Si encontrás una y podés atraparla sin tocarla, por ejemplo con un frasco, guardala: así se puede mostrar qué araña era.</p>
 <h2>Dónde se esconde en una casa uruguaya</h2>
-<p>Las recomendaciones del Ministerio de Salud de Mendoza (Argentina), que comparte la misma especie con Uruguay, describen sus lugares favoritos: sitios oscuros y poco movidos, como galpones, altillos y sótanos, y dentro de la casa, detrás de cuadros y muebles, entre la ropa colgada y en los rincones de las habitaciones.</p>
-<p>En una casa de acá eso se traduce en lugares muy concretos:</p>
+<p>Busca lugares oscuros, secos y poco movidos. En una casa de acá conviene mirar estos lugares:</p>
 <ul>
 <li><strong>El placard y el ropero</strong>, sobre todo la ropa de otra temporada que no se mueve hace meses.</li>
 <li><strong>Detrás de la cama y de los muebles</strong> que están pegados a la pared.</li>
@@ -39,18 +38,18 @@ export const CUERPOS = {
 </ul>
 <h2>Por qué importa una picadura</h2>
 <p>Según la nota de Montevideo Portal, su veneno es necrosante: puede dañar la piel y los tejidos alrededor de la picadura. La misma nota aclara que la mayoría de los casos en Uruguay son leves. Eso no significa que haya que esperar a ver cómo evoluciona: ante la sospecha, se consulta.</p>
-<p>Muchas picaduras pasan al vestirse o al acostarse, cuando la araña quedó atrapada entre la ropa o las sábanas y se siente apretada contra la piel.</p>
+<p>Muchas picaduras pasan al dormir o al vestirse: según las recomendaciones del Ministerio de Salud de Mendoza (Argentina), que trabaja con la misma especie, el 38 % de los casos ocurrió durmiendo y el 32 % al vestirse.</p>
 <h2>Qué hacer si sospechás una picadura</h2>
 <ol>
-<li><strong>Llamá al CIAT al 1722.</strong> Es el Centro de Información y Asesoramiento Toxicológico, y es el número que recomienda la nota del MSP citada por Montevideo Portal.</li>
+<li><strong>Llamá al CIAT al 1722.</strong> Es el Centro de Información y Asesoramiento Toxicológico, el número que recomienda el reptiliario Alternatus en la nota de Montevideo Portal.</li>
 <li><strong>Consultá a tu prestador de salud</strong> aunque al principio duela poco.</li>
 <li><strong>Si podés, llevá la araña</strong> en un frasco cerrado para que la identifiquen.</li>
 </ol>
 <p>Esta guía es información general sobre prevención en casa y no reemplaza la consulta médica.</p>
 <h2>Cómo prevenir: mover, sacudir y revisar</h2>
-<p>Las recomendaciones de Mendoza coinciden en tres hábitos simples:</p>
+<p>Tres hábitos simples ayudan mucho:</p>
 <ul>
-<li><strong>Limpiar seguido los rincones</strong>, detrás de muebles y cuadros. La aspiradora ayuda a sacar telas y huevos.</li>
+<li><strong>Limpiar seguido los rincones</strong>, detrás de muebles y cuadros.</li>
 <li><strong>Revisar la ropa y los zapatos antes de usarlos</strong>, sobre todo los que estuvieron guardados.</li>
 <li><strong>No colgar ropa contra la pared</strong> y separar un poco la cama y los muebles.</li>
 </ul>
@@ -85,8 +84,8 @@ export const CUERPOS = {
 <li><strong>Filas de hormigas con trozos verdes</strong> en los horarios frescos.</li>
 </ul>
 <h2>Qué funciona y qué no</h2>
-<p>Bollazzi explicó en La Mañana que el polvo funciona por contacto y no es un control recomendable: mata algunas obreras y baja el corte por unos días, pero la colonia sigue. Las fuentes técnicas coinciden en que el camino es llegar al nido. Los cebos que las propias hormigas llevan al hormiguero son el método más citado.</p>
-<p>Tampoco es infalible. La cartilla del INIA explica que las obreras «tienen memoria» y pueden rechazar los cebos después de una aplicación fallida, un fenómeno que la Facultad de Agronomía y el INIA investigan juntos. Una tesis de maestría de la Facultad de Agronomía (2018) también estudió los problemas de eficacia del control con cebos. Por eso conviene hacerlo bien la primera vez.</p>
+<p>Bollazzi explicó en La Mañana que el polvo funciona por contacto y no es un control recomendable: mata algunas obreras y baja el corte, pero la colonia sigue. Las fuentes técnicas coinciden en que el camino es llegar al nido. Los cebos que las propias hormigas llevan al hormiguero son el método más citado.</p>
+<p>Tampoco es infalible. Bollazzi contó en La Mañana que las obreras «tienen memoria», y la Revista INIA explica que pueden rechazar los cebos después de una aplicación fallida, un fenómeno que la Facultad de Agronomía y el INIA investigan juntos. Una tesis de maestría de la Facultad de Agronomía (2018) también estudió los problemas de eficacia del control con cebos. Por eso conviene hacerlo bien la primera vez.</p>
 <h2>El mejor momento: la primavera</h2>
 <p>Según la cartilla del INIA, la mejor época para controlarlas es la primavera, antes de los vuelos nupciales, cuando salen las reinas aladas a fundar hormigueros nuevos. Actuar a tiempo evita que una colonia se convierta en varias.</p>
 <p>Mientras tanto, en casa podés:</p>
@@ -101,7 +100,7 @@ export const CUERPOS = {
       ['¿Cuántas especies de hormiga cortadora hay en Uruguay?', 'Depende de la fuente: la Cartilla N.º 36 del INIA habla de 12 especies de Acromyrmex, y Martín Bollazzi (Facultad de Agronomía) mencionó en La Mañana unas 14 de Acromyrmex y 2 de Atta.'],
       ['¿Sirve el polvo hormiguicida?', 'Según Bollazzi, el polvo funciona por contacto y no es un control recomendable: mata algunas obreras pero no a la colonia.'],
       ['¿Cuándo conviene controlarlas?', 'La cartilla del INIA indica que la mejor época es la primavera, antes de los vuelos nupciales.'],
-      ['¿Por qué vuelven después de aplicar un cebo?', 'Las obreras pueden rechazar cebos después de una aplicación fallida. La Facultad de Agronomía y el INIA investigan ese rechazo; por eso conviene que el control llegue bien al nido la primera vez.'],
+      ['¿Por qué vuelven después de aplicar un cebo?', 'Según la Revista INIA, las obreras pueden rechazar los cebos después de una aplicación fallida, algo que investigan la Facultad de Agronomía y el INIA. Por eso conviene que el control llegue bien al nido la primera vez.'],
     ],
     src: ['revistaInia', 'cartillaInia', 'laManana', 'tesisFagro'],
     prompts: [

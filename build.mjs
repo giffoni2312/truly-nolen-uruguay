@@ -74,7 +74,7 @@ function jsonLd(page, url) {
     blocks.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(([q, a]) => ({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) });
   }
   if (page.article) {
-    blocks.push({ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: page.article.title, description: page.article.lead, image: `${SITE}${page.article.img}`, datePublished: '2026-10-31', inLanguage: 'es-UY', author: { '@type': 'Organization', name: 'Truly Nolen Uruguay' }, publisher: { '@type': 'Organization', name: 'Truly Nolen Uruguay', logo: { '@type': 'ImageObject', url: `${SITE}/tn-emblema.png` } } });
+    blocks.push({ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: page.article.title, description: page.article.lead, image: `${SITE}${page.article.img}`, datePublished: '2026-10-31', dateModified: '2026-10-31', mainEntityOfPage: url, inLanguage: 'es-UY', author: { '@type': 'Organization', name: 'Truly Nolen Uruguay' }, publisher: { '@type': 'Organization', name: 'Truly Nolen Uruguay', logo: { '@type': 'ImageObject', url: `${SITE}/tn-emblema.png` } } });
   }
   return blocks.map((b) => `<script type="application/ld+json">${JSON.stringify(b).replace(/</g, '\\u003c')}</script>`).join('\n');
 }

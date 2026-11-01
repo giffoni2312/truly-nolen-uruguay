@@ -139,7 +139,7 @@ const hormigas = pestPage('hormigas', {
     ['El hormiguero', 'El nido de las cortadoras está bajo tierra: el daño se ve en las plantas, a veces lejos del nido.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que dicen<br/>los investigadores.', items: [
-    ['14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay, según la Facultad de Agronomía.', 'La Mañana'],
+    ['12-14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay: 12 según el INIA y unas 14 según la Facultad de Agronomía.', 'INIA, cartilla N.º 36 · La Mañana'],
     ['Jardín', 'Acromyrmex es el género que más problemas causa en los jardines, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana'],
     ['Nativa', 'La hormiga argentina es nativa de la cuenca del Paraná, que incluye a Uruguay.', 'AntWiki'],
   ] },
@@ -148,7 +148,7 @@ const hormigas = pestPage('hormigas', {
     ['Jardín y huerta', 'Las señales de la cortadora.', ['Caminos de hojas cortadas en el pasto.', 'Montículos de tierra suelta.']],
     ['Entradas', 'Por donde pasan.', ['Grietas en zócalos y marcos.', 'Plantas que tocan la pared.']],
   ] },
-  src: [SRC.laManana, SRC.antwiki],
+  src: [SRC.inia, SRC.laManana, SRC.antwiki],
   prompts: [
     ['Tengo hormigas en la cocina', 'Tengo hormigas en la cocina. ¿Cómo las controlo?'],
     ['Me cortan las plantas', 'Las hormigas me están cortando las plantas del jardín. ¿Qué hago?'],
@@ -191,7 +191,7 @@ const arana = pestPage('arana-de-los-rincones', {
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que hay<br/>que saber.', items: [
     ['1722', 'es el teléfono del CIAT (Centro de Información y Asesoramiento Toxicológico) para consultar por una picadura.', 'Montevideo Portal (2022)'],
-    ['MSP', 'la considera la araña de mayor importancia para la salud pública en Uruguay.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
+    ['MSP', 'considera a la araña de los rincones la de mayor importancia para la salud pública en Uruguay.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Mover, sacudir<br/>y revisar.', rows: [
     ['Ropa y calzado', 'Donde más se esconden.', ['Sacudir la ropa y el calzado antes de usarlos.', 'Revisar la ropa de cama guardada.']],
@@ -271,13 +271,13 @@ const comercios = {
     ] }),
     tabla({ ey: 'Por qué importa', h2: 'En un negocio de alimentos,<br/>una plaga es un riesgo de salud.', rows: [
       ['Roedores y leptospirosis', 'Un seguimiento de diez años describió la leptospirosis humana en Uruguay como un problema de salud no resuelto.'],
-      ['Las lluvias', 'En Montevideo, el MSP informó una muerte por leptospirosis y la vinculó con las lluvias.'],
+      ['Las lluvias', 'El MSP informó una muerte por leptospirosis en Montevideo. La nota explica, con datos de la OPS, que el riesgo sube después de las lluvias.'],
       ['Insecticidas que no alcanzan', 'Con tantos reportes de resistencia, aplicar siempre el mismo producto no basta: hay que encontrar dónde se esconde la plaga.'],
     ] }),
     tabla({ ey: 'Lo que dice la norma', h2: 'Si vendés alimentos,<br/>la norma lo pide.', rows: [
       ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
       ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
-      ['Guía oficial', 'gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
+      ['Guía oficial', 'El portal gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
       ['Empresa habilitada', 'Las empresas de control de plagas deben estar habilitadas por el MSP y registradas en la Intendencia, con un técnico responsable.'],
     ], nota: 'Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.' }),
     pestGrid({ ey: 'Guía de plagas', h2: 'Las plagas que más<br/>afectan a un negocio.', slugs: ['cucarachas', 'ratas-y-ratones', 'mosquitos'] }),
@@ -298,7 +298,7 @@ const comercios = {
 
 const industriaFaq = [
   ['¿Trabajan con registros para auditorías?', 'El programa incluye registros de hallazgos y recomendaciones. Contanos qué auditorías tenés que cumplir y el equipo te explica cómo se documenta.'],
-  ['¿Atienden palomas?', 'Contanos el caso: también se evalúan. Como referencia, la Intendencia de Montevideo usa cetrería contra las palomas en el Centro y la Ciudad Vieja desde 2011.'],
+  ['¿Atienden palomas?', 'Contanos el caso: también se evalúan. Como referencia, la Intendencia de Montevideo usó cetrería contra las palomas en el Centro y la Ciudad Vieja (El Observador, 2012).'],
   ['¿Con una visita alcanza?', 'En una planta, el control es un programa con monitoreo y seguimiento. El alcance se define después de la evaluación.'],
   ['¿Llegan a mi departamento?', 'Decinos el departamento, la localidad y el tipo de instalación. Te confirmamos si podemos atenderte y cómo coordinar.'],
 ];
@@ -314,9 +314,9 @@ const industria = {
       ['Seguimiento', 'Informes de hallazgos, tendencias y recomendaciones, con visitas según el programa acordado.', ['Tendencias por zona.', 'Medidas correctivas y su control.']],
     ], nota: 'Antes de empezar recibís una propuesta con el alcance, la frecuencia y los registros para tu planta.' }),
     dato({ ey: 'Por qué importa en Uruguay', h2: 'Lo que exporta<br/>el país.', items: [
-      ['2.680', 'millones de dólares exportó la carne bovina en 2025: el primer rubro del país.', 'El Observador · Uruguay XXI (2025)'],
-      ['2.307', 'millones de dólares exportó la celulosa en 2025.', 'El Observador · Uruguay XXI (2025)'],
-      ['928', 'millones de dólares exportaron los lácteos en 2025.', 'El Observador · Uruguay XXI (2025)'],
+      ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025: el primer rubro del país.', 'El Observador (2025)'],
+      ['2.103', 'millones de dólares exportó la celulosa de enero a noviembre de 2025.', 'El Observador (2025)'],
+      ['848', 'millones de dólares exportaron los lácteos en 2024.', 'El Observador (2025)'],
     ] }),
     tabla({ ey: 'Conozcamos tu instalación', h2: 'De la recepción<br/>al despacho.', rows: [
       ['Recepción', 'Donde entra la materia prima.', ['Andenes y puertas de carga.', 'Camiones y contenedores que ingresan.']],
@@ -327,7 +327,7 @@ const industria = {
     tabla({ ey: 'Lo que se sabe', h2: 'Por qué fumigar<br/>no basta.', rows: [
       ['Resistencia', 'Una revisión de 102 estudios en 23 países reporta cucarachas alemanas resistentes a 60 ingredientes activos, sobre todo piretroides y organofosforados.'],
       ['Registros', 'En Montevideo, el programa preventivo de una empresa alimentaria tiene que dejar anotado el control, quién lo hizo y las medidas correctivas.'],
-      ['Roedores y lluvias', 'En Montevideo, el MSP vinculó con las lluvias una muerte por leptospirosis, una enfermedad que transmiten los roedores.'],
+      ['Lluvias', 'El MSP informó una muerte por leptospirosis en Montevideo; según la OPS, citada en la nota, el riesgo sube después de las lluvias.'],
     ] }),
     pestGrid({ ey: 'Guía de plagas', h2: 'Plagas que vigilamos<br/>en la industria.', slugs: ['ratas-y-ratones', 'cucarachas', 'hormigas'] }),
     tabla({ ey: 'Antes de hablar', h2: 'Qué conviene contarnos.', rows: [
@@ -336,7 +336,7 @@ const industria = {
       ['Lo que ves', 'Dónde aparecen las señales y desde cuándo.'],
     ] }),
     faqSection(industriaFaq),
-    fuentes([SRC.exportaciones, SRC.uruguayXXI, SRC.palomas, SRC.resistencia, SRC.imAlimentos, SRC.leptoLluvia]),
+    fuentes([SRC.exportaciones, SRC.palomas, SRC.resistencia, SRC.imAlimentos, SRC.leptoLluvia]),
     contacto([
       ['Tengo una planta de alimentos', 'Tengo una planta de alimentos y quiero un programa de manejo integrado de plagas.'],
       ['Tengo un depósito o silos', 'Tengo un depósito o silos de granos y quiero una evaluación.'],
@@ -347,7 +347,7 @@ const industria = {
 
 // ---------------------------------------------------------------- BLOG
 const POSTS = POSTS_UY;
-const card = (p, featured = false) => `<article class="blog-card${featured ? ' blog-featured' : ''}"><a href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><img src="${p.img}" alt="" loading="lazy"/></a><div><p class="eyebrow">${p.tag}</p><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer guía →</a></div></article>`;
+const card = (p, featured = false) => `<article class="blog-card${featured ? ' blog-featured' : ''}"><a href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><img src="${p.img}" alt="" loading="lazy"/></a><div><p class="eyebrow">${p.tag}</p><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer el artículo →</a></div></article>`;
 
 const blog = {
   out: 'blog/', template: 'blog/', title: 'Blog de control de plagas en Uruguay · Truly Nolen', crumb: 'Blog',
@@ -394,10 +394,9 @@ const accesibilidad = legal('accesibilidad/', 'Accesibilidad', 'Accesibilidad',
 const CREDITS = [
   ['Rata noruega, Rattus norvegicus', 'Zeynel Cebeci', 'CC BY-SA 4.0', 'https://creativecommons.org/licenses/by-sa/4.0', 'https://commons.wikimedia.org/wiki/File:Rattus_norvegicus_-_Brown_rat_03.jpg'],
   ['Termita subterránea, Reticulitermes flavipes', 'Judy Gallagher', 'CC BY 2.0', 'https://creativecommons.org/licenses/by/2.0', 'https://commons.wikimedia.org/wiki/File:Eastern_Subterranean_Termite_-_Reticulitermes_flavipes,_Meadowood_SRMA,_Mason_Neck,_Virginia,_April_7,_2023_(53310004483).jpg'],
-  ['Termitas sobre madera (blog)', 'Editor abcdef', 'CC0', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Termites_on_wood.JPG'],
-  ['Araña de los rincones, Loxosceles laeta', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
+  ['Araña de los rincones, Loxosceles laeta (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
-  `<p>Las fotos reales de este sitio vienen de Wikimedia Commons y se usan según su licencia.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito, la cucaracha y la hormiga cortadora son las mismas que usan los otros sitios de oficina de Truly Nolen; su origen exacto no está verificado en este borrador.</p><p>La portada y su video, la casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
+  `<p>Las fotos reales de este sitio vienen de Wikimedia Commons y se usan según su licencia.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito, la cucaracha y la hormiga cortadora (también portada del artículo del blog) son las mismas que usan los otros sitios de oficina de Truly Nolen; su origen exacto no está verificado en este borrador.</p><p>La portada y su video, la casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
 
 export const PAGES = [home, mosquitos, ratas, cucarachas, hormigas, termitas, arana, hogares, comercios, industria, blog, postTermitas, postMosquito, privacidad, terminos, accesibilidad, creditos];
