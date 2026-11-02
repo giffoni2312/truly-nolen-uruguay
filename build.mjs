@@ -41,8 +41,8 @@ function chrome(s) {
   for (const [k, v] of Object.entries(PEST_SLUGS)) s = s.replaceAll(`/oficinas/uruguay/plagas/${k}/`, `/oficinas/uruguay/plagas/${v}/`);
   for (const [k, v] of Object.entries(PEST_LABELS)) s = s.replaceAll(k, v);
   s = s.replaceAll('/oficinas/uruguay/assets/footer-venezuela.webp', `${A}/footer-uruguay.webp`)
-    .replaceAll('Camino de la Felicidad, Falcón, Venezuela. Ilustración', 'La Mano y la Rambla de Punta del Este, Uruguay. Ilustración en acuarela')
-    .replaceAll('Venezuela · Camino de la Felicidad, Falcón', 'Uruguay · La Mano, Punta del Este')
+    .replaceAll('Camino de la Felicidad, Falcón, Venezuela. Ilustración', 'Teatro Solís, Montevideo, Uruguay. Ilustración en acuarela')
+    .replaceAll('Venezuela · Camino de la Felicidad, Falcón', 'Uruguay · Teatro Solís, Montevideo')
     .replaceAll('Conversemos', 'Hablemos')
     .replaceAll('Escríbele a Truly AI', 'Escribile a Truly AI')
     .replaceAll('Conversa aquí', 'Escribí acá')
