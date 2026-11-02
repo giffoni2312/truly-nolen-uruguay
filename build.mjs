@@ -96,7 +96,7 @@ function head(pre, page) {
   set('og:title', page.title);
   set('og:description', page.description);
   set('og:image', ogImg);
-  set('og:image:alt', 'Carro de Truly Nolen en la Rambla de Punta del Este, Uruguay');
+  set('og:image:alt', 'Carro de Truly Nolen frente al Teatro Solís de Montevideo, Uruguay');
   set('twitter:title', page.title);
   set('twitter:description', page.description);
   set('twitter:image', ogImg);

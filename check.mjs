@@ -39,7 +39,8 @@ for (const file of pages) {
     const target = join(ROOT, path.endsWith('/') ? `${path}index.html` : path);
     if (!existsSync(target)) fail(file, `broken ${m[1]}`);
   }
-  for (const m of html.matchAll(/href="#([^"]+)"/g)) {
+  // CSS selectors like a[href="#contacto"] live inside <style>: they are not links
+  for (const m of code.matchAll(/href="#([^"]+)"/g)) {
     if (!ids.includes(m[1])) fail(file, `anchor #${m[1]} has no target`);
   }
   for (const m of html.matchAll(/<img\b[^>]*>/g)) {
