@@ -11,6 +11,7 @@ const ROOT = new URL('./site/', import.meta.url).pathname.replace(/^\/([A-Za-z]:
 const VE = join(ROOT, 'oficinas/venezuela');
 const OUT = join(ROOT, 'oficinas/uruguay');
 
+const REPLICA_CSS = readFileSync(new URL('./src/replica.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const plain = (s) => s.replace(/<br\/>/g, ' ').replace(/<[^>]+>/g, '');
 
@@ -34,7 +35,7 @@ const CHAT_TEXTS = {
   trabado: 'No pude conectarme. Probá enviar tu mensaje de nuevo en unos instantes.',
   noLeidos: 'Respuesta nueva',
 };
-const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga negra or cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
+const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
 
 function chrome(s) {
   s = s.replaceAll('/oficinas/venezuela/', '/oficinas/uruguay/');
@@ -101,6 +102,10 @@ function head(pre, page) {
   set('twitter:description', page.description);
   set('twitter:image', ogImg);
   pre = pre.replace(/(<meta property="og:image:width" content=")[^"]*/, '$11200').replace(/(<meta property="og:image:height" content=")[^"]*/, '$1630');
+  // The full-width footer watercolor uses 100vw, which includes a desktop scrollbar on Windows and made
+  // every page 8 px wider than the window (horizontal scroll). Clip it at the footer edge.
+  // src/replica.css also carries the measured master (globaltni.com/en) rules for inner pages.
+  pre = pre.replace('</head>', `<style>${REPLICA_CSS}</style></head>`);
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;

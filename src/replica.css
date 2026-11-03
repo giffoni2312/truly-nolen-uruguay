@@ -1,0 +1,76 @@
+/* Verified replica of the master (globaltni.com/en), measured with getComputedStyle on 3-nov-2026
+   at 1440 px: /en/services/residential/, /en/pests/cockroaches/, /en/journal/, /en/journal/rodent-control/.
+   Only Uruguay inner pages ([data-oficina]); the home hero, menu and colors stay as the owner approved. */
+body.country-site[data-oficina] .local-footer{overflow-x:clip}
+
+/* Intro and section dividers (residential) */
+body.country-site[data-oficina] main .s-intro{padding-top:16px;padding-bottom:18px}
+body.country-site[data-oficina] main .s-intro nav{font-size:17px;line-height:27.2px;color:#18231d;margin-bottom:14px;align-items:center}
+body.country-site[data-oficina] main .s-intro h1{color:#18231d}
+body.country-site[data-oficina] main>.s-section{border-top:1px solid #d8d8d8}
+body.country-site[data-oficina] main .s-lead-pair h2{margin-bottom:22px}
+body.country-site[data-oficina] main .s-section>h2{margin-bottom:32px}
+
+/* Pest guide: "En esta página" box and hero figure (cockroaches) */
+body.country-site[data-oficina] .pest-index{background:#f0f0f0;border-top:1px solid #d0d0d0;border-bottom:1px solid #d0d0d0;padding-left:24px;padding-right:24px}
+body.country-site[data-oficina] .pest-index summary{padding:18px 0;font-size:14px;font-weight:700;line-height:22.4px;border-bottom:0;align-items:center}
+body.country-site[data-oficina] .pest-index[open] summary{border-bottom:1px solid #d0d0d0}
+body.country-site[data-oficina] .pest-hero-figure{padding:36px}
+body.country-site[data-oficina] .pest-hero-figure img{max-height:260px;width:auto;max-width:100%;object-fit:contain}
+body.country-site[data-oficina] .pest-breadcrumb{font-size:13px;align-items:center}
+body.country-site[data-oficina] .pest-breadcrumb a,body.country-site[data-oficina] .pest-breadcrumb span{display:inline-flex;align-items:center}
+body.country-site[data-oficina] .pest-copy h2{font-size:38px;margin-bottom:25px}
+
+/* Species block (cockroaches: .species-section) */
+body.country-site[data-oficina] .species-section{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;padding:32px 0;border-bottom:1px solid #dedede;font-size:17px;line-height:29.75px}
+body.country-site[data-oficina] .species-specimen{display:flex;align-items:flex-start;justify-content:center;padding:20px;background:#fff;border:1px solid #e0e0e0;align-self:start}
+body.country-site[data-oficina] .species-specimen img{max-width:100%;max-height:180px;width:auto;object-fit:contain}
+body.country-site[data-oficina] .species-description h3{font-size:31px;line-height:1.15;letter-spacing:-.035em;font-weight:800;margin:0 0 18px}
+body.country-site[data-oficina] .species-description p:last-child{margin-bottom:0}
+
+/* Article (rodent-control) */
+body.country-site[data-oficina] main .s-note{font-size:19px;line-height:31.35px;color:#525252}
+body.country-site[data-oficina] .s-index.ux-index details{background:#f2f2f2;border-top:1px solid #c5c5c5;border-bottom:1px solid #c5c5c5;padding-left:24px;padding-right:24px}
+body.country-site[data-oficina] .s-index.ux-index summary{padding:20px 0;font-size:16px;font-weight:650;line-height:25.6px}
+body.country-site[data-oficina] .article-body h2{padding-top:28px;margin-top:28px;margin-bottom:32px;border-top:1px solid #e2e2dc;font-size:38px;font-weight:800;line-height:43.7px}
+body.country-site[data-oficina] .article-body h3{font-size:30px;font-weight:800;line-height:36px;margin-bottom:22px}
+body.country-site[data-oficina] .article-body p{font-size:19px;line-height:31.35px;margin-bottom:24px}
+
+/* Blog index as the master journal list */
+body.country-site[data-oficina] .journal-breadcrumb{display:flex;gap:12px;align-items:center;padding:30px 0;font-size:13px;line-height:20.8px;color:#5e5e5e}
+body.country-site[data-oficina] .journal-breadcrumb a{color:inherit}
+body.country-site[data-oficina] .journal-heading{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:56px;align-items:end;padding:42px 0 68px;border-bottom:1px solid #dedede}
+body.country-site[data-oficina] .journal-heading h1{font-size:72px;font-weight:900;line-height:75.6px;letter-spacing:-.012em;color:#18231d;margin:0}
+body.country-site[data-oficina] .journal-heading p{font-size:19px;line-height:31.35px;color:#18231d;margin:0;padding-bottom:5px}
+body.country-site[data-oficina] .journal-story{display:grid;grid-template-columns:150px minmax(0,1fr) 280px;gap:40px;align-items:center;padding:52px 0;border-bottom:1px solid #dedede}
+body.country-site[data-oficina] .story-edition{display:grid;gap:4px;font-size:13px;line-height:20.8px;color:#5e5e5e}
+body.country-site[data-oficina] .story-edition span:first-child{font-size:36px;font-weight:700;line-height:36px;letter-spacing:-1.8px;color:#010007;margin-bottom:15px}
+body.country-site[data-oficina] .story-copy h2{font-size:37px;font-weight:800;line-height:41.8px;margin:0}
+body.country-site[data-oficina] .story-copy h2 a{color:#18231d;text-decoration:none}
+body.country-site[data-oficina] .story-copy p{font-size:19px;line-height:31.35px;color:#5e5e5e;margin:20px 0 14px}
+body.country-site[data-oficina] .story-copy .text-link{display:inline-flex;padding:10px 0;font-size:15px;font-weight:600}
+body.country-site[data-oficina] .story-image{margin:0}
+body.country-site[data-oficina] .story-image img{width:280px;height:300px;object-fit:cover;display:block}
+
+/* Home: pests in 3 wide columns (recipe step 14) */
+@media(min-width:761px){body.country-site[data-oficina] .g-plagas-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+/* Home closing form: labels aligned at the bottom */
+body.country-site[data-oficina] .g-zona-campos{align-items:end}
+
+@media(max-width:760px){
+  body.country-site[data-oficina] main>.s-section{padding-top:34px;padding-bottom:34px}
+  body.country-site[data-oficina] main .s-intro nav{font-size:16px}
+  body.country-site[data-oficina] main .s-intro h1,body.country-site[data-oficina] .pest-masthead h1{font-size:43px!important;line-height:45px!important}
+  body.country-site[data-oficina] .article-body h3,body.country-site[data-oficina] .ux-answer h3{font-size:25px}
+  body.country-site[data-oficina] .species-section{display:flex;flex-direction:column;gap:24px;padding:29px 0}
+  body.country-site[data-oficina] .species-specimen img{max-width:min(100%,280px);max-height:210px}
+  body.country-site[data-oficina] .species-description h3{font-size:28px}
+  body.country-site[data-oficina] .journal-heading{grid-template-columns:1fr;gap:16px;padding:24px 0 34px}
+  body.country-site[data-oficina] .journal-breadcrumb{padding:8px 0}
+  body.country-site[data-oficina] .journal-breadcrumb a{display:inline-flex;align-items:center;min-height:44px}
+  body.country-site[data-oficina] .journal-heading h1{font-size:43px;line-height:45px}
+  body.country-site[data-oficina] .journal-story{grid-template-columns:1fr;gap:16px;padding:34px 0}
+  body.country-site[data-oficina] .story-copy h2{font-size:28px;line-height:33px}
+  body.country-site[data-oficina] .story-image img{width:100%;height:220px}
+  body.country-site[data-oficina] .pest-copy h2{font-size:30px}
+}

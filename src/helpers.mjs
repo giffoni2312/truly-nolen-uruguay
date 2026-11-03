@@ -12,14 +12,14 @@ const arrow = '<span aria-hidden="true">→</span>';
 
 export const PESTS = {
   mosquitos: {
-    name: 'Mosquitos', sub: 'Guía de mosquitos', img: `${A}/uy-plaga-mosquito-foto.webp`,
+    name: 'Mosquitos', sub: 'Guía de mosquitos', img: `${A}/uy-plaga-mosquito-suave.webp`,
     alt: 'Mosquito Aedes aegypti, el transmisor del dengue',
     card: 'El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. En 2016 volvió el dengue autóctono a Uruguay después de 100 años (MSP).',
   },
   'ratas-y-ratones': {
-    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-foto.webp`,
-    alt: 'Rata noruega',
-    card: 'En Punta del Este se refugian en las palmeras, cerca de los restaurantes. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
+    name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-cc0-suave.webp`,
+    alt: 'Rata noruega entre hojas secas y plantas',
+    card: 'En Punta del Este se esconden arriba de las palmeras y comen los restos que dejan los restaurantes de noche. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
   },
   cucarachas: {
     name: 'Cucarachas', sub: 'Guía de cucarachas', img: `${A}/uy-plaga-cucaracha-americana-foto.webp`,
@@ -27,19 +27,19 @@ export const PESTS = {
     card: 'La alemana, chica y de cocina, y la americana, grande y de desagües. En Montevideo, los comercios de alimentos deben tener un programa preventivo de plagas.',
   },
   hormigas: {
-    name: 'Hormigas', sub: 'Guía de hormigas', img: `${A}/uy-plaga-hormiga-cortadora-foto.webp`,
-    alt: 'Hormiga cortadora llevando un trozo de hoja',
-    card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, según la fuente (INIA, 2014, y Facultad de Agronomía, 2023): la «hormiga negra» que deja sin hojas el jardín y la huerta.',
+    name: 'Hormigas', sub: 'Guía de hormigas', img: `${A}/uy-plaga-hormiga-cortadora-pd-suave.webp`,
+    alt: 'Hormigas cortadoras llevando trozos de hoja por una soga',
+    card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, la que deja sin hojas el jardín y la huerta. Son 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi (Facultad de Agronomía) en La Mañana (2023).',
   },
   termitas: {
-    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-foto.webp`,
-    alt: 'Obreras de termita subterránea (Reticulitermes) sobre madera',
-    card: 'La termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.',
+    name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-pd-suave.webp`,
+    alt: 'Soldados de termita subterránea (Reticulitermes flavipes)',
+    card: 'Según Constantino (2002), la termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.',
   },
   'arana-de-los-rincones': {
-    name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-foto.webp`,
+    name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-suave.webp`,
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
-    card: 'Es la araña de mayor importancia sanitaria en Uruguay, según el MSP. Si sospechás una picadura, llamá al CIAT: 1722.',
+    card: 'Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la araña de mayor importancia para la salud pública en Uruguay. Si sospechás una picadura, llamá al CIAT: 1722.',
   },
 };
 export const PEST_ORDER = Object.keys(PESTS);
@@ -122,11 +122,11 @@ export const SRC = {
   resistencia: ['Revisión científica (2025). Estado y mecanismos de la resistencia a insecticidas de la cucaracha alemana en el mundo', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12677976/'],
   leptoSeguimiento: ['Revista do Instituto de Medicina Tropical de São Paulo (2012). Diez años de seguimiento de la leptospirosis humana en Uruguay: un problema de salud no resuelto', 'https://revistas.usp.br/rimtsp/article/view/31452'],
   leptoLluvia: ['Montevideo Portal (2025). Murió una persona de leptospirosis en Montevideo: por qué la lluvia importa en el contagio (con datos de la OPS)', 'https://www.montevideo.com.uy/Modo-saludable/Murio-una-persona-de-leptospirosis-en-Montevideo-por-que-la-lluvia-importa-en-el-contagio-uc940202'],
-  guiaPlan: ['gub.uy. Guía para elaborar el Plan de Control de Plagas de las empresas alimentarias', 'https://www.gub.uy/tramites/sites/catalogo-tramites/files/2025-11/Gu%C3%ADaContPlag%20-%201%20%28Plan%20de%20Control%20de%20Plagas%29_2.pdf'],
+  guiaPlan: ['gub.uy (2025). Guía para elaborar el Plan de Control de Plagas de las empresas alimentarias', 'https://www.gub.uy/tramites/sites/catalogo-tramites/files/2025-11/Gu%C3%ADaContPlag%20-%201%20%28Plan%20de%20Control%20de%20Plagas%29_2.pdf'],
   oms: ['Organización Mundial de la Salud. Dengue y dengue grave', 'https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue'],
   msp2016: ['Ministerio de Salud Pública (2016). Boletín epidemiológico: informe del brote de dengue en Uruguay', 'https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/publicaciones/Extracto%20bolet%C3%ADn%20epid%20nov%202016%20Informe%20brote%20de%20Dengue%20en%20Uruguay_0.pdf'],
-  mspCriaderos: ['Ministerio de Salud Pública. Lista de verificación y prevención para el control de criaderos de Aedes aegypti', 'https://www.gub.uy/sistema-nacional-emergencias/sites/sistema-nacional-emergencias/files/documentos/publicaciones/LISTA%20DE%20VERIFICACI%C3%93N%20Y%20PREVENCI%C3%93N%20PARA%20EL%20CONTROL%20DE%20CRIADEROS%20DE%20Aedes%20aegypti%20del%20MSP.pdf'],
-  mspActivate: ['Ministerio de Salud Pública. Uruguay reafirma su meta de continuar libre de casos autóctonos de dengue', 'https://www.gub.uy/ministerio-salud-publica/comunicacion/noticias/uruguay-reafirma-su-meta-de-continuar-libre-de-casos-autoctonos-de-dengue'],
+  mspCriaderos: ['Ministerio de Salud Pública (s. f.). Lista de verificación y prevención para el control de criaderos de Aedes aegypti', 'https://www.gub.uy/sistema-nacional-emergencias/sites/sistema-nacional-emergencias/files/documentos/publicaciones/LISTA%20DE%20VERIFICACI%C3%93N%20Y%20PREVENCI%C3%93N%20PARA%20EL%20CONTROL%20DE%20CRIADEROS%20DE%20Aedes%20aegypti%20del%20MSP.pdf'],
+  mspActivate: ['Ministerio de Salud Pública (2018). Uruguay reafirma su meta de continuar libre de casos autóctonos de dengue', 'https://www.gub.uy/ministerio-salud-publica/comunicacion/noticias/uruguay-reafirma-su-meta-de-continuar-libre-de-casos-autoctonos-de-dengue'],
   dengue2024: ['Montevideo Portal (2024). El MSP confirmó el primer caso de dengue autóctono de 2024', 'https://www.montevideo.com.uy/Archivo/Ministerio-de-Salud-Publica-confirmo-primer-caso-de-dengue-autoctono-en-Uruguay-uc881325'],
   maldonado2025: ['Montevideo Portal (15/10/2025). Intendencia de Maldonado y su combate con ratas en Punta del Este y el Centro', 'https://www.montevideo.com.uy/Noticias/-Complicado--Intendencia-de-Maldonado-y-su-combate-con-ratas-en-Punta-del-Este-y-Centro-uc939919'],
   parqueRodo: ['Montevideo Portal (27/01/2026). La IM activó un operativo de limpieza por tercera vez en el Parque Rodó ante invasión de ratas', 'https://www.montevideo.com.uy/Noticias/IM-activo-operativo-de-limpieza-por-tercera-vez-en-el-Parque-Rodo-ante-invasion-de-ratas-uc951193'],
@@ -138,8 +138,8 @@ export const SRC = {
   laManana: ['La Mañana (21/06/2023). Hormigas cortadoras en Uruguay, con Martín Bollazzi (Facultad de Agronomía, UdelaR)', 'https://www.xn--lamaana-7za.uy/?p=48346'],
   antwiki: ['AntWiki. Linepithema humile (hormiga argentina)', 'https://antwiki.org/wiki/Linepithema_humile'],
   ucipm: ['Universidad de California, UC IPM (2025). Termitas (guía en español, referencia general)', 'https://ipm.ucanr.edu/home-and-landscape/spanish/termitas/'],
-  constantino: ['Constantino (2002). Journal of Applied Entomology 126: 355-365', 'https://wiki.pestinfo.org/wiki/Journal_of_Applied_Entomology_-_Zeitschrift_f%C3%BCr_angewandte_Entomologie_(2002)_126,_355-365'],
-  carrijo: ['Carrijo y col. (2023). Reticulitermes flavipes. Journal of Economic Entomology', 'https://complete.bioone.org/journals/journal-of-economic-entomology/volume-116/issue-3/toad076/First-record-of-the-major-termite-pest-species-Reticulitermes-flavipes/10.1093/jee/toad076.full'],
+  constantino: ['Constantino (2002). The pest termites of South America: taxonomy, distribution and status. Journal of Applied Entomology 126: 355-365', 'https://doi.org/10.1046/j.1439-0418.2002.00670.x'],
+  carrijo: ['Carrijo y col. (2023). Primer registro de Reticulitermes flavipes en Argentina. Journal of Economic Entomology', 'https://pubmed.ncbi.nlm.nih.gov/37156231/'],
   arana: ['Montevideo Portal (21/10/2022). Araña de los rincones en Uruguay: la mayoría de los casos son leves', 'https://www.montevideo.com.uy/Archivo/Mayoria-de-casos-con-arana-en-Uruguay-que-dejo-victimas-en-Argentina-son-leves--uc836048'],
   exportaciones: ['El Observador (2025). Exportaciones de Uruguay: los rubros que superaron los US$ 2.000 millones', 'https://www.elobservador.com.uy/agro/ingresos-exportaciones-dos-rubros-pasaron-los-us-2000-millones-y-el-top-ten-solo-uno-no-es-del-campo-n6026756'],
   uruguayXXI: ['Uruguay XXI. Informe de exportaciones', 'https://www.uruguayxxi.gub.uy/uploads/informacion/75e1462ccae255a798c7264d361d006bab5e613e.pdf'],
