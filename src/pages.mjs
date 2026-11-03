@@ -278,7 +278,7 @@ const comercios = {
       ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
       ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
       ['Guía oficial', 'El portal gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
-      ['Empresa habilitada', 'Las empresas de control de plagas deben estar habilitadas por el MSP y registradas en la Intendencia, con un técnico responsable.'],
+      ['Empresa habilitada', 'En Montevideo, las empresas de control de plagas deben registrarse en el Servicio de Salubridad Pública, con un técnico profesional responsable y la habilitación del MSP. El registro se renueva cada 2 años.'],
     ], nota: 'Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.' }),
     pestGrid({ ey: 'Guía de plagas', h2: 'Las plagas que más<br/>afectan a un negocio.', slugs: ['cucarachas', 'ratas-y-ratones', 'mosquitos'] }),
     tabla({ ey: 'Antes de hablar', h2: 'Qué conviene contarnos.', rows: [
