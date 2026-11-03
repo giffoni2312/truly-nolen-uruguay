@@ -118,7 +118,8 @@ for (const page of PAGES) {
   if (a < 0 || b < 0) throw new Error(`Template without <main>: ${page.template}`);
   const pre = chrome(head(tpl.slice(0, a), page));
   const post = chrome(tpl.slice(b + '</main>'.length));
-  const html = `${pre}<main id="contenido">\n${page.main}\n</main>${post}`;
+  // "38 %" must never break between the number and the sign (no-break space)
+  const html = `${pre}<main id="contenido">\n${page.main.replace(/(\d) %/g, '$1&nbsp;%')}\n</main>${post}`;
   const file = join(OUT, page.out, 'index.html');
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);

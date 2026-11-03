@@ -74,3 +74,99 @@ body.country-site[data-oficina] .g-zona-campos{align-items:end}
   body.country-site[data-oficina] .story-image img{width:100%;height:220px}
   body.country-site[data-oficina] .pest-copy h2{font-size:30px}
 }
+
+/* --- Second design review (3-nov-2026) --- */
+/* Commercial / industrial template (/en/services/commercial/, ct-*) */
+body.country-site[data-oficina] .ct-wrap{margin:0 96px}
+body.country-site[data-oficina] .ct-breadcrumb{display:flex;gap:12px;align-items:center;padding:24px 0;font-size:13px;line-height:20.8px;color:#010007}
+body.country-site[data-oficina] .ct-breadcrumb a{color:inherit}
+body.country-site[data-oficina] .ct-hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;padding:36px 0 76px;align-items:center}
+body.country-site[data-oficina] .ct-kicker{font-size:19px;line-height:31.35px;margin:0 0 22px}
+body.country-site[data-oficina] #ct-title{font-size:67.68px;font-weight:900;line-height:71.06px;letter-spacing:-.012em;margin:0;color:#010007}
+body.country-site[data-oficina] .ct-intro{margin:28px 0;color:#5e5e5e;font-size:19px;line-height:31.35px}
+body.country-site[data-oficina] .ct-hero-photo{margin:0;max-width:567px;justify-self:end;width:100%}
+body.country-site[data-oficina] .ct-hero-photo img{width:100%;height:auto;display:block}
+body.country-site[data-oficina] .ct-sector-nav{background:#ffd800}
+body.country-site[data-oficina] .ct-sector-nav .ct-wrap{display:flex;gap:42px;align-items:center}
+body.country-site[data-oficina] .ct-sector-nav .ct-wrap>span{font-size:14px;font-weight:700;line-height:22.4px;max-width:113px}
+body.country-site[data-oficina] .ct-sector-nav .ct-wrap>div{display:flex;flex-wrap:wrap}
+body.country-site[data-oficina] .ct-sector-nav a{display:flex;gap:16px;padding:28px 24px;border-left:1px solid #010007;font-size:16px;font-weight:700;line-height:20.8px;color:#010007;text-decoration:none}
+body.country-site[data-oficina] .ct-sector{padding:78px 0}
+body.country-site[data-oficina] .ct-dark{background:#010007}
+body.country-site[data-oficina] .ct-dark,body.country-site[data-oficina] .ct-dark h2,body.country-site[data-oficina] .ct-dark h3,body.country-site[data-oficina] .ct-dark p,body.country-site[data-oficina] .ct-dark li,body.country-site[data-oficina] .ct-dark strong,body.country-site[data-oficina] .ct-dark a{color:#fff}
+body.country-site[data-oficina] .ct-dark .s-fuente{color:#cfcfcf}
+body.country-site[data-oficina] .ct-sector-heading{display:grid;grid-template-columns:240px minmax(0,1fr);gap:52px;margin:0 0 42px;align-items:end}
+body.country-site[data-oficina] .ct-sector-heading .ct-kicker{margin:0}
+body.country-site[data-oficina] .ct-sector-heading h2{font-size:46px;font-weight:800;line-height:49.68px;letter-spacing:-.003em;margin:0}
+body.country-site[data-oficina] .ct-sector-layout{display:grid;grid-template-columns:240px minmax(0,1fr) 410px;gap:52px}
+body.country-site[data-oficina] .ct-prose{grid-column:2}
+body.country-site[data-oficina] .ct-no-aside .ct-prose{grid-column:2/4;max-width:786px}
+body.country-site[data-oficina] .ct-prose p{margin:0 0 22px;font-size:19px;line-height:31.35px;color:#5e5e5e}
+body.country-site[data-oficina] .ct-prose strong{color:#010007}
+body.country-site[data-oficina] .ct-dark .ct-prose p,body.country-site[data-oficina] .ct-dark .ct-prose strong{color:#fff}
+body.country-site[data-oficina] .ct-facilities{grid-column:3;padding:0 0 0 28px;border-left:1px solid #010007;align-self:start}
+body.country-site[data-oficina] .ct-dark .ct-facilities{border-color:#fff}
+body.country-site[data-oficina] .ct-facilities h3{font-size:24px;font-weight:800;line-height:28.8px;margin:0 0 22px}
+body.country-site[data-oficina] .ct-facilities ul{list-style:none;margin:0;padding:0}
+body.country-site[data-oficina] .ct-facilities li{position:relative;padding:9px 0 9px 18px;font-size:19px;line-height:31.35px}
+body.country-site[data-oficina] .ct-facilities li a{display:inline-flex;align-items:center;min-height:44px}
+body.country-site[data-oficina] .ct-facilities li::before{content:"";position:absolute;left:0;top:22px;width:5px;height:5px;border-radius:50%;background:#ffd800}
+
+/* Pest guide: closed index shows "+" and open "−" (master: span font-size 0 + ::after) */
+body.country-site[data-oficina] .pest-index summary span{font-size:0;font-weight:700}
+body.country-site[data-oficina] .pest-index summary span::after{content:"+";font-size:20px;font-weight:400;line-height:32px}
+body.country-site[data-oficina] .pest-index[open] summary span::after{content:"−"}
+body.country-site[data-oficina] .pest-hero-figure img{width:100%;height:260px;max-height:none;object-fit:contain}
+
+/* Questions (rodent-control): +/− on the right, 22 px indent, one line between questions */
+body.country-site[data-oficina] .ux-answer{border-bottom:1px solid #d0d0d0}
+body.country-site[data-oficina] .ux-answer:last-child{border-bottom:0}
+body.country-site[data-oficina] .ux-answer summary{display:flex;justify-content:space-between;gap:16px;padding:28px 0 20px;margin-left:22px;list-style:none;cursor:pointer}
+body.country-site[data-oficina] .ux-answer summary::-webkit-details-marker{display:none}
+body.country-site[data-oficina] .ux-answer summary::after{content:"+";color:#545454;font-size:22px;line-height:36.3px;flex:none}
+body.country-site[data-oficina] .ux-answer[open] summary::after{content:"−"}
+body.country-site[data-oficina] .ux-answer summary h3{margin:0;font-size:30px;font-weight:800;line-height:36px}
+body.country-site[data-oficina] .ux-answer article{padding:0 0 24px 22px}
+/* "En este artículo" with the disclosure triangle */
+body.country-site[data-oficina] .s-index.ux-index summary{display:list-item;list-style:disclosure-closed;cursor:pointer}
+body.country-site[data-oficina] .s-index.ux-index details[open] summary{list-style:disclosure-open}
+
+/* Blog index on the master's wide container (x=64, 1312 px at 1440) */
+body.country-site[data-oficina] main section.journal-wrap{width:auto;max-width:none;margin-left:64px;margin-right:64px;padding-left:0;padding-right:0}
+body.country-site[data-oficina] .journal-heading h1{font-size:67.68px;line-height:71px}
+
+/* Home: closing form labels on one line, brand-colored radios; h2 size between 761 and 1100 */
+body.country-site[data-oficina] .g-zona-campos label{white-space:nowrap}
+body.country-site[data-oficina] .g-zona-campos label small{font-size:12px}
+body.country-site[data-oficina] .g-zona input[type=radio]{accent-color:#010007}
+@media(min-width:761px) and (max-width:1100px){body.country-site[data-oficina] .g .g-cab h2{font-size:38px;line-height:1.08}}
+
+@media(max-width:760px){
+  body.country-site[data-oficina] .ct-wrap{margin:0 20px}
+  body.country-site[data-oficina] .ct-breadcrumb{padding:8px 0;font-size:12px}
+  body.country-site[data-oficina] .ct-breadcrumb a{display:inline-flex;align-items:center;min-height:44px}
+  body.country-site[data-oficina] .ct-hero{display:flex;flex-direction:column;gap:36px;padding:16px 0 48px;align-items:stretch}
+  body.country-site[data-oficina] #ct-title{font-size:43px;line-height:45.15px}
+  body.country-site[data-oficina] .ct-intro{margin:22px 0}
+  body.country-site[data-oficina] .ct-sector-nav .ct-wrap{display:block}
+  body.country-site[data-oficina] .ct-sector-nav .ct-wrap>span{display:block;padding-top:18px;max-width:none}
+  body.country-site[data-oficina] .ct-sector-nav .ct-wrap>div{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+  body.country-site[data-oficina] .ct-sector-nav a{padding:14px 0;border-left:0;border-bottom:1px solid #010007;font-size:14px;min-height:44px;align-items:center}
+  body.country-site[data-oficina] .ct-sector{padding:44px 0}
+  body.country-site[data-oficina] .ct-sector-heading{display:block;margin:0 0 30px}
+  body.country-site[data-oficina] .ct-sector-heading .ct-kicker{margin-bottom:10px}
+  body.country-site[data-oficina] .ct-sector-heading h2{font-size:34px;line-height:37.4px}
+  body.country-site[data-oficina] .ct-sector-layout{display:flex;flex-direction:column;gap:30px}
+  body.country-site[data-oficina] .ct-no-aside .ct-prose{max-width:none}
+  body.country-site[data-oficina] .ct-facilities{padding:26px 0 0;border-left:0;border-top:1px solid #010007}
+  body.country-site[data-oficina] .ct-dark .ct-facilities{border-top-color:#fff}
+  body.country-site[data-oficina] .ct-facilities h3{font-size:25px;line-height:30px}
+  body.country-site[data-oficina] .pest-families{flex-wrap:wrap;gap:0 24px;overflow:visible}
+  body.country-site[data-oficina] .pest-families a{font-size:12px;font-weight:600;white-space:normal;min-height:52px}
+  body.country-site[data-oficina] .pest-breadcrumb{padding:10px 0;margin-top:16px;font-size:12px}
+  body.country-site[data-oficina] main .s-intro nav{font-size:14px}
+  body.country-site[data-oficina] .article-body h2{font-size:31px;line-height:35px}
+  body.country-site[data-oficina] .ux-answer summary h3{font-size:25px;line-height:30px}
+  body.country-site[data-oficina] main section.journal-wrap{margin-left:20px;margin-right:20px}
+  body.country-site[data-oficina] .journal-heading h1{font-size:43px;line-height:45px}
+}

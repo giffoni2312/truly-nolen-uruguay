@@ -5,7 +5,7 @@ import {
 import { POSTS_UY, CUERPOS, SRC_BLOG } from './blog-uy.mjs';
 import {
   flat, intro, leadPair, flow, rowsProse, datoProse, pestLinks, serviceLinks, preguntas, sFuentes, closing,
-  pestMaster, articleParts, articleFaq,
+  pestMaster, articleParts, articleFaq, ctPage,
 } from './master.mjs';
 
 const arrow = '<span aria-hidden="true">→</span>';
@@ -25,9 +25,9 @@ const home = {
 </div></section>
 <section id="hogar" class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.webp?v=2" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Tres zonas para revisar</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">Revisamos tres partes de tu casa y en cada una miramos algo distinto.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Donde vivís y guardás la comida.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>Por donde entran.</p></li><li class="g-z-verde"><h3>Fondo, patio y azotea</h3><p>Lo que rodea tu casa.</p></li></ul><a class="g-link" href="${U}/servicios/hogares/">Conocé el servicio para hogares${arrow}</a></div></div></section>
 <section id="negocio" class="section g g-comercial"><header class="g-cab"><p class="g-ey">Comercio e industria</p><h2>Control de plagas para tu negocio.</h2><p class="g-intro">Almacenes, panaderías, parrilladas, plantas y depósitos: cada actividad tiene sus puntos críticos.</p></header><div class="g-com-grid"><a class="g-com-foto" href="${U}/servicios/comercios/"><img src="${A}/uy-operacion.webp" alt="Técnica fumigando los zócalos de un depósito (imagen ilustrativa)" loading="lazy"/><span><b>La prevención es parte de tu operación.</b><em>Conocé el servicio para comercios →</em></span></a><div class="g-sectores">
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Para quién?</h3><p>Almacenes, autoservicios, panaderías y confiterías, rotiserías, parrilladas, restaurantes, farmacias, policlínicas y oficinas.</p></span>${arrow}</a>
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Qué incluye?</h3><p>Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.</p></span>${arrow}</a>
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>¿Cómo sigue?</h3><p>Registro de hallazgos y recomendaciones. Si tenés varias sucursales, se acuerda el alcance de cada una.</p></span>${arrow}</a>
+<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Almacenes y autoservicios</h3><p>Mercadería que entra y sale todos los días: depósito, góndolas y zona de residuos.</p></span>${arrow}</a>
+<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Panaderías y restaurantes</h3><p>Recepción, elaboración, depósito y salón: bolsas de harina, hornos, parrilla y desagües de cocina.</p></span>${arrow}</a>
+<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Farmacias, policlínicas y oficinas</h3><p>Espacios con público y protocolos de higiene: depósitos, archivos y cocinas del personal.</p></span>${arrow}</a>
 <a class="g-sector" href="${U}/servicios/industria/"><span><h3>Industria</h3><p>Frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.</p></span>${arrow}</a>
 </div></div></section>
 <section id="metodo" class="section g g-metodo"><header class="g-cab"><p class="g-ey">Cómo trabajamos</p><h2>Así trabajamos,<br/>paso a paso.</h2></header><div class="g-cols g-cols-4"><article><span class="g-n">01</span><h3>Escuchamos</h3><p>Contanos qué ves y qué querés proteger.</p></article><article><span class="g-n">02</span><h3>Evaluamos</h3><p>Revisamos el espacio y lo que favorece a las plagas.</p></article><article><span class="g-n">03</span><h3>Proponemos</h3><p>Te explicamos el plan y las indicaciones antes de empezar.</p></article><article><span class="g-n">04</span><h3>Acompañamos</h3><p>Después volvemos a revisar lo que haga falta.</p></article></div></section>
@@ -49,14 +49,39 @@ const SVC = {
 // Master layout (globaltni pest guide): masthead, families, index and prose sections. No FAQ block,
 // so no FAQ structured data either (Google only accepts FAQ markup for visible questions).
 // Species shown in each guide's photo block (the page's own photo)
-const SPECIES = { mosquitos: 'Aedes aegypti', 'ratas-y-ratones': 'Rata noruega', cucarachas: 'Cucaracha americana y alemana', hormigas: 'Hormigas cortadoras y hormiga argentina', termitas: 'Termita subterránea', 'arana-de-los-rincones': 'Loxosceles laeta' };
+// One card per species, as the master (/en/pests/cockroaches/): photo box, h3 and its text.
+// rows = indexes of the guide's first-table rows that describe that species; the rest go after the cards.
+const SPECIES = {
+  mosquitos: [{ name: 'Aedes aegypti', rows: [0, 1, 2] }],
+  'ratas-y-ratones': [{ name: 'Rata noruega', rows: [0, 1, 2] }],
+  cucarachas: [
+    { name: 'Cucaracha alemana', img: `${A}/uy-plaga-cucaracha-alemana-truly.webp`, alt: 'Cucaracha alemana, foto de identificación de Truly Nolen International', rows: [0] },
+    { name: 'Cucaracha americana', rows: [1] },
+  ],
+  hormigas: [
+    { name: 'Hormiga argentina', img: `${A}/uy-plaga-hormiga-argentina-truly.webp`, alt: 'Hormiga argentina, foto de identificación de Truly Nolen International', rows: [0] },
+    { name: 'Hormiga cortadora', rows: [1, 2] },
+  ],
+  termitas: [{ name: 'Termita subterránea', rows: [0, 1, 2] }],
+  'arana-de-los-rincones': [{ name: 'Loxosceles laeta', rows: [0, 1, 2] }],
+};
+function speciesCards(slug, rows) {
+  const p = PESTS[slug];
+  const used = new Set();
+  const cards = SPECIES[slug].map((c) => {
+    c.rows.forEach((i) => used.add(i));
+    const text = c.rows.length === 1 ? `<p>${rows[c.rows[0]][1]}</p>` : rowsProse(c.rows.map((i) => rows[i]));
+    return `<div class="species-section"><div class="species-specimen"><img src="${c.img || p.img}" alt="${c.alt || p.alt}" loading="lazy"/></div><div class="species-description"><h3>${c.name}</h3>${text}</div></div>`;
+  }).join('');
+  return cards + rowsProse(rows.filter((_, i) => !used.has(i)));
+}
 function pestPage(slug, { description, hero, t1, d, t2, src }) {
   const p = PESTS[slug];
+  // The master guide ends with the species and goes straight to the closing (no loose service links)
   const sections = [
-    { h2: t1.h2, html: `<div class="species-section"><div class="species-specimen"><img src="${p.img}" alt="${p.alt}" loading="lazy"/></div><div class="species-description"><h3>${SPECIES[slug]}</h3>${rowsProse(t1.rows)}</div></div>` },
+    { h2: t1.h2, html: speciesCards(slug, t1.rows) },
     { h2: d.h2, html: datoProse(d.items) },
     { h2: t2.h2, html: rowsProse(t2.rows) + (t2.nota ? `<p>${t2.nota}</p>` : '') },
-    { h2: flat(SVC[slug]), html: serviceLinks(['hogares', 'comercios']) },
   ];
   return {
     out: `plagas/${slug}/`, template: 'plagas/zancudos/', title: `${p.name} en Uruguay · Truly Nolen`, description, crumb: p.name,
@@ -237,14 +262,7 @@ const hogares = {
       '<p><strong>¿Cómo sigue?</strong> Te damos consejos para cerrar los accesos y volvemos a revisar según lo que hayamos acordado.</p>',
     ], note: 'Antes de arrancar te mandamos una propuesta: qué vamos a hacer en tu casa, cuántas visitas y en qué condiciones.' }),
     flow('Cada rincón cuenta.', `<p>Adentro, el contorno y el fondo: una plaga casi nunca está en un solo lugar, por eso miramos las tres zonas juntas.</p><p class="s-zona s-zona-rojo"><strong>Interior.</strong> Lo que se usa todos los días. El mueble de la pileta y el hueco de la heladera · Baños, rejillas y manchas de humedad · Lo que viste, en qué lugar y a qué hora.</p><p class="s-zona s-zona-amarillo"><strong>Perímetro.</strong> La puerta de entrada de las plagas. Rendijas bajo puertas y ventanas · Agujeros donde pasan caños y cables · Cajas y trastos apoyados en la pared.</p><p class="s-zona s-zona-verde"><strong>Fondo, patio y azotea.</strong> Donde muchas veces empieza todo. Canteros, huerta y enredaderas · Baldes, macetas y cualquier cosa que junte agua · Pilas de leña, escombros y hojas.</p>`),
-    flow('Seis plagas que conviene conocer.', PEST_ORDER.map((s) => `<p><strong><a href="${U}/plagas/${s}/">${PESTS[s].name}</a>.</strong> ${PESTS[s].card}</p>`).join('') + '<p><strong>Por dónde arrancamos.</strong> Cocina, baños, desagües, el entretecho, el fondo y la azotea: ahí aparecen primero las señales de cada plaga.</p>'),
-    flow('Lo que nos ayuda saber.', rowsProse([
-      ['Cómo es tu casa', 'Si es casa, apartamento o de balneario, cuántos ambientes tiene y cuáles te preocupan.'],
-      ['Cuándo te queda bien', 'Los días y horarios en que alguien puede abrirnos.'],
-      ['Qué viste', 'Qué apareció, en qué lugar y desde cuándo. Y si viven chicos o mascotas en la casa.'],
-    ])),
     preguntas(hogaresFaq),
-    sFuentes([SRC.msp2016, SRC.maldonado2025, SRC.imAlimentos, SRC.inia, SRC.laManana, SRC.constantino, SRC.arana]),
     closing(),
   ].join('\n'),
 };
@@ -260,35 +278,27 @@ const comercios = {
   description: 'Control de plagas para almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas en Uruguay. Qué pide la norma en Montevideo.',
   faq: comerciosFaq,
   main: [
-    intro(['Servicios', 'Servicio comercial'], 'Servicio comercial'),
-    leadPair({ h2: 'Tu negocio, protegido.', img: `${A}/uy-comercios.webp`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas', paras: [
-      'Un programa que tiene en cuenta tu local, a tus clientes y el ritmo de tu operación.',
-      '<p><strong>¿Para quién?</strong> Almacenes, autoservicios, panaderías y confiterías, rotiserías, parrilladas, restaurantes, farmacias, policlínicas y oficinas.</p>',
-      '<p><strong>¿Qué incluye?</strong> Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.</p>',
-      '<p><strong>¿Cómo sigue?</strong> Registro de hallazgos y recomendaciones. Si tenés varias sucursales, se acuerda el alcance de cada una.</p>',
-    ], note: 'Antes de empezar recibís una propuesta con el alcance y las condiciones para tu negocio.' }),
-    flow('Cada punto del proceso.', '<p>Cada rubro tiene sus puntos críticos. La inspección los reconoce y define qué hace falta en cada uno.</p>' + rowsProse([
-      ['Panaderías y confiterías', 'Recepción, elaboración, depósito y mostrador son una sola operación.', ['Bolsas de harina y depósitos.', 'Hornos, mesadas y zonas calientes.']],
-      ['Parrilladas y restaurantes', 'Cocina, parrilla y salón.', ['Leña y carbón guardados.', 'Cámaras de frío y desagües de cocina.']],
-      ['Almacenes y autoservicios', 'Mercadería que entra y sale todos los días.', ['Depósito y góndolas.', 'Zona de residuos y contenedores.']],
-      ['Farmacias, policlínicas y oficinas', 'Espacios con público y protocolos de higiene.', ['Depósitos y archivos.', 'Cocinas y áreas de descanso del personal.']],
-    ])),
-    flow('Lo que encontró la ciencia.', datoProse([
-      ['60', 'ingredientes activos de insecticidas tienen reportes de resistencia en la cucaracha alemana, según una revisión de 102 estudios en 23 países.', 'Revisión científica (2025)'],
-    ])),
-    flow('En un negocio de alimentos, una plaga es un riesgo de salud.', rowsProse([
-      ['Roedores y leptospirosis', 'Un seguimiento de diez años, publicado en 2012, describió la leptospirosis humana en Uruguay como un problema de salud no resuelto.'],
-      ['Las lluvias', 'En 2025 el MSP informó una muerte por leptospirosis en Montevideo. La nota explica, con datos de la OPS, que el riesgo sube después de los días de lluvia.'],
-      ['Insecticidas que no alcanzan', 'Con tantos reportes de resistencia, aplicar siempre el mismo producto no basta: hay que encontrar dónde se esconde la plaga.'],
-    ])),
-    flow('Si vendés alimentos, la norma lo pide.', rowsProse([
-      ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
-      ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
-      ['Guía oficial', 'El portal gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
-      ['Empresa habilitada', 'En Montevideo, las empresas de control de plagas deben registrarse en el Servicio de Salubridad Pública, con un técnico universitario responsable y la habilitación del MSP. El registro se renueva cada 2 años.'],
-    ]) + '<p>Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.</p>'),
-    flow('¿Quién se beneficia?', '<p>Los negocios para los que Truly Nolen International pensó su programa comercial.</p><p><strong>Alimentos y comercio.</strong> Supermercados, hipermercados, centros de distribución, locales de comida rápida, restaurantes, panaderías.</p><p><strong>Salud.</strong> Laboratorios de diagnóstico, hospitales, centros de asistencia prolongada, centros de atención de emergencias, centros de rehabilitación, consultorios médicos.</p>'),
-    flow('Las plagas que más afectan a un negocio.', pestLinks(['cucarachas', 'ratas-y-ratones', 'mosquitos'])),
+    ctPage({ crumb: 'Servicio comercial', kicker: 'Servicio comercial', h1: 'Tu negocio,<br/>protegido.', intro: 'Un programa que tiene en cuenta tu local, a tus clientes y el ritmo de tu operación: almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas.', img: `${A}/uy-comercios.webp`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas', navLabel: 'Elegí el tema', bands: [
+      { id: 'servicio', kicker: 'El servicio', h2: 'Control para tu negocio.', html: '<p><strong>¿Qué incluye?</strong> Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.</p><p><strong>¿Cómo sigue?</strong> Registro de hallazgos y recomendaciones. Si tenés varias sucursales, se acuerda el alcance de cada una.</p><p>Antes de empezar recibís una propuesta con el alcance y las condiciones para tu negocio.</p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Almacenes y autoservicios', 'Panaderías y confiterías', 'Rotiserías, parrilladas y restaurantes', 'Farmacias y policlínicas', 'Oficinas'] } },
+      { id: 'rubros', kicker: 'Cada rubro', h2: 'Cada punto del proceso.', html: '<p>Cada rubro tiene sus puntos críticos. La inspección los reconoce y define qué hace falta en cada uno.</p>' + rowsProse([
+        ['Panaderías y confiterías', 'Recepción, elaboración, depósito y mostrador son una sola operación.'],
+        ['Parrilladas y restaurantes', 'Cocina, parrilla y salón.'],
+        ['Almacenes y autoservicios', 'Mercadería que entra y sale todos los días.'],
+        ['Farmacias, policlínicas y oficinas', 'Espacios con público y protocolos de higiene.'],
+      ]), aside: { h3: 'Qué revisamos', items: ['Bolsas de harina y depósitos', 'Hornos, mesadas y zonas calientes', 'Leña y carbón guardados', 'Cámaras de frío y desagües de cocina', 'Depósito y góndolas', 'Zona de residuos y contenedores', 'Archivos, cocinas y áreas de descanso'] } },
+      { id: 'norma', kicker: 'La norma', h2: 'Si vendés alimentos, la norma lo pide.', html: rowsProse([
+        ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
+        ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
+        ['Guía oficial', 'El portal gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
+        ['Empresa habilitada', 'En Montevideo, las empresas de control de plagas deben registrarse en el Servicio de Salubridad Pública, con un técnico universitario responsable y la habilitación del MSP. El registro se renueva cada 2 años.'],
+      ]) + '<p>Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.</p>' },
+      { id: 'salud', kicker: 'La salud', h2: 'En un negocio de alimentos, una plaga es un riesgo de salud.', html: rowsProse([
+        ['Roedores y leptospirosis', 'Un seguimiento de diez años, publicado en 2012, describió la leptospirosis humana en Uruguay como un problema de salud no resuelto.'],
+        ['Las lluvias', 'En 2025 el MSP informó una muerte por leptospirosis en Montevideo. La nota explica, con datos de la OPS, que el riesgo sube después de los días de lluvia.'],
+        ['Insecticidas que no alcanzan', 'Una revisión de 102 estudios en 23 países encontró reportes de resistencia a 60 ingredientes activos en la cucaracha alemana (2025): aplicar siempre el mismo producto no basta, hay que encontrar dónde se esconde la plaga.'],
+      ]), aside: { h3: 'Las plagas que más afectan a un negocio', items: [`<a href="${U}/plagas/cucarachas/">${PESTS['cucarachas'].name}</a>`, `<a href="${U}/plagas/ratas-y-ratones/">${PESTS['ratas-y-ratones'].name}</a>`, `<a href="${U}/plagas/mosquitos/">${PESTS['mosquitos'].name}</a>`] } },
+    ] }),
     flow('Qué conviene contarnos.', rowsProse([
       ['Tu negocio', 'Contanos el rubro, el tamaño del local y si tenés depósito.'],
       ['Tus horarios', 'Decinos cuándo abrís y cerrás, y en qué horario conviene la visita.'],
@@ -311,36 +321,30 @@ const industria = {
   description: 'Manejo integrado de plagas para frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística en Uruguay.',
   faq: industriaFaq,
   main: [
-    intro(['Servicios', 'Servicio industrial'], 'Servicio industrial'),
-    leadPair({ h2: 'Control de plagas para tu industria.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales', paras: [
-      'Un programa que parte de conocer tu operación, de la recepción al despacho.',
-      '<p><strong>¿Para quién?</strong> Frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.</p>',
-      '<p><strong>¿Qué incluye?</strong> Diagnóstico de la planta, monitoreo y control según tu actividad, y registros para las auditorías que tenés que cumplir.</p>',
-      '<p><strong>¿Cómo sigue?</strong> Informes de hallazgos, tendencias y recomendaciones, con visitas según el programa acordado.</p>',
-    ], note: 'Antes de empezar recibís una propuesta con el alcance, la frecuencia y los registros para tu planta.' }),
-    flow('Manejo integrado de plagas.', rowsProse([
-      ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.', ['Accesos, desagües y zonas húmedas.', 'Depósitos, silos y residuos.']],
-      ['Programa', 'Lo que se hace en cada visita.', ['Estaciones de monitoreo numeradas.', 'Registro de cada visita.']],
-      ['Seguimiento', 'Lo que se mira con el tiempo.', ['Tendencias por zona.', 'Medidas correctivas y su control.']],
-    ])),
-    flow('Lo que exporta el país.', datoProse([
-      ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025, más que cualquier otro rubro.', 'El Observador (2025)'],
-      ['2.103', 'millones de dólares exportó la celulosa de enero a noviembre de 2025.', 'El Observador (2025)'],
-      ['848', 'millones de dólares exportaron los lácteos de enero a noviembre de 2025.', 'El Observador (2025)'],
-    ])),
-    flow('De la recepción al despacho.', rowsProse([
-      ['Recepción', 'Donde entra la materia prima.', ['Andenes y puertas de carga.', 'Camiones y contenedores que ingresan.']],
-      ['Proceso', 'Donde se trabaja el producto.', ['Equipos, desagües y zonas húmedas.', 'Áreas con restos de producto.']],
-      ['Depósito y silos', 'Donde se guarda.', ['Granos, bolsas y pallets.', 'Grietas y acumulación de polvo.']],
-      ['Despacho y perímetro', 'Lo que rodea la planta.', ['Residuos y contenedores.', 'Pastizales, desagües pluviales y cercos.']],
-    ])),
-    flow('Por qué fumigar no basta.', rowsProse([
-      ['Resistencia', 'Una revisión de 102 estudios en 23 países reporta cucarachas alemanas resistentes a 60 ingredientes activos, sobre todo piretroides y organofosforados.'],
-      ['Registros', 'En Montevideo, el programa preventivo de una empresa alimentaria tiene que dejar anotado el control, quién lo hizo y las medidas correctivas.'],
-      ['Lluvias', 'En 2025 el MSP informó una muerte por leptospirosis en Montevideo; según la OPS, citada en la nota, el riesgo sube después de los días de lluvia.'],
-    ])),
-    flow('¿Quién se beneficia?', '<p>Las industrias para las que Truly Nolen International pensó su programa comercial.</p><p><strong>Procesamiento de alimentos.</strong> Plantas de procesamiento de alimentos, almacenamiento y distribución de alimentos, envasado y reenvasado de alimentos, proveedores de la industria alimentaria, laboratorios farmacéuticos, almacenamiento de documentos.</p><p><strong>Logística.</strong> Empresas de transporte, agentes de carga, transportistas, logística externa.</p>'),
-    flow('Plagas que vigilamos en la industria.', pestLinks(['ratas-y-ratones', 'cucarachas', 'hormigas'])),
+    ctPage({ crumb: 'Servicio industrial', kicker: 'Servicio industrial', h1: 'Control de plagas<br/>para tu industria.', intro: 'Un programa que parte de conocer tu operación, de la recepción al despacho: frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales', navLabel: 'Elegí el tema', bands: [
+      { id: 'servicio', kicker: 'El servicio', h2: 'Manejo integrado de plagas.', html: rowsProse([
+        ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.'],
+        ['Programa', 'Monitoreo con estaciones numeradas, control según tu actividad y registro de cada visita para tus auditorías.'],
+        ['Seguimiento', 'Informes de hallazgos, tendencias por zona y medidas correctivas, con visitas según el programa acordado.'],
+      ]) + '<p>Antes de empezar recibís una propuesta con el alcance, la frecuencia y los registros para tu planta.</p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Frigoríficos', 'Lácteas', 'Molinos y acopio de granos', 'Celulosa', 'Puertos y logística'] } },
+      { id: 'pais', kicker: 'El país', h2: 'Lo que exporta el país.', html: datoProse([
+        ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025, más que cualquier otro rubro.', 'El Observador (2025)'],
+        ['2.103', 'millones de dólares exportó la celulosa de enero a noviembre de 2025.', 'El Observador (2025)'],
+        ['848', 'millones de dólares exportaron los lácteos de enero a noviembre de 2025.', 'El Observador (2025)'],
+      ]) },
+      { id: 'planta', kicker: 'La planta', h2: 'De la recepción al despacho.', html: rowsProse([
+        ['Recepción', 'Donde entra la materia prima.'],
+        ['Proceso', 'Donde se trabaja el producto.'],
+        ['Depósito y silos', 'Donde se guarda.'],
+        ['Despacho y perímetro', 'Lo que rodea la planta.'],
+      ]), aside: { h3: 'Qué revisamos', items: ['Andenes, puertas de carga y camiones', 'Equipos, desagües y zonas húmedas', 'Áreas con restos de producto', 'Granos, bolsas y pallets', 'Grietas y acumulación de polvo', 'Residuos, pastizales y cercos'] } },
+      { id: 'por-que', kicker: 'Por qué', h2: 'Por qué fumigar no basta.', html: rowsProse([
+        ['Resistencia', 'Una revisión de 102 estudios en 23 países reporta cucarachas alemanas resistentes a 60 ingredientes activos, sobre todo piretroides y organofosforados.'],
+        ['Registros', 'En Montevideo, el programa preventivo de una empresa alimentaria tiene que dejar anotado el control, quién lo hizo y las medidas correctivas.'],
+        ['Lluvias', 'En 2025 el MSP informó una muerte por leptospirosis en Montevideo; según la OPS, citada en la nota, el riesgo sube después de los días de lluvia.'],
+      ]), aside: { h3: 'Plagas que vigilamos en la industria', items: [`<a href="${U}/plagas/ratas-y-ratones/">${PESTS['ratas-y-ratones'].name}</a>`, `<a href="${U}/plagas/cucarachas/">${PESTS['cucarachas'].name}</a>`, `<a href="${U}/plagas/hormigas/">${PESTS['hormigas'].name}</a>`] } },
+    ] }),
     flow('Qué conviene contarnos.', rowsProse([
       ['Tu planta', 'Rubro, superficie y cantidad de edificios.'],
       ['Tus auditorías', 'Contanos qué normas o auditorías tenés que cumplir.'],
@@ -360,8 +364,8 @@ const blog = {
   out: 'blog/', template: 'blog/', title: 'Blog de control de plagas en Uruguay · Truly Nolen', crumb: 'Blog',
   description: 'Guías sobre plagas de Uruguay: la araña de los rincones, la hormiga cortadora y más, con cada dato respaldado por su fuente abierta.',
   main: [
-    `<section class="wrap"><nav class="journal-breadcrumb" aria-label="Ruta"><a href="${U}/">Inicio</a><span aria-hidden="true">/</span><span>Blog</span></nav><header class="journal-heading"><h1>Blog</h1><p class="s-prose">Guías sobre las plagas de acá, con cada dato respaldado por su fuente.</p></header></section>`,
-    `<section class="wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span>${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/" aria-label="Leer: ${p.title}">Leer el artículo</a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
+    `<section class="wrap journal-wrap"><nav class="journal-breadcrumb" aria-label="Ruta"><a href="${U}/">Inicio</a><span aria-hidden="true">/</span><span>Blog</span></nav><header class="journal-heading"><h1>Blog</h1><p class="s-prose">Guías sobre las plagas de acá, con cada dato respaldado por su fuente.</p></header></section>`,
+    `<section class="wrap journal-wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span>${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/" aria-label="Leer: ${p.title}">Leer el artículo</a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
     closing(),
   ].join('\n'),
 };
@@ -416,6 +420,6 @@ const CREDITS = [
   ['Araña de los rincones, Loxosceles laeta (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
-  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el carro oficial se ubicó frente al teatro con IA (Gemini). La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
+  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el carro oficial se ubicó frente al teatro con IA (Gemini). La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
 
 export const PAGES = [home, mosquitos, ratas, cucarachas, hormigas, termitas, arana, hogares, comercios, industria, blog, postTermitas, postMosquito, privacidad, terminos, accesibilidad, creditos];
