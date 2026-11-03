@@ -48,6 +48,8 @@ function chrome(s) {
     .replaceAll('Escríbele a Truly AI', 'Escribile a Truly AI')
     .replaceAll('Conversa aquí', 'Escribí acá')
     .replaceAll('Activa JavaScript', 'Activá JavaScript')
+    // Footer header as the master: slogan plus "Volver arriba ↑" on the right (no second "Hablemos")
+    .replace('<a class="text-link" href="/oficinas/uruguay/#contacto">Hablemos</a></div><div class="footer-columns">', '<a class="text-link footer-top" href="#contenido">Volver arriba ↑</a></div><div class="footer-columns">')
     .replaceAll('© Truly Nolen · Venezuela', `© ${new Date().getFullYear()} Truly Nolen International · Uruguay`)
     .replace('<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a>', '<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a><a href="/oficinas/uruguay/creditos/">Créditos de imágenes</a>');
   // Floating chat: same three shortcuts as the on-page box (Venezuela had two vs three)

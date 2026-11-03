@@ -10,7 +10,7 @@ const OUT = process.argv[2];
 const PAGES = ['', 'servicios/hogares/', 'servicios/comercios/', 'servicios/industria/', 'plagas/mosquitos/', 'plagas/ratas-y-ratones/',
   'plagas/cucarachas/', 'plagas/hormigas/', 'plagas/termitas/', 'plagas/arana-de-los-rincones/', 'blog/',
   'blog/arana-de-los-rincones-en-casa/', 'blog/hormiga-cortadora-en-el-jardin/', 'privacidad/', 'terminos/', 'accesibilidad/', 'creditos/'];
-const WIDTHS = [390, 961, 1024, 1100, 1180, 1280, 1366, 1440];
+const WIDTHS = [360, 390, 768, 900, 961, 1024, 1100, 1180, 1280, 1366, 1440];
 const browser = await chromium.launch();
 const problems = [];
 for (const w of WIDTHS) {
@@ -34,6 +34,9 @@ for (const w of WIDTHS) {
         const mids = items.map((e) => { const b = e.getBoundingClientRect(); return b.top + b.height / 2; });
         if (mids.length && Math.max(...mids) - Math.min(...mids) > 24) out.push(`menú en más de una línea (${Math.round(Math.max(...mids) - Math.min(...mids))} px)`);
       }
+      // A text column squeezed to a word per line (third design review: .ct-prose at 768-1279)
+      const narrow = [...document.querySelectorAll('main p, main li')].filter((e) => { const b = e.getBoundingClientRect(); return b.width > 0 && b.width < 160 && e.textContent.trim().length > 40; });
+      if (narrow.length) out.push(`${narrow.length} párrafos de menos de 160 px: «${narrow[0].textContent.trim().slice(0, 30)}»`);
       if (w < 500) {
         const small = [...document.querySelectorAll('main a, main button, main summary, footer a, footer button')].filter((e) => {
           const b = e.getBoundingClientRect(); if (b.width === 0 || b.height === 0) return false;
