@@ -297,3 +297,6 @@ body.country-site[data-oficina] main .s-intro nav a,body.country-site[data-ofici
 .g-prog-teps h3,.g-prog-teps p{padding-right:72px}
 @media(max-width:760px){.g-prog-teps h3,.g-prog-teps p{padding-right:60px}}
 @media(max-width:760px){.g-linea{grid-template-columns:1fr}.g-linea li{grid-template-columns:72px 1fr;align-items:baseline;padding:14px 0 0}.g-programa,.g-corp{padding-bottom:104px}}
+
+/* Recipe round 8: the catalog reading-progress bar is hidden in offices (it crossed out headings). */
+body.country-site[data-oficina] .machote-reading-progress{display:none!important}
