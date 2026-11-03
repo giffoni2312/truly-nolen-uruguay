@@ -73,7 +73,7 @@ const SPECIES = {
     { name: 'Cucaracha americana', rows: [1] },
   ],
   hormigas: [
-    { name: 'Hormiga argentina', img: `${A}/uy-plaga-hormiga-argentina-truly.webp`, alt: 'Hormiga argentina, foto de identificación de Truly Nolen International', rows: [0] },
+    { name: 'Hormiga de la cocina', img: `${A}/uy-plaga-hormiga-argentina-truly.webp`, alt: 'Hormiga de la cocina, foto de identificación de Truly Nolen International', rows: [0] },
     { name: 'Hormiga cortadora', rows: [1, 2] },
   ],
   termitas: [{ name: 'Termita subterránea', rows: [0, 1, 2] }],
@@ -114,7 +114,7 @@ const mosquitos = pestPage('mosquitos', {
   d: { ey: 'En Uruguay', h2: 'Lo que registró<br/>el MSP.', items: [
     ['1997', 'año en que se volvió a detectar el Aedes aegypti en Uruguay. Se había declarado erradicado en 1958.', 'MSP, Boletín epidemiológico (2016)'],
     ['2016', 'primer brote de dengue autóctono en 100 años: 19 casos, 18 en Montevideo, con epicentro en Pocitos.', 'MSP, Boletín epidemiológico (2016)'],
-    ['2024', 'el 1 de marzo el MSP confirmó el primer caso de dengue autóctono del año, en una persona que no había viajado.', 'Montevideo Portal, con datos del MSP (2024)'],
+    ['2024', 'el 1 de marzo el MSP informó el primer contagio de dengue dentro del país en el año, en una persona que no había viajado.', 'Montevideo Portal, con datos del MSP (2024)'],
   ] },
   t2: { ey: 'Rutina de cada semana', h2: 'Tapá, vaciá<br/>y limpiá.', rows: [
     ['Recipientes con agua', 'Lo que guardás o se llena solo.', ['Baldes y tanques bien tapados.', 'Bebederos de mascotas con agua cambiada seguido.']],
@@ -131,7 +131,7 @@ const mosquitos = pestPage('mosquitos', {
 
 const ratas = pestPage('ratas-y-ratones', {
   description: 'Ratas y ratones en casas y comercios de Uruguay: señales, qué las atrae y cómo prevenirlas, con datos de las intendencias.',
-  hero: { h1: 'Donde hay comida y refugio,<br/>aparecen.', p: 'Ratas y ratones buscan lo mismo: comida, agua y un lugar donde esconderse. En Punta del Este se esconden arriba de las palmeras y comen los restos que dejan los restaurantes de noche, según la Intendencia de Maldonado (2025).' },
+  hero: { h1: 'Donde hay comida y refugio,<br/>aparecen.', p: 'Ratas y ratones buscan lo mismo: comida, agua y un lugar donde esconderse. En Punta del Este se esconden arriba de las palmeras y se las ve mucho por los restos de comida que dejan los restaurantes de noche, según la Intendencia de Maldonado (2025).' },
   t1: { ey: 'Las señales', h2: 'Lo que dejan<br/>a su paso.', rows: [
     ['Excrementos', 'Pequeños y oscuros, cerca de la comida, en los muebles de cocina o en los rincones.'],
     ['Roeduras', 'Marcas en bolsas, cables, madera y envases.'],
@@ -182,7 +182,7 @@ const cucarachas = pestPage('cucarachas', {
 });
 
 const hormigas = pestPage('hormigas', {
-  description: 'Hormiga argentina y hormiga cortadora (Acromyrmex) en Uruguay: cómo distinguirlas y proteger la cocina, el jardín y la huerta.',
+  description: 'Hormigas de la cocina y hormiga cortadora (Acromyrmex) en Uruguay: cómo distinguirlas y proteger la cocina, el jardín y la huerta.',
   hero: { h1: 'En la cocina o en el jardín,<br/>no son la misma hormiga.', p: 'En la cocina aparecen en fila; en el jardín, la hormiga cortadora (Acromyrmex) deja sin hojas los rosales y la huerta.' },
   t1: { ey: 'Cómo distinguirlas', h2: 'Dos hormigas,<br/>dos problemas.', rows: [
     ['Hormiga de la cocina', 'Chica, marrón, en filas largas.'],
@@ -191,7 +191,7 @@ const hormigas = pestPage('hormigas', {
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que dicen<br/>los investigadores.', items: [
     ['12-14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay: 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi, de la Facultad de Agronomía, en La Mañana (2023).', 'INIA, cartilla N.º 36 (2014) · La Mañana (2023)'],
-    ['Jardín', 'Acromyrmex es el género que más problemas causa en los jardines, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana (2023)'],
+    ['Jardín', 'Acromyrmex es el género que más preocupa, porque causa problemas en jardines y campos, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana (2023)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Seguí la fila<br/>hasta la entrada.', rows: [
     ['Cocina', 'Lo que las atrae.', ['Azúcar, miel y ración en envases cerrados.', 'Seguir la fila para encontrar por dónde entran.']],
@@ -241,13 +241,13 @@ const arana = pestPage('arana-de-los-rincones', {
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que hay<br/>que saber.', items: [
     ['1722', 'es el teléfono del CIAT (Centro de Información y Asesoramiento Toxicológico) para consultar por una picadura.', 'Montevideo Portal (2022)'],
-    ['MSP', 'considera a la araña de los rincones la de mayor importancia para la salud pública en Uruguay.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
+    ['MSP', 'le asigna el primer lugar en importancia sanitaria entre las arañas del país.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Mover, sacudir<br/>y revisar.', rows: [
     ['Ropa y calzado', 'Donde más se esconden.', ['Sacudir la ropa y el calzado antes de usarlos.', 'Revisar la ropa de cama guardada.']],
     ['Muebles y cuadros', 'Rincones sin luz.', ['Separar camas y muebles de la pared.', 'Limpiar detrás de cuadros y muebles.']],
     ['Placares y depósitos', 'Lugares tranquilos.', ['Ordenar cajas y ropa acumulada.', 'Aspirar rincones y grietas.']],
-  ], nota: 'Estas recomendaciones siguen la guía del Ministerio de Salud de Mendoza (Argentina), que trabaja con la misma especie: por ejemplo, separar la cama unos 20 cm de la pared y sacudir la ropa y el calzado antes de usarlos.' },
+  ], nota: 'Estas recomendaciones siguen la guía del Ministerio de Salud de Mendoza (Argentina), que trabaja con la misma especie: por ejemplo, separar la cama unos 20 cm de la pared.' },
   src: [SRC.arana, SRC_BLOG.mendoza],
   prompts: [
     ['Vi una araña violinista', 'Creo que vi una araña de los rincones en casa. ¿Qué hago?'],
@@ -304,8 +304,8 @@ const comercios = {
       { id: 'norma', kicker: 'La norma', h2: 'Si vendés alimentos, la norma lo pide.', html: rowsProse([
         ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
         ['Registros', 'El programa preventivo de Montevideo tiene que dejar anotado el control que se hizo, quién lo hizo y las medidas correctivas.'],
-        ['Guía oficial', 'El portal gub.uy publica una guía para elaborar el Plan de Control de Plagas de las empresas alimentarias.'],
-        ['Empresa habilitada', 'En Montevideo, las empresas de control de plagas deben registrarse en el Servicio de Salubridad Pública, con un técnico universitario responsable y la habilitación del MSP. El registro se renueva cada 2 años.'],
+        ['Guía oficial', 'El portal gub.uy tiene una guía oficial para que las empresas alimentarias armen su Plan de Control de Plagas.'],
+        ['Empresa habilitada', 'En Montevideo, las empresas de control de plagas deben registrarse en el Servicio de Salubridad Pública y estar habilitadas por el MSP.'],
       ]) + '<p>Los requisitos pueden cambiar según el departamento. Consultá los de la Intendencia que corresponde a tu local.</p>' },
       { id: 'salud', kicker: 'La salud', h2: 'En un negocio de alimentos, una plaga es un riesgo de salud.', html: rowsProse([
         ['Roedores y leptospirosis', 'Un seguimiento de diez años, publicado en 2012, describió la leptospirosis humana en Uruguay como un problema de salud no resuelto.'],
@@ -344,8 +344,8 @@ const industria = {
         aside: { h3: '¿Quién se beneficia?', items: ['Frigoríficos', 'Lácteas', 'Molinos y acopio de granos', 'Celulosa', 'Puertos y logística'] } },
       { id: 'pais', kicker: 'El país', h2: 'Lo que exporta el país.', html: datoProse([
         ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025, más que cualquier otro rubro.', 'El Observador (2025)'],
-        ['2.103', 'millones de dólares exportó la celulosa de enero a noviembre de 2025.', 'El Observador (2025)'],
-        ['848', 'millones de dólares exportaron los lácteos de enero a noviembre de 2025.', 'El Observador (2025)'],
+        ['2.103', 'millones de dólares exportó la celulosa en el mismo período.', ''],
+        ['848', 'millones de dólares exportaron los lácteos en esos meses.', ''],
       ]) },
       { id: 'planta', kicker: 'La planta', h2: 'De la recepción al despacho.', html: rowsProse([
         ['Recepción', 'Donde entra la materia prima.'],
@@ -434,6 +434,6 @@ const CREDITS = [
   ['Araña de los rincones, Loxosceles laeta (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
-  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el carro oficial se ubicó frente al teatro con IA (Gemini). La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
+  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el auto oficial se ubicó frente al teatro con IA (Gemini). La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini) para este borrador.</p>`);
 
 export const PAGES = [home, mosquitos, ratas, cucarachas, hormigas, termitas, arana, hogares, comercios, industria, blog, postTermitas, postMosquito, privacidad, terminos, accesibilidad, creditos];

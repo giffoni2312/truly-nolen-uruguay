@@ -19,7 +19,7 @@ export const PESTS = {
   'ratas-y-ratones': {
     name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-cc0-suave.webp`,
     alt: 'Rata noruega entre hojas secas y plantas',
-    card: 'En Punta del Este se esconden arriba de las palmeras y comen los restos que dejan los restaurantes de noche. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
+    card: 'En Punta del Este se esconden arriba de las palmeras y se las ve mucho por los restos de comida que dejan los restaurantes de noche. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
   },
   cucarachas: {
     name: 'Cucarachas', sub: 'Guía de cucarachas', img: `${A}/uy-plaga-cucaracha-americana-foto.webp`,

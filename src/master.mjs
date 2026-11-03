@@ -24,7 +24,7 @@ export const flow = (h2, inner) => `<section class="wrap s-section s-flow"><h2>$
 export const rowsProse = (rows) => rows.map(([t, d, list]) => `<p><strong>${ensureDot(flat(t))}</strong> ${d}</p>${list ? `<ul>${list.map((x) => `<li>${x}</li>`).join('')}</ul>` : ''}`).join('');
 
 // items: [number, text, source]
-export const datoProse = (items) => items.map(([b, p, s]) => `<p><strong>${b}</strong> ${p} <small class="s-fuente">${s}</small></p>`).join('');
+export const datoProse = (items) => items.map(([b, p, s]) => `<p><strong>${b}</strong> ${p} ${s ? `<small class="s-fuente">${s}</small>` : ''}</p>`).join('');
 
 export const enlaces = (links) => `<ul class="s-enlaces">${links.map(([l, u]) => `<li><a href="${u}">${l}</a></li>`).join('')}</ul>`;
 export const pestLinks = (slugs = PEST_ORDER) => enlaces(slugs.map((s) => [PESTS[s].name, pestUrl(s)]));
