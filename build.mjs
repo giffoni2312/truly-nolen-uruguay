@@ -99,7 +99,7 @@ function head(pre, page) {
   set('og:title', page.title);
   set('og:description', page.description);
   set('og:image', ogImg);
-  set('og:image:alt', 'Carro de Truly Nolen frente al Teatro Solís de Montevideo, Uruguay');
+  set('og:image:alt', 'Auto de Truly Nolen frente al Teatro Solís de Montevideo, Uruguay');
   set('twitter:title', page.title);
   set('twitter:description', page.description);
   set('twitter:image', ogImg);
@@ -124,7 +124,8 @@ for (const page of PAGES) {
   const html = `${pre}<main id="contenido">\n${page.main.replace(/(\d) %/g, '$1&nbsp;%')}\n</main>${post}`;
   const file = join(OUT, page.out, 'index.html');
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, html);
+  // Recipe round 9: the real brand car photo replaces the drawn car everywhere (chat button, chat header, Truly AI box).
+  writeFileSync(file, html.split('/oficinas/assets/truly-carrito-asistente.svg').join(`${A}/carro-truly.png`));
   console.log(`✓ ${U}/${page.out}`);
 }
 
