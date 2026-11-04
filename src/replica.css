@@ -532,3 +532,6 @@ html { scroll-padding-top: 140px; }
 body.country-site[data-oficina] .g-cifra-carro span { line-height: 1.3 !important; }
 /* 12. Commercial lists: bullets aligned whether the item is a link or plain text */
 @media (min-width: 761px) { body.country-site[data-oficina] .ct-facilities li > a { display: inline !important; min-height: 0 !important; line-height: inherit; } }
+/* Second design-eye pass (4-nov-2026): footer "Hablemos" text at the same height as the summary titles; compact car caption */
+@media (min-width: 761px) { html body.country-site[data-oficina] .footer-office h2 { padding-top: 25px !important; } }
+html body.country-site[data-oficina] .g-cifra-carro, html body.country-site[data-oficina] .g-cifra-carro span { line-height: 1.3 !important; }
