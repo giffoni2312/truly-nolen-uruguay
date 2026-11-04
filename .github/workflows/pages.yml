@@ -1,9 +1,10 @@
-# Publishes the site to GitHub Pages on every push to main.
+# Publishes the site to GitHub Pages on every push to main or to the working branch (portada-video),
+# so the public link always matches the local preview (requested by Carlos, 3-nov-2026).
 name: Publicar en GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, portada-video]
   workflow_dispatch:
 
 permissions:
