@@ -1,0 +1,17 @@
+/* Ajustes para que la página se vea igual de bien en computadora, laptop y celular (4-nov-2026). */
+/* Tableta y laptop chica: las tablas se apilan como en el celular para no dejar columnas angostas. */
+@media (max-width: 900px) {
+  .g-tabla thead { display: none; }
+  .g-tabla, .g-tabla tbody, .g-tabla tr, .g-tabla th, .g-tabla td { display: block; width: auto !important; }
+  .g-tabla tbody th, .g-tabla td { padding: 18px 22px; }
+  .g-tabla .g-t-n { padding-bottom: 0; }
+  .service-grid { grid-template-columns: 1fr !important; }
+}
+/* Laptop: los 4 pasos de «Cómo trabajamos» en 2 columnas para que el texto respire. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .g-metodo .g-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+/* Celular: las migas del blog con altura cómoda para el dedo. */
+@media (max-width: 760px) {
+  .blog-migas a { display: inline-flex; align-items: center; min-height: 44px; }
+}
