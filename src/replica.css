@@ -540,3 +540,15 @@ html body.country-site[data-oficina] .g-cifra-carro, html body.country-site[data
   html body.country-site[data-oficina] .footer-office { border-top: 1px solid var(--line); padding-top: 0 !important; }
   html body.country-site[data-oficina] .footer-office h2 { font-size: 19px !important; font-weight: 600 !important; min-height: 78px; display: flex; align-items: center; margin: 0 !important; padding: 0 !important; color: var(--ink) !important; letter-spacing: 0 !important; text-transform: none !important; }
 }
+
+/* Recipe step 14 (4-nov-2026): pests in 3 wide columns on desktop and laptop, 2 on tablet, rows on the phone; never 6 narrow ones.
+   Laptop 961-1100: services title at 46 px. */
+@media (min-width: 761px) {
+  html body.country-site[data-oficina] .g-plagas-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 56px 36px !important; }
+}
+@media (min-width: 761px) and (max-width: 960px) {
+  html body.country-site[data-oficina] .g-plagas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (min-width: 961px) and (max-width: 1100px) {
+  html body.country-site[data-oficina] #servicios .g-cab h2 { font-size: 46px !important; }
+}

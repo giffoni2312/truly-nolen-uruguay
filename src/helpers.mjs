@@ -114,7 +114,7 @@ export const GENERAL_FAQ = [
   ['¿Qué tengo que preparar antes de la visita?', 'Te vamos a indicar las medidas que aplican al servicio y las precauciones para personas y mascotas.'],
   ['¿Cómo sé si llegan a mi zona?', 'Decinos tu departamento, tu barrio o localidad y el tipo de espacio. Te confirmamos si podemos atenderte y cómo coordinar.'],
   ['¿La evaluación tiene costo?', 'Consultalo con el equipo antes de coordinar la visita. El costo y las condiciones dependen de la ubicación y del servicio que necesites.'],
-  ['¿Con una visita alcanza?', 'El equipo define el alcance y el seguimiento después de evaluar tu situación. Las visitas y condiciones se explican en la propuesta.'],
+  ['¿Con una visita alcanza?', 'Depende de la plaga y de cuánto hace que está. Después de la primera visita te decimos cuántas hacen falta y cada cuánto.'],
 ];
 
 // Sources used across several pages
