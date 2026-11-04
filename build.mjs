@@ -11,6 +11,7 @@ const ROOT = new URL('./site/', import.meta.url).pathname.replace(/^\/([A-Za-z]:
 const VE = join(ROOT, 'oficinas/venezuela');
 const OUT = join(ROOT, 'oficinas/uruguay');
 
+const REPLICA_CSS = readFileSync(new URL('./src/replica.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const plain = (s) => s.replace(/<br\/>/g, ' ').replace(/<[^>]+>/g, '');
 
@@ -34,7 +35,7 @@ const CHAT_TEXTS = {
   trabado: 'No pude conectarme. Probá enviar tu mensaje de nuevo en unos instantes.',
   noLeidos: 'Respuesta nueva',
 };
-const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga negra or cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
+const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
 
 function chrome(s) {
   s = s.replaceAll('/oficinas/venezuela/', '/oficinas/uruguay/');
@@ -47,6 +48,8 @@ function chrome(s) {
     .replaceAll('Escríbele a Truly AI', 'Escribile a Truly AI')
     .replaceAll('Conversa aquí', 'Escribí acá')
     .replaceAll('Activa JavaScript', 'Activá JavaScript')
+    // Footer header as the master: slogan plus "Volver arriba ↑" on the right (no second "Hablemos")
+    .replace('<a class="text-link" href="/oficinas/uruguay/#contacto">Hablemos</a></div><div class="footer-columns">', '<a class="text-link footer-top" href="#contenido">Volver arriba ↑</a></div><div class="footer-columns">')
     .replaceAll('© Truly Nolen · Venezuela', `© ${new Date().getFullYear()} Truly Nolen International · Uruguay`)
     .replace('<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a>', '<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a><a href="/oficinas/uruguay/creditos/">Créditos de imágenes</a>');
   // Floating chat: same three shortcuts as the on-page box (Venezuela had two vs three)
@@ -54,6 +57,8 @@ function chrome(s) {
   s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
   s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
   s = s.replaceAll('width="1774" height="887"', 'width="1774" height="877"');
+  // Footer slogan as in the Argentina office draft and globaltni.com/es
+  s = s.replace('Cuidamos lo que<br/>más te importa.', 'Tu satisfacción<br/>es nuestra meta.');
   // owner request: the hero always moves (loads before preview.js / escenas.js)
   s = s.replace('<script defer src="/machotes/assets/preview.js', '<script src="/oficinas/uruguay/assets/forzar-movimiento.js"></script><script defer src="/machotes/assets/preview.js');
   return s.replaceAll('Venezuela', 'Uruguay').replaceAll('venezuela', 'uruguay');
@@ -96,11 +101,15 @@ function head(pre, page) {
   set('og:title', page.title);
   set('og:description', page.description);
   set('og:image', ogImg);
-  set('og:image:alt', 'Carro de Truly Nolen frente al Teatro Solís de Montevideo, Uruguay');
+  set('og:image:alt', 'Auto de Truly Nolen frente al Teatro Solís de Montevideo, Uruguay');
   set('twitter:title', page.title);
   set('twitter:description', page.description);
   set('twitter:image', ogImg);
   pre = pre.replace(/(<meta property="og:image:width" content=")[^"]*/, '$11200').replace(/(<meta property="og:image:height" content=")[^"]*/, '$1630');
+  // The full-width footer watercolor uses 100vw, which includes a desktop scrollbar on Windows and made
+  // every page 8 px wider than the window (horizontal scroll). Clip it at the footer edge.
+  // src/replica.css also carries the measured master (globaltni.com/en) rules for inner pages.
+  pre = pre.replace('</head>', `<style>${REPLICA_CSS}</style></head>`);
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;
@@ -113,17 +122,12 @@ for (const page of PAGES) {
   if (a < 0 || b < 0) throw new Error(`Template without <main>: ${page.template}`);
   const pre = chrome(head(tpl.slice(0, a), page));
   const post = chrome(tpl.slice(b + '</main>'.length));
-  // "38 %" must never break between the number and the sign (no-break space).
-  // The Costa Rica and Argentina drafts have no "Vista previa" banner: drop it (style + note) like them.
-  // src/ajustes.css: small responsive fixes so desktop, laptop and phone look equally good
-  const AJUSTES = readFileSync(new URL('./src/ajustes.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '');
-  const html = `${pre}<main id="contenido">\n${page.main.replace(/(\d) %/g, '$1&nbsp;%')}\n</main>${post}`
-    .replace(/<style>\.aviso-borrador\{[^<]*<\/style>/, '')
-    .replace(/<div role="note" class="aviso-borrador">[^<]*<\/div>/, '')
-    .replace('</head>', `<style>${AJUSTES}</style></head>`);
+  // "38 %" must never break between the number and the sign (no-break space)
+  const html = `${pre}<main id="contenido">\n${page.main.replace(/(\d) %/g, '$1&nbsp;%')}\n</main>${post}`;
   const file = join(OUT, page.out, 'index.html');
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, html);
+  // Recipe round 9: the real brand car photo replaces the drawn car everywhere (chat button, chat header, Truly AI box).
+  writeFileSync(file, html.split('/oficinas/assets/truly-carrito-asistente.svg').join(`${A}/carro-truly.png`));
   console.log(`✓ ${U}/${page.out}`);
 }
 
