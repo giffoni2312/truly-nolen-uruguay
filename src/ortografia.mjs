@@ -73,6 +73,27 @@ export const ORTOGRAFIA = [
   ['desarrollo de estrategias de saneamiento y manejo de plagas', 'desarrollo de estrategias de higiene y manejo de plagas'],
   ['un servicio que es totalmente auditable', 'un servicio que es completamente auditable'],
   ['Si usted no se encuentra dentro de estos sectores', 'Si su actividad no está entre estos sectores'],
+
+  // ---- Coordinator adjustment (5-nov, afternoon), same as Bogotá and Cali: no sentence twice on Comercios (recipe 6c).
+  // Each sector of the globaltni copy repeated the same TEPS, audit and «¿Quién se beneficia…?» texts; one wording per
+  // sector, same meaning, no new facts. Anchored on data-source-paragraph / the h3 id so each sector gets its own text.
+  // TEPS closing paragraph (wording given by the coordinator)
+  ['<p data-source-paragraph="1-2">Nuestro sistema TEPS está diseñado para clientes que requieren sistemas de prevención de plagas de última generación.', '<p data-source-paragraph="1-2">Por eso, el sistema TEPS es la opción para plantas que necesitan prevención de plagas de última generación.'],
+  ['<p data-source-paragraph="2-3">Nuestro sistema TEPS está diseñado para clientes que requieren un sistema de prevención de plagas de última generación.', '<p data-source-paragraph="2-3">El sistema TEPS está pensado para empresas de alimentos que necesitan la prevención más exigente.'],
+  ['<p data-source-paragraph="3-3">Nuestro sistema TEPS está diseñado para clientes que requieren un sistema de prevención de plagas de última generación.', '<p data-source-paragraph="3-3">Con el sistema TEPS, su operación logística cuenta con prevención de plagas de última generación.'],
+  // «¿Quién se beneficia…?», one per sector (wording given by the coordinator)
+  ['<h3 id="healthcare-facilities">¿Quién se beneficia de este programa?', '<h3 id="healthcare-facilities">¿Quién se beneficia en el sector salud?'],
+  ['<h3 id="industrial-facilities">¿Quién se beneficia de este programa?', '<h3 id="industrial-facilities">¿Quién se beneficia en la industria?'],
+  ['<h3 id="food-processing-facilities">¿Quién se beneficia de este programa?', '<h3 id="food-processing-facilities">¿Quién se beneficia en el comercio de alimentos?'],
+  ['<h3 id="logistics-facilities">¿Quién se beneficia de este programa?', '<h3 id="logistics-facilities">¿Quién se beneficia en la logística?'],
+  // «Brindamos un servicio… auditable» (Salud keeps globaltni's wording)
+  ['<p data-source-paragraph="1-1">Brindamos un servicio que es completamente auditable y cumple con toda la documentación y todos los registros requeridos para satisfacer los requisitos del cliente.', '<p data-source-paragraph="1-1">Cada servicio se puede auditar de principio a fin y genera la documentación y los registros que exige cada cliente.'],
+  ['<p data-source-paragraph="2-2">Brindamos un servicio que es completamente auditable y cumple con toda la documentación y todos los registros requeridos para satisfacer las normas regulatorias de la industria o los requisitos de los clientes más estrictos del mundo.', '<p data-source-paragraph="2-2">Cada visita queda documentada para las auditorías, con los registros que piden las normas del sector y los clientes más exigentes.'],
+  ['<p data-source-paragraph="3-2">Brindamos un servicio que es completamente auditable y cumple con toda la documentación y todos los registros requeridos para satisfacer las normas regulatorias de la industria o los requisitos de los clientes más estrictos del mundo.', '<p data-source-paragraph="3-2">El servicio se puede auditar en cada etapa y entrega la documentación que exigen las normas del rubro y sus clientes.'],
+  // «El sistema TEPS… ofrece prevención y minimiza el riesgo…» (Salud keeps globaltni's wording)
+  ['<p data-source-paragraph="1-0">El sistema TEPS ofrece prevención y minimiza el riesgo de actividad de plagas y contaminación química.', '<p data-source-paragraph="1-0">En plantas y almacenes, el sistema TEPS se centra en la prevención y reduce el riesgo de plagas y de contaminación química.'],
+  ['<p data-source-paragraph="2-1">El sistema TEPS se desarrolló para instalaciones minoristas que requieren servicios que van más allá del control. Nuestro sistema ofrece prevención y minimiza el riesgo de actividad de plagas y contaminación química.', '<p data-source-paragraph="2-1">El sistema TEPS se desarrolló para instalaciones minoristas que necesitan algo más que el control. Se enfoca en prevenir y reduce al mínimo la presencia de plagas y la contaminación química.'],
+  ['<p data-source-paragraph="3-1">El sistema TEPS fue desarrollado para corporaciones que requieren servicios que van más allá del control. Nuestro sistema ofrece prevención y minimiza el riesgo de actividad de plagas y contaminación química.', '<p data-source-paragraph="3-1">El sistema TEPS fue pensado para empresas que buscan más que una respuesta a la plaga: pone la prevención primero y protege la carga de plagas y de contaminación química.'],
 ];
 
 export function corregir(html, usados) {
