@@ -5,14 +5,15 @@ export const SRC_BLOG = {
   mspArana: ['Montevideo Portal (21/10/2022). La mayoría de los casos con araña de los rincones en Uruguay son leves (cita el boletín del MSP de 2013 y el CIAT)', 'https://www.montevideo.com.uy/Archivo/Mayoria-de-casos-con-arana-en-Uruguay-que-dejo-victimas-en-Argentina-son-leves--uc836048'],
   mendoza: ['Ministerio de Salud de Mendoza, Argentina. Recomendaciones ante envenenamiento por arácnidos (referencia regional, copia archivada)', 'https://web.archive.org/web/20240305003525/https://www.mendoza.gov.ar/salud/wp-content/uploads/sites/16/2014/05/Recomendaciones-Envenenamiento-por-Aracnidos-de-Cuyo-20171.pdf'],
   revistaInia: ['Revista INIA N.º 74 (setiembre de 2023). Hormigas cortadoras en Uruguay', 'https://inia.uy/sites/default/files/publications/2024-10/Revista-INIA-74-set-2023-13.pdf'],
-  cartillaInia: ['INIA (2014). Cartilla N.º 36: hormigas cortadoras del género Acromyrmex', 'https://www.inia.uy/sites/default/files/publications/2024-10/inia-cartilla36-Acromyrmex.pdf'],
-  laManana: ['La Mañana (21/06/2023). Hormigas cortadoras en Uruguay, con Martín Bollazzi (Facultad de Agronomía, UdelaR)', 'https://www.xn--lamaana-7za.uy/?p=48346'],
-  tesisFagro: ['Facultad de Agronomía, UdelaR (2018). Tesis de maestría sobre el forrajeo de cebos tóxicos por Acromyrmex', 'https://core.ac.uk/download/513018874.pdf'],
+  cartillaInia: ['INIA (2014). Cartilla N.º 36: hormigas cortadoras del género <em>Acromyrmex</em>', 'https://www.inia.uy/sites/default/files/publications/2024-10/inia-cartilla36-Acromyrmex.pdf'],
+  laManana: ['La Mañana (21/06/2023). Hormigas cortadoras en Uruguay, con Martín Bollazzi (Facultad de Agronomía, Udelar)', 'https://www.xn--lamaana-7za.uy/?p=48346'],
+  tesisFagro: ['Facultad de Agronomía, Udelar (2018). Tesis de maestría sobre el forrajeo de cebos tóxicos por <em>Acromyrmex</em>', 'https://core.ac.uk/download/513018874.pdf'],
 };
 
 export const POSTS_UY = [
   { slug: 'arana-de-los-rincones-en-casa', tag: 'Araña de los rincones', img: `${A}/uy-blog-arana-de-los-rincones-suave.webp`,
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
+    cap: 'Araña de los rincones (<em>Loxosceles laeta</em>) sobre madera',
     title: 'Araña de los rincones en casa: dónde se esconde y qué hacer',
     desc: 'Araña de los rincones en Uruguay: dónde se esconde en la casa, cómo evitar una picadura y a quién llamar si pasa. Con datos del MSP y del CIAT (1722).',
     resumen: 'Es la araña que más le importa a la salud pública en Uruguay. Le contamos dónde se esconde en casa, cómo evitar una picadura y a quién llamar.',
@@ -41,10 +42,10 @@ export const CUERPOS = {
 </ul>
 <h2>Por qué importa una picadura</h2>
 <p>Según la nota de Montevideo Portal, su veneno es necrosante: puede dañar la piel y los tejidos alrededor de la picadura. El titular de la misma nota destaca que la mayoría de los casos en Uruguay son leves. Eso no significa que haya que esperar a ver cómo evoluciona: ante la sospecha, se consulta.</p>
-<p>Muchas picaduras pasan al dormir o al vestirse: según esa misma guía argentina, el 38 % de los casos ocurrió durmiendo y el 32 % al vestirse.</p>
+<p>Muchas picaduras pasan al dormir o al vestirse: según esa misma guía argentina, el 38 % de los casos ocurrió mientras la persona dormía y el 32 %, al vestirse.</p>
 <h2>Qué hacer si sospecha una picadura</h2>
 <ol>
-<li><strong>Llame al CIAT al 1722.</strong> Es el Centro de Información y Asesoramiento Toxicológico, el número que recomienda el reptiliario Alternatus en la nota de Montevideo Portal.</li>
+<li><strong>Llame al CIAT al 1722.</strong> Es el Centro de Información y Asesoramiento Toxicológico, el centro que recomienda el reptiliario Alternatus en la nota de Montevideo Portal.</li>
 <li><strong>Consulte a su prestador de salud</strong> aunque al principio duela poco.</li>
 <li><strong>Si puede, lleve la araña</strong> en un frasco cerrado para que la identifiquen.</li>
 </ol>
@@ -56,7 +57,7 @@ export const CUERPOS = {
 <li><strong>Revisar la ropa y los zapatos antes de usarlos</strong>, sobre todo los que estuvieron guardados.</li>
 <li><strong>No colgar ropa contra la pared</strong> y separar un poco la cama y los muebles.</li>
 </ul>
-<p>A eso se suma ordenar el placard y el galpón: menos cajas apiladas y menos ropa amontonada significa menos escondites.</p>
+<p>A eso se suma ordenar el placard y el galpón: menos cajas apiladas y menos ropa amontonada significan menos escondites.</p>
 <h2>Cuándo conviene una revisión profesional</h2>
 <p>Si encuentra más de una araña, si aparecen seguido en el mismo ambiente o si en la casa hay chicos o personas mayores, conviene revisar la casa entera: dónde se esconden, qué las atrae y qué se puede sellar. Escriba por el chat o por WhatsApp y cuéntenos dónde la vio: Truly AI le orienta en el siguiente paso. Para repasar sus señales, entre a la <a href="${U}/plagas/arana-de-los-rincones/">guía de la araña de los rincones</a>.</p>`,
     faq: [
@@ -75,8 +76,8 @@ export const CUERPOS = {
   'hormiga-cortadora-en-el-jardin': {
     body: `<p>Un rosal que amanece sin hojas, una fila de hormigas cargando pedacitos verdes y un montículo de tierra suelta en el pasto: es la hormiga cortadora. En Uruguay, según la Revista INIA (setiembre de 2023), las del género <em>Acromyrmex</em> son las de distribución más amplia y las responsables de los daños en los cultivos.</p>
 <h2>Cuántas especies de hormiga cortadora hay y por qué importan</h2>
-<p>Los números cambian según la fuente. La Cartilla N.º 36 del INIA (2014) habla de 12 especies de <em>Acromyrmex</em> en Uruguay. Martín Bollazzi, de la Facultad de Agronomía (UdelaR), habló en La Mañana (2023) de 14 especies de <em>Acromyrmex</em> y 2 de <em>Atta</em>. Coinciden en lo importante: <em>Acromyrmex</em> es el género que más preocupa, porque causa problemas en jardines y campos.</p>
-<p>La misma cartilla del INIA (2014) da una idea del tamaño del problema: una sola colonia adulta puede llegar a atacar en promedio el 12 % de una hectárea. Y en plantines jóvenes, quedarse sin hojas puede matar a la planta.</p>
+<p>Los números cambian según la fuente. La cartilla N.º 36 del INIA (2014) habla de 12 especies de <em>Acromyrmex</em> en Uruguay. Martín Bollazzi, de la Facultad de Agronomía (Udelar), habló en La Mañana (2023) de 14 especies de <em>Acromyrmex</em> y 2 de <em>Atta</em>. Coinciden en lo importante: <em>Acromyrmex</em> es el género que más preocupa, porque causa problemas en jardines y campos.</p>
+<p>La misma cartilla del INIA (2014) da una idea del tamaño del problema: una sola colonia adulta puede llegar a atacar en promedio el 12 % de una hectárea. Y en plantines jóvenes, quedarse sin hojas puede matarlos.</p>
 <h2>No comen hojas: cultivan un hongo</h2>
 <p>Las cortadoras no se comen las hojas que cargan. Las llevan al hormiguero, bajo tierra, donde cultivan el hongo del que se alimenta la colonia. Por eso el daño se ve en las plantas, pero el problema está en el nido, que a veces queda lejos del cantero atacado.</p>
 <h2>Las señales en su jardín</h2>
@@ -87,7 +88,7 @@ export const CUERPOS = {
 <li><strong>Filas de hormigas con trozos verdes</strong> que van y vienen del nido.</li>
 </ul>
 <h2>Qué funciona y qué no</h2>
-<p>Bollazzi explicó en La Mañana que el polvo funciona por contacto y no es un control recomendable: mata algunas obreras y baja el corte, pero la colonia sigue. Bollazzi prefiere el cebo, que las obreras llevan al hormiguero y que controla la colonia en un par de semanas. También advierte que ponerlo muy cerca del nido puede hacerlo fracasar.</p>
+<p>Bollazzi explicó en La Mañana que el polvo funciona por contacto y no es un control recomendable: mata a algunas obreras y baja el corte, pero la colonia sigue. Bollazzi prefiere el cebo, que las obreras llevan al hormiguero y que controla la colonia en un par de semanas. También advierte que ponerlo muy cerca del nido puede hacerlo fracasar.</p>
 <p>Tampoco es infalible. Bollazzi contó en La Mañana que las obreras «tienen memoria», y la Revista INIA explica que pueden rechazar los cebos después de una aplicación fallida, un fenómeno que la Facultad de Agronomía y el INIA investigan juntos. Por eso conviene hacerlo bien la primera vez.</p>
 <h2>El mejor momento: la primavera</h2>
 <p>Según la cartilla del INIA, la mejor época para controlarlas es la primavera, antes de los vuelos nupciales, cuando salen las reinas aladas a fundar hormigueros nuevos. Actuar a tiempo evita que una colonia se convierta en varias.</p>
@@ -95,12 +96,12 @@ export const CUERPOS = {
 <ol>
 <li>Recorrer el jardín al atardecer y seguir las filas hasta el nido.</li>
 <li>Anotar qué plantas atacan y dónde están los montículos.</li>
-<li>No tirarle polvo al hormiguero: según Bollazzi, controla algunas obreras, pero no a todas.</li>
+<li>No tirarle polvo al hormiguero: según Bollazzi, controla a algunas obreras, pero no a todas.</li>
 </ol>
 <h2>Truly AI le ayuda a encontrar el nido</h2>
 <p>Si las hormigas vuelven cada temporada o atacan la huerta, escríbale a Truly AI por el chat o por WhatsApp. Cuéntele qué plantas cortan y dónde ve los caminos; Truly AI le orienta en el siguiente paso. Para repasar cómo distinguirlas de la hormiga de la cocina, entre a la <a href="${U}/plagas/hormigas/">guía de hormigas</a>.</p>`,
     faq: [
-      ['¿Cuántas especies de hormiga cortadora hay en Uruguay?', 'Depende de la fuente: el INIA (cartilla de 2014) cuenta 12 especies de Acromyrmex, y Martín Bollazzi (Facultad de Agronomía) mencionó en La Mañana (2023) 14 de Acromyrmex y 2 de Atta.'],
+      ['¿Cuántas especies de hormiga cortadora hay en Uruguay?', 'Depende de la fuente: el INIA (cartilla de 2014) cuenta 12 especies de <em>Acromyrmex</em>, y Martín Bollazzi (Facultad de Agronomía) mencionó en La Mañana (2023) 14 de <em>Acromyrmex</em> y 2 de <em>Atta</em>.'],
       ['¿Sirve el polvo hormiguicida?', 'No. Según Bollazzi, actúa solo sobre las obreras que toca y la colonia sigue viva.'],
       ['¿Cuándo conviene controlarlas?', 'Según la cartilla del INIA, en primavera, antes de que salgan las reinas aladas.'],
       ['¿Por qué vuelven después de aplicar un cebo?', 'Según la Revista INIA, una aplicación fallida puede hacer que la colonia rechace el cebo la vez siguiente, algo que investigan la Facultad de Agronomía y el INIA. Por eso conviene que el control llegue bien al nido la primera vez.'],

@@ -34,7 +34,7 @@ export const serviceLinks = (which = ['hogares', 'comercios', 'industria']) => e
 const answers = (faq) => faq.map(([q, a], i) => `<details class="ux-answer"${i === 0 ? ' open' : ''}><summary><h3>${q}</h3></summary><article><p>${a}</p></article></details>`).join('');
 export const preguntas = (faq, h2 = 'Lo que más nos preguntan.') => `<section class="wrap s-section s-preguntas"><h2>${h2}</h2><div class="s-prose">${answers(faq)}</div></section>`;
 
-export const sFuentes = (list) => `<section class="wrap s-section s-fuentes"><h2>De dónde sale esta información.</h2><p class="s-note">Cada dato de esta página viene de una fuente pública que puede revisar.</p><ol>${list.map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a></li>`).join('')}</ol></section>`;
+export const sFuentes = (list, h2 = 'De dónde sale esta información.') => `<section class="wrap s-section s-fuentes"><h2>${h2}</h2><p class="s-note">Cada dato de esta página viene de una fuente pública que puede revisar.</p><ol>${list.map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${l}</a></li>`).join('')}</ol></section>`;
 
 export const closing = () => `<section id="contacto" class="s-closing"><div class="wrap"><h2>Cuéntenos qué necesita proteger.</h2><p>Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.</p><div class="s-closing-actions"><a class="button button-dark" href="#contacto" data-abrir-chat>Escribir en el chat</a><a class="text-link" href="${WA}" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a><a class="text-link" href="${U}/#consulta">Consultar cobertura →</a></div></div></section>`;
 

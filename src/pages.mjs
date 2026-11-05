@@ -18,7 +18,7 @@ const arrow = '<span aria-hidden="true">→</span>';
 const homeFaq = [
   ['¿Cómo comienza el servicio?', 'El equipo revisa su consulta, confirma si podemos atenderle y coordina la evaluación que corresponda.'],
   ['¿Puedo solicitar atención para mi negocio?', 'Sí. El tipo de actividad, los horarios y las condiciones del espacio ayudan a definir el programa.'],
-  ['¿Qué debo preparar antes de la visita?', 'Le indicaremos las medidas que aplican al servicio y las precauciones para personas y mascotas.'],
+  ['¿Qué debo preparar antes de la visita?', 'Le indicaremos las medidas que se aplican al servicio y las precauciones para personas y mascotas.'],
   ['¿Cómo consulto la cobertura?', 'Indique su departamento, su barrio o localidad y si es casa, apartamento o local. Le confirmaremos si podemos atenderle y cómo coordinar.'],
   ['¿La evaluación tiene costo?', 'Pregúntele al equipo antes de coordinar la visita. El costo y las condiciones dependen de la ubicación y del servicio que necesite.'],
   ['¿Una visita es suficiente?', 'El equipo define el alcance y el seguimiento después de evaluar su situación. Las visitas y condiciones se explican en la propuesta.'],
@@ -29,7 +29,7 @@ const HOME_BLOG = ((p) => `<article class="g-blog"><div class="g-blog-top"><img 
 const VEC = '/oficinas/venezuela/servicios/comercios/';
 const GT = 'https://globaltni.com/es'; // used by the unused 4-nov Comercios content
 const home = {
-  out: '', template: '', title: 'Truly Nolen Uruguay | Control de plagas',
+  out: '', template: '', title: 'Control de plagas · Truly Nolen Uruguay',
   description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escriba a Truly AI: le orienta en el siguiente paso.',
   faq: homeFaq,
   replace: [
@@ -62,18 +62,18 @@ const SVC = {
 // One card per species, as the master (/en/pests/cockroaches/): photo box, h3 and its text.
 // rows = indexes of the guide's first-table rows that describe that species; the rest go after the cards.
 const SPECIES = {
-  mosquitos: [{ name: 'Aedes aegypti', rows: [0, 1, 2] }],
+  mosquitos: [{ name: '<em>Aedes aegypti</em>', rows: [0, 1, 2] }],
   'ratas-y-ratones': [{ name: 'Rata noruega', rows: [0, 1, 2] }],
   cucarachas: [
     { name: 'Cucaracha alemana', img: `${A}/uy-plaga-cucaracha-alemana-truly.webp`, alt: 'Cucaracha alemana, foto de identificación de Truly Nolen International', rows: [0] },
     { name: 'Cucaracha americana', rows: [1] },
   ],
   hormigas: [
-    { name: 'Hormiga de la cocina', img: `${A}/uy-plaga-hormiga-argentina-truly.webp`, alt: 'Hormiga de la cocina, foto de identificación de Truly Nolen International', rows: [0] },
+    { name: 'Hormiga de la cocina', img: `${A}/uy-plaga-hormiga-argentina-truly.webp`, alt: 'Hormiga argentina (hormiga de la cocina), foto de identificación de Truly Nolen International', rows: [0] },
     { name: 'Hormiga cortadora', rows: [1, 2] },
   ],
   termitas: [{ name: 'Termita subterránea', rows: [0, 1, 2] }],
-  'arana-de-los-rincones': [{ name: 'Loxosceles laeta', rows: [0, 1, 2] }],
+  'arana-de-los-rincones': [{ name: '<em>Loxosceles laeta</em>', rows: [0, 1, 2] }],
 };
 function speciesCards(slug, rows) {
   const p = PESTS[slug];
@@ -95,22 +95,22 @@ function pestPage(slug, { description, hero, t1, d, t2, src }) {
     { h2: t2.h2, html: rowsProse(t2.rows) + (t2.nota ? `<p>${t2.nota}</p>` : '') },
   ];
   return {
-    out: `plagas/${slug}/`, template: 'plagas/zancudos/', title: `${p.name} en Uruguay · Truly Nolen`, description, crumb: p.name,
+    out: `plagas/${slug}/`, template: 'plagas/zancudos/', title: `${p.name} · Truly Nolen Uruguay`, description, crumb: p.name,
     main: [pestMaster(slug, { lead: hero.p, sections }), sFuentes(src), closing()].join('\n'),
   };
 }
 
 const mosquitos = pestPage('mosquitos', {
   description: 'El mosquito Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. Señales, datos del MSP y cómo prevenirlo en Uruguay.',
-  hero: { h1: 'El criadero está más cerca<br/>de lo que piensa.', p: 'El mosquito Aedes aegypti transmite el dengue y se cría en el agua quieta: baldes, platos de macetas y bebederos. Según una lista de verificación del MSP (sin fecha), dos de cada tres criaderos están en las casas.' },
+  hero: { h1: 'El criadero está más cerca<br/>de lo que piensa.', p: 'El mosquito <em>Aedes aegypti</em> transmite el dengue y se cría en el agua quieta: baldes, platos de macetas y bebederos. Según una lista de verificación del MSP (sin fecha), dos de cada tres criaderos están en las casas.' },
   t1: { ey: 'Dónde se cría', h2: 'Donde queda agua quieta.', rows: [
     ['Agua en casa', 'Baldes, floreros, platos de macetas y bebederos de mascotas: cualquier recipiente con agua quieta puede ser un criadero.'],
     ['Fondo y azotea', 'Cubiertas viejas, canaletas tapadas, juguetes y botellas que juntan agua de lluvia.'],
-    ['El dengue', 'Lo transmite principalmente el Aedes aegypti (OMS).'],
+    ['El dengue', 'Lo transmite principalmente el <em>Aedes aegypti</em> (OMS).'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que registró<br/>el MSP.', items: [
-    ['1997', 'año en que se volvió a detectar el Aedes aegypti en Uruguay. Se había declarado erradicado en 1958.', 'MSP, Boletín epidemiológico (2016)'],
-    ['2016', 'primer brote de dengue autóctono en 100 años: 19 casos, 18 en Montevideo, con epicentro en Pocitos.', 'MSP, Boletín epidemiológico (2016)'],
+    ['1997', 'año en que se volvió a detectar el <em>Aedes aegypti</em> en Uruguay. Se había declarado erradicado en 1958.', 'MSP, Boletín epidemiológico (2016)'],
+    ['2016', 'primer brote de dengue autóctono en cien años: 19 casos, 18 en Montevideo, con epicentro en Pocitos.', 'MSP, Boletín epidemiológico (2016)'],
     ['2024', 'el 1 de marzo el MSP informó el primer contagio de dengue dentro del país en el año, en una persona que no había viajado.', 'Montevideo Portal, con datos del MSP (2024)'],
   ] },
   t2: { ey: 'Rutina de cada semana', h2: 'Tape, vacíe<br/>y limpie.', rows: [
@@ -127,10 +127,10 @@ const mosquitos = pestPage('mosquitos', {
 });
 
 const ratas = pestPage('ratas-y-ratones', {
-  description: 'Ratas y ratones en casas y comercios de Uruguay: señales, qué las atrae y cómo prevenirlas, con datos de las intendencias.',
-  hero: { h1: 'Donde hay comida y refugio,<br/>aparecen.', p: 'Ratas y ratones buscan lo mismo: comida, agua y un lugar donde esconderse. En Punta del Este se esconden arriba de las palmeras y se las ve mucho por los restos de comida que dejan los restaurantes de noche, según la Intendencia de Maldonado (2025).' },
+  description: 'Ratas y ratones en casas y comercios de Uruguay: señales, qué los atrae y cómo prevenirlos, con datos de las intendencias.',
+  hero: { h1: 'Donde hay comida y refugio,<br/>aparecen.', p: 'Ratas y ratones buscan lo mismo: comida, agua y un lugar donde esconderse. En Punta del Este se esconden arriba de las palmeras y se los ve mucho por los restos de comida que dejan los restaurantes de noche, según la Intendencia de Maldonado (2025).' },
   t1: { ey: 'Las señales', h2: 'Lo que dejan<br/>a su paso.', rows: [
-    ['Excrementos', 'Pequeños y oscuros, cerca de la comida, en los muebles de cocina o en los rincones.'],
+    ['Excrementos', 'Excrementos pequeños y oscuros, cerca de la comida, en los muebles de cocina o en los rincones.'],
     ['Roeduras', 'Marcas en bolsas, cables, madera y envases.'],
     ['Ruidos y caminos', 'Ruidos de noche en el cielorraso o en el entretecho, y manchas de grasa por donde pasan.'],
   ] },
@@ -140,9 +140,9 @@ const ratas = pestPage('ratas-y-ratones', {
     ['4', 'personas forman la cuadrilla de la Intendencia de Maldonado que combate ratas, pulgas, mosquitos y garrapatas, entre otras plagas.', 'Montevideo Portal (15/10/2025)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Sin comida,<br/>sin refugio.', rows: [
-    ['Comida', 'Lo que las atrae.', ['Alimentos y ración de mascotas en envases cerrados.', 'Bolsas de residuos cerradas hasta llevarlas al contenedor.']],
+    ['Comida', 'Lo que los atrae.', ['Alimentos y ración de mascotas en envases cerrados.', 'Bolsas de residuos cerradas hasta llevarlas al contenedor.']],
     ['Refugio', 'Donde se esconden.', ['Leña, escombros y cosas guardadas en el fondo.', 'Enredaderas y plantas pegadas a la pared.']],
-    ['Entradas', 'Por donde entran.', ['Rejillas y desagües sin tapa.', 'Huecos en puertas, paredes y pasos de caños.']],
+    ['Entradas', 'Por dónde pasan.', ['Rejillas y desagües sin tapa.', 'Huecos en puertas, paredes y pasos de caños.']],
   ] },
   src: [SRC.maldonado2025, SRC.parqueRodo],
   prompts: [
@@ -156,12 +156,12 @@ const cucarachas = pestPage('cucarachas', {
   description: 'Cucaracha alemana y cucaracha americana en Uruguay: cómo reconocerlas, dónde se esconden y qué pide la norma a los comercios de alimentos.',
   hero: { h1: 'De noche, en la cocina<br/>y en los desagües.', p: 'Dos cucarachas aparecen seguido en las ciudades: la alemana, chica y de cocina, y la americana, grande y de desagües. En Montevideo, los comercios de alimentos deben tener un programa preventivo de plagas.' },
   t1: { ey: 'Cómo reconocerlas', h2: 'Chica o grande,<br/>cada una en su lugar.', rows: [
-    ['Cucaracha alemana', 'Chica y marrón clara, con dos rayas oscuras detrás de la cabeza. Vive en la cocina: detrás de la heladera, en los muebles y cerca del calor de los motores.'],
+    ['Cucaracha alemana', 'Chica y de color marrón claro, con dos rayas oscuras detrás de la cabeza. Vive en la cocina: detrás de la heladera, en los muebles y cerca del calor de los motores.'],
     ['Cucaracha americana', 'Grande y rojiza. Sube desde desagües, cámaras y sótanos.'],
     ['La señal', 'Son de hábitos nocturnos: si ve una de día, puede haber muchas escondidas.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que pide<br/>la norma.', items: [
-    ['En Montevideo', 'las empresas alimentarias deben tener un programa de control preventivo de plagas, que se tramita ante el Servicio de Salubridad Pública.', 'Intendencia de Montevideo, trámites'],
+    ['En Montevideo,', 'las empresas alimentarias deben tener un programa de control preventivo de plagas, que se tramita ante el Servicio de Salubridad Pública.', 'Intendencia de Montevideo, trámites'],
     ['60', 'ingredientes activos de insecticidas tienen reportes de resistencia en la cucaracha alemana, según una revisión de 102 estudios en 23 países.', 'Revisión científica (2025)'],
     ['2024', 'una «invasión de cucarachas» en la Costa de Oro y Montevideo resultó ser de belostomátidos, según Alternatus Uruguay: no eran cucarachas. Identificar bien es el primer paso.', 'Montevideo Portal (2024)'],
   ] },
@@ -180,15 +180,15 @@ const cucarachas = pestPage('cucarachas', {
 
 const hormigas = pestPage('hormigas', {
   description: 'Hormigas de la cocina y hormiga cortadora (Acromyrmex) en Uruguay: cómo distinguirlas y proteger la cocina, el jardín y la huerta.',
-  hero: { h1: 'En la cocina o en el jardín,<br/>no son la misma hormiga.', p: 'En la cocina aparecen en fila; en el jardín, la hormiga cortadora (Acromyrmex) deja sin hojas los rosales y la huerta.' },
+  hero: { h1: 'En la cocina o en el jardín,<br/>no son la misma hormiga.', p: 'En la cocina aparecen en fila; en el jardín, la hormiga cortadora (<em>Acromyrmex</em>) deja sin hojas los rosales y la huerta.' },
   t1: { ey: 'Cómo distinguirlas', h2: 'Dos hormigas,<br/>dos problemas.', rows: [
     ['Hormiga de la cocina', 'Chica, marrón, en filas largas.'],
     ['Hormiga cortadora', 'Corta hojas y las lleva al hormiguero, donde cultiva el hongo del que se alimenta.'],
     ['El hormiguero', 'El nido de las cortadoras está bajo tierra: el daño se ve en las plantas, a veces lejos del nido.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que dicen<br/>los investigadores.', items: [
-    ['12-14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay: 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi, de la Facultad de Agronomía, en La Mañana (2023).', 'INIA, cartilla N.º 36 (2014) · La Mañana (2023)'],
-    ['Jardín', 'Acromyrmex es el género que más preocupa, porque causa problemas en jardines y campos, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana (2023)'],
+    ['En Uruguay', 'hay entre 12 y 14 especies de hormigas cortadoras del género <em>Acromyrmex</em>: 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi, de la Facultad de Agronomía, en La Mañana (2023).', 'INIA, cartilla N.º 36 (2014) · La Mañana (2023)'],
+    ['Jardín', '<em>Acromyrmex</em> es el género que más preocupa, porque causa problemas en jardines y campos, según Martín Bollazzi (Facultad de Agronomía, Udelar).', 'La Mañana (2023)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Siga la fila<br/>hasta la entrada.', rows: [
     ['Cocina', 'Lo que las atrae.', ['Azúcar, miel y ración en envases cerrados.', 'Seguir la fila para encontrar por dónde entran.']],
@@ -205,20 +205,20 @@ const hormigas = pestPage('hormigas', {
 
 const termitas = pestPage('termitas', {
   description: 'La termita subterránea Reticulitermes en Uruguay: señales, qué se sabe en el país y cómo prevenir daños en la madera de su casa.',
-  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'Según Constantino (2002), en Uruguay la termita plaga es la subterránea del género Reticulitermes, que llegó desde afuera. Lo importante es detectarla a tiempo en su casa.' },
+  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'Según Constantino (2002), en Uruguay la termita plaga es la subterránea del género <em>Reticulitermes</em>, que llegó desde afuera. Lo importante es detectarla a tiempo en su casa.' },
   t1: { ey: 'Las señales', h2: 'Lo que hay<br/>que mirar.', rows: [
     ['Tubos de tierra', 'Caminos de barro entre el suelo y la madera: así llega la termita subterránea, según la Universidad de California (EE. UU.).'],
-    ['Madera hueca', 'Marcos, zócalos o pisos que suenan huecos o se hunden al apretarlos.'],
+    ['Madera hueca', 'Marcos, zócalos o pisos que suenan a hueco o se hunden al apretarlos.'],
     ['Insectos con alas', 'Enjambres cerca de ventanas y luces. Según la Universidad de California (EE. UU.), verlos «no siempre significa» que la casa esté infestada.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que se sabe<br/>en el país.', items: [
-    ['1', 'Reticulitermes es la única termita plaga seria del país.', 'Constantino (2002), Journal of Applied Entomology'],
-    ['2023', 'Un estudio de 2023 sobre su primer registro en Argentina menciona a Reticulitermes flavipes como ya establecida en Uruguay.', 'Carrijo y col. (2023), Journal of Economic Entomology'],
+    ['1', '<em>Reticulitermes</em> es la única termita plaga seria del país.', 'Constantino (2002), Journal of Applied Entomology'],
+    ['2023', 'un estudio sobre su primer registro en Argentina menciona a <em>Reticulitermes flavipes</em> como ya establecida en Uruguay.', 'Carrijo y col. (2023), Journal of Economic Entomology'],
   ] },
   t2: { ey: 'Prevención', h2: 'Madera seca<br/>y lejos del suelo.', rows: [
     ['Madera y suelo', 'La puerta de entrada.', ['Madera que no toque la tierra.', 'Leña y restos de madera lejos de la casa.']],
     ['Humedad', 'Lo que la atrae.', ['Reparar pérdidas de agua y filtraciones.', 'Ventilar sótanos y espacios bajos.']],
-    ['Antes de tratar', 'Lo que conviene hacer.', ['No usar productos a ciegas: según la Universidad de California (EE. UU.), los caseros «generalmente no son efectivos».', 'Fotografiar las señales y anotar dónde están.']],
+    ['Antes de tratar', 'Lo que conviene hacer.', ['No usar productos a ciegas: según la Universidad de California (EE. UU.), los productos caseros «generalmente no son efectivos».', 'Fotografiar las señales y anotar dónde están.']],
   ] },
   src: [SRC.ucipm, SRC.constantino, SRC.carrijo],
   prompts: [
@@ -230,15 +230,15 @@ const termitas = pestPage('termitas', {
 
 const arana = pestPage('arana-de-los-rincones', {
   description: 'La araña de los rincones (Loxosceles laeta) en Uruguay: cómo reconocerla, dónde se esconde y qué hacer ante una picadura (CIAT 1722).',
-  hero: { h1: 'Tranquila, escondida<br/>y peligrosa.', p: 'La araña de los rincones (Loxosceles laeta) vive en rincones oscuros, detrás de cuadros y muebles. Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la de mayor importancia para la salud pública en Uruguay. Ante una picadura, llame al CIAT: 1722.' },
+  hero: { h1: 'Tranquila, escondida<br/>y peligrosa.', p: 'La araña de los rincones (<em>Loxosceles laeta</em>) vive en rincones oscuros, detrás de cuadros y muebles. Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la de mayor importancia para la salud pública en Uruguay. Ante una picadura, llame al CIAT al 1722.' },
   t1: { ey: 'Cómo reconocerla', h2: 'Patas largas<br/>y un violín en el lomo.', rows: [
     ['Aspecto', 'Marrón, de patas largas y finas, con una mancha en forma de violín sobre el cuerpo. Por eso también le dicen «araña violinista».'],
     ['Dónde vive', 'Según Montevideo Portal, detrás de cuadros, en esquinas y en muebles de madera. La guía de Mendoza (Argentina) suma roperos, ropa poco usada y zapatos.'],
-    ['La picadura', 'Su veneno es necrosante: puede dañar la piel y los tejidos. Ante la sospecha, llame al CIAT (1722) o consulte a su prestador de salud.'],
+    ['La picadura', 'Su veneno es necrosante: puede dañar la piel y los tejidos. Ante la sospecha, llame al CIAT al 1722 o consulte a su prestador de salud.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que hay<br/>que saber.', items: [
     ['1722', 'es el teléfono del CIAT (Centro de Información y Asesoramiento Toxicológico) para consultar por una picadura.', 'Montevideo Portal (2022)'],
-    ['MSP', 'le asigna el primer lugar en importancia sanitaria entre las arañas del país.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
+    ['El MSP', 'le asigna el primer lugar en importancia sanitaria entre las arañas del país.', 'Boletín del MSP (2013), citado por Montevideo Portal (2022)'],
   ] },
   t2: { ey: 'Prevención', h2: 'Mover, sacudir<br/>y revisar.', rows: [
     ['Ropa y calzado', 'Donde más se esconden.', ['Sacudir la ropa y el calzado antes de usarlos.', 'Revisar la ropa de cama guardada.']],
@@ -263,7 +263,7 @@ const hogaresFaq = [
 // Recipe R17 (5-nov-2026): Hogares shows the globaltni page as it is (copy of the Venezuela reference, see below).
 // Uruguay's own Hogares content is no longer shown; it stays here (unused) and in respaldos/2026-11-05-antes-receta-5nov/.
 const hogaresPropio = {
-  out: 'servicios/hogares/', template: 'servicios/hogares/', title: 'Control de plagas para hogares en Uruguay · Truly Nolen', crumb: 'Hogares',
+  out: 'servicios/hogares/', template: 'servicios/hogares/', title: 'Control de plagas para hogares · Truly Nolen Uruguay', crumb: 'Hogares',
   description: 'Revisamos tu casa, apartamento o casa de balneario por dentro y por fuera: interior, perímetro, fondo y azotea. Control de plagas en Uruguay.',
   faq: hogaresFaq,
   main: [
@@ -289,7 +289,7 @@ const comerciosFaq = [
 // Recipe R17 (5-nov-2026): Comercios shows the globaltni page as it is. Uruguay's own Comercios content, including the four
 // globaltni sectors written on 4-nov, is no longer shown; it stays here (unused) and in respaldos/2026-11-05-antes-receta-5nov/.
 const comerciosPropio = {
-  out: 'servicios/comercios/', template: 'servicios/comercios/', title: 'Control de plagas para comercios en Uruguay · Truly Nolen', crumb: 'Comercios',
+  out: 'servicios/comercios/', template: 'servicios/comercios/', title: 'Control de plagas para comercios · Truly Nolen Uruguay', crumb: 'Comercios',
   description: 'Control de plagas para almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas en Uruguay. Qué pide la norma en Montevideo.',
   faq: comerciosFaq,
   main: [
@@ -342,7 +342,7 @@ const industriaFaq = [
   ['¿Llegan a mi departamento?', 'Indíquenos el departamento, la localidad y el tipo de instalación. Le confirmaremos si podemos atenderle y cómo coordinar.'],
 ];
 const industria = {
-  out: 'servicios/industria/', template: 'servicios/industria/', title: 'Control de plagas para la industria en Uruguay · Truly Nolen', crumb: 'Industria',
+  out: 'servicios/industria/', template: 'servicios/industria/', title: 'Control de plagas para la industria · Truly Nolen Uruguay', crumb: 'Industria',
   description: 'Manejo integrado de plagas para frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística en Uruguay.',
   faq: industriaFaq,
   // Design review (5-nov-2026): the h1 like Comercios and the other inner pages (measured on the globaltni copy of Comercios:
@@ -387,13 +387,16 @@ const industria = {
 // The globaltni copies (R17): the Venezuela reference <main> with its links moved to Uruguay and Uruguay's closing.
 const hogares = {
   out: 'servicios/hogares/', template: 'servicios/hogares/', copy: true, replace: [], crumb: 'Hogares',
-  title: 'Control de plagas para hogares en Uruguay · Truly Nolen',
+  title: 'Control de plagas para hogares · Truly Nolen Uruguay',
   description: 'Programa residencial de Truly Nolen en Uruguay: su casa completa en tres zonas de protección. Escríbale a Truly AI.',
 };
 const comercios = {
   out: 'servicios/comercios/', template: 'servicios/comercios/', copy: true, replace: [], crumb: 'Comercios',
-  title: 'Control de plagas para comercios en Uruguay · Truly Nolen',
+  title: 'Control de plagas para comercios · Truly Nolen Uruguay',
   description: 'Servicio comercial de Truly Nolen en Uruguay: salud, industrias, venta de alimentos y logística, con el sistema TEPS.',
+  // Shared text decisions (5-nov-2026): «Campos de la logística» is a label of globaltni, not a sector. It is hidden, not
+  // removed, so the :nth-of-type measuring rules of the copy keep counting the same elements.
+  css: 'html body.country-site[data-oficina] main li[data-source-facility="3-4"]{display:none!important}',
 };
 export const SIN_USO = { hogaresPropio, comerciosPropio };
 
@@ -402,7 +405,7 @@ const POSTS = POSTS_UY;
 const card = (p, featured = false) => `<article class="blog-card${featured ? ' blog-featured' : ''}"><a href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><img src="${p.img}" alt="" loading="lazy"/></a><div><p class="eyebrow">${p.tag} · <time datetime="2026-10-31">31 de octubre de 2026</time></p><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer el artículo →</a></div></article>`;
 
 const blog = {
-  out: 'blog/', template: 'blog/', title: 'Blog de control de plagas en Uruguay · Truly Nolen', crumb: 'Blog',
+  out: 'blog/', template: 'blog/', title: 'Blog de control de plagas · Truly Nolen Uruguay', crumb: 'Blog',
   description: 'Guías sobre plagas de Uruguay: la araña de los rincones, la hormiga cortadora y más, con cada dato respaldado por su fuente abierta.',
   main: [
     // 5-nov-2026: same markup as the Venezuela blog index (journal list of globaltni) and its closing band
@@ -419,11 +422,11 @@ function article(post, { body, faq, src, prompts, related }) {
     main: (() => {
       const { html, index } = articleParts(body);
       return [
-        intro([`<a href="${U}/blog/">Blog</a>`, post.tag], post.title, `<figure class="s-figure"><img src="${post.img}" alt="${post.alt}"/><figcaption>${post.alt}</figcaption></figure>`),
+        intro([`<a href="${U}/blog/">Blog</a>`, post.tag], post.title, `<figure class="s-figure"><img src="${post.img}" alt="${post.alt}"/><figcaption>${post.cap || post.alt}</figcaption></figure>`),
         `<section class="wrap s-section s-prose"><p class="s-note">Truly Nolen Uruguay · 31 de octubre de 2026 · 5 min de lectura</p><p class="s-entrada">${post.lead}</p></section>`,
         index,
         `<section class="wrap s-section s-article"><div class="article-body">${html}${articleFaq(faq)}</div></section>`,
-        sFuentes(src),
+        sFuentes(src, 'De dónde sale esta información'),
         `<section class="wrap closeout-blog-next"><div><p class="closeout-blog-eyebrow">Seguir leyendo</p><h2>${related.title}</h2><a class="text-link" href="${U}/blog/${related.slug}/">Leer el artículo →</a></div><a class="text-link" href="${U}/blog/">Ver todos los artículos →</a></section>`,
         closing(),
       ].join('\n');
@@ -455,11 +458,11 @@ const accesibilidad = legal('accesibilidad/', 'Accesibilidad', 'Accesibilidad',
   '<p>Queremos que este sitio se pueda usar con teclado, con lector de pantalla y en cualquier tamaño de pantalla. Las imágenes que transmiten información tienen su descripción.</p><p>Si encuentra una barrera, cuéntenos dónde por el chat o por WhatsApp y la revisamos.</p>');
 
 const CREDITS = [
-  ['Teatro Solís, Montevideo (foto real usada como referencia del lugar de la portada)', 'Ypsilon from Finland', 'CC0 (dominio público)', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Teatro_Solis_Montevideo_2.JPG'],
-  ['Rata noruega, Rattus norvegicus', 'Лариса Артемьева', 'CC0 (dominio público)', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Rattus_norvegicus_-_%D0%9B%D0%B0%D1%80%D0%B8%D1%81%D0%B0_%D0%90%D1%80%D1%82%D0%B5%D0%BC%D1%8C%D0%B5%D0%B2%D0%B0_-_601255327.jpeg'],
-  ['Termita subterránea, Reticulitermes flavipes (soldados)', 'Departamento de Agricultura de EE. UU. (USDA ARS), imagen K8085-6', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Reticulitermes_flavipes_K8085-6.jpg'],
-  ['Hormigas cortadoras Atta cephalotes llevando hojas, zoológico de Bristol (también portada del artículo del blog)', 'Adrian Pingstone', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Leaf_cutter_ants_arp.jpg'],
-  ['Araña de los rincones, Loxosceles laeta (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
+  ['Teatro Solís, Montevideo (foto real usada como referencia del lugar de la portada)', 'Ypsilon (Finlandia)', 'CC0 (dominio público)', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Teatro_Solis_Montevideo_2.JPG'],
+  ['Rata noruega, <em>Rattus norvegicus</em>', 'Лариса Артемьева', 'CC0 (dominio público)', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Rattus_norvegicus_-_%D0%9B%D0%B0%D1%80%D0%B8%D1%81%D0%B0_%D0%90%D1%80%D1%82%D0%B5%D0%BC%D1%8C%D0%B5%D0%B2%D0%B0_-_601255327.jpeg'],
+  ['Termita subterránea, <em>Reticulitermes flavipes</em> (soldados)', 'Departamento de Agricultura de EE. UU. (USDA ARS), imagen K8085-6', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Reticulitermes_flavipes_K8085-6.jpg'],
+  ['Hormigas cortadoras <em>Atta cephalotes</em> llevando hojas, zoológico de Bristol (también portada del artículo del blog)', 'Adrian Pingstone', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Leaf_cutter_ants_arp.jpg'],
+  ['Araña de los rincones, <em>Loxosceles laeta</em> (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
   `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el auto oficial se ubicó frente al teatro con IA (Gemini). La foto del técnico de la portada y la planta de la página de industria son imágenes generadas con IA (Gemini). El diagrama de las tres zonas, la ilustración del pie, el sello TEPS y las fotos de la página de comercios son piezas oficiales de Truly Nolen International.</p>`);
