@@ -51,7 +51,7 @@ const ENCLITICO_NO = /^(?:parte|aparte|reparte|departe|contraparte|marte|baluart
 const NEGATIVO = /(?<![\p{L}])no (\p{L}+(?:es|as))(?![\p{L}])/giu;
 const NEGATIVO_NO = new Set(['las', 'les', 'todas', 'ellas', 'veces', 'más', 'tres', 'mes', 'meses', 'muchas', 'pocas', 'otras', 'esas', 'estas', 'algunas', 'nuevas']);
 // Third-person or usted uses of the same spellings ("se guarda", "el equipo revisa", "sin tapa", "Si encuentra"...).
-const TERCERA = /([Ss]e (guarda|usa|encuentra|revisa|limpia|tapa|deja|lava|consulta|busca|evita|indica|conoce)|autoridad revisa|equipo revisa|técnico revisa|(sin|con|la|una) tapa|su consulta|la consulta|una consulta|Si encuentra|Lo que deja|control cambia|los describe|la guarda|que conoce|programa (indica|evita)|que (indica|describe|revisa|encuentra|evita|deja|busca|usa|guarda)|norma (indica|pide)|(la|una|esta) (guía|lista|cartilla|nota) (indica|describe|explica)|lo que (indica|describe)|no busca|: busca|Busca lugares|: deja una|tiempo evita|portada usa|[)] deja|mañana encuentra)/i;
+const TERCERA = /([Ss]e (guarda|usa|encuentra|revisa|limpia|tapa|deja|lava|consulta|busca|evita|indica|conoce)|autoridad revisa|equipo revisa|técnico revisa|(sin|con|la|una) tapa|su consulta|la consulta|una consulta|Si encuentra|Lo que deja|control cambia|los describe|la guarda|que conoce|programa (indica|evita)|que (indica|describe|revisa|encuentra|evita|deja|busca|usa|guarda)|norma (indica|pide)|(la|una|esta) (guía|lista|cartilla|nota) (indica|describe|explica)|lo que (indica|describe)|no busca|: busca|Busca lugares|: deja una|tiempo evita|portada usa|[)] deja|mañana encuentra|cortadora deja)/i;
 
 export function textoVisible(html) {
   return html

@@ -19,18 +19,18 @@ const homeFaq = [
   ['¿Cómo comienza el servicio?', 'El equipo revisa su consulta, confirma si podemos atenderle y coordina la evaluación que corresponda.'],
   ['¿Puedo solicitar atención para mi negocio?', 'Sí. El tipo de actividad, los horarios y las condiciones del espacio ayudan a definir el programa.'],
   ['¿Qué debo preparar antes de la visita?', 'Le indicaremos las medidas que aplican al servicio y las precauciones para personas y mascotas.'],
-  ['¿Cómo consulto la cobertura?', 'Indique su departamento, su barrio o localidad y el tipo de espacio. Le confirmaremos si podemos atenderle y cómo coordinar la atención.'],
+  ['¿Cómo consulto la cobertura?', 'Indique su departamento, su barrio o localidad y si es casa, apartamento o local. Le confirmaremos si podemos atenderle y cómo coordinar.'],
   ['¿La evaluación tiene costo?', 'Pregúntele al equipo antes de coordinar la visita. El costo y las condiciones dependen de la ubicación y del servicio que necesite.'],
   ['¿Una visita es suficiente?', 'El equipo define el alcance y el seguimiento después de evaluar su situación. Las visitas y condiciones se explican en la propuesta.'],
 ];
 const HOME_FILM = `<div class="film"><picture><source media="(max-width:760px)" srcset="${A}/uruguay-movil.webp?v=6"/><img src="${A}/uruguay-desktop.webp?v=10" alt="Auto amarillo de Truly Nolen andando frente al Teatro Solís de Montevideo al atardecer"/></picture><video data-src-movil="${A}/uruguay-movil.mp4?v=6" muted loop playsinline preload="none" aria-hidden="true" data-src="${A}/uruguay-desktop.mp4?v=10"></video></div>`;
-const HOME_PLAGAS = `<section id="plagas" class="section g g-plagas"><header class="g-cab"><h2>Reconozca la plaga.<br/>Entienda sus hábitos.</h2><p class="g-intro">Seis plagas que conviene conocer en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.</p></header><div class="g-plagas-grid" style="--n:${PEST_ORDER.length}">${PEST_ORDER.map((s) => { const p = PESTS[s]; return `<article><a class="g-pl-fig" href="${U}/plagas/${s}/"><img src="${p.img}" alt="${p.alt}" loading="lazy"/></a><h3>${p.name}</h3><p class="g-pl-sub">${p.sub}</p><p>${p.card}</p><a class="g-mas" href="${U}/plagas/${s}/">Ver la guía<span aria-hidden="true">→</span></a></article>`; }).join('')}</div></section>`;
+const HOME_PLAGAS = `<section id="plagas" class="section g g-plagas"><header class="g-cab"><h2>Reconozca la plaga.<br/>Entienda sus hábitos.</h2><p class="g-intro">Seis plagas que conviene conocer en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.</p></header><div class="g-plagas-grid" style="--n:${PEST_ORDER.length}">${PEST_ORDER.map((s) => { const p = PESTS[s]; return `<article><a class="g-pl-fig" href="${U}/plagas/${s}/"><img src="${p.img}" alt="${p.alt}" loading="lazy"/></a><h3>${p.name}</h3><p class="g-pl-sub">${p.sub}</p><p>${p.corto}</p><a class="g-mas" href="${U}/plagas/${s}/">Ver la guía<span aria-hidden="true">→</span></a></article>`; }).join('')}</div></section>`;
 const HOME_BLOG = ((p) => `<article class="g-blog"><div class="g-blog-top"><img src="${p.img}" alt="" loading="lazy"/><p class="g-ey">Del blog · 31 de octubre de 2026</p></div><h3><a href="${U}/blog/${p.slug}/">${p.title}</a></h3><p>${p.lead}</p><a class="g-link" href="${U}/blog/${p.slug}/">Leer el artículo<span aria-hidden="true">→</span></a><a class="g-link g-link-2" href="${U}/blog/">Ver todo el blog<span aria-hidden="true">→</span></a></article>`)(POSTS_UY[0]);
 const VEC = '/oficinas/venezuela/servicios/comercios/';
 const GT = 'https://globaltni.com/es'; // used by the unused 4-nov Comercios content
 const home = {
   out: '', template: '', title: 'Truly Nolen Uruguay | Control de plagas',
-  description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escríbale a Truly AI y le orientamos en el siguiente paso.',
+  description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escriba a Truly AI: le orienta en el siguiente paso.',
   faq: homeFaq,
   replace: [
     [/<div class="film">[\s\S]*?<\/video><\/div>/, HOME_FILM],
@@ -42,7 +42,7 @@ const home = {
     ['<img src="/oficinas/venezuela/assets/ve-operacion-unsplash-u7egjbn8tzk.webp?v=d0b31cb363c3" alt="" loading="lazy"/>', `<img src="${A}/uy-operacion.webp?v=3" alt="Técnico de Truly Nolen con mascarilla fumigando la base de la pared de una casa en Montevideo (imagen ilustrativa)" loading="lazy"/>`],
     [/<section id="plagas" class="section g g-plagas">[\s\S]*?<\/section>/, HOME_PLAGAS],
     [/<article class="g-blog">[\s\S]*?<\/article>/, HOME_BLOG],
-    ['Indique su estado, municipio y el tipo de espacio.', 'Indique su departamento, su barrio o localidad y el tipo de espacio.'],
+    ['Indique su estado, municipio y el tipo de espacio. Le confirmaremos si podemos atenderle y cómo coordinar la atención.', 'Indique su departamento, su barrio o localidad y si es casa, apartamento o local. Le confirmaremos si podemos atenderle y cómo coordinar.'],
   ],
 };
 
@@ -345,13 +345,16 @@ const industria = {
   out: 'servicios/industria/', template: 'servicios/industria/', title: 'Control de plagas para la industria en Uruguay · Truly Nolen', crumb: 'Industria',
   description: 'Manejo integrado de plagas para frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística en Uruguay.',
   faq: industriaFaq,
+  // Design review (5-nov-2026): the h1 like Comercios and the other inner pages (measured on the globaltni copy of Comercios:
+  // MachoteDisplay 900, 43 px up to 960, 48.128 px from 961, 67.68 px from 1200; line-height 1.05; letter-spacing -0.012em).
+  css: 'html body.country-site[data-oficina][data-oficina] main h1#ct-title{font-family:MachoteDisplay,Machote,Arial,sans-serif!important;font-weight:900!important;font-size:43px!important;line-height:1.05!important;letter-spacing:-.012em!important}@media (min-width:961px){html body.country-site[data-oficina][data-oficina] main h1#ct-title{font-size:48.128px!important}}@media (min-width:1200px){html body.country-site[data-oficina][data-oficina] main h1#ct-title{font-size:67.68px!important}}',
   main: [
     ctPage({ crumb: 'Servicio industrial', kicker: 'Servicio industrial', h1: 'Control de plagas<br/>para su industria.', intro: 'Un programa que parte de conocer su operación, de la recepción al despacho: frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales', navLabel: 'Elija el tema', bands: [
       { id: 'servicio', kicker: 'El servicio', h2: 'Manejo integrado de plagas.', html: rowsProse([
         ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.'],
         ['Programa', 'Monitoreo con estaciones numeradas, control según su actividad y registro de cada visita para sus auditorías.'],
         ['Seguimiento', 'Informes de hallazgos, tendencias por zona y medidas correctivas, con visitas según el programa acordado.'],
-      ]) + '<p>Antes de empezar recibe una propuesta con el alcance, la frecuencia y los registros para su planta.</p>',
+      ]) + '<p>Antes de empezar, usted recibe una propuesta con el alcance, la frecuencia y los registros para su planta.</p>',
         aside: { h3: '¿Quién se beneficia?', items: ['Frigoríficos', 'Lácteas', 'Molinos y acopio de granos', 'Celulosa', 'Puertos y logística'] } },
       { id: 'pais', kicker: 'El país', h2: 'Lo que exporta el país.', html: datoProse([
         ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025, más que cualquier otro rubro.', 'El Observador (2025)'],
@@ -404,7 +407,7 @@ const blog = {
   main: [
     // 5-nov-2026: same markup as the Venezuela blog index (journal list of globaltni) and its closing band
     `<section class="wrap journal-wrap"><nav aria-label="Ruta"><a href="${U}/">Inicio</a><span aria-hidden="true">/</span>Blog de control de plagas</nav><header class="journal-heading"><h1>Blog de control de plagas</h1><p class="s-prose">Guías sobre las plagas de Uruguay, con cada dato respaldado por su fuente.</p></header></section>`,
-    `<section class="wrap journal-wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span class="story-topic">${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer el artículo <span aria-hidden="true">→</span></a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
+    `<section class="wrap journal-wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span class="story-topic">${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.resumen || p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer el artículo <span aria-hidden="true">→</span></a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
     contactBand(),
   ].join('\n'),
 };

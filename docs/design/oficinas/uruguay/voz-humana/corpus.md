@@ -7,7 +7,7 @@ Inicio / Accesibilidad Accesibilidad
 Queremos que este sitio se pueda usar con teclado, con lector de pantalla y en cualquier tamaño de pantalla. Las imágenes que transmiten información tienen su descripción.
 Si encuentra una barrera, cuéntenos dónde por el chat o por WhatsApp y la revisamos.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## blog/arana-de-los-rincones-en-casa
@@ -49,7 +49,7 @@ Revisar la ropa y los zapatos antes de usarlos , sobre todo los que estuvieron g
 No colgar ropa contra la pared y separar un poco la cama y los muebles.
 A eso se suma ordenar el placard y el galpón: menos cajas apiladas y menos ropa amontonada significa menos escondites.
 Cuándo conviene una revisión profesional
-Si encuentra más de una araña, si aparecen seguido en el mismo ambiente o si en la casa hay chicos o personas mayores, conviene revisar la casa entera: dónde se esconden, qué las atrae y qué se puede sellar. Escríbale a Truly AI por el chat o por WhatsApp, cuéntele dónde la vio y le orienta en el siguiente paso. Para repasar sus señales, entre a la guía de la araña de los rincones .
+Si encuentra más de una araña, si aparecen seguido en el mismo ambiente o si en la casa hay chicos o personas mayores, conviene revisar la casa entera: dónde se esconden, qué las atrae y qué se puede sellar. Escriba por el chat o por WhatsApp y cuéntenos dónde la vio: Truly AI le orienta en el siguiente paso. Para repasar sus señales, entre a la guía de la araña de los rincones .
 Preguntas frecuentes
 ¿La araña de los rincones es peligrosa?
 Su veneno es necrosante y el MSP, en un boletín de 2013, la puso primera entre las arañas que preocupan a la salud pública del país. Aun así, según la nota citada de Montevideo Portal, la mayoría de los casos en el país son leves. Ante una sospecha, llame al CIAT al 1722.
@@ -64,7 +64,7 @@ Hormiga cortadora en el jardín: cómo frenarla en Uruguay
 Leer el artículo →
 Ver todos los artículos →
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## blog/hormiga-cortadora-en-el-jardin
@@ -101,7 +101,7 @@ Recorrer el jardín al atardecer y seguir las filas hasta el nido.
 Anotar qué plantas atacan y dónde están los montículos.
 No tirarle polvo al hormiguero: según Bollazzi, controla algunas obreras, pero no a todas.
 Truly AI le ayuda a encontrar el nido
-Si las hormigas vuelven cada temporada o atacan la huerta, escríbale a Truly AI por el chat o por WhatsApp. Cuéntele qué plantas cortan y dónde ve los caminos, y le orienta en el siguiente paso. Para repasar cómo distinguirlas de la hormiga de la cocina, entre a la guía de hormigas .
+Si las hormigas vuelven cada temporada o atacan la huerta, escríbale a Truly AI por el chat o por WhatsApp. Cuéntele qué plantas cortan y dónde ve los caminos; Truly AI le orienta en el siguiente paso. Para repasar cómo distinguirlas de la hormiga de la cocina, entre a la guía de hormigas .
 Preguntas frecuentes
 ¿Cuántas especies de hormiga cortadora hay en Uruguay?
 Depende de la fuente: el INIA (cartilla de 2014) cuenta 12 especies de Acromyrmex, y Martín Bollazzi (Facultad de Agronomía) mencionó en La Mañana (2023) 14 de Acromyrmex y 2 de Atta.
@@ -116,7 +116,7 @@ Araña de los rincones en casa: dónde se esconde y qué hacer
 Leer el artículo →
 Ver todos los artículos →
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## blog
@@ -125,14 +125,14 @@ Inicio / Blog de control de plagas Blog de control de plagas
 Guías sobre las plagas de Uruguay, con cada dato respaldado por su fuente.
 01 31 de octubre de 2026 Araña de los rincones
 Araña de los rincones en casa: dónde se esconde y qué hacer
-Según un boletín del MSP de 2013, es la araña que más le importa a la salud pública en Uruguay. Vive tranquila en los rincones oscuros de la casa: le contamos dónde buscarla, cómo evitar una picadura y a quién llamar.
+Es la araña que más le importa a la salud pública en Uruguay. Le contamos dónde se esconde en casa, cómo evitar una picadura y a quién llamar.
 Leer el artículo →
 02 31 de octubre de 2026 Hormiga cortadora
 Hormiga cortadora en el jardín: cómo frenarla en Uruguay
 Si una mañana encuentra el rosal pelado y un caminito de hojas en el pasto, es la hormiga cortadora. Le contamos qué dice la investigación uruguaya sobre cuándo y cómo controlarla.
 Leer el artículo →
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp
 
 ## creditos
@@ -147,7 +147,7 @@ Araña de los rincones, Loxosceles laeta (también portada del artículo del blo
 Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.
 La portada usa como referencia esa foto real del Teatro Solís: el auto oficial se ubicó frente al teatro con IA (Gemini). La foto del técnico de la portada y la planta de la página de industria son imágenes generadas con IA (Gemini). El diagrama de las tres zonas, la ilustración del pie, el sello TEPS y las fotos de la página de comercios son piezas oficiales de Truly Nolen International.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## portada
@@ -241,22 +241,22 @@ Reconozca la plaga. Entienda sus hábitos.
 Seis plagas que conviene conocer en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.
 Mosquitos
 Guía de mosquitos
-El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. En 2016 volvió el dengue autóctono a Uruguay después de 100 años (MSP).
+El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa: baldes, platos de macetas y bebederos.
 Ver la guía → Ratas y ratones
 Guía de roedores
-En Punta del Este se esconden arriba de las palmeras y se las ve mucho por los restos de comida que dejan los restaurantes de noche. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).
+Buscan comida, agua y refugio. En Punta del Este se esconden en las palmeras, cerca de los restos de comida de los restaurantes.
 Ver la guía → Cucarachas
 Guía de cucarachas
-La alemana, chica y de cocina, y la americana, grande y de desagües. En Montevideo, los comercios de alimentos deben tener un programa preventivo de plagas.
+La alemana, chica y de cocina, y la americana, grande y de desagües. Las dos salen de noche.
 Ver la guía → Hormigas
 Guía de hormigas
-En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, las que dejan sin hojas el jardín y la huerta. Son 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi (Facultad de Agronomía) en La Mañana (2023).
+En la cocina aparecen en fila; en el jardín, la hormiga cortadora deja sin hojas los rosales y la huerta.
 Ver la guía → Termitas
 Guía de termitas
-Según Constantino (2002), la termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.
+La termita subterránea come la madera desde adentro y llega por caminos de barro que suben desde el suelo.
 Ver la guía → Araña de los rincones
 Guía de la araña de los rincones
-Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la araña de mayor importancia para la salud pública en Uruguay. Si sospecha una picadura, llame al CIAT: 1722.
+Vive en rincones oscuros, detrás de cuadros y muebles. Su veneno puede dañar la piel: ante una picadura, consulte a su prestador de salud.
 Ver la guía →
 Prevención y respuestas para usted.
 Consejos para prevenir plagas y cómo trabajamos.
@@ -272,14 +272,14 @@ Sí. El tipo de actividad, los horarios y las condiciones del espacio ayudan a d
 ¿Qué debo preparar antes de la visita? +
 Le indicaremos las medidas que aplican al servicio y las precauciones para personas y mascotas.
 ¿Cómo consulto la cobertura? +
-Indique su departamento, su barrio o localidad y el tipo de espacio. Le confirmaremos si podemos atenderle y cómo coordinar la atención.
+Indique su departamento, su barrio o localidad y si es casa, apartamento o local. Le confirmaremos si podemos atenderle y cómo coordinar.
 ¿La evaluación tiene costo? +
 Pregúntele al equipo antes de coordinar la visita. El costo y las condiciones dependen de la ubicación y del servicio que necesite.
 ¿Una visita es suficiente? +
 El equipo define el alcance y el seguimiento después de evaluar su situación. Las visitas y condiciones se explican en la propuesta.
 Todas las preguntas frecuentes → Explore los videos informativos →
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp
 
 ## plagas/arana-de-los-rincones
@@ -312,7 +312,7 @@ Ordenar cajas y ropa acumulada.
 Aspirar rincones y grietas.
 Estas recomendaciones siguen la guía del Ministerio de Salud de Mendoza (Argentina), que trabaja con la misma especie: por ejemplo, separar la cama unos 20 cm de la pared.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## plagas/cucarachas
@@ -346,7 +346,7 @@ Escondites. Donde pasan el día.
 Grietas en zócalos y azulejos.
 Cajas de cartón acumuladas.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## plagas/hormigas
@@ -379,7 +379,7 @@ Entradas. Por donde pasan.
 Grietas en zócalos y marcos.
 Plantas que tocan la pared.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## plagas/mosquitos
@@ -413,7 +413,7 @@ Cubrir, vaciar y limpiar. La recomendación de la OMS.
 Cubrir, vaciar y limpiar los recipientes donde se guarda agua.
 En 2018 el MSP lanzó la campaña «Activate contra el mosquito», que pide dar vuelta o vaciar lo que junta agua.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## plagas/ratas-y-ratones
@@ -446,7 +446,7 @@ Entradas. Por donde entran.
 Rejillas y desagües sin tapa.
 Huecos en puertas, paredes y pasos de caños.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## plagas/termitas
@@ -478,7 +478,7 @@ Antes de tratar. Lo que conviene hacer.
 No usar productos a ciegas: según la Universidad de California (EE. UU.), los caseros «generalmente no son efectivos».
 Fotografiar las señales y anotar dónde están.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## privacidad
@@ -486,7 +486,7 @@ Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 Inicio / Privacidad Privacidad
 Lo que escriba en el chat de este sitio o por WhatsApp lo recibe y responde Truly AI, el asistente de Truly Nolen International. Úselo para su consulta sobre control de plagas y no comparta datos sensibles, como contraseñas, datos bancarios o información médica.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## servicios/comercios
@@ -610,7 +610,7 @@ La propiedad se dividirá en tres zonas:
 En cada una de estas áreas, Truly Nolen International implementará los protocolos correctos. Esto proporcionará al cliente una solución única a sus problemas de plagas.
 ¿Le interesa? Haga clic en el enlace de abajo para contactarnos y recibir más información.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## servicios/industria
@@ -625,7 +625,7 @@ Manejo integrado de plagas.
 Diagnóstico. Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.
 Programa. Monitoreo con estaciones numeradas, control según su actividad y registro de cada visita para sus auditorías.
 Seguimiento. Informes de hallazgos, tendencias por zona y medidas correctivas, con visitas según el programa acordado.
-Antes de empezar recibe una propuesta con el alcance, la frecuencia y los registros para su planta.
+Antes de empezar, usted recibe una propuesta con el alcance, la frecuencia y los registros para su planta.
 ¿Quién se beneficia?
 Frigoríficos
 Lácteas
@@ -673,7 +673,7 @@ En una planta, el control es un programa con monitoreo y seguimiento. El alcance
 ¿Llegan a mi departamento?
 Indíquenos el departamento, la localidad y el tipo de instalación. Le confirmaremos si podemos atenderle y cómo coordinar.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →
 
 ## terminos
@@ -683,5 +683,5 @@ Este sitio informa sobre control de plagas en Uruguay. Las guías tienen informa
 Ante una picadura o una posible intoxicación, llame al CIAT (Centro de Información y Asesoramiento Toxicológico) al 1722 o consulte a su prestador de salud.
 Las respuestas de Truly AI son orientativas. El alcance, las condiciones y el costo de cada servicio se confirman en la propuesta.
 Cuéntenos qué necesita proteger.
-Todo empieza por contarnos qué vio. Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.
+Todo empieza por contarnos qué vio. Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.
 Escribir en el chat Escribir por WhatsApp Consultar cobertura →

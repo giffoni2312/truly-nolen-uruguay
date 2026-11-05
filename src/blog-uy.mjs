@@ -15,6 +15,7 @@ export const POSTS_UY = [
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
     title: 'Araña de los rincones en casa: dónde se esconde y qué hacer',
     desc: 'Araña de los rincones en Uruguay: dónde se esconde en la casa, cómo evitar una picadura y a quién llamar si pasa. Con datos del MSP y del CIAT (1722).',
+    resumen: 'Es la araña que más le importa a la salud pública en Uruguay. Le contamos dónde se esconde en casa, cómo evitar una picadura y a quién llamar.',
     lead: 'Según un boletín del MSP de 2013, es la araña que más le importa a la salud pública en Uruguay. Vive tranquila en los rincones oscuros de la casa: le contamos dónde buscarla, cómo evitar una picadura y a quién llamar.' },
   { slug: 'hormiga-cortadora-en-el-jardin', tag: 'Hormiga cortadora', img: `${A}/uy-blog-hormiga-cortadora-pd-suave.webp`,
     alt: 'Hormigas cortadoras llevando trozos de hoja por una soga',
@@ -57,7 +58,7 @@ export const CUERPOS = {
 </ul>
 <p>A eso se suma ordenar el placard y el galpón: menos cajas apiladas y menos ropa amontonada significa menos escondites.</p>
 <h2>Cuándo conviene una revisión profesional</h2>
-<p>Si encuentra más de una araña, si aparecen seguido en el mismo ambiente o si en la casa hay chicos o personas mayores, conviene revisar la casa entera: dónde se esconden, qué las atrae y qué se puede sellar. Escríbale a Truly AI por el chat o por WhatsApp, cuéntele dónde la vio y le orienta en el siguiente paso. Para repasar sus señales, entre a la <a href="${U}/plagas/arana-de-los-rincones/">guía de la araña de los rincones</a>.</p>`,
+<p>Si encuentra más de una araña, si aparecen seguido en el mismo ambiente o si en la casa hay chicos o personas mayores, conviene revisar la casa entera: dónde se esconden, qué las atrae y qué se puede sellar. Escriba por el chat o por WhatsApp y cuéntenos dónde la vio: Truly AI le orienta en el siguiente paso. Para repasar sus señales, entre a la <a href="${U}/plagas/arana-de-los-rincones/">guía de la araña de los rincones</a>.</p>`,
     faq: [
       ['¿La araña de los rincones es peligrosa?', 'Su veneno es necrosante y el MSP, en un boletín de 2013, la puso primera entre las arañas que preocupan a la salud pública del país. Aun así, según la nota citada de Montevideo Portal, la mayoría de los casos en el país son leves. Ante una sospecha, llame al CIAT al 1722.'],
       ['¿Dónde se esconde?', 'En lugares oscuros y quietos: placares, ropa guardada, detrás de muebles y cuadros, y en cajas o materiales acumulados.'],
@@ -97,7 +98,7 @@ export const CUERPOS = {
 <li>No tirarle polvo al hormiguero: según Bollazzi, controla algunas obreras, pero no a todas.</li>
 </ol>
 <h2>Truly AI le ayuda a encontrar el nido</h2>
-<p>Si las hormigas vuelven cada temporada o atacan la huerta, escríbale a Truly AI por el chat o por WhatsApp. Cuéntele qué plantas cortan y dónde ve los caminos, y le orienta en el siguiente paso. Para repasar cómo distinguirlas de la hormiga de la cocina, entre a la <a href="${U}/plagas/hormigas/">guía de hormigas</a>.</p>`,
+<p>Si las hormigas vuelven cada temporada o atacan la huerta, escríbale a Truly AI por el chat o por WhatsApp. Cuéntele qué plantas cortan y dónde ve los caminos; Truly AI le orienta en el siguiente paso. Para repasar cómo distinguirlas de la hormiga de la cocina, entre a la <a href="${U}/plagas/hormigas/">guía de hormigas</a>.</p>`,
     faq: [
       ['¿Cuántas especies de hormiga cortadora hay en Uruguay?', 'Depende de la fuente: el INIA (cartilla de 2014) cuenta 12 especies de Acromyrmex, y Martín Bollazzi (Facultad de Agronomía) mencionó en La Mañana (2023) 14 de Acromyrmex y 2 de Atta.'],
       ['¿Sirve el polvo hormiguicida?', 'No. Según Bollazzi, actúa solo sobre las obreras que toca y la colonia sigue viva.'],

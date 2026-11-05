@@ -14,31 +14,37 @@ export const PESTS = {
   mosquitos: {
     name: 'Mosquitos', sub: 'Guía de mosquitos', img: `${A}/uy-plaga-mosquito-suave.webp`,
     alt: 'Mosquito Aedes aegypti, el transmisor del dengue',
+    corto: 'El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa: baldes, platos de macetas y bebederos.',
     card: 'El Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. En 2016 volvió el dengue autóctono a Uruguay después de 100 años (MSP).',
   },
   'ratas-y-ratones': {
     name: 'Ratas y ratones', sub: 'Guía de roedores', img: `${A}/uy-plaga-rata-noruega-cc0-suave.webp`,
     alt: 'Rata noruega entre hojas secas y plantas',
+    corto: 'Buscan comida, agua y refugio. En Punta del Este se esconden en las palmeras, cerca de los restos de comida de los restaurantes.',
     card: 'En Punta del Este se esconden arriba de las palmeras y se las ve mucho por los restos de comida que dejan los restaurantes de noche. La Intendencia de Maldonado lo describió como un tema «complicado» (2025).',
   },
   cucarachas: {
     name: 'Cucarachas', sub: 'Guía de cucarachas', img: `${A}/uy-plaga-cucaracha-americana-foto.webp`,
     alt: 'Cucaracha americana',
+    corto: 'La alemana, chica y de cocina, y la americana, grande y de desagües. Las dos salen de noche.',
     card: 'La alemana, chica y de cocina, y la americana, grande y de desagües. En Montevideo, los comercios de alimentos deben tener un programa preventivo de plagas.',
   },
   hormigas: {
     name: 'Hormigas', sub: 'Guía de hormigas', img: `${A}/uy-plaga-hormiga-cortadora-pd-suave.webp`,
     alt: 'Hormigas cortadoras llevando trozos de hoja por una soga',
+    corto: 'En la cocina aparecen en fila; en el jardín, la hormiga cortadora deja sin hojas los rosales y la huerta.',
     card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, las que dejan sin hojas el jardín y la huerta. Son 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi (Facultad de Agronomía) en La Mañana (2023).',
   },
   termitas: {
     name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-pd-suave.webp`,
     alt: 'Soldados de termita subterránea (Reticulitermes flavipes)',
+    corto: 'La termita subterránea come la madera desde adentro y llega por caminos de barro que suben desde el suelo.',
     card: 'Según Constantino (2002), la termita subterránea Reticulitermes llegó a Uruguay desde afuera y es la única termita plaga seria del país.',
   },
   'arana-de-los-rincones': {
     name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-suave.webp`,
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
+    corto: 'Vive en rincones oscuros, detrás de cuadros y muebles. Su veneno puede dañar la piel: ante una picadura, consulte a su prestador de salud.',
     card: 'Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la araña de mayor importancia para la salud pública en Uruguay. Si sospecha una picadura, llame al CIAT: 1722.',
   },
 };

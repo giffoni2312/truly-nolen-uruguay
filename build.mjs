@@ -168,6 +168,8 @@ function head(pre, page) {
   pre = pre.replace(/(<meta property="og:image:width" content=")[^"]*/, '$11200').replace(/(<meta property="og:image:height" content=")[^"]*/, '$1630');
   // Uruguay's own blocks only (species cards, industry bands); home and the globaltni copies do not need them.
   if (page.main && REPLICA_CSS) pre = pre.replace('</head>', `<style id="uruguay-bloques">${REPLICA_CSS}</style></head>`);
+  // Page-level fixes (e.g. the Industria h1 measured on Comercios)
+  if (page.css) pre = pre.replace('</head>', `<style id="uruguay-pagina">${page.css}</style></head>`);
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;

@@ -102,3 +102,22 @@ del 4-nov sin commit en `cambios-sin-commit-4nov.diff`). No se borró nada.
 - **Candados oficiales** (`gate-replica`, `comparar-identico.mjs`, `gate-fotos`): no están en este PC.
   `tools/comprobar-5nov.mjs` es un reemplazo, no los sustituye.
 - Pendientes viejos: WhatsApp +598, razón social y RUT; video con el método nuevo (necesita Midjourney y los insumos de la receta).
+
+## Correcciones del juez de voz y del ojo de diseño (5-nov, segunda vuelta)
+- **Voz:**
+  - Banda final: «Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.» Se cambió con
+    `src/ortografia.mjs` y sale en 16 de las 17 páginas. Comercios tiene el cierre propio de globaltni, que no se toca.
+  - Cierres de los 2 artículos, meta de la portada, «Antes de empezar, usted recibe…» (Industria) y respuesta de cobertura
+    de la portada («…y si es casa, apartamento o local…»).
+- **h1 de Industria:** igual que Comercios, con `page.css` en `src/pages.mjs` y `<style id="uruguay-pagina">` en `build.mjs`.
+  - Medido con `tools/medir-h1.mjs`: MachoteDisplay 900.
+  - Tamaños: 67,68 px desde 1200 (también a 1440), 48,128 px entre 961 y 1199 (también a 1024) y 43 px hasta 960 (también a 390).
+  - En los 17 anchos medidos (360 a 1600) da lo mismo que Comercios. Antes era Machote 600 a 78, 46 y 44 px.
+- **Tarjetas de plagas de la portada:**
+  - Cada una tiene una frase propia, `corto` en `src/helpers.mjs`, de 92 a 138 caracteres (todas ≤140), sin citas.
+  - Ninguna frase se repite completa en otra parte de la portada.
+- **Índice del blog:** resumen corto de la araña (`resumen` en `src/blog-uy.mjs`). Ocupa 3 líneas a 1440, igual que Venezuela.
+- **Comprobado otra vez:**
+  - `check.mjs`: 0 problemas. `trato.mjs`: 0 formas.
+  - `comprobar-5nov.mjs`: 153 combinaciones, 998 enlaces, lupa, encabezado −44/0 y 0 cajas movidas; 0 errores.
+  - Corpus rearmado: 7374 palabras.

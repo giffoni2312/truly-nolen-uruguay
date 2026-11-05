@@ -29,6 +29,8 @@ export const ORTOGRAFIA = [
   ['Servicio premium', 'Servicio prémium'],
   // one wording across the site («empezar por» + action)
   ['Todo empieza con contarnos qué vio.', 'Todo empieza por contarnos qué vio.'],
+  // voice judge (5-nov-2026): the visitor writes, Truly AI guides (closing band of every page)
+  ['Escríbale a Truly AI aquí mismo o por WhatsApp y le orienta en el siguiente paso.', 'Escriba aquí mismo o por WhatsApp y Truly AI le orienta en el siguiente paso.'],
 ];
 
 export function corregir(html, usados) {
