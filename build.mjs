@@ -2,16 +2,67 @@
 // Usage: node build.mjs
 // Why a generator: nav, footer and chat repeat on every page. Changing them in one place
 // (this file + src/helpers.mjs) and regenerating avoids 17 hand-edited copies drifting apart.
+//
+// 5-nov-2026 (recipe «truly-inbound» 5-nov, same as Cali): the Venezuela reference is already the globaltni.com/es
+// replica (grey strip, sticky header, dropdowns, search magnifier, official zones diagram, globaltni footer, chat
+// button). Three kinds of page:
+//   - page.replace: the Venezuela <main> with Uruguay content swapped in (home);
+//   - page.copy:    the Venezuela <main> as it is, links moved to Uruguay (Hogares and Comercios = globaltni pages, R17);
+//   - page.main:    Uruguay's own <main> (pests, industry, blog, legal), built with the Venezuela markup.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { PAGES } from './src/pages.mjs';
-import { U, A, SITE } from './src/helpers.mjs';
+import { U, A, SITE, PESTS, PEST_ORDER } from './src/helpers.mjs';
+import { POSTS_UY } from './src/blog-uy.mjs';
+import { ORTOGRAFIA, corregir } from './src/ortografia.mjs';
 
 const ROOT = new URL('./site/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const VE = join(ROOT, 'oficinas/venezuela');
 const OUT = join(ROOT, 'oficinas/uruguay');
+const USADOS = new Set();
 
-const REPLICA_CSS = readFileSync(new URL('./src/replica.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '');
+// src/replica.css (3-nov) measured the master for the old Venezuela draft. Its general rules (header, footer, home,
+// inner pages) would now override the new replica (recipe R19), so only the rules for Uruguay's own blocks stay:
+// the species cards of the pest guides (species-*), the industry page bands (ct-*) and the small source line (s-fuente).
+const KEEP_RULE = /species-|\.ct-|s-fuente/;
+function filterCss(css) {
+  let out = '';
+  let i = 0;
+  while (i < css.length) {
+    const open = css.indexOf('{', i);
+    if (open < 0) break;
+    const sel = css.slice(i, open).trim();
+    if (sel.startsWith('@')) {
+      // block at-rule (@media, @supports): find its matching brace and filter the inside
+      let depth = 1; let j = open + 1;
+      while (depth && j < css.length) { if (css[j] === '{') depth++; else if (css[j] === '}') depth--; j++; }
+      const inner = filterCss(css.slice(open + 1, j - 1));
+      if (inner) out += `${sel}{${inner}}`;
+      i = j;
+    } else {
+      const close = css.indexOf('}', open);
+      if (KEEP_RULE.test(sel)) out += `${sel}{${css.slice(open + 1, close)}}`;
+      i = close + 1;
+    }
+  }
+  return out;
+}
+const REPLICA_CSS = filterCss(readFileSync(new URL('./src/replica.css', import.meta.url), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, ''));
+
+// The globaltni copies of Hogares and Comercios carry exact-size rules (fixed widths measured on globaltni) that overflow
+// the window at in-between widths (1280, 961, 360 px). Same fix as Bogotá (herramientas-colombia/armar-copias-globaltni.mjs):
+// cap each section at the window width minus the page gutters; at the widths where nothing overflowed, boxes do not move.
+const COPIA_SIN_DESBORDE = `<style id="copia-sin-desborde">
+html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section:nth-of-type(n){max-width:calc(100vw - 128px)!important}
+html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section#zonas:nth-of-type(n){grid-template-columns:minmax(0,1fr)!important}
+html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section:nth-of-type(n) :is(nav,h1,h2,p,article,figure,img):nth-of-type(n){max-width:100%!important}
+@media (min-width:1200px){html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section.s-lead-pair:nth-of-type(n){grid-template-columns:minmax(0,688.594fr) minmax(0,563.406fr)!important}}
+@media (max-width:389px){html body.country-site[data-oficina][data-oficina][data-oficina][data-oficina][data-oficina][data-oficina][data-oficina] div.ct-commercial .ct-documentary > figure:nth-of-type(n) > figcaption:nth-of-type(n){width:auto!important;max-width:100%!important}}
+@media (min-width:961px) and (max-width:1199px){html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section.s-lead-pair:nth-of-type(n){grid-template-columns:minmax(0,486.188fr) minmax(0,397.812fr)!important}}
+@media (max-width:1199px){html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section:nth-of-type(n){max-width:calc(100vw - 80px)!important}}
+@media (max-width:760px){html body.country-site[data-oficina][data-oficina][data-oficina] div.gt-copia > section:nth-of-type(n){max-width:calc(100vw - 44px)!important}}
+</style>`;
+
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const plain = (s) => s.replace(/<br\/>/g, ' ').replace(/<[^>]+>/g, '');
 
@@ -24,41 +75,50 @@ const PEST_LABELS = {
   '>Comején<': '>Termitas<', '>Alacranes<': '>Araña de los rincones<',
 };
 
+// Recipe R3: always usted. Same texts as the Venezuela reference, with Uruguay's name.
 const CHAT_TEXTS = {
   nombre: 'Truly AI', enLinea: 'En línea ahora', escribiendo: 'Truly AI está escribiendo…',
-  saludo: '¡Hola! Soy Truly AI, de Truly Nolen Uruguay. Contame qué necesitás proteger y te oriento en el siguiente paso.',
-  campo: 'Escribile a Truly AI…', enviar: 'Enviar', abrir: 'Abrir el chat con Truly AI', cerrar: 'Cerrar el chat',
-  nueva: 'Conversación nueva', invita: '¿Hablamos?', invitaSub: 'Truly AI te responde al instante', descartar: 'Descartar invitación',
-  atajos: ['Vi una plaga en mi casa', 'Necesito proteger mi negocio', 'No sé qué plaga encontré'],
+  saludo: '¡Hola! Soy Truly AI, de Truly Nolen Uruguay. Cuénteme qué necesita proteger y le oriento en el siguiente paso.',
+  campo: 'Escríbale a Truly AI…', enviar: 'Enviar', abrir: 'Abrir el chat con Truly AI', cerrar: 'Cerrar el chat',
+  nueva: 'Conversación nueva', invita: '¿Hablamos?', invitaSub: 'Truly AI le responde', descartar: 'Descartar invitación',
+  atajos: ['Vi una plaga en mi casa', 'Necesito proteger mi negocio'],
   wa: 'Seguir por WhatsApp',
-  caido: 'No pude conectarme. Probá enviar tu mensaje de nuevo en unos instantes.',
-  trabado: 'No pude conectarme. Probá enviar tu mensaje de nuevo en unos instantes.',
+  caido: 'No pude conectarme. Intente enviar su mensaje de nuevo en unos instantes.',
+  trabado: 'No pude conectarme. Intente enviar su mensaje de nuevo en unos instantes.',
   noLeidos: 'Respuesta nueva',
 };
-const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
+// Uruguay has no published office: the assistant must not invent one (no address, no phone).
+const CHAT_CONTEXT = 'Truly Nolen Uruguay public website. Truly Nolen has NO published local office in Uruguay: never claim or imply a local office, address, local phone, coverage area, technicians, schedules, availability, prices or guarantees in Uruguay unless the Truly Nolen team confirms them. Help visitors describe their pest situation (homes, businesses or industry): what they see, where, since when, type of space, departamento and barrio or localidad, children or pets. Explain the general Truly Nolen approach (listen, evaluate, propose, follow up) and what information helps. For service requests explain that Truly Nolen will review the request and confirm whether and how it can be attended. If someone mentions a possible spider bite (araña de los rincones, Loxosceles), a sting or a poisoning, tell them first to call CIAT at 1722 or contact their health provider. My Truly opens the separate VIP portal; Inside Truly opens the internal portal. No access to customer account data. Do not claim the chat stores no data. Language: Uruguayan Spanish, always usted, never tú or voseo; warm and professional. Use Uruguayan words: mosquito (not zancudo), termitas (not comején), cucaracha (not chiripa), hormiga cortadora (not bachaco), apartamento, fondo, azotea, heladera, canilla, pileta, departamento and barrio.';
+
+// Search index (recipe R4: the magnifier opens the site search, like globaltni.com), built from Uruguay's own pages only.
+function indiceBusqueda() {
+  const items = [
+    ['Hogares', '', `${U}/servicios/hogares/`, 'Servicios'],
+    ['Comercios', '', `${U}/servicios/comercios/`, 'Servicios'],
+    ['Industria', '', `${U}/servicios/industria/`, 'Servicios'],
+    ...PEST_ORDER.map((s) => [PESTS[s].name, '', `${U}/plagas/${s}/`, 'Guía de plagas']),
+    ...POSTS_UY.map((p) => [p.title, p.desc, `${U}/blog/${p.slug}/`, 'Blog']),
+    ['Cobertura', '', `${U}/#cobertura`, 'Inicio'],
+    ['Nosotros', '', `${U}/#nosotros`, 'Inicio'],
+    ['Preguntas frecuentes', '', `${U}/#preguntas`, 'Inicio'],
+    ['Contacto', '', `${U}/#contacto`, 'Inicio'],
+  ];
+  return JSON.stringify({ items, textos: { uno: '1 resultado', varios: '{n} resultados', cero: 'Sin resultados. Pruebe con otra palabra.' } }).replace(/</g, '\\u003c');
+}
 
 function chrome(s) {
+  s = s.replace(/<script type="application\/json" id="gt-buscar-indice">[\s\S]*?<\/script>/, () => `<script type="application/json" id="gt-buscar-indice">${indiceBusqueda()}</script>`);
   s = s.replaceAll('/oficinas/venezuela/', '/oficinas/uruguay/');
   for (const [k, v] of Object.entries(PEST_SLUGS)) s = s.replaceAll(`/oficinas/uruguay/plagas/${k}/`, `/oficinas/uruguay/plagas/${v}/`);
   for (const [k, v] of Object.entries(PEST_LABELS)) s = s.replaceAll(k, v);
-  s = s.replaceAll('/oficinas/uruguay/assets/footer-venezuela.webp', `${A}/footer-uruguay.webp`)
-    .replaceAll('Camino de la Felicidad, Falcón, Venezuela. Ilustración', 'Teatro Solís, Montevideo, Uruguay. Ilustración en acuarela')
-    .replaceAll('Venezuela · Camino de la Felicidad, Falcón', 'Uruguay · Teatro Solís, Montevideo')
-    .replaceAll('Conversemos', 'Hablemos')
-    .replaceAll('Escríbele a Truly AI', 'Escribile a Truly AI')
-    .replaceAll('Conversa aquí', 'Escribí acá')
-    .replaceAll('Activa JavaScript', 'Activá JavaScript')
-    // Footer header as the master: slogan plus "Volver arriba ↑" on the right (no second "Hablemos")
-    .replace('<a class="text-link" href="/oficinas/uruguay/#contacto">Hablemos</a></div><div class="footer-columns">', '<a class="text-link footer-top" href="#contenido">Volver arriba ↑</a></div><div class="footer-columns">')
-    .replaceAll('© Truly Nolen · Venezuela', `© ${new Date().getFullYear()} Truly Nolen International · Uruguay`)
+  s = s.replace('placeholder="Por ejemplo: comercios o alacranes"', 'placeholder="Por ejemplo: comercios o cucarachas"')
+    // Uruguayan word for the car
+    .replaceAll('nuestro carro emblemático', 'nuestro auto emblemático')
+    .replaceAll('y un carro amarillo de servicio', 'y un auto amarillo de servicio')
     .replace('<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a>', '<a href="/oficinas/uruguay/accesibilidad/">Accesibilidad</a><a href="/oficinas/uruguay/creditos/">Créditos de imágenes</a>');
-  // Floating chat: same three shortcuts as the on-page box (Venezuela had two vs three)
-  s = s.replace(/<div class="tia-atajos" data-atajos>[\s\S]*?<\/div>/, `<div class="tia-atajos" data-atajos>${CHAT_TEXTS.atajos.map((t) => `<button type="button" class="tia-atajo">${t}</button>`).join('')}</div>`);
-  s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
-  s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
-  s = s.replaceAll('width="1774" height="887"', 'width="1774" height="877"');
-  // Footer slogan as in the Argentina office draft and globaltni.com/es
-  s = s.replace('Cuidamos lo que<br/>más te importa.', 'Tu satisfacción<br/>es nuestra meta.');
+  s = s.replace(/<script id="tia-textos" type="application\/json">[\s\S]*?<\/script>/, () => `<script id="tia-textos" type="application/json">${JSON.stringify(CHAT_TEXTS)}</script>`);
+  s = s.replace(/<div class="tia-atajos" data-atajos>[\s\S]*?<\/div>/, () => `<div class="tia-atajos" data-atajos>${CHAT_TEXTS.atajos.map((t) => `<button type="button" class="tia-atajo">${t}</button>`).join('')}</div>`);
+  s = s.replace(/<script id="tia-contexto" type="text\/plain">[\s\S]*?<\/script>/, () => `<script id="tia-contexto" type="text/plain">${CHAT_CONTEXT}</script>`);
   // owner request: the hero always moves (loads before preview.js / escenas.js)
   s = s.replace('<script defer src="/machotes/assets/preview.js', '<script src="/oficinas/uruguay/assets/forzar-movimiento.js"></script><script defer src="/machotes/assets/preview.js');
   return s.replaceAll('Venezuela', 'Uruguay').replaceAll('venezuela', 'uruguay');
@@ -106,28 +166,39 @@ function head(pre, page) {
   set('twitter:description', page.description);
   set('twitter:image', ogImg);
   pre = pre.replace(/(<meta property="og:image:width" content=")[^"]*/, '$11200').replace(/(<meta property="og:image:height" content=")[^"]*/, '$1630');
-  // The full-width footer watercolor uses 100vw, which includes a desktop scrollbar on Windows and made
-  // every page 8 px wider than the window (horizontal scroll). Clip it at the footer edge.
-  // src/replica.css also carries the measured master (globaltni.com/en) rules for inner pages.
-  pre = pre.replace('</head>', `<style>${REPLICA_CSS}</style></head>`);
+  // Uruguay's own blocks only (species cards, industry bands); home and the globaltni copies do not need them.
+  if (page.main && REPLICA_CSS) pre = pre.replace('</head>', `<style id="uruguay-bloques">${REPLICA_CSS}</style></head>`);
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;
 }
 
 for (const page of PAGES) {
-  const tpl = readFileSync(join(VE, page.template || page.out, 'index.html'), 'utf8');
+  const tpl = readFileSync(join(VE, page.template ?? page.out, 'index.html'), 'utf8');
   const a = tpl.indexOf('<main id="contenido">');
   const b = tpl.indexOf('</main>');
   if (a < 0 || b < 0) throw new Error(`Template without <main>: ${page.template}`);
   const pre = chrome(head(tpl.slice(0, a), page));
-  const post = chrome(tpl.slice(b + '</main>'.length));
+  let post = chrome(tpl.slice(b + '</main>'.length));
+  let main;
+  if (page.main) {
+    main = `<main id="contenido">\n${page.main}\n</main>`;
+  } else {
+    main = tpl.slice(a, b + '</main>'.length);
+    for (const [from, to] of page.replace || []) {
+      const found = typeof from === 'string' ? main.includes(from) : from.test(main);
+      if (!found) throw new Error(`[${page.out || 'portada'}] no encontré el texto a cambiar: ${String(from).slice(0, 90)}`);
+      main = typeof from === 'string' ? main.split(from).join(to) : main.replace(from, () => to);
+    }
+    main = chrome(main);
+    if (page.copy) post = post.replace('</body>', `${COPIA_SIN_DESBORDE}\n</body>`);
+  }
   // "38 %" must never break between the number and the sign (no-break space)
-  const html = `${pre}<main id="contenido">\n${page.main.replace(/(\d) %/g, '$1&nbsp;%')}\n</main>${post}`;
+  let html = `${pre}${main.replace(/(\d) %/g, '$1&nbsp;%')}${post}`;
+  html = corregir(html, USADOS); // spelling fixes (src/ortografia.mjs)
   const file = join(OUT, page.out, 'index.html');
   mkdirSync(dirname(file), { recursive: true });
-  // Recipe round 9: the real brand car photo replaces the drawn car everywhere (chat button, chat header, Truly AI box).
-  writeFileSync(file, html.split('/oficinas/assets/truly-carrito-asistente.svg').join(`${A}/carro-truly.png`));
+  writeFileSync(file, html);
   console.log(`✓ ${U}/${page.out}`);
 }
 
@@ -135,3 +206,5 @@ for (const page of PAGES) {
 const urls = PAGES.map((p) => `  <url><loc>${SITE}${U}/${p.out}</loc></url>`).join('\n');
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 console.log(`✓ ${U}/sitemap.xml (${PAGES.length} direcciones)`);
+const sinUso = ORTOGRAFIA.filter(([x]) => !USADOS.has(x)).map(([x]) => x);
+if (sinUso.length) console.log(`AVISO: correcciones que ya no encuentran su texto: ${sinUso.join(' | ')}`);

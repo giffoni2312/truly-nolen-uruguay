@@ -74,7 +74,7 @@ const ficha = {
   },
   footer: { estado: 'listo', file: `${A}/footer-uruguay.webp`, sha256: sha(`${A}/footer-uruguay.webp`), origen: 'Acuarela del Teatro Solís hecha con Gemini (la receta pide Midjourney: pendiente).' },
   casaZonas: { file: `${A}/uruguay-casa-zonas.webp`, alt: 'Casa moderna de Punta del Este con el interior en rojo, el perímetro en amarillo y el jardín en verde', origen: 'Gemini + etiquetas (la receta pide Midjourney: pendiente).' },
-  fotoOperacion: { file: `${A}/uy-operacion.webp`, origen: 'Gemini, emblema real estampado en la camisa.' },
+  fotoOperacion: { file: `${A}/uy-operacion.webp`, origen: 'Gemini 4-nov-2026 con la foto de capacitación de globaltni como referencia del uniforme; emblema real (tn-emblema.png) bordado en el pecho y en la gorra con tools/fotos-tecnico-2026-11-04/logos.py; carnet al revés.' },
   paginas: {
     servicios: ['hogares', 'comercios', 'industria'],
     plagas: Object.keys(PESTS),

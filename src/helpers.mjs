@@ -29,7 +29,7 @@ export const PESTS = {
   hormigas: {
     name: 'Hormigas', sub: 'Guía de hormigas', img: `${A}/uy-plaga-hormiga-cortadora-pd-suave.webp`,
     alt: 'Hormigas cortadoras llevando trozos de hoja por una soga',
-    card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, la que deja sin hojas el jardín y la huerta. Son 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi (Facultad de Agronomía) en La Mañana (2023).',
+    card: 'En Uruguay hay entre 12 y 14 especies de hormigas cortadoras del género Acromyrmex, las que dejan sin hojas el jardín y la huerta. Son 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi (Facultad de Agronomía) en La Mañana (2023).',
   },
   termitas: {
     name: 'Termitas', sub: 'Guía de termitas', img: `${A}/uy-plaga-termita-subterranea-pd-suave.webp`,
@@ -39,7 +39,7 @@ export const PESTS = {
   'arana-de-los-rincones': {
     name: 'Araña de los rincones', sub: 'Guía de la araña de los rincones', img: `${A}/uy-plaga-arana-de-los-rincones-suave.webp`,
     alt: 'Araña de los rincones (Loxosceles laeta) sobre madera',
-    card: 'Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la araña de mayor importancia para la salud pública en Uruguay. Si sospechás una picadura, llamá al CIAT: 1722.',
+    card: 'Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la araña de mayor importancia para la salud pública en Uruguay. Si sospecha una picadura, llame al CIAT: 1722.',
   },
 };
 export const PEST_ORDER = Object.keys(PESTS);
@@ -122,6 +122,7 @@ export const SRC = {
   resistencia: ['Revisión científica (2025). Estado y mecanismos de la resistencia a insecticidas de la cucaracha alemana en el mundo', 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12677976/'],
   leptoSeguimiento: ['Revista do Instituto de Medicina Tropical de São Paulo (2012). Diez años de seguimiento de la leptospirosis humana en Uruguay: un problema de salud no resuelto', 'https://revistas.usp.br/rimtsp/article/view/31452'],
   leptoLluvia: ['Montevideo Portal (2025). Murió una persona de leptospirosis en Montevideo: por qué la lluvia importa en el contagio (con datos de la OPS)', 'https://www.montevideo.com.uy/Modo-saludable/Murio-una-persona-de-leptospirosis-en-Montevideo-por-que-la-lluvia-importa-en-el-contagio-uc940202'],
+  gtComercial: ['Truly Nolen International (2026). Servicio comercial: salud, industrias, venta de alimentos y logística', 'https://globaltni.com/es/services/commercial/'],
   guiaPlan: ['gub.uy (2025). Guía para elaborar el Plan de Control de Plagas de las empresas alimentarias', 'https://www.gub.uy/tramites/sites/catalogo-tramites/files/2025-11/Gu%C3%ADaContPlag%20-%201%20%28Plan%20de%20Control%20de%20Plagas%29_2.pdf'],
   oms: ['Organización Mundial de la Salud. Dengue y dengue grave', 'https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue'],
   msp2016: ['Ministerio de Salud Pública (2016). Boletín epidemiológico: informe del brote de dengue en Uruguay', 'https://www.gub.uy/ministerio-salud-publica/sites/ministerio-salud-publica/files/documentos/publicaciones/Extracto%20bolet%C3%ADn%20epid%20nov%202016%20Informe%20brote%20de%20Dengue%20en%20Uruguay_0.pdf'],

@@ -5,48 +5,47 @@ import {
 import { POSTS_UY, CUERPOS, SRC_BLOG } from './blog-uy.mjs';
 import {
   flat, intro, leadPair, flow, rowsProse, datoProse, pestLinks, serviceLinks, preguntas, sFuentes, closing,
-  pestMaster, articleParts, articleFaq, ctPage,
+  pestMaster, articleParts, articleFaq, ctPage, contactBand,
 } from './master.mjs';
 
 const arrow = '<span aria-hidden="true">→</span>';
 
 // ---------------------------------------------------------------- HOME
-// Corporate sections of the master (globaltni.com/es, read 3-nov-2026), in its order:
-// sanitization -> TEPS -> international network -> history. No franchise block: an office does not sell
-// franchises (recipe, round 9). Texts adapted to Uruguayan voseo; links go to the master's own pages.
-const GT = 'https://globaltni.com/es';
-const ext = (href, label) => `<a class="g-link" href="${href}" target="_blank" rel="noopener noreferrer">${label}${arrow}</a>`;
-// Same markup and classes as the master (globaltni.com/es) and the Argentina office draft: sanitization, teps,
-// network, history and a short sources list. Split in two because the master puts 'Cómo trabajamos' between TEPS and the network.
-const blank = 'target="_blank" rel="noopener noreferrer"';
-const CORP_A = `<section class="sanitization wrap" id="sanitizacion"><div class="sanitization-copy"><span>Virus, hongos y bacterias</span><h2>Sanitización de ambientes interiores.</h2><p>La sanitización reúne estrategias para prevenir y controlar la contaminación por virus, hongos y bacterias, según el tipo de ambiente interior.</p><a class="button button-line" href="${GT}/services/sanitization/" ${blank}>Conocé el servicio de&nbsp;sanitización&nbsp;→</a></div><div class="sanitization-visual"><h3>Un protocolo según el ambiente.</h3><p>Entrevista e identificación del entorno. Selección de producto, aplicación y tiempo de contacto. Medidas de prevención y control para cada instalación.</p></div></section>
-<section class="teps wrap" id="teps"><div class="teps-intro"><img class="teps-seal" src="${A}/teps-sello.webp" width="900" height="900" alt="" decoding="async" loading="lazy"><div class="teps-heading"><span>Truly Elite Protection System</span><h2>TEPS: un programa con seguimiento.</h2></div><div class="teps-description"><p>Inspección, plan de control, registro de cada visita y revisión de tendencias. Un programa de Manejo Integrado de Plagas con trazabilidad y estándares auditados.</p><a class="button" href="${GT}/services/teps/" ${blank}>Conocé el sistema&nbsp;TEPS&nbsp;→</a></div></div><ol class="teps-flow"><li><span>01</span><h3>Inspeccionar</h3><strong>Evaluamos la instalación y su entorno</strong><p>Identificamos actividad de plagas, puntos de acceso, condiciones favorables y prácticas operativas para determinar las necesidades del programa.</p></li><li><span>02</span><h3>Desarrollar el programa</h3><strong>Un plan específico para la instalación</strong><p>El entorno, la estacionalidad, la actividad observada, las prácticas de operación y las plagas identificadas determinan el programa.</p></li><li><span>03</span><h3>Registrar cada visita</h3><strong>El trabajo queda documentado</strong><p>Después de cada servicio, el técnico registra las actividades realizadas y los hallazgos identificados en la instalación.</p></li><li><span>04</span><h3>Revisar las tendencias</h3><strong>Informes mensuales y recomendaciones</strong><p>Los datos registrados sobre la actividad de plagas permiten analizar tendencias y dar seguimiento a las acciones.</p></li></ol><details class="program-overview"><summary><span>Formación, supervisión y respuesta durante el programa</span><span aria-hidden="true">+</span></summary><div class="program-items"><div><h3>Capacitación personalizada</h3><p>Formación para clientes y empleados, con el respaldo del equipo técnico internacional.</p></div><div><h3>Centro de formación virtual</h3><p>Capacitación a distancia para profundizar en los conocimientos del programa y sus protocolos.</p></div><div><h3>Supervisión de calidad</h3><p>Informe de auditoría y lista de verificación específica para el tipo de establecimiento, con un indicador de rendimiento.</p></div><div><h3>Educación para el cliente</h3><p>Formación sobre manejo integrado de plagas, biología, ecología, aspectos regulatorios y soporte de auditoría.</p></div><div><h3>Protocolos específicos</h3><p>Programas personalizados para las necesidades de cada cliente, especialmente instalaciones auditadas.</p></div><div><h3>Respuesta y seguimiento</h3><p>Se definen umbrales de acción con la administración. Si se superan, se aplica un protocolo de escalamiento hasta establecer el control.</p></div></div></details></section>`;
-const CORP_B = `<section class="network" id="oficinas"><div class="wrap network-layout"><div><span>Una red internacional</span><h2>Una red internacional. Atención en tu país.</h2><p>Buscá tu país en el directorio internacional. La oficina que atiende tu zona te ayuda a conocer el servicio y el programa adecuado para tu espacio. En Uruguay te atiende Truly AI.</p><div class="network-actions"><a class="button" href="${GT}/offices/" ${blank}>Abrir el directorio de oficinas →</a><a class="text-link" href="${GT}/contact/#formulario" ${blank}>Escribinos desde el formulario de contacto →</a></div><p class="network-brands">La confianza de marcas reconocidas en todo el mundo.</p><p class="network-note">Trabajamos con hogares y empresas a través de nuestra red internacional de oficinas.</p></div><div><h3>Conectá con una oficina local.</h3><p>Accesos a sitios locales del directorio internacional.</p><div class="network-links"><div><h4>Américas</h4><ul><li><a href="http://www.trulynolenargentina.com.ar" ${blank}>Argentina ↗</a></li><li><a href="https://www.trulynolen.com.br" ${blank}>Brasil ↗</a></li></ul></div><div><h4>Europa</h4><ul><li><a href="https://www.trulyespana.com/" ${blank}>España ↗</a></li><li><a href="https://www.trulynolen.fr/" ${blank}>Francia ↗</a></li></ul></div><div><h4>Asia</h4><ul><li><a href="https://trulynolenindia.com/" ${blank}>India ↗</a></li><li><a href="https://www.trulynolen.com.ph/" ${blank}>Filipinas ↗</a></li></ul></div></div><a class="text-link" href="${GT}/offices/" ${blank}>Ver todos los países y contactos →</a><div class="network-stats"><p>Alcance internacional</p><div><div><strong>65+</strong><span>países</span></div><div><strong>300+</strong><span>oficinas</span></div><div><strong>6</strong><span>continentes</span></div></div></div></div></div></section>
-<section class="history" id="historia"><div class="wrap history-layout"><div><span>Más de 80 años de experiencia</span><h2>Prevenir las plagas. Una idea desde 1938.</h2><p>En 1938, Truly Wheatfield Nolen propuso proteger los edificios sellando las entradas de los roedores. La prevención estaba en el origen.</p><p>Hoy, esa visión se expresa en formación, métodos de control y protocolos diseñados para reducir el impacto en el entorno.</p><div class="history-links"><a class="text-link" href="${GT}/company/story/" ${blank}>Nuestra historia hasta ahora →</a><a class="text-link" href="${GT}/company/team/" ${blank}>Conocé a nuestro equipo →</a></div></div><div class="history-visual"><a class="history-car-link" href="${GT}/company/story/" ${blank}><img src="${A}/carro-truly.png" width="600" height="386" alt="El auto amarillo con orejas de ratón de Truly Nolen" loading="lazy"/></a><ol class="history-timeline"><li><strong>1938</strong><p>Una idea centrada en la prevención.</p></li><li><strong>1987</strong><p>La visión llega a Argentina.</p></li><li><strong>1989</strong><p>Nace Truly Nolen International.</p></li></ol></div></div></section>`;
-
-const homeFaq = GENERAL_FAQ;
+// 5-nov-2026 (recipe 5-nov, same as Cali): the home is the Venezuela reference <main> (the globaltni.com/es replica,
+// in usted) with Uruguay's own content swapped in: hero film, commercial photo, the six Uruguay pests, the blog and
+// the coverage answer. Corporate texts (programs, zones, sectors, sanitization, TEPS, network, history) stay as globaltni's.
+// The 4-nov home (voseo, own zones image, coverage form) is in respaldos/2026-11-05-antes-receta-5nov/src/pages.mjs.
+const homeFaq = [
+  ['¿Cómo comienza el servicio?', 'El equipo revisa su consulta, confirma si podemos atenderle y coordina la evaluación que corresponda.'],
+  ['¿Puedo solicitar atención para mi negocio?', 'Sí. El tipo de actividad, los horarios y las condiciones del espacio ayudan a definir el programa.'],
+  ['¿Qué debo preparar antes de la visita?', 'Le indicaremos las medidas que aplican al servicio y las precauciones para personas y mascotas.'],
+  ['¿Cómo consulto la cobertura?', 'Indique su departamento, su barrio o localidad y el tipo de espacio. Le confirmaremos si podemos atenderle y cómo coordinar la atención.'],
+  ['¿La evaluación tiene costo?', 'Pregúntele al equipo antes de coordinar la visita. El costo y las condiciones dependen de la ubicación y del servicio que necesite.'],
+  ['¿Una visita es suficiente?', 'El equipo define el alcance y el seguimiento después de evaluar su situación. Las visitas y condiciones se explican en la propuesta.'],
+];
+const HOME_FILM = `<div class="film"><picture><source media="(max-width:760px)" srcset="${A}/uruguay-movil.webp?v=6"/><img src="${A}/uruguay-desktop.webp?v=10" alt="Auto amarillo de Truly Nolen andando frente al Teatro Solís de Montevideo al atardecer"/></picture><video data-src-movil="${A}/uruguay-movil.mp4?v=6" muted loop playsinline preload="none" aria-hidden="true" data-src="${A}/uruguay-desktop.mp4?v=10"></video></div>`;
+const HOME_PLAGAS = `<section id="plagas" class="section g g-plagas"><header class="g-cab"><h2>Reconozca la plaga.<br/>Entienda sus hábitos.</h2><p class="g-intro">Seis plagas que conviene conocer en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.</p></header><div class="g-plagas-grid" style="--n:${PEST_ORDER.length}">${PEST_ORDER.map((s) => { const p = PESTS[s]; return `<article><a class="g-pl-fig" href="${U}/plagas/${s}/"><img src="${p.img}" alt="${p.alt}" loading="lazy"/></a><h3>${p.name}</h3><p class="g-pl-sub">${p.sub}</p><p>${p.card}</p><a class="g-mas" href="${U}/plagas/${s}/">Ver la guía<span aria-hidden="true">→</span></a></article>`; }).join('')}</div></section>`;
+const HOME_BLOG = ((p) => `<article class="g-blog"><div class="g-blog-top"><img src="${p.img}" alt="" loading="lazy"/><p class="g-ey">Del blog · 31 de octubre de 2026</p></div><h3><a href="${U}/blog/${p.slug}/">${p.title}</a></h3><p>${p.lead}</p><a class="g-link" href="${U}/blog/${p.slug}/">Leer el artículo<span aria-hidden="true">→</span></a><a class="g-link g-link-2" href="${U}/blog/">Ver todo el blog<span aria-hidden="true">→</span></a></article>`)(POSTS_UY[0]);
+const VEC = '/oficinas/venezuela/servicios/comercios/';
+const GT = 'https://globaltni.com/es'; // used by the unused 4-nov Comercios content
 const home = {
   out: '', template: '', title: 'Truly Nolen Uruguay | Control de plagas',
-  description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escribile a Truly AI y te orientamos en el siguiente paso.',
+  description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escríbale a Truly AI y le orientamos en el siguiente paso.',
   faq: homeFaq,
-  main: `<section class="cinema" id="inicio"><div class="film"><picture><source media="(max-width:760px)" srcset="${A}/uruguay-movil.webp?v=6"/><img src="${A}/uruguay-desktop.webp?v=10" alt="Auto amarillo de Truly Nolen andando frente al Teatro Solís de Montevideo al atardecer"/></picture><video data-src-movil="${A}/uruguay-movil.mp4?v=6" muted loop playsinline preload="none" aria-hidden="true" data-src="${A}/uruguay-desktop.mp4?v=10"></video></div><div class="hero-text"><p class="eyebrow">Truly Nolen · <span data-preview-office>Uruguay</span></p><h1>Tu mundo. Protegido.</h1><p>Prevención y atención para que vivas tranquilo en tu casa.</p><a class="button" href="#contacto">Hablemos <span class="office-mark" aria-hidden="true"></span></a><span class="hero-premium">Servicio premium · Visión internacional</span></div><div class="hero-routes"><a href="#residencial">Tu hogar <span aria-hidden="true">↓</span></a><a href="#comercial">Tu negocio <span aria-hidden="true">↓</span></a><a href="#metodo">Cómo trabajamos <span aria-hidden="true">↓</span></a></div></section><script src="/oficinas/assets/video-movil.js"></script>
-<section id="nosotros" class="g-cifras" aria-label="Truly Nolen en el mundo"><div class="g-cifras-in"><div><b>65</b> <span>países</span><small>presencia internacional</small></div><div><b>300+</b> <span>oficinas</span><small>en el mundo</small></div><div><b>80+</b> <span>años</span><small>de experiencia</small></div><div class="g-cifra-carro"><img src="${A}/carro-truly.png" alt="" width="100" height="65"/><span>una marca reconocible<small>nuestro auto emblemático</small></span></div></div><p class="g-cifras-fuente">Cifras de Truly Nolen International (globaltni.com, 2026).</p></section>
-<section id="servicios" class="section g g-programa"><header class="g-cab"><p class="g-ey">Truly Nolen · Uruguay</p><h2>Un programa para tu espacio.</h2><p class="g-intro">De la inspección de una vivienda a los registros de una instalación auditada. Elegí el servicio que necesitás conocer.</p></header>
-<div class="service-index"><a href="#teps"><span>Monitoreo y control auditado</span><strong>TEPS</strong><span aria-hidden="true">↓</span><small>Estándares globales, seguimiento y reportes.</small><i aria-hidden="true" class="service-icon"><img alt="" decoding="async" height="900" loading="lazy" src="${A}/teps-sello.webp" width="900"/></i></a><a href="#comercial"><span>Programas según tu sector y actividad.</span><strong>Comercial</strong><span aria-hidden="true">↓</span><i aria-hidden="true" class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 21V6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v15"/><path d="M12 21V11h7a1 1 0 0 1 1 1v9"/><path d="M3 21h18"/><path d="M7 9h2M7 13h2M7 17h2M15 15h2M15 18h2"/></svg></i></a><a href="#residencial"><span>Inspección y cuidado en tres zonas.</span><strong>Residencial</strong><span aria-hidden="true">↓</span><i aria-hidden="true" class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 4.5l8 7"/><path d="M6 10.5V20h12v-9.5"/><path d="M10 20v-5h4v5"/></svg></i></a><a href="#sanitizacion"><span>Control microbiano en interiores.</span><strong>Sanitización</strong><span aria-hidden="true">↓</span><i aria-hidden="true" class="service-icon"><svg viewBox="0 0 24 24"><rect height="11" rx="2" width="7" x="9" y="10"/><path d="M11 10V6h3"/><path d="M14 6h-3"/><path d="M8 5H6M8 7.5H5.5M8 10H6"/></svg></i></a></div></section>
-<section id="residencial" class="section g g-zonas"><div class="g-zonas-grid"><figure class="g-zonas-fig"><img src="${A}/uruguay-casa-zonas.webp?v=3" alt="Casa moderna en Punta del Este vista desde arriba: el interior en rojo, el perímetro en amarillo y el jardín en verde, con sus etiquetas" loading="lazy"/></figure><div><header class="g-cab"><p class="g-ey">Protocolo de las Tres Zonas</p><h2>Cada rincón<br/>cuenta.</h2><p class="g-intro">En cada visita revisamos tres zonas: adentro, el perímetro y el jardín.</p></header><ul class="g-zonas-lista"><li class="g-z-rojo"><h3>Interior</h3><p>Cocina, baños y donde guardás la comida.</p></li><li class="g-z-amarillo"><h3>Perímetro</h3><p>Puertas, ventanas, rejillas y grietas: por donde entran.</p></li><li class="g-z-verde"><h3>Patio y jardín</h3><p>Macetas, canteros, la azotea y lo de afuera que atrae plagas.</p></li></ul><a class="g-link" href="${U}/servicios/hogares/">Conocé el servicio para hogares${arrow}</a></div></div></section>
-<section id="comercial" class="section g g-comercial"><header class="g-cab"><p class="g-ey">Comercio e industria</p><h2>Control de plagas para tu negocio.</h2><p class="g-intro">Almacenes, panaderías, parrilladas, plantas y depósitos: cada actividad tiene sus puntos críticos.</p></header><div class="g-com-grid"><a class="g-com-foto" href="${U}/servicios/comercios/"><img src="${A}/uy-operacion.webp?v=2" alt="Técnica fumigando los zócalos de un depósito (imagen ilustrativa)" loading="lazy"/><span><b>La prevención es parte de tu operación.</b><em>Conocé el servicio para comercios&nbsp;→</em></span></a><div class="g-sectores">
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Almacenes y autoservicios</h3><p>Mercadería que entra y sale todos los días: depósito, góndolas y zona de residuos.</p></span>${arrow}</a>
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Panaderías y restaurantes</h3><p>Recepción, elaboración, depósito y salón: bolsas de harina, hornos, parrilla y desagües de cocina.</p></span>${arrow}</a>
-<a class="g-sector" href="${U}/servicios/comercios/"><span><h3>Farmacias, policlínicas y oficinas</h3><p>Espacios con público y protocolos de higiene: depósitos, archivos y cocinas del personal.</p></span>${arrow}</a>
-<a class="g-sector" href="${U}/servicios/industria/"><span><h3>Industria</h3><p>Frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.</p></span>${arrow}</a>
-</div></div></section>
-${CORP_A}
-<section id="metodo" class="section g g-metodo"><header class="g-cab"><p class="g-ey">Cómo trabajamos</p><h2>Cuatro pasos, de la consulta<br/>al seguimiento.</h2></header><div class="g-cols g-cols-4"><article><span class="g-n">01</span><h3>Nos contás</h3><p>Decinos qué viste, dónde y desde cuándo.</p></article><article><span class="g-n">02</span><h3>Revisamos</h3><p>Buscamos qué le da agua, comida y refugio a la plaga.</p></article><article><span class="g-n">03</span><h3>Te explicamos</h3><p>Antes de empezar sabés qué vamos a hacer y cómo preparar el lugar.</p></article><article><span class="g-n">04</span><h3>Volvemos</h3><p>Después volvemos a revisar lo que haga falta.</p></article></div></section>
-${CORP_B}
-${pestGrid({ ey: 'Guía de plagas', h2: 'Reconocé la plaga.<br/>Entendé sus hábitos.', intro: 'Seis plagas que conviene conocer en Uruguay. Cada guía explica las señales y qué hacer, con sus fuentes.' })}
-<section class="section g g-ayuda"><header class="g-cab"><p class="g-ey">Blog y preguntas</p><h2>Lo que conviene saber<br/>de las plagas de acá.</h2><p class="g-intro">Consejos para prevenir plagas y cómo trabajamos.</p></header><div class="g-ayuda-grid"><div class="g-blog-doble"><article class="g-blog"><div class="g-blog-top"><img src="${POSTS_UY[0].img}" alt="" loading="lazy"/><p class="g-ey">Del blog</p></div><h3><a href="${U}/blog/${POSTS_UY[0].slug}/">${POSTS_UY[0].title}</a></h3><p>${POSTS_UY[0].lead}</p><a class="g-link" href="${U}/blog/${POSTS_UY[0].slug}/">Leer el artículo${arrow}</a></article><a class="g-link g-link-2" href="${U}/blog/">Ver todo el blog${arrow}</a></div><div class="g-faq" id="preguntas"><h3>Lo que más nos preguntan.</h3>${homeFaq.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${q}<span aria-hidden="true">+</span></summary><p>${a}</p></details>`).join('')}</div></div></section>
-${contacto(DEFAULT_PROMPTS, { zona: true })}`,
+  replace: [
+    [/<div class="film">[\s\S]*?<\/video><\/div>/, HOME_FILM],
+    // recipe 6c / R9: each sector row goes to its own anchor in the globaltni copy of Comercios; Industria keeps its own page
+    [`<a class="g-sector" href="${VEC}"><span><h3>Salud</h3>`, `<a class="g-sector" href="${U}/servicios/comercios/#healthcare"><span><h3>Salud</h3>`],
+    [`<a class="g-sector" href="${VEC}"><span><h3>Comercio de alimentos</h3>`, `<a class="g-sector" href="${U}/servicios/comercios/#food-processing"><span><h3>Comercio de alimentos</h3>`],
+    [`<a class="g-sector" href="${VEC}"><span><h3>Logística</h3>`, `<a class="g-sector" href="${U}/servicios/comercios/#logistics"><span><h3>Logística</h3>`],
+    // Uruguay's own commercial photo, approved by Carlos on 4-nov (Venezuela's Unsplash photo is not reused)
+    ['<img src="/oficinas/venezuela/assets/ve-operacion-unsplash-u7egjbn8tzk.webp?v=d0b31cb363c3" alt="" loading="lazy"/>', `<img src="${A}/uy-operacion.webp?v=3" alt="Técnico de Truly Nolen con mascarilla fumigando la base de la pared de una casa en Montevideo (imagen ilustrativa)" loading="lazy"/>`],
+    [/<section id="plagas" class="section g g-plagas">[\s\S]*?<\/section>/, HOME_PLAGAS],
+    [/<article class="g-blog">[\s\S]*?<\/article>/, HOME_BLOG],
+    ['Indique su estado, municipio y el tipo de espacio.', 'Indique su departamento, su barrio o localidad y el tipo de espacio.'],
+  ],
 };
+
 
 // ---------------------------------------------------------------- PESTS
 const SVC = {
@@ -54,8 +53,8 @@ const SVC = {
   'ratas-y-ratones': 'Cerremos el paso<br/>por donde entran.',
   cucarachas: 'Encontremos dónde<br/>se esconden.',
   hormigas: 'Sigamos la fila<br/>hasta el nido.',
-  termitas: 'Revisemos la madera<br/>de tu casa.',
-  'arana-de-los-rincones': 'Revisemos los rincones<br/>de tu casa.',
+  termitas: 'Revisemos la madera<br/>de su casa.',
+  'arana-de-los-rincones': 'Revisemos los rincones<br/>de su casa.',
 };
 // Master layout (globaltni pest guide): masthead, families, index and prose sections. No FAQ block,
 // so no FAQ structured data either (Google only accepts FAQ markup for visible questions).
@@ -81,7 +80,8 @@ function speciesCards(slug, rows) {
   const used = new Set();
   const cards = SPECIES[slug].map((c) => {
     c.rows.forEach((i) => used.add(i));
-    const text = c.rows.length === 1 ? `<p>${rows[c.rows[0]][1]}</p>` : rowsProse(c.rows.map((i) => rows[i]));
+    // the card title already names the species: its first row goes without its own bold title (no «Hormiga cortadora» twice)
+    const text = `<p>${rows[c.rows[0]][1]}</p>${c.rows.length > 1 ? rowsProse(c.rows.slice(1).map((i) => rows[i])) : ''}`;
     return `<div class="species-section"><div class="species-specimen"><img src="${c.img || p.img}" alt="${c.alt || p.alt}" loading="lazy"/></div><div class="species-description"><h3>${c.name}</h3>${text}</div></div>`;
   }).join('');
   return cards + rowsProse(rows.filter((_, i) => !used.has(i)));
@@ -102,7 +102,7 @@ function pestPage(slug, { description, hero, t1, d, t2, src }) {
 
 const mosquitos = pestPage('mosquitos', {
   description: 'El mosquito Aedes aegypti transmite el dengue y se cría en el agua quieta de casa. Señales, datos del MSP y cómo prevenirlo en Uruguay.',
-  hero: { h1: 'El criadero está más cerca<br/>de lo que pensás.', p: 'El mosquito Aedes aegypti transmite el dengue y se cría en el agua quieta: baldes, platos de macetas y bebederos. Según una lista de verificación del MSP (sin fecha), dos de cada tres criaderos están en las casas.' },
+  hero: { h1: 'El criadero está más cerca<br/>de lo que piensa.', p: 'El mosquito Aedes aegypti transmite el dengue y se cría en el agua quieta: baldes, platos de macetas y bebederos. Según una lista de verificación del MSP (sin fecha), dos de cada tres criaderos están en las casas.' },
   t1: { ey: 'Dónde se cría', h2: 'Donde queda agua quieta.', rows: [
     ['Agua en casa', 'Baldes, floreros, platos de macetas y bebederos de mascotas: cualquier recipiente con agua quieta puede ser un criadero.'],
     ['Fondo y azotea', 'Cubiertas viejas, canaletas tapadas, juguetes y botellas que juntan agua de lluvia.'],
@@ -113,8 +113,8 @@ const mosquitos = pestPage('mosquitos', {
     ['2016', 'primer brote de dengue autóctono en 100 años: 19 casos, 18 en Montevideo, con epicentro en Pocitos.', 'MSP, Boletín epidemiológico (2016)'],
     ['2024', 'el 1 de marzo el MSP informó el primer contagio de dengue dentro del país en el año, en una persona que no había viajado.', 'Montevideo Portal, con datos del MSP (2024)'],
   ] },
-  t2: { ey: 'Rutina de cada semana', h2: 'Tapá, vaciá<br/>y limpiá.', rows: [
-    ['Recipientes con agua', 'Lo que guardás o se llena solo.', ['Baldes y tanques bien tapados.', 'Bebederos de mascotas con agua cambiada seguido.']],
+  t2: { ey: 'Rutina de cada semana', h2: 'Tape, vacíe<br/>y limpie.', rows: [
+    ['Recipientes con agua', 'Lo que se guarda o se llena solo.', ['Baldes y tanques bien tapados.', 'Bebederos de mascotas con agua cambiada seguido.']],
     ['Fondo, patio y azotea', 'Todo lo que junta lluvia.', ['Platos de macetas y floreros.', 'Cubiertas, botellas y latas.', 'Canaletas y desagües destapados.']],
     ['Cubrir, vaciar y limpiar', 'La recomendación de la OMS.', ['Cubrir, vaciar y limpiar los recipientes donde se guarda agua.']],
   ], nota: 'En 2018 el MSP lanzó la campaña «Activate contra el mosquito», que pide dar vuelta o vaciar lo que junta agua.' },
@@ -158,7 +158,7 @@ const cucarachas = pestPage('cucarachas', {
   t1: { ey: 'Cómo reconocerlas', h2: 'Chica o grande,<br/>cada una en su lugar.', rows: [
     ['Cucaracha alemana', 'Chica y marrón clara, con dos rayas oscuras detrás de la cabeza. Vive en la cocina: detrás de la heladera, en los muebles y cerca del calor de los motores.'],
     ['Cucaracha americana', 'Grande y rojiza. Sube desde desagües, cámaras y sótanos.'],
-    ['La señal', 'Son de hábitos nocturnos: si ves una de día, puede haber muchas escondidas.'],
+    ['La señal', 'Son de hábitos nocturnos: si ve una de día, puede haber muchas escondidas.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que pide<br/>la norma.', items: [
     ['En Montevideo', 'las empresas alimentarias deben tener un programa de control preventivo de plagas, que se tramita ante el Servicio de Salubridad Pública.', 'Intendencia de Montevideo, trámites'],
@@ -190,7 +190,7 @@ const hormigas = pestPage('hormigas', {
     ['12-14', 'especies de hormigas cortadoras del género Acromyrmex hay en Uruguay: 12 según la cartilla del INIA (2014) y unas 14 según Martín Bollazzi, de la Facultad de Agronomía, en La Mañana (2023).', 'INIA, cartilla N.º 36 (2014) · La Mañana (2023)'],
     ['Jardín', 'Acromyrmex es el género que más preocupa, porque causa problemas en jardines y campos, según Martín Bollazzi (Facultad de Agronomía, UdelaR).', 'La Mañana (2023)'],
   ] },
-  t2: { ey: 'Prevención', h2: 'Seguí la fila<br/>hasta la entrada.', rows: [
+  t2: { ey: 'Prevención', h2: 'Siga la fila<br/>hasta la entrada.', rows: [
     ['Cocina', 'Lo que las atrae.', ['Azúcar, miel y ración en envases cerrados.', 'Seguir la fila para encontrar por dónde entran.']],
     ['Jardín y huerta', 'Las señales de la cortadora.', ['Caminos de hojas cortadas en el pasto.', 'Montículos de tierra suelta.']],
     ['Entradas', 'Por donde pasan.', ['Grietas en zócalos y marcos.', 'Plantas que tocan la pared.']],
@@ -204,8 +204,8 @@ const hormigas = pestPage('hormigas', {
 });
 
 const termitas = pestPage('termitas', {
-  description: 'La termita subterránea Reticulitermes en Uruguay: señales, qué se sabe en el país y cómo prevenir daños en la madera de tu casa.',
-  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'Según Constantino (2002), en Uruguay la termita plaga es la subterránea del género Reticulitermes, que llegó desde afuera. Lo importante es detectarla a tiempo en tu casa.' },
+  description: 'La termita subterránea Reticulitermes en Uruguay: señales, qué se sabe en el país y cómo prevenir daños en la madera de su casa.',
+  hero: { h1: 'Comen la madera<br/>desde adentro.', p: 'Según Constantino (2002), en Uruguay la termita plaga es la subterránea del género Reticulitermes, que llegó desde afuera. Lo importante es detectarla a tiempo en su casa.' },
   t1: { ey: 'Las señales', h2: 'Lo que hay<br/>que mirar.', rows: [
     ['Tubos de tierra', 'Caminos de barro entre el suelo y la madera: así llega la termita subterránea, según la Universidad de California (EE. UU.).'],
     ['Madera hueca', 'Marcos, zócalos o pisos que suenan huecos o se hunden al apretarlos.'],
@@ -230,11 +230,11 @@ const termitas = pestPage('termitas', {
 
 const arana = pestPage('arana-de-los-rincones', {
   description: 'La araña de los rincones (Loxosceles laeta) en Uruguay: cómo reconocerla, dónde se esconde y qué hacer ante una picadura (CIAT 1722).',
-  hero: { h1: 'Tranquila, escondida<br/>y peligrosa.', p: 'La araña de los rincones (Loxosceles laeta) vive en rincones oscuros, detrás de cuadros y muebles. Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la de mayor importancia para la salud pública en Uruguay. Ante una picadura, llamá al CIAT: 1722.' },
+  hero: { h1: 'Tranquila, escondida<br/>y peligrosa.', p: 'La araña de los rincones (Loxosceles laeta) vive en rincones oscuros, detrás de cuadros y muebles. Según un boletín del MSP de 2013, citado por Montevideo Portal (2022), es la de mayor importancia para la salud pública en Uruguay. Ante una picadura, llame al CIAT: 1722.' },
   t1: { ey: 'Cómo reconocerla', h2: 'Patas largas<br/>y un violín en el lomo.', rows: [
     ['Aspecto', 'Marrón, de patas largas y finas, con una mancha en forma de violín sobre el cuerpo. Por eso también le dicen «araña violinista».'],
     ['Dónde vive', 'Según Montevideo Portal, detrás de cuadros, en esquinas y en muebles de madera. La guía de Mendoza (Argentina) suma roperos, ropa poco usada y zapatos.'],
-    ['La picadura', 'Su veneno es necrosante: puede dañar la piel y los tejidos. Ante la sospecha, llamá al CIAT (1722) o consultá a tu prestador de salud.'],
+    ['La picadura', 'Su veneno es necrosante: puede dañar la piel y los tejidos. Ante la sospecha, llame al CIAT (1722) o consulte a su prestador de salud.'],
   ] },
   d: { ey: 'En Uruguay', h2: 'Lo que hay<br/>que saber.', items: [
     ['1722', 'es el teléfono del CIAT (Centro de Información y Asesoramiento Toxicológico) para consultar por una picadura.', 'Montevideo Portal (2022)'],
@@ -260,7 +260,9 @@ const hogaresFaq = [
   ['¿Alcanza con una sola visita?', 'Depende de la plaga y de cuánto tiempo lleva. Después de revisar tu casa te proponemos cuántas visitas hacen falta y cada cuánto.'],
   ['¿Cómo sé si llegan a mi barrio?', 'Escribile a Truly AI tu departamento, tu barrio o localidad y si es casa o apartamento. Te confirmamos si podemos ir y cómo coordinar.'],
 ];
-const hogares = {
+// Recipe R17 (5-nov-2026): Hogares shows the globaltni page as it is (copy of the Venezuela reference, see below).
+// Uruguay's own Hogares content is no longer shown; it stays here (unused) and in respaldos/2026-11-05-antes-receta-5nov/.
+const hogaresPropio = {
   out: 'servicios/hogares/', template: 'servicios/hogares/', title: 'Control de plagas para hogares en Uruguay · Truly Nolen', crumb: 'Hogares',
   description: 'Revisamos tu casa, apartamento o casa de balneario por dentro y por fuera: interior, perímetro, fondo y azotea. Control de plagas en Uruguay.',
   faq: hogaresFaq,
@@ -284,19 +286,29 @@ const comerciosFaq = [
   ['Tengo varias sucursales, ¿cómo se organiza?', 'Se acuerda el alcance de cada local en la propuesta, según su actividad y sus condiciones.'],
   ['¿Cómo sé si llegan a mi zona?', 'Decinos tu departamento, tu barrio o localidad y el tipo de local. Te confirmamos si podemos atenderte y cómo coordinar.'],
 ];
-const comercios = {
+// Recipe R17 (5-nov-2026): Comercios shows the globaltni page as it is. Uruguay's own Comercios content, including the four
+// globaltni sectors written on 4-nov, is no longer shown; it stays here (unused) and in respaldos/2026-11-05-antes-receta-5nov/.
+const comerciosPropio = {
   out: 'servicios/comercios/', template: 'servicios/comercios/', title: 'Control de plagas para comercios en Uruguay · Truly Nolen', crumb: 'Comercios',
   description: 'Control de plagas para almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas en Uruguay. Qué pide la norma en Montevideo.',
   faq: comerciosFaq,
   main: [
-    ctPage({ crumb: 'Servicio comercial', kicker: 'Servicio comercial', h1: 'Tu negocio,<br/>protegido.', intro: 'Un programa que tiene en cuenta tu local, tus clientes y el ritmo de tu operación: almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas.', img: `${A}/uy-comercios.webp`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas', navLabel: 'Elegí el tema', bands: [
+    ctPage({ crumb: 'Servicio comercial', kicker: 'Servicio comercial', h1: 'Tu negocio,<br/>protegido.', intro: 'Un programa que tiene en cuenta tu local, tus clientes y el ritmo de tu operación: almacenes, panaderías, parrilladas, rotiserías, farmacias y oficinas.', img: `${A}/uy-comercios.webp`, alt: 'Panadería y confitería moderna en Montevideo, con vitrinas de bizcochos y medialunas', navLabel: 'Encontrá tu sector', navIds: ['sector-salud', 'sector-industria', 'sector-alimentos', 'sector-logistica'], bands: [
       { id: 'servicio', kicker: 'El servicio', h2: 'Control para tu negocio.', html: '<p><strong>¿Qué incluye?</strong> Inspección de las áreas de trabajo y del depósito, control según el rubro y coordinación de horarios y accesos con el encargado.</p><p><strong>¿Cómo sigue?</strong> Registro de hallazgos y recomendaciones. Si tenés varias sucursales, se acuerda el alcance de cada una.</p><p>Antes de empezar recibís una propuesta con el alcance y las condiciones para tu negocio.</p>',
         aside: { h3: '¿Quién se beneficia?', items: ['Almacenes y autoservicios', 'Panaderías y confiterías', 'Rotiserías, parrilladas y restaurantes', 'Farmacias y policlínicas', 'Oficinas'] } },
+      { id: 'sector-salud', kicker: 'Salud', h2: 'El cuidado empieza con la prevención.', html: '<p>Quienes dirigen residenciales de larga estadía, centros de emergencia y centros de rehabilitación física o mental tienen que sostener el nivel más alto de higiene mientras atienden a personas vulnerables.</p><p>El Truly Elite Protection System (TEPS) se desarrolló para instalaciones de salud, donde el servicio tiene que ir más allá del control: prevenir y minimizar el riesgo de plagas y de contaminación química.</p><p>Cada servicio se puede auditar y deja la documentación que piden las normas del sector y los protocolos más exigentes.</p><p><a class="text-link" href="${GT}/services/teps/" target="_blank" rel="noopener noreferrer">Conocé el programa TEPS&nbsp;→</a></p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Laboratorios de diagnóstico', 'Hospitales y sanatorios', 'Residenciales de larga estadía', 'Centros de emergencia', 'Centros de rehabilitación', 'Consultorios médicos', 'Centros de atención y tratamiento de pacientes', 'Depósitos de insumos médicos'] } },
+      { id: 'sector-industria', kicker: 'Industrias', h2: 'Protección en cada operación.', html: '<p>En plantas, laboratorios y depósitos, TEPS suma prevención y baja la posibilidad de actividad de plagas o de contaminación química en la producción.</p><p>Es un servicio auditable de punta a punta: los registros quedan listos para lo que exija cada cliente.</p><p><a class="text-link" href="${U}/servicios/industria/">Ver el servicio para industrias&nbsp;→</a></p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Plantas de procesamiento de alimentos', 'Almacenamiento y distribución de alimentos', 'Envasado y reenvasado de alimentos', 'Proveedores de la industria alimentaria', 'Laboratorios farmacéuticos', 'Catering', 'Hoteles', 'Hospitales', 'Cadenas de comida rápida', 'Supermercados', 'Archivo de documentos', 'Otras industrias'] } },
+      { id: 'sector-alimentos', kicker: 'Venta de alimentos', h2: 'Cuidar donde se encuentran personas y alimentos.', html: '<p>Los locales que venden alimentos están entre los más difíciles al planificar higiene y manejo de plagas: tienen que entregar productos seguros en un lugar limpio y libre de plagas.</p><p>Para supermercados, panaderías y restaurantes, TEPS va más allá de una aplicación puntual y pone el foco en anticiparse a la plaga.</p><p>Las visitas quedan registradas y sirven para una inspección o para la auditoría de tu propia cadena.</p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Supermercados', 'Hipermercados', 'Centros de distribución', 'Locales de comida rápida', 'Restaurantes', 'Panaderías y confiterías'] } },
+      { id: 'sector-logistica', kicker: 'Logística', h2: 'Los productos viajan. La protección los acompaña.', html: '<p>Para toda empresa que mueve mercadería todos los días: si exportás, importás o trasladás productos de un lugar a otro, Truly Nolen International trabaja para que la carga no se contamine con plagas.</p><p>En depósitos, terminales y flotas, TEPS prioriza la prevención antes que la reacción.</p><p>Cada intervención deja constancia escrita, con el detalle que piden tus clientes y los estándares del rubro.</p>',
+        aside: { h3: '¿Quién se beneficia?', items: ['Empresas de transporte', 'Agentes de carga', 'Transportistas', 'Operadores logísticos', 'Parques logísticos', 'Logística de abastecimiento', 'Logística de producto', 'Logística de ventas'] } },
       { id: 'rubros', kicker: 'Cada rubro', h2: 'Cada punto del proceso.', html: '<p>Cada rubro tiene sus puntos críticos. La inspección los reconoce y define qué hace falta en cada uno.</p>' + rowsProse([
-        ['Panaderías y confiterías', 'Recepción, elaboración, depósito y mostrador son una sola operación.'],
+        ['Panaderías y confiterías', 'Recepción, elaboración, depósito y mostrador son una sola operación.', null, 'sector-panaderias'],
         ['Parrilladas y restaurantes', 'Cocina, parrilla y salón.'],
-        ['Almacenes y autoservicios', 'Mercadería que entra y sale todos los días.'],
-        ['Farmacias, policlínicas y oficinas', 'Espacios con público y protocolos de higiene.'],
+        ['Almacenes y autoservicios', 'Mercadería que entra y sale todos los días.', null, 'sector-almacenes'],
+        ['Farmacias, policlínicas y oficinas', 'Espacios con público y protocolos de higiene.', null, 'sector-farmacias'],
       ]), aside: { h3: 'Qué revisamos', items: ['Bolsas de harina y depósitos', 'Hornos, mesadas y zonas calientes', 'Leña y carbón guardados', 'Cámaras de frío y desagües de cocina', 'Depósito y góndolas', 'Zona de residuos y contenedores', 'Archivos, cocinas y áreas de descanso'] } },
       { id: 'norma', kicker: 'La norma', h2: 'Si vendés alimentos, la norma lo pide.', html: rowsProse([
         ['Programa preventivo', 'En Montevideo, las empresas alimentarias deben tener un programa de control preventivo de plagas ante el Servicio de Salubridad Pública.'],
@@ -309,6 +321,8 @@ const comercios = {
         ['Las lluvias', 'En 2025 el MSP informó una muerte por leptospirosis en Montevideo. La nota explica, con datos de la OPS, que el riesgo sube después de los días de lluvia.'],
         ['Insecticidas que no alcanzan', 'Una revisión de 102 estudios en 23 países encontró reportes de resistencia a 60 ingredientes activos en la cucaracha alemana (2025): aplicar siempre el mismo producto no basta, hay que encontrar dónde se esconde la plaga.'],
       ]), aside: { h3: 'Las plagas que más afectan a un negocio', items: [`<a href="${U}/plagas/cucarachas/">${PESTS['cucarachas'].name}</a>`, `<a href="${U}/plagas/ratas-y-ratones/">${PESTS['ratas-y-ratones'].name}</a>`, `<a href="${U}/plagas/mosquitos/">${PESTS['mosquitos'].name}</a>`] } },
+      { id: 'otros', kicker: 'Otros rubros', h2: 'Cada industria merece atención.', html: '<p>Si tu actividad no está en estos sectores, no te preocupes: Truly Nolen International también tiene clientes en turismo, educación, fabricación, catering y mucho más. Contanos qué hacés y te orientamos.</p>',
+        aside: { h3: 'Más formas de proteger tu mundo', items: [`<a href="${U}/servicios/hogares/">Servicio para hogares</a>`, `<a href="${GT}/services/sanitization/" target="_blank" rel="noopener noreferrer">Sanitización</a>`, `<a href="${GT}/services/teps/" target="_blank" rel="noopener noreferrer">Programa TEPS</a>`] } },
     ] }),
     flow('Qué conviene contarnos.', rowsProse([
       ['Tu negocio', 'Contanos el rubro, el tamaño del local y si tenés depósito.'],
@@ -316,28 +330,28 @@ const comercios = {
       ['Lo que ves', 'Describí las señales, dónde aparecen y desde cuándo.'],
     ])),
     preguntas(comerciosFaq),
-    sFuentes([SRC.imAlimentos, SRC.imRegistro, SRC.mspEmpresas, SRC.guiaPlan, SRC.resistencia, SRC.leptoSeguimiento, SRC.leptoLluvia]),
+    sFuentes([SRC.gtComercial, SRC.imAlimentos, SRC.imRegistro, SRC.mspEmpresas, SRC.guiaPlan, SRC.resistencia, SRC.leptoSeguimiento, SRC.leptoLluvia]),
     closing(),
   ].join('\n'),
 };
 
 const industriaFaq = [
-  ['¿Trabajan con registros para auditorías?', 'El programa incluye registros de hallazgos y recomendaciones. Contanos qué auditorías tenés que cumplir y el equipo te explica cómo se documenta.'],
-  ['¿Atienden palomas?', 'Contanos el caso: también se evalúan. Como referencia, la Intendencia de Montevideo usó cetrería contra las palomas en el Centro y la Ciudad Vieja (El Observador, 2012).'],
+  ['¿Trabajan con registros para auditorías?', 'El programa incluye registros de hallazgos y recomendaciones. Cuéntenos qué auditorías tiene que cumplir y el equipo le explica cómo se documenta.'],
+  ['¿Atienden palomas?', 'Cuéntenos el caso: también se evalúan. Como referencia, la Intendencia de Montevideo usó cetrería contra las palomas en el Centro y la Ciudad Vieja (El Observador, 2012).'],
   ['¿Con una visita alcanza?', 'En una planta, el control es un programa con monitoreo y seguimiento. El alcance se define después de la evaluación.'],
-  ['¿Llegan a mi departamento?', 'Decinos el departamento, la localidad y el tipo de instalación. Te confirmamos si podemos atenderte y cómo coordinar.'],
+  ['¿Llegan a mi departamento?', 'Indíquenos el departamento, la localidad y el tipo de instalación. Le confirmaremos si podemos atenderle y cómo coordinar.'],
 ];
 const industria = {
   out: 'servicios/industria/', template: 'servicios/industria/', title: 'Control de plagas para la industria en Uruguay · Truly Nolen', crumb: 'Industria',
   description: 'Manejo integrado de plagas para frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística en Uruguay.',
   faq: industriaFaq,
   main: [
-    ctPage({ crumb: 'Servicio industrial', kicker: 'Servicio industrial', h1: 'Control de plagas<br/>para tu industria.', intro: 'Un programa que parte de conocer tu operación, de la recepción al despacho: frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales', navLabel: 'Elegí el tema', bands: [
+    ctPage({ crumb: 'Servicio industrial', kicker: 'Servicio industrial', h1: 'Control de plagas<br/>para su industria.', intro: 'Un programa que parte de conocer su operación, de la recepción al despacho: frigoríficos, lácteas, molinos, acopio de granos, celulosa, puertos y logística.', img: `${A}/uy-industria.webp`, alt: 'Planta láctea moderna en Uruguay, con el campo verde detrás de los ventanales', navLabel: 'Elija el tema', bands: [
       { id: 'servicio', kicker: 'El servicio', h2: 'Manejo integrado de plagas.', html: rowsProse([
         ['Diagnóstico', 'Recorrida de la planta, el perímetro y los depósitos para entender qué favorece a cada plaga.'],
-        ['Programa', 'Monitoreo con estaciones numeradas, control según tu actividad y registro de cada visita para tus auditorías.'],
+        ['Programa', 'Monitoreo con estaciones numeradas, control según su actividad y registro de cada visita para sus auditorías.'],
         ['Seguimiento', 'Informes de hallazgos, tendencias por zona y medidas correctivas, con visitas según el programa acordado.'],
-      ]) + '<p>Antes de empezar recibís una propuesta con el alcance, la frecuencia y los registros para tu planta.</p>',
+      ]) + '<p>Antes de empezar recibe una propuesta con el alcance, la frecuencia y los registros para su planta.</p>',
         aside: { h3: '¿Quién se beneficia?', items: ['Frigoríficos', 'Lácteas', 'Molinos y acopio de granos', 'Celulosa', 'Puertos y logística'] } },
       { id: 'pais', kicker: 'El país', h2: 'Lo que exporta el país.', html: datoProse([
         ['2.444', 'millones de dólares exportó la carne bovina de enero a noviembre de 2025, más que cualquier otro rubro.', 'El Observador (2025)'],
@@ -349,7 +363,7 @@ const industria = {
         ['Proceso', 'Donde se trabaja el producto.'],
         ['Depósito y silos', 'Donde se guarda.'],
         ['Despacho y perímetro', 'Lo que rodea la planta.'],
-      ]), aside: { h3: 'Qué revisamos', items: ['Andenes, puertas de carga y camiones', 'Equipos, desagües y zonas húmedas', 'Áreas con restos de producto', 'Granos, bolsas y pallets', 'Grietas y acumulación de polvo', 'Residuos, pastizales y cercos'] } },
+      ]), aside: { h3: 'Qué revisamos', items: ['Andenes, puertas de carga y camiones', 'Equipos, desagües y zonas húmedas', 'Áreas con restos de producto', 'Granos, bolsas y palés', 'Grietas y acumulación de polvo', 'Residuos, pastizales y cercos'] } },
       { id: 'por-que', kicker: 'Por qué', h2: 'Por qué fumigar no basta.', html: rowsProse([
         ['Resistencia', 'Una revisión de 102 estudios en 23 países reporta cucarachas alemanas resistentes a 60 ingredientes activos, sobre todo piretroides y organofosforados.'],
         ['Registros', 'En Montevideo, el programa preventivo de una empresa alimentaria tiene que dejar anotado el control, quién lo hizo y las medidas correctivas.'],
@@ -357,15 +371,28 @@ const industria = {
       ]), aside: { h3: 'Plagas que vigilamos en la industria', items: [`<a href="${U}/plagas/ratas-y-ratones/">${PESTS['ratas-y-ratones'].name}</a>`, `<a href="${U}/plagas/cucarachas/">${PESTS['cucarachas'].name}</a>`, `<a href="${U}/plagas/hormigas/">${PESTS['hormigas'].name}</a>`] } },
     ] }),
     flow('Qué conviene contarnos.', rowsProse([
-      ['Tu planta', 'Rubro, superficie y cantidad de edificios.'],
-      ['Tus auditorías', 'Contanos qué normas o auditorías tenés que cumplir.'],
-      ['Lo que ves', 'Dónde aparecen las señales y desde cuándo.'],
+      ['Su planta', 'Rubro, superficie y cantidad de edificios.'],
+      ['Sus auditorías', 'Cuéntenos qué normas o auditorías tiene que cumplir.'],
+      ['Lo que ve', 'Dónde aparecen las señales y desde cuándo.'],
     ])),
     preguntas(industriaFaq),
     sFuentes([SRC.exportaciones, SRC.palomas, SRC.resistencia, SRC.imAlimentos, SRC.leptoLluvia]),
     closing(),
   ].join('\n'),
 };
+
+// The globaltni copies (R17): the Venezuela reference <main> with its links moved to Uruguay and Uruguay's closing.
+const hogares = {
+  out: 'servicios/hogares/', template: 'servicios/hogares/', copy: true, replace: [], crumb: 'Hogares',
+  title: 'Control de plagas para hogares en Uruguay · Truly Nolen',
+  description: 'Programa residencial de Truly Nolen en Uruguay: su casa completa en tres zonas de protección. Escríbale a Truly AI.',
+};
+const comercios = {
+  out: 'servicios/comercios/', template: 'servicios/comercios/', copy: true, replace: [], crumb: 'Comercios',
+  title: 'Control de plagas para comercios en Uruguay · Truly Nolen',
+  description: 'Servicio comercial de Truly Nolen en Uruguay: salud, industrias, venta de alimentos y logística, con el sistema TEPS.',
+};
+export const SIN_USO = { hogaresPropio, comerciosPropio };
 
 // ---------------------------------------------------------------- BLOG
 const POSTS = POSTS_UY;
@@ -375,9 +402,10 @@ const blog = {
   out: 'blog/', template: 'blog/', title: 'Blog de control de plagas en Uruguay · Truly Nolen', crumb: 'Blog',
   description: 'Guías sobre plagas de Uruguay: la araña de los rincones, la hormiga cortadora y más, con cada dato respaldado por su fuente abierta.',
   main: [
-    `<section class="wrap journal-wrap"><nav class="journal-breadcrumb" aria-label="Ruta"><a href="${U}/">Inicio</a><span aria-hidden="true">/</span><span>Blog</span></nav><header class="journal-heading"><h1>Blog</h1><p class="s-prose">Guías sobre las plagas de acá, con cada dato respaldado por su fuente.</p></header></section>`,
-    `<section class="wrap journal-wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span>${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/" aria-label="Leer: ${p.title}">Leer el artículo</a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
-    closing(),
+    // 5-nov-2026: same markup as the Venezuela blog index (journal list of globaltni) and its closing band
+    `<section class="wrap journal-wrap"><nav aria-label="Ruta"><a href="${U}/">Inicio</a><span aria-hidden="true">/</span>Blog de control de plagas</nav><header class="journal-heading"><h1>Blog de control de plagas</h1><p class="s-prose">Guías sobre las plagas de Uruguay, con cada dato respaldado por su fuente.</p></header></section>`,
+    `<section class="wrap journal-wrap"><div class="journal-stories">${POSTS.map((p, i) => `<article class="journal-story"><div class="story-edition"><span>${String(i + 1).padStart(2, '0')}</span><time datetime="2026-10-31">31 de octubre de 2026</time><span class="story-topic">${p.tag}</span></div><div class="story-copy"><h2><a href="${U}/blog/${p.slug}/">${p.title}</a></h2><p>${p.lead}</p><a class="text-link" href="${U}/blog/${p.slug}/">Leer el artículo <span aria-hidden="true">→</span></a></div><a class="story-image-link" href="${U}/blog/${p.slug}/" tabindex="-1" aria-hidden="true"><figure class="story-image"><img src="${p.img}" alt="" loading="lazy"/></figure></a></article>`).join('')}</div></section>`,
+    contactBand(),
   ].join('\n'),
 };
 
@@ -415,13 +443,13 @@ function legal(out, crumb, h1, html) {
 }
 
 const privacidad = legal('privacidad/', 'Privacidad', 'Privacidad',
-  '<p>Lo que escribas en el chat de este sitio o por WhatsApp lo recibe y responde Truly AI, el asistente de Truly Nolen International. Usalo para tu consulta sobre control de plagas y no compartas datos sensibles, como contraseñas, datos bancarios o información médica.</p>');
+  '<p>Lo que escriba en el chat de este sitio o por WhatsApp lo recibe y responde Truly AI, el asistente de Truly Nolen International. Úselo para su consulta sobre control de plagas y no comparta datos sensibles, como contraseñas, datos bancarios o información médica.</p>');
 
 const terminos = legal('terminos/', 'Términos de uso', 'Términos de uso',
-  '<p>Este sitio informa sobre control de plagas en Uruguay. Las guías tienen información general con sus fuentes y no reemplazan la evaluación de un técnico.</p><p>Ante una picadura o una posible intoxicación, llamá al CIAT (Centro de Información y Asesoramiento Toxicológico) al 1722 o consultá a tu prestador de salud.</p><p>Las respuestas de Truly AI son orientativas. El alcance, las condiciones y el costo de cada servicio se confirman en la propuesta.</p>');
+  '<p>Este sitio informa sobre control de plagas en Uruguay. Las guías tienen información general con sus fuentes y no reemplazan la evaluación de un técnico.</p><p>Ante una picadura o una posible intoxicación, llame al CIAT (Centro de Información y Asesoramiento Toxicológico) al 1722 o consulte a su prestador de salud.</p><p>Las respuestas de Truly AI son orientativas. El alcance, las condiciones y el costo de cada servicio se confirman en la propuesta.</p>');
 
 const accesibilidad = legal('accesibilidad/', 'Accesibilidad', 'Accesibilidad',
-  '<p>Queremos que este sitio se pueda usar con teclado, con lector de pantalla y en cualquier tamaño de pantalla. Las imágenes que transmiten información tienen su descripción.</p><p>Si encontrás una barrera, contanos dónde por el chat o por WhatsApp y la revisamos.</p>');
+  '<p>Queremos que este sitio se pueda usar con teclado, con lector de pantalla y en cualquier tamaño de pantalla. Las imágenes que transmiten información tienen su descripción.</p><p>Si encuentra una barrera, cuéntenos dónde por el chat o por WhatsApp y la revisamos.</p>');
 
 const CREDITS = [
   ['Teatro Solís, Montevideo (foto real usada como referencia del lugar de la portada)', 'Ypsilon from Finland', 'CC0 (dominio público)', 'https://creativecommons.org/publicdomain/zero/1.0/', 'https://commons.wikimedia.org/wiki/File:Teatro_Solis_Montevideo_2.JPG'],
@@ -431,6 +459,6 @@ const CREDITS = [
   ['Araña de los rincones, Loxosceles laeta (también portada del artículo del blog)', 'Mampato', 'Dominio público', '', 'https://commons.wikimedia.org/wiki/File:Loxosceles_laeta.jpg'],
 ];
 const creditos = legal('creditos/', 'Créditos de imágenes', 'Créditos de imágenes',
-  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el auto oficial se ubicó frente al teatro con IA (Gemini). La casa de las tres zonas, los espacios de hogares, comercios e industria, la foto de la técnica y la acuarela del pie son imágenes generadas con IA (Gemini).</p>`);
+  `<p>Las fotos reales de este sitio que no son de Truly Nolen vienen de Wikimedia Commons, en dominio público o CC0.</p><ul>${CREDITS.map(([t, a, l, lu, u]) => `<li><a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>, por ${a}. ${lu ? `<a href="${lu}" target="_blank" rel="noopener noreferrer">${l}</a>` : l}.</li>`).join('')}</ul><p>Las fotos del mosquito y de la cucaracha americana son fotos de Truly Nolen, las mismas que usan los otros sitios de oficina. Las de la cucaracha alemana y la hormiga argentina son las fotos de identificación de Truly Nolen International en globaltni.com.</p><p>La portada usa como referencia esa foto real del Teatro Solís: el auto oficial se ubicó frente al teatro con IA (Gemini). La foto del técnico de la portada y la planta de la página de industria son imágenes generadas con IA (Gemini). El diagrama de las tres zonas, la ilustración del pie, el sello TEPS y las fotos de la página de comercios son piezas oficiales de Truly Nolen International.</p>`);
 
 export const PAGES = [home, mosquitos, ratas, cucarachas, hormigas, termitas, arana, hogares, comercios, industria, blog, postTermitas, postMosquito, privacidad, terminos, accesibilidad, creditos];
