@@ -170,6 +170,10 @@ function head(pre, page) {
   if (page.main && REPLICA_CSS) pre = pre.replace('</head>', `<style id="uruguay-bloques">${REPLICA_CSS}</style></head>`);
   // Page-level fixes (e.g. the Industria h1 measured on Comercios)
   if (page.css) pre = pre.replace('</head>', `<style id="uruguay-pagina">${page.css}</style></head>`);
+  // Small phones (≤400 px): the «Vista previa» notice wrapped to two lines and covered the top of the page; keep it on one.
+  pre = pre.replace('</head>', '<style id="uruguay-aviso">@media(max-width:400px){html body .aviso-borrador{font-size:11px!important;white-space:nowrap!important;padding:7px 8px!important}}</style></head>');
+  // 6-nov-2026 design-eye fixes (short phones, hero line over the car, tablet contact and notice): src/fix-6nov.css
+  pre = pre.replace('</head>', `<style id="uruguay-6nov">${readFileSync(new URL('./src/fix-6nov.css', import.meta.url), 'utf8')}</style></head>`);
   pre = pre.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
   pre = pre.replace(/(<meta name="twitter:image" content="[^"]*"\/>)/, `$1\n${jsonLd(page, url)}`);
   return pre;

@@ -30,6 +30,11 @@ const VEC = '/oficinas/venezuela/servicios/comercios/';
 const GT = 'https://globaltni.com/es'; // used by the unused 4-nov Comercios content
 const home = {
   out: '', template: '', title: 'Control de plagas · Truly Nolen Uruguay',
+  // Recipe owner exception (6-nov-2026): on the phone the hero text is white with NO cream/white veil; a soft dark
+  // shade at the top and a text shadow keep it readable. Desktop keeps its light veil (recipe section I).
+  // Short phones (360x640): let the hero grow instead of stacking the copy on the links. Tablet 761-899: the title
+  // column was 162-206 px and split «Protegi/do.»; give it room.
+  css: '@media(max-width:760px) and (max-height:760px){html body.country-site[data-oficina] section#inicio#inicio{height:max(100svh,767px)!important;min-height:0!important}}@media(min-width:761px) and (max-width:899px){html body.country-site[data-oficina] section#inicio#inicio .hero-text{max-width:none!important;width:min(42vw,340px)!important}html body.country-site[data-oficina] section#inicio#inicio h1{overflow-wrap:normal!important}}@media(max-width:760px){html body.country-site[data-oficina] section#inicio#inicio.cinema::after{background:linear-gradient(180deg,rgba(12,28,34,.74) 0,rgba(12,28,34,.52) 25%,transparent 46%),linear-gradient(0deg,rgba(16,24,32,.94) 0,rgba(16,24,32,.64) 22%,transparent 41%)!important}html body.country-site[data-oficina] section#inicio#inicio :is(.eyebrow,.eyebrow *,h1,h1 *){color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.45),0 3px 16px rgba(0,0,0,.4)!important}}',
   description: 'Control de plagas en Uruguay para hogares, comercios e industrias. Escriba a Truly AI: le orienta en el siguiente paso.',
   faq: homeFaq,
   replace: [
