@@ -1,0 +1,99 @@
+{
+  "id": "uruguay",
+  "title": "Uruguay",
+  "country": "Uruguay",
+  "language": "es",
+  "base": "colombia",
+  "landmark": "Teatro Solís, Montevideo",
+  "localArea": "Montevideo y el interior",
+  "chatIdioma": "Uruguayan Spanish with voseo (contame, tenés, querés, escribinos), warm and professional; never tú verb forms, never usted.",
+  "tratoVetado": [
+    "usted",
+    "Usted",
+    "tú",
+    "Tú",
+    "puedes",
+    "necesitas",
+    "quieres",
+    "Cuéntenos",
+    "Escríbale",
+    "Indique"
+  ],
+  "contacto": {
+    "whatsappTrulyAI": "https://wa.me/15202145675"
+  },
+  "pelicula": {
+    "videoStatus": "pendiente",
+    "landmark": "Teatro Solís, Montevideo",
+    "nota": "Video de Gemini tal cual, agrandado a 4K en Colab con RealESRGAN_x4plus (3840x2160, 10 s). Falta el video vertical que ruede y los bigotes al 70 %. El logo de la puerta espera el método nuevo (paquete 3-nov tarde).",
+    "video": {
+      "file": "site/oficinas/uruguay/assets/uruguay-desktop.mp4",
+      "sha256": "e9171786cd48490f5e7ee96d0a20a04184c475e4d26a54c1d5451d2a7daeed22",
+      "width": 3840,
+      "height": 2160,
+      "duration": 10
+    },
+    "movil": {
+      "file": "site/oficinas/uruguay/assets/uruguay-movil.mp4",
+      "sha256": "023f857541008ab0ad42085c00bb58df5c4ced546368d44249643986b1ddb92f",
+      "width": 2160,
+      "height": 3840
+    },
+    "poster": "site/oficinas/uruguay/assets/uruguay-desktop.webp"
+  },
+  "footer": {
+    "estado": "listo",
+    "file": "site/oficinas/uruguay/assets/footer-uruguay.webp",
+    "sha256": "82225d4da02bda0a78d4a9245ff7b84f1e88862241090e06d300d09fd7982e4f",
+    "origen": "Acuarela del Teatro Solís hecha con Gemini (la receta pide Midjourney: pendiente)."
+  },
+  "casaZonas": {
+    "file": "site/oficinas/uruguay/assets/uruguay-casa-zonas.webp",
+    "alt": "Casa moderna de Punta del Este con el interior en rojo, el perímetro en amarillo y el jardín en verde",
+    "origen": "Gemini + etiquetas (la receta pide Midjourney: pendiente)."
+  },
+  "fotoOperacion": {
+    "file": "site/oficinas/uruguay/assets/uy-operacion.webp",
+    "origen": "Gemini, emblema real estampado en la camisa."
+  },
+  "paginas": {
+    "servicios": [
+      "hogares",
+      "comercios",
+      "industria"
+    ],
+    "plagas": [
+      "mosquitos",
+      "ratas-y-ratones",
+      "cucarachas",
+      "hormigas",
+      "termitas",
+      "arana-de-los-rincones"
+    ]
+  },
+  "blog": {
+    "porDia": 2,
+    "publicados": [
+      "arana-de-los-rincones-en-casa",
+      "hormiga-cortadora-en-el-jardin"
+    ]
+  },
+  "seo": {
+    "url": "https://giffoni2312.github.io/truly-nolen-uruguay/oficinas/uruguay/",
+    "indexar": false,
+    "imagen": "site/oficinas/uruguay/assets/uruguay-social.jpg"
+  },
+  "ruta": {
+    "aprobado": {
+      "portada": "2026-11-02",
+      "carro": null,
+      "revision": null
+    }
+  },
+  "pendientes": [
+    "Candados oficiales (capa-oficinas)",
+    "Video 4K y vertical",
+    "Fotos con Midjourney",
+    "Foto de sanitización"
+  ]
+}

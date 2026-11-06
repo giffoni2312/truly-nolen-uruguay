@@ -18,7 +18,9 @@ let files = 0;
 for (const file of walk(DIST).filter((f) => f.endsWith('.html'))) {
   const html = readFileSync(file, 'utf8')
     // href="/x", src="/x", data-src="/x", srcset="/x" — but not protocol-relative "//x"
-    .replace(/(\s(?:href|src|data-src|srcset)=")\/(?!\/)/g, `$1${BASE}/`);
+    .replace(/(\s(?:href|src|data-src|data-src-movil|srcset)=")\/(?!\/)/g, `$1${BASE}/`)
+    // url(/x) inside the inline <style> (office fonts): without the base they 404 and phones fall back to Arial
+    .replace(/url\((['"]?)\/(?!\/)/g, `url($1${BASE}/`);
   writeFileSync(file, html);
   files++;
 }
